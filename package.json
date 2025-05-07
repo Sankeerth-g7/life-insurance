@@ -8,7 +8,8 @@
   "dependencies": {
     "@cap-js/sdm": "^1.5.0",
     "@sap/cds": "^8",
-    "express": "^4"
+    "express": "^4",
+    "@cap-js/hana": "^1"
   },
   "devDependencies": {
     "@cap-js/cds-types": "^0.9.0",
@@ -16,5 +17,10 @@
   },
   "scripts": {
     "start": "cds-serve"
+  },
+  "cds": {
+    "sql": {
+      "native_hana_associations": false
+    }
   }
 }

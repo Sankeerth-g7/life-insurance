@@ -1,1 +1,11 @@
 applicationId,user_userId,policy_policyId,applicantName,applicantAge,applicantAddress,applicantMobile,applicantEmail,applicantOccupation,applicationDate,status,documentType
+1001,1,101,John Doe,30,"123 Main St, Mumbai",9876543210,john.doe@email.com,Software Engineer,2025-04-01,Pending,Passport
+1002,2,102,Jane Smith,45,"456 Park Ave, Delhi",8765432109,jane.smith@email.com,Doctor,2025-04-02,Approved,Aadhar Card
+1003,3,103,Michael Brown,38,"789 Maple St, Bengaluru",7654321098,michael.brown@email.com,Teacher,2025-04-03,Rejected,Voter ID
+1004,4,104,Emily Davis,28,"101 Pine Rd, Chennai",6543210987,emily.davis@email.com,Designer,2025-04-04,Pending,Driving License
+1005,5,105,Daniel Wilson,50,"202 Oak Ln, Pune",5432109876,daniel.wilson@email.com,Architect,2025-04-05,Approved,Passport
+1006,6,106,Sophia Martinez,35,"303 Cedar Ave, Hyderabad",4321098765,sophia.martinez@email.com,Engineer,2025-04-06,Rejected,Aadhar Card
+1007,7,107,Ethan Taylor,40,"404 Birch Blvd, Kolkata",3210987654,ethan.taylor@email.com,Finance Manager,2025-04-07,Pending,Voter ID
+1008,8,108,Olivia Anderson,29,"505 Elm Ct, Jaipur",2109876543,olivia.anderson@email.com,HR Executive,2025-04-08,Approved,Driving License
+1009,9,109,Liam Harris,55,"606 Walnut St, Ahmedabad",1098765432,liam.harris@email.com,Entrepreneur,2025-04-09,Rejected,Passport
+1010,10,110,Ava Clark,32,"707 Spruce Way, Lucknow",9876543211,ava.clark@email.com,Marketing Manager,2025-04-10,Pending,Aadhar Card

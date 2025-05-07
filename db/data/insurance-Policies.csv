@@ -1,1 +1,11 @@
 policyId,policyName,policyType,policyDescrption,premiumAmount,coverageAmount,termLength,startDate
+101,SecureLife,Term Insurance,Provides coverage for a fixed term with no savings,5000,1000000,20,2025-01-01
+102,WholeGuard,Whole Life Insurance,Coverage for the entire life with savings benefits,8000,2000000,Lifetime,2025-02-01
+103,FlexiPlan,ULIP,Investment-linked insurance policy with flexible premiums,6000,1500000,15,2025-03-01
+104,SmartSave,Endowment Plan,Combines savings and insurance with guaranteed benefits,7000,1800000,25,2025-04-01
+105,HealthProtect,Health Insurance,Covers medical expenses and hospitalizations,3000,500000,10,2025-05-01
+106,RetireShield,Pension Plan,Guaranteed pension payouts post-retirement,9000,2500000,30,2025-06-01
+107,FamilyCare,Group Insurance,Covers multiple family members under one plan,5500,1200000,20,2025-07-01
+108,ChildSecure,Child Plan,Savings and insurance for child education and future,4500,800000,18,2025-08-01
+109,AccidentGuard,Accident Cover,Covers accidental injuries and medical treatments,4000,700000,12,2025-09-01
+110,TravelSafe,Travel Insurance,Covers trip cancellations, medical emergencies abroad,2500,500000,1,2025-10-01

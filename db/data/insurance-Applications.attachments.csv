@@ -1,1 +1,11 @@
 up__applicationId,ID,createdAt,createdBy,modifiedAt,modifiedBy,url,mimeType,filename,status,note,folderId,repositoryId
+1001,doc_001,2025-04-01 10:15:30,John Doe,2025-04-02 11:20:45,Admin,/uploads/doc_001.pdf,application/pdf,identity_proof.pdf,Approved,Verified identity,folder_01,repo_001
+1002,doc_002,2025-04-02 12:00:00,Jane Smith,2025-04-03 14:30:10,Admin,/uploads/doc_002.jpg,image/jpeg,medical_report.jpg,Pending,Reviewing medical history,folder_02,repo_002
+1003,doc_003,2025-04-03 15:20:50,Michael Brown,2025-04-05 16:45:30,Admin,/uploads/doc_003.docx,application/msword,address_proof.docx,Rejected,Invalid address details,folder_01,repo_003
+1004,doc_004,2025-04-04 18:05:15,Emily Davis,2025-04-06 19:10:55,Agent,/uploads/doc_004.pdf,application/pdf,income_statement.pdf,Approved,Income verification complete,folder_03,repo_004
+1005,doc_005,2025-04-05 20:30:40,Daniel Wilson,2025-04-07 21:45:00,Admin,/uploads/doc_005.png,image/png,passport_scan.png,Pending,Identity proof under review,folder_02,repo_005
+1006,doc_006,2025-04-06 22:50:20,Sophia Martinez,2025-04-08 23:55:35,Admin,/uploads/doc_006.pdf,application/pdf,insurance_policy.pdf,Approved,Policy document verified,folder_04,repo_006
+1007,doc_007,2025-04-07 08:10:05,Ethan Taylor,2025-04-09 09:25:15,Agent,/uploads/doc_007.jpg,image/jpeg,signed_contract.jpg,Rejected,Missing signatures,folder_05,repo_007
+1008,doc_008,2025-04-08 10:40:30,Olivia Anderson,2025-04-10 11:50:45,Admin,/uploads/doc_008.pdf,application/pdf,agreement_terms.pdf,Approved,Final agreement signed,folder_03,repo_008
+1009,doc_009,2025-04-09 13:15:20,Liam Harris,2025-04-11 14:30:50,Admin,/uploads/doc_009.docx,application/msword,employment_record.docx,Pending,Employment verification in progress,folder_06,repo_009
+1010,doc_010,2025-04-10 16:05:30,Ava Clark,2025-04-12 17:20:40,Admin,/uploads/doc_010.pdf,application/pdf,loan_agreement.pdf,Approved,Loan terms finalized,folder_07,repo_010

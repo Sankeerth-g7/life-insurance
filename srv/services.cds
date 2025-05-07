@@ -1,9 +1,11 @@
-using { insurance } from '../db/datamodel';
+using { insurance as details } from '../db/datamodel';
 
 service MyService {
 
-    entity users as projection on insurance.User;
-    entity policies as projection on insurance.Policies;
-    entity applications as projection on insurance.Applications;
+    entity users as projection on details.User;
+    entity policies as projection on details.Policies;
+    entity applications as projection on details.Applications;
+    @cds.redirection.target : 'MyService.InsertUserDetails'
+    entity InsertUserDetails as projection on details.User;
     
 }

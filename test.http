@@ -1,0 +1,12 @@
+###
+POST http://localhost:4004/odata/v4/my/InsertUserDetails
+Content-Type: application/json
+{
+   "userId": "1013",
+    "email": "abc@gmail.com",
+    "phone": "313515234",
+    "username": "keerthana123",
+    "password": "abcd"
+    "role": "user"
+        
+},

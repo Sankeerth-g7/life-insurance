@@ -4,8 +4,19 @@
     xmlns:layout="sap.ui.layout">
     
     <Page showHeader="false" class="loginPage">
+
+    
         <layout:HorizontalLayout class="loginContainer">
-            <VBox width="150%" class="loginBox sapUiSmallMargin">
+
+
+            <VBox class="sapUiSmallMargin">
+                <!-- Insurance-themed image -->
+                <Image src="images/insurance.jpg" width="110%" height="600px" />
+                </VBox>  
+
+                <VBox width="100px" />
+
+            <VBox width="180%" class="loginBox sapUiSmallMargin">
                 <Image src="https://png.pngtree.com/template/20190316/ourmid/pngtree-insurance-logo-vector-image_80257.jpg" width="100px" class="logo"/>
                 
                 <Title text="Login" level="H1" class="loginTitle"/>
@@ -24,9 +35,11 @@
                 <Link text="Don't have an account? Register" press="onRegisterPress" class="link"/>
             </VBox>
             
-            <VBox width="50%">
-                <!-- This space is intentionally left blank -->
-            </VBox>
+            <!-- Optional Right Spacer -->
+            <VBox width="30px" />
+
         </layout:HorizontalLayout>
+
+
     </Page>
 </mvc:View>

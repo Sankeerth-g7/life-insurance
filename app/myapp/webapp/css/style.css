@@ -1,21 +1,14 @@
-.loginPage {
-    background-image: url('https://i.ibb.co/9HK71CGB/file-00000000501c61fd8c9a1321a99121a9-1-2.png');
-    background-size: cover;
-    background-position: center;
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
 
 .loginContainer {
     width: 100%;
-    height: 100%;
+    height: 110%;
     display: flex;
+    justify-content: space-around;
+
 }
 
 .loginBox {
-    background-color: rgba(255, 255, 255, 0.8);
+    background-color: rgba(198, 216, 245, 0.8);
     padding: 40px;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);

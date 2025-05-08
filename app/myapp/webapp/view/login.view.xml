@@ -3,7 +3,12 @@
     xmlns="sap.m"
     xmlns:layout="sap.ui.layout">
 
-    <Page showHeader="false" class="loginPage">
+    <Page showHeader="false" class="loginPage darkBackground">
+    <!-- Page Title -->
+    <VBox class="sapUiSmallMargin" alignItems="Center">
+    <Title text="LTI Life Insurance" level="H1" class="pageTitle" />
+    </VBox>
+
         <layout:HorizontalLayout class="loginContainer">
 
             <!-- Left Image Section -->
@@ -11,7 +16,7 @@
                 <Image src="images/insurance.jpg" width="120%" height="600px" />
             </VBox>
 
-            <VBox width="30px" />
+            <VBox width="50px" />
 
             <!-- Main Form Container -->
             <VBox id="formContainer" width="180%" class="loginBox sapUiSmallMargin">

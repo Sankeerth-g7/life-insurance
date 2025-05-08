@@ -1,7 +1,7 @@
 namespace insurance;
 
 entity User {
-    key userId: Integer;
+    key userId: String;
     email: String;
     mobilenumber: String;
     username: String;
@@ -10,7 +10,7 @@ entity User {
 }
 
 entity Policies {
-    key policyId: Integer;
+    key policyId: String;
     policyName: String;
     policyType: String;
     policyDescription: String;
@@ -21,7 +21,7 @@ entity Policies {
 }
 
 entity Applications {
-    key applicationId: Integer;
+    key applicationId: String;
     user: Association to one User;
     policy: Association to one Policies;
     applicantName: String;
@@ -38,20 +38,12 @@ entity Applications {
 }
 
 entity Documents {
-    key documentId: Integer;
+    key documentId: String;
     documentType: String;
     documentUpload: LargeBinary;
-    user: Association to one User;
+    application: Association to one Applications;
 }
 
-entity premiumSchedule {
-    key premiumId: Integer;
-    user: Association to one User;
-    policy: Association to one Policies;
-    application: Association to one Applications;
-    installmentNumber: Integer;  //1,2,3 installments based on termlength
-    amount:Decimal(10,2); // calculated amount per installment
-    dueDate: Date;     // due date for the installment
-    status: String;  //pending or paid
-}
+
+
 

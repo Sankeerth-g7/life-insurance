@@ -1,6 +1,32 @@
 <mvc:View controllerName="myapp.controller.login"
     xmlns:mvc="sap.ui.core.mvc"
-    xmlns="sap.m">
-    <Page id="page" title="{i18n>title}">
+    xmlns="sap.m"
+    xmlns:layout="sap.ui.layout">
+    
+    <Page showHeader="false" class="loginPage">
+        <layout:HorizontalLayout class="loginContainer">
+            <VBox width="150%" class="loginBox sapUiSmallMargin">
+                <Image src="https://png.pngtree.com/template/20190316/ourmid/pngtree-insurance-logo-vector-image_80257.jpg" width="100px" class="logo"/>
+                
+                <Title text="Login" level="H1" class="loginTitle"/>
+                
+                <Label text="Email" class="inputLabel"/>
+                <Input id="emailInput" type="Email" class="inputField"/>
+                
+                <Label text="Password" class="inputLabel"/>
+                <Input id="passwordInput" type="Password" class="inputField"/>
+                
+                <CheckBox text="Remember Me" class="checkbox"/>
+                
+                <Button text="Login" press="onLoginPress" class="loginButton"/>
+                
+                <Link text="Forgot Password?" press="onForgotPasswordPress" class="link"/>
+                <Link text="Don't have an account? Register" press="onRegisterPress" class="link"/>
+            </VBox>
+            
+            <VBox width="50%">
+                <!-- This space is intentionally left blank -->
+            </VBox>
+        </layout:HorizontalLayout>
     </Page>
 </mvc:View>

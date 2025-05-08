@@ -1,1 +1,66 @@
-/* Enter your custom styles here */
+.loginPage {
+    background-image: url('https://i.ibb.co/9HK71CGB/file-00000000501c61fd8c9a1321a99121a9-1-2.png');
+    background-size: cover;
+    background-position: center;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.loginContainer {
+    width: 100%;
+    height: 100%;
+    display: flex;
+}
+
+.loginBox {
+    background-color: rgba(255, 255, 255, 0.8);
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.logo {
+    display: block;
+    margin: 0 auto 20px auto;
+}
+
+.loginTitle {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.inputLabel {
+    margin-top: 10px;
+    font-weight: bold;
+}
+
+.inputField {
+    margin-top: 5px;
+    margin-bottom: 20px;
+    width: 100%;
+}
+
+.checkbox {
+    margin-bottom: 20px;
+}
+
+.loginButton {
+    background-color: #007bff;
+    color: white;
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.link {
+    display: block;
+    margin-top: 10px;
+    text-align: center;
+    color: #007bff;
+    cursor: pointer;
+}

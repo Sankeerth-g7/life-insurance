@@ -7,5 +7,11 @@ service MyService {
     entity applications as projection on details.Applications;
     @cds.redirection.target : 'MyService.InsertUserDetails'
     entity InsertUserDetails as projection on details.User;
+
+   
+
+
+
+
     
 }

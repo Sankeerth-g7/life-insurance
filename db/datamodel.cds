@@ -54,3 +54,4 @@ entity premiumSchedule {
     dueDate: Date;     // due date for the installment
     status: String;  //pending or paid
 }
+

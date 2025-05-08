@@ -2,44 +2,57 @@
     xmlns:mvc="sap.ui.core.mvc"
     xmlns="sap.m"
     xmlns:layout="sap.ui.layout">
-    
-    <Page showHeader="false" class="loginPage">
 
-    
+    <Page showHeader="false" class="loginPage">
         <layout:HorizontalLayout class="loginContainer">
 
-
+            <!-- Left Image Section -->
             <VBox class="sapUiSmallMargin">
-                <!-- Insurance-themed image -->
-                <Image src="images/insurance.jpg" width="110%" height="600px" />
-                </VBox>  
-
-                <VBox width="100px" />
-
-            <VBox width="180%" class="loginBox sapUiSmallMargin">
-                <Image src="https://png.pngtree.com/template/20190316/ourmid/pngtree-insurance-logo-vector-image_80257.jpg" width="100px" class="logo"/>
-                
-                <Title text="Login" level="H1" class="loginTitle"/>
-                
-                <Label text="Email" class="inputLabel"/>
-                <Input id="emailInput" type="Email" class="inputField"/>
-                
-                <Label text="Password" class="inputLabel"/>
-                <Input id="passwordInput" type="Password" class="inputField"/>
-                
-                <CheckBox text="Remember Me" class="checkbox"/>
-                
-                <Button text="Login" press="onLoginPress" class="loginButton"/>
-                
-                <Link text="Forgot Password?" press="onForgotPasswordPress" class="link"/>
-                <Link text="Don't have an account? Register" press="onRegisterPress" class="link"/>
+                <Image src="images/insurance.jpg" width="120%" height="600px" />
             </VBox>
-            
-            <!-- Optional Right Spacer -->
+
             <VBox width="30px" />
 
+            <!-- Main Form Container -->
+            <VBox id="formContainer" width="180%" class="loginBox sapUiSmallMargin">
+                <!-- Login Form -->
+                <VBox id="loginForm" class="formBox fadeIn">
+                    <Image src="https://png.pngtree.com/template/20190316/ourmid/pngtree-insurance-logo-vector-image_80257.jpg"
+                        width="100px" class="logo" />
+                    <Title text="Login" level="H1" class="loginTitle" />
+                    <Label text="Email" class="inputLabel" />
+                    <Input id="emailInput" type="Email" class="inputField" />
+                    <Label text="Password" class="inputLabel" />
+                    <Input id="passwordInput" type="Password" class="inputField" />
+                    <CheckBox text="Remember Me" class="checkbox" />
+                    <Button text="Login" press="onLoginPress" class="loginButton" />
+                    <Link text="Forgot Password?" press="onForgotPasswordPress" class="link" />
+                    <Link text="Don't have an account? Register" press="onToggleForm" class="link" />
+                </VBox>
+
+                <!-- Registration Form -->
+                <VBox id="registerForm" visible="false" class="formBox fadeIn">
+                <Title text="Register" level="H1" class="loginTitle" />
+                <Label text="Full Name" class="inputLabel" />
+                <Input id="fullName" placeholder="Enter your full name" class="inputField" />
+                <Label text="Email" class="inputLabel" />
+                <Input id="registerEmail" placeholder="Enter your email" type="Email" class="inputField" />
+                <Label text="Mobile Number" class="inputLabel" />
+                <Input id="mobileNumber" placeholder="Enter your mobile number" type="Tel" class="inputField" />
+                <Label text="Username" class="inputLabel" />
+                <Input id="username" placeholder="Choose a username" class="inputField" />
+                <Label text="Password" class="inputLabel" />
+                <Input id="registerPassword" placeholder="Create a password" type="Password" class="inputField" />
+                <Label text="Confirm Password" class="inputLabel" />
+                <Input id="confirmPassword" placeholder="Re-enter your password" type="Password" class="inputField" />
+                <CheckBox id="terms" text="I agree to the Terms &amp; Conditions" class="checkbox" />
+                <Button text="Register" press="onRegister" type="Emphasized" class="loginButton" />
+                <Link text="Already have an account? Login" press="onToggleForm" class="link" />
+
+                </VBox>
+            </VBox>
+
+            <VBox width="10px" />
         </layout:HorizontalLayout>
-
-
     </Page>
 </mvc:View>

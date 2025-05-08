@@ -1,59 +1,66 @@
-
 .loginContainer {
-    width: 100%;
-    height: 110%;
-    display: flex;
-    justify-content: space-around;
-
+    align-items: center;
+    justify-content: center;
 }
 
-.loginBox {
-    background-color: rgba(198, 216, 245, 0.8);
-    padding: 40px;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+.formBox {
+    width: 400px; /* Increased width */
+    transition: opacity 0.4s ease-in-out;
+    background-color: rgba(198, 216, 245, 0.9);
+    padding: 50px; /* More padding for spacious layout */
+    border-radius: 12px;
+    border: 2px solid #5c8ed3;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
     margin: auto;
     display: flex;
     flex-direction: column;
     justify-content: center;
 }
 
+.fadeIn {
+    animation: fadeIn 0.4s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
 .logo {
     display: block;
-    margin: 0 auto 20px auto;
+    margin: 0 auto 30px;
+    width: 120px; /* Slightly larger logo */
 }
 
 .loginTitle {
     text-align: center;
-    margin-bottom: 20px;
-}
-
-.inputLabel {
-    margin-top: 10px;
+    margin-bottom: 30px;
+    font-size: 24px;
     font-weight: bold;
 }
 
 .inputField {
-    margin-top: 5px;
-    margin-bottom: 20px;
-    width: 100%;
+    margin-bottom: 15px;
+    height: 2.5rem;
+    font-size: 1rem;
 }
 
 .checkbox {
-    margin-bottom: 20px;
+    margin: 15px 0;
+    font-size: 0.95rem;
 }
 
 .loginButton {
-    background-color: #007bff;
-    color: white;
     width: 100%;
-    margin-bottom: 20px;
+    margin-top: 15px;
+    height: 2.5rem;
+    font-size: 1rem;
 }
 
 .link {
     display: block;
-    margin-top: 10px;
     text-align: center;
-    color: #007bff;
+    margin-top: 15px;
+    font-size: 0.95rem;
     cursor: pointer;
 }

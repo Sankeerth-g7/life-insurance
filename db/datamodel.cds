@@ -3,10 +3,10 @@ namespace insurance;
 entity User {
     key userId: String;
     email: String;
-    mobilenumber: String;
+    phone: String;
     username: String;
     password: String;
-    role: String; //admin or customer
+    role: String;
 }
 
 entity Policies {
@@ -16,7 +16,7 @@ entity Policies {
     policyDescription: String;
     premiumAmount: Decimal;
     coverageAmount: Decimal;
-    termLength: Integer;  // means years
+    termLength: Integer;
     startDate: Date;
 }
 

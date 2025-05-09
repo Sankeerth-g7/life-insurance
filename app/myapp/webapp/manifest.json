@@ -113,7 +113,7 @@
           ]
         },
         {
-          "name": "Routehome",
+          "name": "home",
           "pattern": "home",
           "target": ["Targethome"]
       }

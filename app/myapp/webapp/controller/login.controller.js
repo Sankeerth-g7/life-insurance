@@ -35,50 +35,45 @@ sap.ui.define([
         MessageToast.show("Login successful!");
     },
     onRegister: function () {
-        var that = this;
-    
+        var oView = this.getView();
+
         var oData = {
-            userId: new Date().getTime().toString(),
-            email: this.byId("registerEmail").getValue(),
-            phone: this.byId("mobileNumber").getValue(),
-            username: this.byId("username").getValue(),
-            password: this.byId("registerPassword").getValue(),
+            userId: new Date().getTime().toString(), //should be change or try to send it blank
+            email: oView.byId("registerEmail").getValue(),
+            phone: oView.byId("mobileNumber").getValue(),
+            username: oView.byId("username").getValue(),
+            password: oView.byId("registerPassword").getValue(),
             role: "User"
         };
+        MessageToast.show(oData.email);
     
+
         if (!oData.email || !oData.phone || !oData.username || !oData.password) {
             MessageToast.show("Please fill in all mandatory fields.");
             return;
         }
     
+        // Send data to backend
+        var that = this;
+
         $.ajax({
             url: "/odata/v4/my/InsertUserDetails",
             type: "POST",
             contentType: "application/json",
             data: JSON.stringify(oData),
             success: function () {
-                MessageToast.show("Registration successful!");
-    
-                // Debug navigation
-                var oRouter = sap.ui.core.UIComponent.getRouterFor(that);
-                console.log("Router instance:", oRouter);
-                oRouter.navTo("home")
+                MessageToast.show("Registration successfuuuuuuuuuuuuul!");
                 
-                if (!oRouter) {
-                    MessageToast.show("Router is undefined. Navigation failed.");
-                    return;
-                }
-    
-                console.log("Navigating to home...");
-                oRouter.navTo("home", {}, true);
+                var oRouter = sap.ui.core.UIComponent.getRouterFor(oView);
+                oRouter.navTo("home");
+
             },
-            error: function (xhr) {
-                var errorMessage = xhr.responseText ? JSON.parse(xhr.responseText).error.message : "Unexpected error occurred.";
+            error: function (xhr, status, error) {
+                var errorMessage = xhr.responseText ? JSON.parse(xhr.responseText).error.message : "Unexpected error occurred."; //need to be removed afterwards
                 MessageToast.show(errorMessage);
             }
         });
     },
-    
     
     
     onForgotPasswordPress: function () {

@@ -1,17 +1,16 @@
 .darkBackground {
-    background-color: #0b1e3f;
-    background-image: linear-gradient(to bottom right, #0b1e3f, #1a2a6c);
+    background-color: #ffffe3;
     min-height: 100vh;
     padding: 40px 0;
-    color: #ffffff;
 }
 
 
 .pageTitle {
     font-size: 30px;
     font-weight: bold;
-    color: hsl(240, 57%, 97%);
+    color: #808034;
     margin-bottom: 5px;
+    font-family: 'Times New Roman', Times, serif, sans-serif;
     }
     
 
@@ -24,7 +23,7 @@
     width: 400px;
     height:600px;
     transition: opacity 0.4s ease-in-out;
-    background-color: rgba(247, 248, 252, 0.9);
+    background-color: #dbd4ff;
     padding: 50px;
     border-radius: 12px;
     border: 2px solid #eaf1f1;
@@ -82,4 +81,9 @@
     margin-top: 15px;
     font-size: 0.95rem;
     cursor: pointer;
+}
+
+.requiredAsterisk{
+    color: red;
+    margin-left: 2px;
 }

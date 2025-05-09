@@ -25,9 +25,15 @@
                     <Image src="https://png.pngtree.com/template/20190316/ourmid/pngtree-insurance-logo-vector-image_80257.jpg"
                         width="100px" class="logo" />
                     <Title text="Login" level="H1" class="loginTitle" />
+                    <HBox >
                     <Label text="Email" class="inputLabel" />
+                    <Text text="*" class="requiredAsterisk" />
+                    </HBox>
                     <Input id="emailInput" type="Email" class="inputField" />
+                    <HBox >
                     <Label text="Password" class="inputLabel" />
+                    <Text text="*" class="requiredAsterisk" />
+                    </HBox>
                     <Input id="passwordInput" type="Password" class="inputField" />
                     <CheckBox text="Remember Me" class="checkbox" />
                     <Button text="Login" press="onLoginPress" class="loginButton" />
@@ -38,17 +44,35 @@
 
                 <VBox id="registerForm" visible="false" class="formBox fadeIn">
                 <Title text="Register" level="H1" class="loginTitle" />
+                <HBox >
                 <Label text="Full Name" class="inputLabel" />
+                <Text text="*" class="requiredAsterisk" />
+                </HBox>
                 <Input id="fullName" placeholder="Enter your full name" class="inputField" />
+                <HBox >
                 <Label text="Email" class="inputLabel" />
+                <Text text="*" class="requiredAsterisk" />
+                </HBox>
                 <Input id="registerEmail" placeholder="Enter your email" type="Email" class="inputField" />
+                <HBox >
                 <Label text="Mobile Number" class="inputLabel" />
+                <Text text="*" class="requiredAsterisk" />
+                </HBox>
                 <Input id="mobileNumber" placeholder="Enter your mobile number" type="Tel" class="inputField" />
+                <HBox >
                 <Label text="Username" class="inputLabel" />
+                <Text text="*" class="requiredAsterisk" />
+                </HBox>
                 <Input id="username" placeholder="Choose a username" class="inputField" />
+                <HBox >
                 <Label text="Password" class="inputLabel" />
+                <Text text="*" class="requiredAsterisk" />
+                </HBox>
                 <Input id="registerPassword" placeholder="Create a password" type="Password" class="inputField" />
+                <HBox>
                 <Label text="Confirm Password" class="inputLabel" />
+                <Text text="*" class="requiredAsterisk" />
+                </HBox>
                 <Input id="confirmPassword" placeholder="Re-enter your password" type="Password" class="inputField" />
                 <CheckBox id="terms" text="I agree to the Terms &amp; Conditions" class="checkbox" />
                 <Button text="Register" press="onRegister" type="Emphasized" class="loginButton" />

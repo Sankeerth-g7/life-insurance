@@ -9,6 +9,7 @@ sap.ui.define([
         this._loginForm = this.byId("loginForm");
         this._registerForm = this.byId("registerForm");
     },
+    
     onLoginPress: function () {
         var email = this.byId("emailInput").getValue();
         var password = this.byId("passwordInput").getValue();
@@ -34,32 +35,56 @@ sap.ui.define([
         MessageToast.show("Login successful!");
     },
     onRegister: function () {
-        var fullName = this.byId("fullName").getValue();
-        var email = this.byId("registerEmail").getValue();
-        var mobile = this.byId("mobileNumber").getValue();
-        var username = this.byId("username").getValue();
-        var password = this.byId("registerPassword").getValue();
-        var confirmPassword = this.byId("confirmPassword").getValue();
-        var termsAccepted = this.byId("terms").getSelected();
-        if (!fullName || !email || !mobile || !username || !password || !confirmPassword) {
-            MessageToast.show("Please fill in all fields.");
+        var that = this;
+    
+        var oData = {
+            userId: new Date().getTime().toString(),
+            email: this.byId("registerEmail").getValue(),
+            phone: this.byId("mobileNumber").getValue(),
+            username: this.byId("username").getValue(),
+            password: this.byId("registerPassword").getValue(),
+            role: "User"
+        };
+    
+        if (!oData.email || !oData.phone || !oData.username || !oData.password) {
+            MessageToast.show("Please fill in all mandatory fields.");
             return;
         }
-        
-        if (password !== confirmPassword) {
-            MessageToast.show("Passwords do not match.");
-            return;
-        }
-        if (!termsAccepted) {
-            MessageToast.show("You must agree to the Terms & Conditions.");
-            return;
-        }
-        MessageToast.show("Registration successful!");
+    
+        $.ajax({
+            url: "/odata/v4/my/InsertUserDetails",
+            type: "POST",
+            contentType: "application/json",
+            data: JSON.stringify(oData),
+            success: function () {
+                MessageToast.show("Registration successful!");
+    
+                // Debug navigation
+                var oRouter = sap.ui.core.UIComponent.getRouterFor(that);
+                console.log("Router instance:", oRouter);
+                oRouter.navTo("home")
+                
+                if (!oRouter) {
+                    MessageToast.show("Router is undefined. Navigation failed.");
+                    return;
+                }
+    
+                console.log("Navigating to home...");
+                oRouter.navTo("home", {}, true);
+            },
+            error: function (xhr) {
+                var errorMessage = xhr.responseText ? JSON.parse(xhr.responseText).error.message : "Unexpected error occurred.";
+                MessageToast.show(errorMessage);
+            }
+        });
     },
+    
+    
     
     onForgotPasswordPress: function () {
         MessageToast.show("Forgot Password clicked.");
     },
+
     onToggleForm: function () {
         var isLoginVisible = this._loginForm.getVisible();
         this._loginForm.setVisible(!isLoginVisible);

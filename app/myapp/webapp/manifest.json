@@ -107,17 +107,26 @@
       "routes": [
         {
           "name": "Routelogin",
-          "pattern": ":?query:",
+          "pattern": "",
           "target": [
             "Targetlogin"
           ]
-        }
+        },
+        {
+          "name": "Routehome",
+          "pattern": "home",
+          "target": ["Targethome"]
+      }
       ],
       "targets": {
         "Targetlogin": {
           "id": "login",
           "name": "login"
-        }
+        },
+        "Targethome": {
+        "id": "home",
+        "name": "home"
+    }
       }
     },
     "rootView": {

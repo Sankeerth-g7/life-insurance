@@ -35,7 +35,7 @@
                     <Link text="Don't have an account? Register" press="onToggleForm" class="link" />
                 </VBox>
 
-                <!-- Registration Form -->
+
                 <VBox id="registerForm" visible="false" class="formBox fadeIn">
                 <Title text="Register" level="H1" class="loginTitle" />
                 <Label text="Full Name" class="inputLabel" />

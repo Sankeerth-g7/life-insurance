@@ -1,0 +1,9 @@
+<mvc:View xmlns:mvc="sap.ui.core.mvc"
+          xmlns="sap.m"
+          controllerName="myapp.controller.home">
+    <Page title="Home">
+        <content>
+            <Title text="Hello World" level="H1" />
+        </content>
+    </Page>
+</mvc:View>

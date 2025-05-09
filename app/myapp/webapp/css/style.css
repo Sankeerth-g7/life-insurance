@@ -1,9 +1,9 @@
 .darkBackground {
-    background-color: #0b1e3f; /* Deep navy blue */
+    background-color: #0b1e3f;
     background-image: linear-gradient(to bottom right, #0b1e3f, #1a2a6c);
     min-height: 100vh;
     padding: 40px 0;
-    color: #ffffff; /* Optional: makes text white for contrast */
+    color: #ffffff;
 }
 
 
@@ -21,11 +21,11 @@
 }
 
 .formBox {
-    width: 400px; /* Increased width */
+    width: 400px;
     height:600px;
     transition: opacity 0.4s ease-in-out;
     background-color: rgba(247, 248, 252, 0.9);
-    padding: 50px; /* More padding for spacious layout */
+    padding: 50px;
     border-radius: 12px;
     border: 2px solid #eaf1f1;
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
@@ -48,7 +48,7 @@
 .logo {
     display: block;
     margin: 0 auto 30px;
-    width: 120px; /* Slightly larger logo */
+    width: 120px;
 }
 
 .loginTitle {

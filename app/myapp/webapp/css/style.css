@@ -87,3 +87,11 @@
     color: red;
     margin-left: 2px;
 }
+
+
+::placeholder {
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    color: #6c757d; /* Neutral gray tone for subtle visibility */
+    font-size: 1rem;
+    opacity: 0.8; /* Slight transparency for a modern touch */
+}

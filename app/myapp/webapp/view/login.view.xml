@@ -4,13 +4,12 @@
     xmlns:layout="sap.ui.layout">
 
     <Page showHeader="false" class="loginPage darkBackground">
-    <!-- Page Title -->
-    <VBox class="sapUiSmallMargin" alignItems="Center">
-    <Title text="LTI Life Insurance" level="H1" class="pageTitle" />
-    </VBox>
+        <!-- Page Title -->
+        <VBox class="sapUiSmallMargin" alignItems="Center">
+            <Title text="LTI Life Insurance" level="H1" class="pageTitle" />
+        </VBox>
 
         <layout:HorizontalLayout class="loginContainer">
-
             <!-- Left Image Section -->
             <VBox class="sapUiSmallMargin">
                 <Image src="images/insurance.jpg" width="120%" height="600px" />
@@ -24,64 +23,71 @@
                 <VBox id="loginForm" class="formBox fadeIn">
                     <Image src="https://companieslogo.com/img/orig/LTIM.NS-dea59dc6.png"
                         width="100px" class="logo" />
-                    <Title text="Login" level="H1" class="loginTitle" />
-                    <HBox >
-                    <Label text="Email" class="inputLabel" />
-                    <Text text="*" class="requiredAsterisk" />
+                    <Title text="Login to Your Account" level="H1" class="loginTitle" />
+                    
+                    <HBox>
+                        <Label text="Email Address" class="inputLabel" />
+                        <Text text="*" class="requiredAsterisk" />
                     </HBox>
-                    <Input id="emailInput" type="Email" class="inputField" />
-                    <HBox >
-                    <Label text="Password" class="inputLabel" />
-                    <Text text="*" class="requiredAsterisk" />
+                    <Input id="emailInput" type="Email" class="inputField" placeholder="Enter your email address" />
+
+                    <HBox>
+                        <Label text="Password" class="inputLabel" />
+                        <Text text="*" class="requiredAsterisk" />
                     </HBox>
-                    <Input id="passwordInput" type="Password" class="inputField" />
+                    <Input id="passwordInput" type="Password" class="inputField" placeholder="Enter your password" />
+                    
                     <CheckBox text="Remember Me" class="checkbox" />
-                    <Button text="Login" press="onLoginPress" class="loginButton" />
-                    <Link text="Forgot Password?" press="onForgotPasswordPress" class="link" />
-                    <Link text="Don't have an account? Register" press="onToggleForm" class="link" />
+                    <Button text="Sign In" press="onLoginPress" class="loginButton" />
+                    <Link text="Forgot your password?" press="onForgotPasswordPress" class="link" />
+                    <Link text="New here? Create an account" press="onToggleForm" class="link" />
                 </VBox>
 
-
+                <!-- Registration Form -->
                 <VBox id="registerForm" visible="false" class="formBox fadeIn">
-                <Title text="Register" level="H1" class="loginTitle" />
-                <HBox >
-                <Label text="Full Name" class="inputLabel" />
-                <Text text="*" class="requiredAsterisk" />
-                </HBox>
-                <Input id="fullName" placeholder="Enter your full name" class="inputField" />
-                <HBox >
-                <Label text="Email" class="inputLabel" />
-                <Text text="*" class="requiredAsterisk" />
-                </HBox>
-                <Input id="registerEmail" placeholder="Enter your email" type="Email" class="inputField" />
-                <HBox >
-                <Label text="Mobile Number" class="inputLabel" />
-                <Text text="*" class="requiredAsterisk" />
-                </HBox>
-                <Input id="mobileNumber" placeholder="Enter your mobile number" type="Tel" class="inputField" />
-                <HBox >
-                <Label text="Username" class="inputLabel" />
-                <Text text="*" class="requiredAsterisk" />
-                </HBox>
-                <Input id="username" placeholder="Choose a username" class="inputField" />
-                <HBox >
-                <Label text="Password" class="inputLabel" />
-                <Text text="*" class="requiredAsterisk" />
-                </HBox>
-                <Input id="registerPassword" placeholder="Create a password" type="Password" class="inputField" />
-                <HBox>
-                <Label text="Confirm Password" class="inputLabel" />
-                <Text text="*" class="requiredAsterisk" />
-                </HBox>
-                <Input id="confirmPassword" placeholder="Re-enter your password" type="Password" class="inputField" />
-                <CheckBox id="terms" text="I agree to the Terms &amp; Conditions" class="checkbox" />
-                <Button text="Register" press="onRegister" type="Emphasized" class="loginButton" />
-                <Link text="Already have an account? Login" press="onToggleForm" class="link" />
+                    <Title text="Create Your Account" level="H1" class="loginTitle" />
+                    
+                    <HBox>
+                        <Label text="Full Name" class="inputLabel" />
+                        <Text text="*" class="requiredAsterisk" />
+                    </HBox>
+                    <Input id="fullName" placeholder="Enter your full name" class="inputField" />
 
+                    <HBox>
+                        <Label text="Email Address" class="inputLabel" />
+                        <Text text="*" class="requiredAsterisk" />
+                    </HBox>
+                    <Input id="registerEmail" placeholder="Enter your email" type="Email" class="inputField" />
+
+                    <HBox>
+                        <Label text="Mobile Number" class="inputLabel" />
+                        <Text text="*" class="requiredAsterisk" />
+                    </HBox>
+                    <Input id="mobileNumber" placeholder="Enter your mobile number" type="Tel" class="inputField" />
+
+                    <HBox>
+                        <Label text="Username" class="inputLabel" />
+                        <Text text="*" class="requiredAsterisk" />
+                    </HBox>
+                    <Input id="username" placeholder="Choose a username" class="inputField" />
+
+                    <HBox>
+                        <Label text="Password" class="inputLabel" />
+                        <Text text="*" class="requiredAsterisk" />
+                    </HBox>
+                    <Input id="registerPassword" placeholder="Create a secure password" type="Password" class="inputField" />
+
+                    <HBox>
+                        <Label text="Confirm Password" class="inputLabel" />
+                        <Text text="*" class="requiredAsterisk" />
+                    </HBox>
+                    <Input id="confirmPassword" placeholder="Re-enter your password" type="Password" class="inputField" />
+
+                    <CheckBox id="terms" text="I agree to the Terms &amp; Conditions" class="checkbox" />
+                    <Button text="Register Account" press="onRegister" type="Emphasized" class="loginButton" />
+                    <Link text="Already have an account? Sign In" press="onToggleForm" class="link" />
                 </VBox>
             </VBox>
-
-            <VBox width="10px" />
         </layout:HorizontalLayout>
     </Page>
 </mvc:View>

@@ -22,7 +22,7 @@
             <VBox id="formContainer" width="180%" class="loginBox sapUiSmallMargin">
                 <!-- Login Form -->
                 <VBox id="loginForm" class="formBox fadeIn">
-                    <Image src="https://png.pngtree.com/template/20190316/ourmid/pngtree-insurance-logo-vector-image_80257.jpg"
+                    <Image src="https://companieslogo.com/img/orig/LTIM.NS-dea59dc6.png"
                         width="100px" class="logo" />
                     <Title text="Login" level="H1" class="loginTitle" />
                     <HBox >

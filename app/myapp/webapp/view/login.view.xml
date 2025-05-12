@@ -11,8 +11,8 @@
 
         <layout:HorizontalLayout class="loginContainer">
             <!-- Left Image Section -->
-            <VBox class="sapUiSmallMargin">
-                <Image src="images/insurance.jpg" width="120%" height="600px" />
+            <VBox class="sapUiSmallMargin left-img">
+                <Image src="images/nothing1.png" width="120%" height="600px" />
             </VBox>
 
             <VBox width="50px" />

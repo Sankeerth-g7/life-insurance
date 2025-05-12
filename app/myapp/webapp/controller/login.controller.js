@@ -84,7 +84,46 @@ sap.ui.define([
         var isLoginVisible = this._loginForm.getVisible();
         this._loginForm.setVisible(!isLoginVisible);
         this._registerForm.setVisible(isLoginVisible);
-    }
+    },
+    onToggleLoginPasswordVisibility: function (oEvent) {
+    this._togglePasswordVisibility("passwordInput", oEvent);
+},
+
+onToggleRegisterPasswordVisibility: function (oEvent) {
+    this._togglePasswordVisibility("registerPassword", oEvent);
+},
+
+onToggleConfirmPasswordVisibility: function (oEvent) {
+    this._togglePasswordVisibility("confirmPassword", oEvent);
+},
+
+_togglePasswordVisibility: function (sInputId, oEvent) {
+    var oInput = this.byId(sInputId);
+    var oButton = oEvent.getSource();
+    var bIsPassword = oInput.getType() === "Password";
+
+    oInput.setType(bIsPassword ? "Text" : "Password");
+    oButton.setIcon(bIsPassword ? "sap-icon://hide" : "sap-icon://show");
+},
+onToggleLoginPasswordVisibility: function () {
+    this._togglePasswordVisibility("passwordInput");
+},
+
+onToggleRegisterPasswordVisibility: function () {
+    this._togglePasswordVisibility("registerPassword");
+},
+
+onToggleConfirmPasswordVisibility: function () {
+    this._togglePasswordVisibility("confirmPassword");
+},
+
+_togglePasswordVisibility: function (sInputId) {
+    var oInput = this.byId(sInputId);
+    var bIsPassword = oInput.getType() === "Password";
+    oInput.setType(bIsPassword ? "Text" : "Password");
+    oInput.setValueHelpIconSrc(bIsPassword ? "sap-icon://hide" : "sap-icon://show");
+}
+
 
     });
 });

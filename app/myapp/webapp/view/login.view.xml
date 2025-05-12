@@ -35,7 +35,17 @@
                         <Label text="Password" class="inputLabel" />
                         <Text text="*" class="requiredAsterisk" />
                     </HBox>
-                    <Input id="passwordInput" type="Password" class="inputField" placeholder="Enter your password" />
+                    <Input
+    id="passwordInput"
+    type="Password"
+    class="inputField"
+    showValueHelp="true"
+    valueHelpOnly="false"
+    valueHelpIconSrc="sap-icon://show"
+    placeholder="enter your password"
+    valueHelpRequest="onToggleLoginPasswordVisibility"
+/>
+
                     
                     <CheckBox text="Remember Me" class="checkbox" />
                     <Button text="Sign In" press="onLoginPress" class="loginButton" />
@@ -75,13 +85,33 @@
                         <Label text="Password" class="inputLabel" />
                         <Text text="*" class="requiredAsterisk" />
                     </HBox>
-                    <Input id="registerPassword" placeholder="Create a secure password" type="Password" class="inputField" />
+                    
+            <Input
+             id="registerPassword"
+             placeholder="Create a password"
+             type="Password"
+             class="inputField"
+             showValueHelp="true"
+             valueHelpIconSrc="sap-icon://show"
+             valueHelpRequest="onToggleRegisterPasswordVisibility"
+            />
+
 
                     <HBox>
                         <Label text="Confirm Password" class="inputLabel" />
                         <Text text="*" class="requiredAsterisk" />
                     </HBox>
-                    <Input id="confirmPassword" placeholder="Re-enter your password" type="Password" class="inputField" />
+                    
+ <Input
+ id="confirmPassword"
+ placeholder="Re-enter your password"
+ type="Password"
+ class="inputField"
+ showValueHelp="true"
+ valueHelpIconSrc="sap-icon://show"
+ valueHelpRequest="onToggleConfirmPasswordVisibility"
+/>
+
 
                     <CheckBox id="terms" text="I agree to the Terms &amp; Conditions" class="checkbox" />
                     <Button text="Register Account" press="onRegister" type="Emphasized" class="loginButton" />

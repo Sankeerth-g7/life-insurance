@@ -36,46 +36,61 @@ sap.ui.define([
     },
     onRegister: function () {
         var oView = this.getView();
-
-        var oData = {
-            userId: new Date().getTime().toString(), //should be change or try to send it blank
-            email: oView.byId("registerEmail").getValue(),
-            phone: oView.byId("mobileNumber").getValue(),
-            username: oView.byId("username").getValue(),
-            password: oView.byId("registerPassword").getValue(),
-            role: "User"
-        };
-        MessageToast.show(oData.email);
     
-
-        if (!oData.email || !oData.phone || !oData.username || !oData.password) {
+        var fullName = oView.byId("fullName").getValue();
+        var email = oView.byId("registerEmail").getValue();
+        var phone = oView.byId("mobileNumber").getValue();
+        var username = oView.byId("username").getValue();
+        var password = oView.byId("registerPassword").getValue();
+        var confirmPassword = oView.byId("confirmPassword").getValue();
+        var termsAccepted = oView.byId("terms").getSelected();
+        var emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        var phonePattern = /^[0-9]{10}$/;
+        if (!fullName || !email || !phone || !username || !password || !confirmPassword) {
             MessageToast.show("Please fill in all mandatory fields.");
             return;
         }
-    
-        // Send data to backend
-        var that = this;
-
+        if (!emailPattern.test(email)) {
+            MessageToast.show("Please enter a valid email address.");
+            return;
+        }
+        if (!phonePattern.test(phone)) {
+            MessageToast.show("Please enter a valid 10-digit mobile number.");
+            return;
+        }
+        if (password !== confirmPassword) {
+            MessageToast.show("Passwords do not match.");
+            return;
+        }
+        if (!termsAccepted) {
+            MessageToast.show("Please accept the Terms & Conditions.");
+            return;
+        }
+        var oData = {
+            userId: new Date().getTime().toString(),
+            email: email,
+            phone: phone,
+            username: username,
+            password: password,
+            role: "User"
+        };
         $.ajax({
             url: "/odata/v4/my/InsertUserDetails",
             type: "POST",
             contentType: "application/json",
             data: JSON.stringify(oData),
             success: function () {
-                MessageToast.show("Registration successfuuuuuuuuuuuuul!");
-                
+                MessageToast.show("Registration successful!");
                 var oRouter = sap.ui.core.UIComponent.getRouterFor(oView);
                 oRouter.navTo("home");
-
             },
-            error: function (xhr, status, error) {
-                var errorMessage = xhr.responseText ? JSON.parse(xhr.responseText).error.message : "Unexpected error occurred."; //need to be removed afterwards
+            error: function (xhr) {
+                var errorMessage = xhr.responseText ? JSON.parse(xhr.responseText).error.message : "Unexpected error occurred.";
                 MessageToast.show(errorMessage);
             }
         });
     },
-    
-    
+     
     onForgotPasswordPress: function () {
         MessageToast.show("Forgot Password clicked.");
     },

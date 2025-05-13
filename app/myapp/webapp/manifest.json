@@ -116,7 +116,12 @@
           "name": "home",
           "pattern": "home",
           "target": ["Targethome"]
-      }
+      },
+      {
+        "name": "viewPolicy",
+        "pattern": "viewPolicy",
+        "target": ["TargetviewPolicy"]
+    }
       ],
       "targets": {
         "Targetlogin": {
@@ -126,6 +131,10 @@
         "Targethome": {
         "id": "home",
         "name": "home"
+    },
+    "TargetviewPolicy": {
+        "id": "viewPolicy",
+        "name": "viewPolicy"
     }
       }
     },

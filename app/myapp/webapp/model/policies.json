@@ -1,0 +1,35 @@
+{
+    "Policies": [
+      {
+        "policyId": "P001",
+        "policyName": "Life Insurance",
+        "policyType": "Whole Life",
+        "policyDescription": "Covers your entire life with guaranteed benefits.",
+        "premiumAmount": 5000,
+        "coverageAmount": 200000,
+        "termLength": 10,
+        "startDate": "2025-01-01"
+      },
+      {
+        "policyId": "P002",
+        "policyName": "Term Life Insurance",
+        "policyType": "Term",
+        "policyDescription": "Affordable coverage for a fixed term.",
+        "premiumAmount": 3000,
+        "coverageAmount": 200000,
+        "termLength": 25,
+        "startDate": "2025-01-01"
+      },
+      {
+        "policyId": "P003",
+        "policyName": "Life Insurance",
+        "policyType": "Endowment",
+        "policyDescription": "Combines insurance with savings.",
+        "premiumAmount": 4500,
+        "coverageAmount": 200000,
+        "termLength": 15,
+        "startDate": "2025-01-01"
+      }
+    ]
+  }
+  

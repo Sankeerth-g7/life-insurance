@@ -1,11 +1,13 @@
 sap.ui.define([
     "sap/ui/core/mvc/Controller",
     "sap/ui/model/json/JSONModel",
-    "sap/m/MessageToast"
-], function (Controller, JSONModel, MessageToast) {
+    "sap/m/MessageToast",
+    "myapp/model/formatter"
+], function (Controller, JSONModel, MessageToast,formatter) {
     "use strict";
 
     return Controller.extend("myapp.controller.viewPolicy", {
+        formatter: formatter,
         onInit: function () {
             this.loadPoliciesData();
         },

@@ -4,10 +4,20 @@
     xmlns:core="sap.ui.core">
 
     <Page title="Available Life Insurance Policies">
-        <List items="{policyModel>/Policies}">
-            <CustomListItem>
-                <VBox class="policyCard">
-                    <Title text="{policyModel>policyName}" level="H3" />
+        <FlexBox
+            class="sapUiMediumMargin"
+            direction="Row"
+            wrap="Wrap"
+            justifyContent="Center"
+            items="{policyModel>/Policies}">
+
+            <items>
+                <VBox class="policyCard" backgroundDesign="Solid" width="300px">
+                
+                    <HBox alignItems="Center" class="cardHeader">                     
+                        <Image src="{path: 'policyModel>policyType', formatter: '.formatter.getPolicyIcon'}" width="40px" height="40px" />
+                        <Title text="{policyModel>policyName}" level="H3" class="cardTitle" />
+                    </HBox>
                     <Text text="Type: {policyModel>policyType}" />
                     <Text text="Term Length: {policyModel>termLength} years" />
                     <Text text="Premium: ₹{policyModel>premiumAmount}" />
@@ -15,7 +25,7 @@
                     <Text text="Description: {policyModel>policyDescription}" />
                     <Button text="Select Plan" type="Emphasized" press="onSelectPlan" />
                 </VBox>
-            </CustomListItem>
-        </List>
+            </items>
+        </FlexBox>
     </Page>
 </mvc:View>

@@ -92,8 +92,58 @@ sap.ui.define([
     },
      
     onForgotPasswordPress: function () {
-        MessageToast.show("Forgot Password clicked.");
+        var oDialog = new sap.m.Dialog({
+            title: "Reset Password",
+            content: [
+                new sap.m.Label({ text: "Enter your registered email:", labelFor: "emailInput" }),
+                new sap.m.Input("forgotEmailInput", {
+                    type: sap.m.InputType.Email,
+                    placeholder: "Enter your email",
+                    liveChange: function (oEvent) {
+                        var sValue = oEvent.getParameter("value");
+                        oDialog.getBeginButton().setEnabled(sValue.includes("@"));
+                    }
+                })
+            ],
+            beginButton: new sap.m.Button({
+                text: "Send Reset Link",
+                enabled: false,
+                press: function () {
+                    var sEmail = sap.ui.getCore().byId("forgotEmailInput").getValue();
+                    
+                    if (!sEmail) {
+                        sap.m.MessageToast.show("Please enter a valid email.");
+                        return;
+                    }
+    
+                    // Simulate backend call
+                    $.ajax({
+                        url: "/api/reset-password",
+                        type: "POST",
+                        data: JSON.stringify({ email: sEmail }),
+                        contentType: "application/json",
+                        success: function () {
+                            sap.m.MessageToast.show("Reset link sent to " + sEmail);
+                        },
+                        error: function () {
+                            sap.m.MessageToast.show("Error sending reset link.");
+                        }
+                    });
+    
+                    oDialog.close();
+                }
+            }),
+            endButton: new sap.m.Button({
+                text: "Cancel",
+                press: function () {
+                    oDialog.close();
+                }
+            })
+        });
+    
+        oDialog.open();
     },
+    
 
     onToggleForm: function () {
         var isLoginVisible = this._loginForm.getVisible();

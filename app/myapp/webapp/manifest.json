@@ -118,6 +118,12 @@
           "target": ["Targethome"]
       },
       {
+        "name": "viewPolicy",
+        "pattern": "viewPolicy",
+        "target": ["TargetviewPolicy"]
+    }
+      },
+      {
         "name": "profile",
         "pattern": "profile",
         "target": ["Targetprofile"]
@@ -131,6 +137,11 @@
         "Targethome": {
         "id": "home",
         "name": "home"
+    },
+    "TargetviewPolicy": {
+        "id": "viewPolicy",
+        "name": "viewPolicy"
+    }
     },
         "Targetprofile": {
       "id": "profile",

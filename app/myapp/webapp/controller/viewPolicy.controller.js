@@ -1,20 +1,42 @@
 sap.ui.define([
     "sap/ui/core/mvc/Controller",
+    "sap/ui/model/json/JSONModel",
     "sap/m/MessageToast"
-], function (Controller, MessageToast) {
+], function (Controller, JSONModel, MessageToast) {
     "use strict";
 
     return Controller.extend("myapp.controller.viewPolicy", {
         onInit: function () {
-            var oModel = new sap.ui.model.json.JSONModel();
-            oModel.loadData("model/policies.json");
-            this.getView().setModel(oModel, "policyModel");
+            this.loadPoliciesData();
         },
-        
+
+        loadPoliciesData: async function () {
+            var oModel = new JSONModel();
+            var that = this;
+            
+            $.ajax({
+                url: "/odata/v4/my/getPolicies",
+                type: "GET",
+                success: function (data) {
+                    if (data && data.value) {
+                        oModel.setData({ Policies: data.value }); // Store only 'value' array
+                        that.getView().setModel(oModel, "policyModel");
+                    } else {
+                        MessageToast.show("No policies available.");
+                    }
+                },
+                error: function () {
+                    MessageToast.show("Failed to load policies.");
+                }
+            });
+        },
+
         onSelectPlan: function (oEvent) {
-            var oCard = oEvent.getSource().getParent();
-            var sTitle = oCard.getItems()[0].getText();
-            MessageToast.show("You selected: " + sTitle);
+            var oItem = oEvent.getSource();
+            var oBindingContext = oItem.getBindingContext("policyModel");
+            var oPolicy = oBindingContext.getObject();
+            
+            MessageToast.show("You selected: " + oPolicy.policyName);
         }
     });
 });

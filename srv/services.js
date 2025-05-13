@@ -13,12 +13,13 @@ module.exports=(srv) => {
      }
      });
 
-
-    
-
-
-
-
-    
-
+     srv.on('READ', 'policies', async (req) => {
+        try {
+            const policiesData = await cds.run(SELECT.from(Policies));
+            return policiesData;
+        } catch (error) {
+            console.error("Error fetching policies:", error);
+            req.error(500, "Failed to retrieve policies data");
+        }
+    });
 }

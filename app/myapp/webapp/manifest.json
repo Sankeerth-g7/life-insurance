@@ -116,7 +116,12 @@
           "name": "home",
           "pattern": "home",
           "target": ["Targethome"]
-      }
+      },
+      {
+        "name": "profile",
+        "pattern": "profile",
+        "target": ["Targetprofile"]
+    }
       ],
       "targets": {
         "Targetlogin": {
@@ -126,7 +131,11 @@
         "Targethome": {
         "id": "home",
         "name": "home"
-    }
+    },
+        "Targetprofile": {
+      "id": "profile",
+      "name": "profile"
+  }
       }
     },
     "rootView": {

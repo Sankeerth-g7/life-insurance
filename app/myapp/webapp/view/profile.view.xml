@@ -1,0 +1,117 @@
+<mvc:View
+    controllerName="myapp.controller.profile"
+    xmlns:mvc="sap.ui.core.mvc"
+    displayBlock="true"
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core"
+    xmlns:l="sap.ui.layout"
+    xmlns:unified="sap.ui.unified"
+    xmlns:f="sap.ui.layout.form"
+    >
+    <Page id="LApage" showHeader="true" enableScrolling="true" class="customPage">
+     <customHeader>
+      <Bar design="Header" class="box">
+      <contentLeft>
+      <Button id="homeLA" text="Home" press="onHome" class="mybuttonspacing"></Button>
+      </contentLeft>
+        <contentMiddle>
+        <Title text="Insurance Loan" class="headerTitle" />
+        </contentMiddle>
+        <contentRight>
+          <Button id="logoutLA" text="Logout" press="onLogout" class="mybuttonspacing" />
+        </contentRight>
+      </Bar>
+    </customHeader>
+   
+    <content>
+    <Bar>
+    <contentMiddle >
+    <Text text="Application Form"  class="subHeader" />
+    </contentMiddle>
+    </Bar>
+    </content>
+   
+     
+        <content>
+ 
+            <f:SimpleForm class="center">
+            <FlexBox
+                id="LAflexbox"
+                direction="Row"
+                justifyContent="SpaceBetween"
+                fitContainer="true"
+                class="sapUiSmallMargin">
+               
+            <VBox class="formContainer" width="48%" >
+                <VBox class="customMargin">
+                <HBox  alignItems="Center">
+                    <Label id="LAlabel1" text="Enter Applicant Name" required="true"  class="customLabel"/>
+                    <Input id="enterApplicantName" placeholder="Enter Applicant Name"  liveChange=".nameValidation" class="customInput" />
+                </HBox>
+                </VBox>
+ 
+                <VBox class="customMargin">
+                <HBox alignItems="Center">
+                    <Label id="LAlabel2" text="Enter Applicant Address" required="true" class="customLabel" />
+                    <Input id="enterApplicantAddress" placeholder="Enter Applicant Address"  class="customInput" />
+                </HBox>
+                </VBox>
+ 
+ 
+                <VBox class="customMargin">
+                <HBox alignItems="Center">
+                    <Label id="LAlabel3" text="Enter Applicant Mobile No"  required="true" class="customLabel"/>
+                    <Input id="enterApplicantMobileNo" placeholder="Enter Applicant Mobile No" liveChange="numValidation" class="customInput"/>
+                </HBox>
+                </VBox>
+ 
+                <VBox class="customMargin">
+                <HBox alignItems="Center">
+                    <Label id="LAlabel4" text="Enter Applicant Email Id" required="true" class="customLabel"/>
+                    <Input id="enterEmailId" placeholder="Enter Applicant Email Id" liveChange="emailValidation" class="customInput"/>
+                    </HBox>
+                </VBox>
+ 
+                <VBox class="customMargin">
+                <HBox alignItems="Center">
+                    <Label id="LAlabel5" text="Enter Aadhaar No" required="true" class="customLabel" />
+                    <Input id="enterAadhaarNo" placeholder="Enter Aadhaar No" liveChange="aadhaarValidation"  class="customInput" />
+                </HBox>
+                </VBox>
+                </VBox>
+                
+ 
+                <VBox id="LAbox2" width="48%">
+               
+                <VBox class="customMargin">
+                <HBox alignItems="Center">
+                    <Label id="LAlabel6" text="Enter the Applicant Age" required="true" class="customLabel"/>
+                    <Input id="entertheapplicantage" placeholder="Enter the Applicant Age"  class="customInput"/>
+                </HBox>
+                </VBox>
+ 
+                <VBox class="customMargin">
+                <HBox alignItems="Center">
+                    <Label id="LAlabel7" text="Application Id" required="true" class="customLabel"/>
+                    <Input id="applicationid" placeholder="Applicant ongoing id"   class="customInput"/>
+                </HBox>
+                </VBox>
+ 
+                </VBox>
+ 
+               
+                </FlexBox>
+               
+            </f:SimpleForm>
+           
+        </content>
+        <footer>
+            <Toolbar id="LAtoolbar" class="sapUiSmallMargin">
+                <ToolbarSpacer id="LAtoolbarspacer" />
+                <Button id="LAbutton1" text="Submit" press="onSubmit" type="Emphasized" width="10%" class="customButton" />
+                <Button id="LAbutton2" text="Clear" press="onClear" type="Reject" width="10%" class="customButton" />
+                <ToolbarSpacer id="LAtoolbarspacer1" />
+            </Toolbar>
+        </footer>
+    </Page>
+</mvc:View>

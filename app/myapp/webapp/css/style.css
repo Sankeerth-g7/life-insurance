@@ -95,3 +95,49 @@
     font-size: 1rem;
     opacity: 0.8; /* Slight transparency for a modern touch */
 }
+
+/* === Header Bar Styling === */
+.box {
+    background-color: #00264d !important;
+    color: white !important;
+  }
+   
+  .box .sapMBarLeft,
+  .box .sapMBarRight,
+  .box .sapMBarMiddle{
+  text-align: center !important;
+  }
+  .box .sapMBtnInner {
+    color: white !important;
+   
+  }
+   
+  .box .sapMBtnInner {
+    background-color: transparent !important;
+  }
+
+  .mybuttonspacing{
+    margin-right: 60px;
+}
+.customMargin {
+    margin-bottom: 25px;
+  }
+  .formContainer {
+    margin-bottom: 25px;
+  }
+  .customInput .sapMInputBaseContentWrapper::placeholder {
+    color: blue !important;
+    opacity: 1;
+  }
+  .customLabel {
+    width:180px;
+   }
+
+   .subHeader{
+    text-align: center !important;
+    font-size: large !important;
+   }
+   .headerTitle{
+    text-align: center !important;
+    color:white !important;
+   }

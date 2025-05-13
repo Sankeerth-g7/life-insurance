@@ -27,9 +27,9 @@ entity Applications {
     applicantName: String;
     applicantAge: String;
     applicantAddress: String;
-    applicantMobile: String;
+    applicantMobileNo: String;
     applicantEmail: String;
-    applicationAadhar: String;
+    applicantAadhar: String;
     applicationPan: String;
     applicantOccupation: String;
     applicationDate: Date;

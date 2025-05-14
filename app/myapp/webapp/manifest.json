@@ -121,8 +121,8 @@
         "name": "viewPolicy",
         "pattern": "viewPolicy",
         "target": ["TargetviewPolicy"]
-    }
-      },
+    },
+  
       {
         "name": "profile",
         "pattern": "profile",
@@ -141,8 +141,8 @@
     "TargetviewPolicy": {
         "id": "viewPolicy",
         "name": "viewPolicy"
-    }
     },
+    
         "Targetprofile": {
       "id": "profile",
       "name": "profile"

@@ -1,4 +1,4 @@
-policyId,,policyType,policyDescription,premiumAmount,coverageAmount,termLength,startDate
+policyId,policyName,policyType,policyDescription,premiumAmount,coverageAmount,termLength,startDate
 101,SecureLife,Whole Life,Provides coverage for a fixed term with no savings,5000,1000000,20,2025-01-01
 102,WholeGuard,Whole Life Insurance,Coverage for the entire life with savings benefits,8000,2000000,1,2025-02-01
 103,FlexiPlanpolicyName,ULIP,Investment-linked insurance policy with flexible premiums,6000,1500000,15,2025-03-01

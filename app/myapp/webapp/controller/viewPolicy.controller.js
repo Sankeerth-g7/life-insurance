@@ -37,8 +37,10 @@ sap.ui.define([
             var oItem = oEvent.getSource();
             var oBindingContext = oItem.getBindingContext("policyModel");
             var oPolicy = oBindingContext.getObject();
+            var oView = this.getView();
+            var oRouter = sap.ui.core.UIComponent.getRouterFor(oView);
+            oRouter.navTo("profile");
             
-            MessageToast.show("You selected: " + oPolicy.policyName);
         }
     });
 });

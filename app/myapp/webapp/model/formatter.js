@@ -5,26 +5,26 @@ sap.ui.define([], function () {
             switch (sType) {
                 case "Whole Life":
                     return "images/life-icon.png";
-                case "Term":
-                    return "images/term-icon.png";
-                case "Endowment":
-                    return "images/endowment-icon.png";
+                case "Whole Life Insurance":
+                    return "images/wholelife-icon.png";
+                case "Endowment Plan":
+                    return "images/Endowment-icon.png";
+                case "Health Insurance":
+                    return "images/Health-icon.png";
+                case "Pension Plan":
+                    return "images/Retire-icon.png";
+                case "Group Insurance":
+                    return "images/Group-icon.png";
+                case "Child Plan":
+                    return "images/Child-icon.png";
+                case "Accident Cover":
+                    return "images/Accident-icon.png";
+                case "Travel Insurance":
+                    return "images/travel-icon.png";
                 default:
                     return "images/default-icon.png";
             }
         },
-
-        getCardBackgroundClass: function (sType) {
-            switch (sType) {
-                case "Whole Life":
-                    return "bgWholeLife";
-                case "Term":
-                    return "bgTerm";
-                case "Endowment":
-                    return "bgEndowment";
-                default:
-                    return "bgDefault";
-            }
-        }
+       
     };
 });

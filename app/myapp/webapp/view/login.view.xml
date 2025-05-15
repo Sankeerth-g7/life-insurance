@@ -40,7 +40,6 @@
     type="Password"
     class="inputField"
     showValueHelp="true"
-    valueHelpOnly="false"
     valueHelpIconSrc="sap-icon://show"
     placeholder="enter your password"
     valueHelpRequest="onToggleLoginPasswordVisibility"

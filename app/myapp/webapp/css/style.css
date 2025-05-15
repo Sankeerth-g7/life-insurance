@@ -1,5 +1,7 @@
 .darkBackground {
     background-color: #ffffe3;
+    min-height: 100vh;
+    padding: 40px 0;
 }
 
 .left-img {
@@ -10,7 +12,6 @@
 .pageTitle {
     font-size: 30px;
     font-weight: bold;
-    
     color: #808034;
     margin-bottom: 5px;
     font-family: 'Times New Roman', Times, serif, sans-serif;
@@ -104,14 +105,14 @@
     opacity: 0.8; /* Slight transparency for a modern touch */
 }
 
-policyCard {
+.policyCard {
     width: 90%;
     max-width: 500px;
     padding: 20px;
     margin: 20px auto;
     border-radius: 12px;
     box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
-    background-color:#dbd4ff;
+    background-color: #f0f4f8;
     transition: transform 0.3s ease;
 }
 
@@ -125,18 +126,9 @@ policyCard {
 }
 
 .cardTitle {
-    font-size: 1.5rem;
     font-weight: bold;
-    color: #808034; /* A warm highlight color */
-    margin-bottom: 10px;
-    font-family: "Georgia", "Times New Roman", serif;
-    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.4);
-    letter-spacing: 0.5px;
+    color: #2c3e50;
 }
-.viewpolicypg{
-    background-color: #ffffe3;
-}
-
 .bgWholeLife {
     background-image: url("images/life-icon.png");
     background-size: cover;
@@ -169,21 +161,6 @@ policyCard {
     border-radius: 10px;
     padding: 16px;
 }
-.highlightText {
-    font-size: 1rem;
-    font-weight: 500;
-    color: #274479;
-    background-color: rgba(255, 255, 255, 0.05);
-    padding: 6px 10px;
-    border-radius: 6px;
-    margin-bottom: 8px;
-    font-family: "Segoe UI", "Roboto", sans-serif;
-    line-height: 1.4;
-}
-.buttoncolor{
-  color: #808034;
-}
-
 
 /* === Header Bar Styling === */
 .box {
@@ -232,4 +209,8 @@ policyCard {
    .headerTitle{
     text-align: center !important;
     color:white !important;
+
    }
+   .customPage {
+    background-color: rgb(255, 255, 255);
+}

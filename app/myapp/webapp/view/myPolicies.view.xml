@@ -1,0 +1,45 @@
+<mvc:View controllerName="myapp.controller.myPolicies"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m">
+    <Page title="User Policies">
+        <content>
+            <List id="applicationList" headerText="Policies" items="{/value}">
+                <items>
+                    <ObjectListItem 
+                        title="{applicantName}" 
+                        number="{applicationId}" 
+                        numberUnit="Application ID"
+                        icon="sap-icon://person-placeholder">
+                        
+                        <attributes>
+                            <ObjectAttribute title="Aadhar" text="{applicantAadhar}" />
+                            <ObjectAttribute title="Address" text="{applicantAddress}" />
+                            <ObjectAttribute title="Age" text="{applicantAge}" />
+                            <ObjectAttribute title="Email" text="{applicantEmail}" />
+                            <ObjectAttribute title="Mobile" text="{applicantMobileNo}" />
+                            <ObjectAttribute title="Occupation" text="{applicantOccupation}" />
+                            <ObjectAttribute title="Application Date" text="{applicationDate}" />
+                            <ObjectAttribute title="Document Type" text="{documentType}" />
+                            <ObjectAttribute title="Status" text="{status}" />
+                        </attributes>
+
+                        <firstStatus>
+                            <ObjectStatus title="Policy Name" text="{policy/policyName}" state="Success"/>
+                        </firstStatus>
+                        <secondStatus>
+                            <ObjectStatus title="Policy Type" text="{policy/policyType}" state="None"/>
+                        </secondStatus>
+
+                        <attributes>
+                            <ObjectAttribute title="Coverage Amount" text="{policy/coverageAmount}" />
+                            <ObjectAttribute title="Premium Amount" text="{policy/premiumAmount}" />
+                            <ObjectAttribute title="Policy Description" text="{policy/policyDescription}" />
+                            <ObjectAttribute title="Policy Start Date" text="{policy/startDate}" />
+                            <ObjectAttribute title="Policy Term Length" text="{policy/termLength}" />
+                        </attributes>
+                    </ObjectListItem>
+                </items>
+            </List>
+        </content>
+    </Page>
+</mvc:View>

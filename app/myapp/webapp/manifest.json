@@ -127,6 +127,11 @@
         "name": "profile",
         "pattern": "profile",
         "target": ["Targetprofile"]
+    },
+    {
+      "name": "myPolicies",
+        "pattern": "myPolicies",
+        "target": ["TargetmyPolicies"]
     }
       ],
       "targets": {
@@ -146,6 +151,10 @@
         "Targetprofile": {
       "id": "profile",
       "name": "profile"
+  },
+  "TargetmyPolicies": {
+    "id":"myPolicies",
+    "name": "myPolicies"
   }
       }
     },

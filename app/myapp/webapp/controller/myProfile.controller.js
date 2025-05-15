@@ -29,6 +29,7 @@ this.getView().byId("FooterProfileContainer").addItem(oFooter);
       var ApplicantMobileNo = this.getView().byId("enterApplicantMobileNo").getValue();
       var ApplicantEmailId = this.getView().byId("enterEmailId").getValue();
       var ApplicantAadharNo = this.getView().byId("enterAadhaarNo").getValue();
+      var ApplicantPanNo = this.getView().byId("enterPanNo").getValue();
       var ApplicantAge = this.getView().byId("entertheapplicantage").getValue();
       var ApplicationId = this.getView().byId("applicationid").getValue();
   
@@ -38,6 +39,7 @@ this.getView().byId("FooterProfileContainer").addItem(oFooter);
       console.log("Applicant Mobile No:", ApplicantMobileNo);
       console.log("Applicant Email Id:", ApplicantEmailId);
       console.log("Aadhar No:", ApplicantAadharNo);
+      console.log("Pan No:", ApplicantAadharNo);
       console.log("Age:", ApplicantAge);
       console.log("Application id:", ApplicationId);
   
@@ -46,6 +48,7 @@ this.getView().byId("FooterProfileContainer").addItem(oFooter);
       var mobileFormat = /^[0-9]{10}$/;
       var emailFormat = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
       var aadhaarFormat = /^[0-9]{12}$/;
+      var panFormat = /[A-Z]{5}[0-9]{4}[A-Z]{1}$/;
       var ageFormat = /^(1[89]|[2-5][0-9]|6[0-5])$/;
       var IdFormat = /^[0-9]*$/; // Correctly define the format
   
@@ -74,6 +77,7 @@ this.getView().byId("FooterProfileContainer").addItem(oFooter);
           applicantMobileNo: ApplicantMobileNo,
           applicantEmail: ApplicantEmailId,
           applicantAadhar: ApplicantAadharNo,
+          applicantPan: ApplicantPanNo,
           applicantAge: ApplicantAge,
           applicationId: ApplicationId,
           // doucument: this.filebase64String,
@@ -86,6 +90,7 @@ this.getView().byId("FooterProfileContainer").addItem(oFooter);
       if (!ApplicantMobileNo.match(mobileFormat)) formatErrors.push("Applicant Mobile No (Must be 10 digits)");
       if (!ApplicantEmailId.match(emailFormat)) formatErrors.push("Applicant Email Id (Invalid email format)");
       if (!ApplicantAadharNo.match(aadhaarFormat)) formatErrors.push("Applicant Aadhaar No (Must be 12 digits)");
+      if (!ApplicantPanNo.match(panFormat)) formatErrors.push("Applicant Pan No (Must be 12 digits)");
       if (!ApplicantAge.match(ageFormat)) formatErrors.push("Applicant Age (only numbers allowed)");
       if (!ApplicationId.match(IdFormat)) formatErrors.push("Application id (only Numbers are allowed)");
   
@@ -100,6 +105,7 @@ this.getView().byId("FooterProfileContainer").addItem(oFooter);
       if (!ApplicantAddress) missingFields.push("Applicant Address");
       if (!ApplicantMobileNo) missingFields.push("Applicant Mobile No");
       if (!ApplicantAadharNo) missingFields.push("Applicant Aadhar No");
+      if (!ApplicantPanNo) missingFields.push("Applicant Pan No");
       if (!ApplicantEmailId) missingFields.push("Applicant Email Id");
       if (!ApplicantAge) missingFields.push("Applicant Age");
       if (!ApplicationId) missingFields.push("Application id");
@@ -123,6 +129,7 @@ this.getView().byId("FooterProfileContainer").addItem(oFooter);
                       this.byId("enterApplicantMobileNo").setValue("");
                       this.byId("enterEmailId").setValue("");
                       this.byId("enterAadhaarNo").setValue("");
+                      this.byId("enterPanNo").setValue("");
                       this.byId("entertheapplicantage").setValue("");
                       this.byId("applicationid").setValue("");
                   }
@@ -159,6 +166,7 @@ this.getView().byId("FooterProfileContainer").addItem(oFooter);
             this.byId("enterApplicantMobileNo").setValue("");
             this.byId("enterEmailId").setValue("");
             this.byId("enterAadharNo").setValue("");
+            this.byId("enterPanNo").setValue("");
             this.byId("entertheapplicantage").setValue("");
             this.byId("applicantongoingid").setValue("");
  
@@ -225,6 +233,22 @@ this.getView().byId("FooterProfileContainer").addItem(oFooter);
               fieldName.setValueState(sap.ui.core.ValueState.None);
             }
  
+          },
+          panValidation: function(oEvent) {
+            var fieldValue = oEvent.getSource().getValue();
+            var fieldName = oEvent.getSource();
+            var format = /[A-Z]{5}[0-9]{4}[A-Z]{1}$/;
+            var blen = fieldValue.length;
+         
+            if (blen !== 10) {
+              fieldName.setValueState(sap.ui.core.ValueState.Error);
+              fieldName.setValueStateText("Pan number must be 10 digits");
+            } else if (!fieldValue.match(format)) {
+              fieldName.setValueState(sap.ui.core.ValueState.Error);
+              fieldName.setValueStateText("Invalid Pan number");
+            } else {
+              fieldName.setValueState(sap.ui.core.ValueState.None);
+            }
           },
           ageValidation: function(oEvent) {
             var fieldValue = oEvent.getSource().getValue();

@@ -35,7 +35,7 @@ entity Applications {
     applicantMobileNo: String;
     applicantEmail: String;
     applicantAadhar: String;
-    applicationPan: String;
+    applicantPan: String;
     applicantOccupation: String;
     applicationDate: Date;
     status: String;

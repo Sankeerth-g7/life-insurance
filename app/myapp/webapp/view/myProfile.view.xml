@@ -17,7 +17,7 @@
       <Button id="homeLA" text="Home" press="onHome" class="mybuttonspacing"></Button>
       </contentLeft>
         <contentMiddle>
-        <Title text="Insurance Loan" class="headerTitle" />
+        <Title text=" Insurance Loan" class="headerTitle" />
         </contentMiddle>
         <contentRight>
           <Button id="logoutLA" text="Logout" press="onLogout" class="mybuttonspacing" />
@@ -44,7 +44,7 @@
                 fitContainer="true"
                 class="sapUiSmallMargin">
                
-            <VBox class="formContainer" width="48%" >
+            <VBox class="formContainer" width="48%">
                 <VBox class="customMargin">
                 <HBox  alignItems="Center">
                     <Label id="LAlabel1" text="Enter Applicant Name" required="true"  class="customLabel"/>
@@ -74,27 +74,34 @@
                     </HBox>
                 </VBox>
  
-                <VBox class="customMargin">
+                
+                </VBox>
+                <VBox id="LAbox2" class="formContainer"  width="48%">
+               <VBox class="customMargin">
                 <HBox alignItems="Center">
                     <Label id="LAlabel5" text="Enter Aadhaar No" required="true" class="customLabel" />
                     <Input id="enterAadhaarNo" placeholder="Enter Aadhaar No" liveChange="aadhaarValidation"  class="customInput" />
                 </HBox>
                 </VBox>
+                <VBox class="customMargin">
+                <HBox alignItems="Center">
+                    <Label id="LAlabel6" text="Enter Pan No" required="true" class="customLabel" />
+                    <Input id="enterPanNo" placeholder="Enter Pan No" liveChange="panValidation"  class="customInput" />
+                </HBox>
                 </VBox>
                 
  
-                <VBox id="LAbox2" width="48%">
-               
+                
                 <VBox class="customMargin">
                 <HBox alignItems="Center">
-                    <Label id="LAlabel6" text="Enter the Applicant Age" required="true" class="customLabel"/>
+                    <Label id="LAlabel7" text="Enter the Applicant Age" required="true" class="customLabel"/>
                     <Input id="entertheapplicantage" placeholder="Enter the Applicant Age"  class="customInput"/>
                 </HBox>
                 </VBox>
  
                 <VBox class="customMargin">
                 <HBox alignItems="Center">
-                    <Label id="LAlabel7" text="Application Id" required="true" class="customLabel"/>
+                    <Label id="LAlabel8" text="Application Id" required="true" class="customLabel"/>
                     <Input id="applicationid" placeholder="Applicant ongoing id"   class="customInput"/>
                 </HBox>
                 </VBox>

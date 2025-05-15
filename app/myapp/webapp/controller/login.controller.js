@@ -23,109 +23,24 @@ sap.ui.define([
     
     onLoginPress: function () {
         var oView = this.getView();
-        var input = oView.byId("emailInput").getValue(); // Can be email or username
-        var password = oView.byId("passwordInput").getValue();
-    
-        if (!input) {
-            MessageToast.show("Please enter your email or username.");
-            oView.byId("emailInput").setValueState("Error");
+        var email = this.byId("emailInput").getValue();
+        var password = this.byId("passwordInput").getValue();
+        var emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+         if (!email) {
+            MessageToast.show("Please enter your email.");
+            this.byId("emailInput").setValueState("Error");
+            return;
+         } else if (!emailPattern.test(email)) {
+            MessageToast.show("Please enter a valid email.");
+            this.byId("emailInput").setValueState("Error");
             return;
         } else {
             oView.byId("emailInput").setValueState("None");
         }
-    
-        if (!password) {
-            MessageToast.show("Please enter your password.");
-            oView.byId("passwordInput").setValueState("Error");
-            return;
-        } else {
-            oView.byId("passwordInput").setValueState("None");
-        }
-    
-        var oFilterEmail = new sap.ui.model.Filter("email", sap.ui.model.FilterOperator.EQ, input);
-        var oFilterUsername = new sap.ui.model.Filter("username", sap.ui.model.FilterOperator.EQ, input);
-        var oCombinedFilter = new sap.ui.model.Filter({
-            filters: [oFilterEmail, oFilterUsername],
-            and: false
-        });
-    
-        var that = this;
-    
-        this.oModel.read("/users", {
-            filters: [oCombinedFilter],
-            success: function (oData) {
-                if (oData.results.length === 0) {
-                    MessageToast.show("User not found.");
-                    return;
-                }
-    
-                var user = oData.results[0];
-                var now = new Date();
-
-                var lockUntilDate = null;
-
-                if (user.lockUntil) {
-                    var lockUntilTimestamp = parseInt(user.lockUntil.match(/\d+/)[0], 10);
-                    lockUntilDate = new Date(lockUntilTimestamp);
-                }
-
-                console.log(user.isLocked, lockUntilDate, now, lockUntilDate && lockUntilDate > now);
-
-                if (user.isLocked === "true" && lockUntilDate && lockUntilDate > now) {
-                    MessageToast.show("Account is locked. Try again later.");
-                    return;
-                }
-
-    
-                if (user.password === password) {
-                    user.failedAttempts = 0;
-                    user.isLocked = "false";
-                    user.lockUntil = null;
-                    user.lastFailedAttempt = null;
-    
-                    that.oModel.update("/users(" + user.userId + ")", user, {
-                        success: function () {
-                            MessageToast.show("Login successful!");
-                            var oRouter = sap.ui.core.UIComponent.getRouterFor(that);
-                            oRouter.navTo("home");
-                        },
-                        error: function (oError) {
-                            console.log(oError)
-                            var oRouter = sap.ui.core.UIComponent.getRouterFor(that);
-                            oRouter.navTo("home")
-                            MessageToast.show("Login succeeded");
-                        }
-                    });
-                } else {
-                    user.failedAttempts = (user.failedAttempts || 0) + 1;
-                    user.lastFailedAttempt = now.toISOString();
-    
-                    if (user.failedAttempts >= 3) {
-                        user.isLocked = "true";
-                        var lockUntil = new Date();
-                        lockUntil.setHours(lockUntil.getHours() + 1);
-                        console.log(lockUntil)
-                        user.lockUntil = lockUntil
-                        console.log(user.lockUntil,"qwertyuiuygtf")
-                        MessageToast.show("Account locked due to multiple failed attempts. Try again in 1 hour.");
-                    } else {
-                        MessageToast.show("Incorrect password.");
-                    }
-
-                    // console.log(user.lockUntil)
-                    console.log(user,"hereeee is userrrrr")
-    
-                    that.oModel.update("/users(" + user.userId + ")", user, {
-                        error: function () {
-                            MessageToast.show("Failed to update login attempt.");
-                        }
-                    });
-                }
-            },
-            error: function () {
-                MessageToast.show("Error while logging in. Please try again.");
-            }
-        });
+        MessageToast.show("Login successful!");
+        var oRouter = sap.ui.core.UIComponent.getRouterFor(oView);
+                oRouter.navTo("home");
+        
     },
     
     

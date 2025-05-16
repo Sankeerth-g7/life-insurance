@@ -12,6 +12,7 @@
 .pageTitle {
     font-size: 30px;
     font-weight: bold;
+    
     color: #808034;
     margin-bottom: 5px;
     font-family: 'Times New Roman', Times, serif, sans-serif;
@@ -104,6 +105,302 @@
     font-size: 1rem;
     opacity: 0.8; /* Slight transparency for a modern touch */
 }
+
+.sapUiSmallMargin {
+    height: 40px !important; 
+    font-size: 20px !important;
+    padding-left: 0.2rem !important; 
+    padding-top: 1rem !important; 
+    padding-bottom: 1.2rem !important;
+
+} 
+
+
+.customToolbarHeight {
+    height: 3rem !important;
+    padding-top: 1rem !important; 
+    padding-bottom: 0.2rem !important;
+} 
+
+
+.logoTitleBox {
+    justify-content: center;
+    gap: 1px;
+    padding-left: 0.1rem;
+    align-items: center;
+  }
+  
+  .logoTitleText {
+    font-size: 20px;
+    font-weight: bold;
+    margin-left: 4px;
+    color: #8d106e !important; /* Dark purple */
+    padding-left: 0.2rem;
+    padding-right: 0.1rem;
+    padding-top: 1.2rem;
+    padding-bottom: 1rem;
+    line-height: 1.5;
+  }
+  
+  .navButtonsBox {
+    color: rgb(218, 134, 134);
+    padding-left:10rem;
+    margin-left: 6px;
+    font-size: 1.3rem;
+    gap: 4rem;
+    }
+    
+
+    .fullPageBackground {
+        background-color: #7c4166c2; /* Light background for the whole page */
+        }
+
+    .welcomeText {
+        color: white;
+        font-size: 1.2rem;
+        font-weight: bold;
+        text-align: center;
+    }
+    
+    .welcomeBox {
+        background-color: rgb(180, 40, 40); /* Light blue background */
+        padding: 10px;
+    }
+    .carouselItem {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 100%;
+    }
+ 
+    .carouselImage {
+        width: 150%;
+        height:100%;
+        object-fit: cover;
+        transition: opacity 1s ease-in-out;
+
+    }
+ 
+    .carouselCaption {
+        position: absolute;
+        top: 70%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        color: white;
+        font-size: 22px;
+        font-weight: bold;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+    }
+
+
+
+
+    .footerContainer {
+        background-color: rgb(201, 226, 238);
+        color: rgb(31, 3, 3); /* This will make the text white */
+        padding: 10px ;
+      }
+      
+      .footerLink {
+        color: rgb(30, 44, 194) !important; /* Ensures links and copyright text are white */
+      } 
+      
+      .footerCopyright {
+        color: rgb(2, 4, 26) !important; /* Ensures links and copyright text are white */
+      }
+      
+      .footerLinksBox, .footerCopyrightBox {
+        background-color: rgb(207, 227, 240);
+      }
+
+      
+.quoteSection {
+    position: relative;
+    width: 100%;
+    height: 400px;
+    }
+    
+.quoteImage {
+    width: 100%;
+    height: 100%;
+    }
+
+    
+.quoteOverlayText {
+    position: absolute;
+    bottom: 20%;
+    left: 40%;
+    transform: translate(-50%, -70%);
+    color: rgb(26, 2, 2);
+    font-size: 18px;
+    font-weight: bold;
+    text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.7);
+}
+
+
+
+
+    
+    
+    
+
+
+
+
+
+
+
+
+
+
+.sapUiSmallMargin {
+    height: 40px !important; 
+    font-size: 20px !important;
+    padding-left: 0.2rem !important; 
+    padding-top: 1rem !important; 
+    padding-bottom: 1.2rem !important;
+
+} 
+
+
+.customToolbarHeight {
+    height: 3rem !important;
+    padding-top: 1rem !important; 
+    padding-bottom: 0.2rem !important;
+} 
+
+
+.logoTitleBox {
+    justify-content: center;
+    gap: 1px;
+    padding-left: 0.1rem;
+    align-items: center;
+  }
+  
+  .logoTitleText {
+    font-size: 20px;
+    font-weight: bold;
+    margin-left: 4px;
+    color: #8d106e !important; /* Dark purple */
+    padding-left: 0.2rem;
+    padding-right: 0.1rem;
+    padding-top: 1.2rem;
+    padding-bottom: 1rem;
+    line-height: 1.5;
+  }
+  
+  .navButtonsBox {
+    color: rgb(218, 134, 134);
+    padding-left:10rem;
+    margin-left: 6px;
+    font-size: 1.3rem;
+    gap: 4rem;
+    }
+    
+
+    .fullPageBackground {
+        background-color: #7c4166c2; /* Light background for the whole page */
+        }
+
+    .welcomeText {
+        color: white;
+        font-size: 1.2rem;
+        font-weight: bold;
+        text-align: center;
+    }
+    
+    .welcomeBox {
+        background-color: rgb(180, 40, 40); /* Light blue background */
+        padding: 10px;
+    }
+    .carouselItem {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 100%;
+    }
+ 
+    .carouselImage {
+        width: 150%;
+        height:100%;
+        object-fit: cover;
+        transition: opacity 1s ease-in-out;
+
+    }
+ 
+    .carouselCaption {
+        position: absolute;
+        top: 70%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        color: white;
+        font-size: 22px;
+        font-weight: bold;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+    }
+
+
+
+
+    .footerContainer {
+        background-color: rgb(201, 226, 238);
+        color: rgb(31, 3, 3); /* This will make the text white */
+        padding: 10px ;
+      }
+      
+      .footerLink {
+        color: rgb(30, 44, 194) !important; /* Ensures links and copyright text are white */
+      } 
+      
+      .footerCopyright {
+        color: rgb(2, 4, 26) !important; /* Ensures links and copyright text are white */
+      }
+      
+      .footerLinksBox, .footerCopyrightBox {
+        background-color: rgb(207, 227, 240);
+      }
+
+      
+.quoteSection {
+    position: relative;
+    width: 100%;
+    height: 400px;
+    }
+    
+.quoteImage {
+    width: 100%;
+    height: 100%;
+    }
+
+    
+.quoteOverlayText {
+    position: absolute;
+    bottom: 20%;
+    left: 40%;
+    transform: translate(-50%, -70%);
+    color: rgb(26, 2, 2);
+    font-size: 18px;
+    font-weight: bold;
+    text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.7);
+}
+
+
+
+
+    
+    
+    
+
+
+
+
+
+
+
+
+
 
 .policyCard {
     width: 90%;

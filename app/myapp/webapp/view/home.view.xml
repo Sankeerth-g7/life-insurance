@@ -1,10 +1,72 @@
 <mvc:View controllerName="myapp.controller.home"
     xmlns:mvc="sap.ui.core.mvc"
     xmlns="sap.m"
-          >
-    <Page title="Home">
-        <content>
-            <Title text="Hello World" level="H1" />
-        </content>
+    xmlns:layout="sap.ui.layout">
+
+<Page title="Ltimindtree" class="fullPageBackground">
+
+<customHeader>
+    <Bar class="customToolbarHeight  headerBackground">
+    <contentLeft>
+    <HBox alignItems="Center" class="logoTitleBox"  >
+    <Image src="https://companieslogo.com/img/orig/LTIM.NS-dea59dc6.png" width="20px" height="20px"/>
+    <Title text="LTI Life Insurance " level="H1" class="logoTitleText "/>
+    </HBox>
+  
+    <HBox justifyContent="Start" class="navButtonsBox" >
+        <Button text="Home" press=".onNavHome"/>
+        <Button text="View Policy" press=".onNavViewPolicy"/>
+        <Button text="My Profile" press=".onNavMyProfile"/>
+        <Button text="My Policy" press=".onNavMyPolicy"/>
+        <Button text="Logout" press=".onLogout"/>
+        </HBox>
+</contentLeft>
+
+    </Bar>
+    </customHeader  >
+
+    <VBox class="sapUiSmallMargin">
+    <Text text="Welcome to the LTI Life Insurance Portal!" class="welcomeText"/>
+    </VBox>
+<!-- Carousel and Text Side-by-Side -->
+    <HBox class="carouselTextContainer" >
+        <!-- Left: Carousel -->
+        <Carousel id="imageCarousel" height="435px" width="1350px" loop="true"  class="imageCarousel">
+        <pages>
+        <Panel  class="carouselItem">
+        <Image src="images/no.jpg"  class="carouselImage"/>
+        <Text text="Secure your family's future today." class="carouselCaption"/>
+        </Panel >
+        <Panel class="carouselItem">
+        <Image src="images/img13.jpg"/>
+        <Text text="Invest in peace of mind with LTI Life." class="carouselCaption"/>
+        </Panel>
+        <Panel class="carouselItem">
+        <Image src="images/ins22.jpg"/>
+        <Text text="Your life, our promise." class="carouselCaption"/>
+            </Panel>
+        </pages>
+        </Carousel>
+    
+
+</HBox>
+
+<!-- Footer -->
+    <VBox class="footerContainer">
+    <HBox justifyContent="Center" class="footerLinksBox">
+        <HBox justifyContent="SpaceAround" width="80%" class="footerLinks">
+        <Link text="About Us" class="footerLink"/>
+        <Link text="Contact Us" class="footerLink"/>
+        <Link text="Terms  Conditions" class="footerLink"/>
+        <Link text="Privacy Policy" class="footerLink"/>
+        <Link text="FAQ" class="footerLink"/>
+        </HBox>
+    </HBox>
+    
+    <HBox justifyContent="Center" class="footerCopyrightBox">
+        <Text text="© 2025 LTI Life Insurance. All rights reserved." class="footerCopyright"/>
+    </HBox>
+    </VBox>
+
     </Page>
 </mvc:View>

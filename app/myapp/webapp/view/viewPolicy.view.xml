@@ -23,7 +23,7 @@
     <Text text="Premium: ₹{policyModel>premiumAmount}" class="highlightText" />
     <Text text="Coverage: ₹{policyModel>coverageAmount}" class="highlightText" />
     <Text text="Description: {policyModel>policyDescription}" />
-                    <Button text="Select Plan" type="Emphasized" press="onSelectPlan" />
+                    <Button text="Select Plan" type="Emphasized" press="onSelectPlan" class="buttoncolor"/>
                 </VBox>
             </items>
         </FlexBox>

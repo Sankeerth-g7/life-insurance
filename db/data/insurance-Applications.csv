@@ -1,7 +1,7 @@
 applicationId,user_userId,policy_policyId,applicantName,applicantAge,applicantAddress,applicantMobileNo,applicantEmail,applicantAadhar,applicantOccupation,applicationDate,status,documentType
 1001,1,101,John Doe,30,"123 Main St, Mumbai",9876543210,john.doe@email.com,456789908754,Software Engineer,2025-04-01,Pending,Passport
-1002,2,102,Jane Smith,45,"456 Park Ave, Delhi",8765432109,jane.smith@email.com,456789908754,Doctor,2025-04-02,Approved,Aadhar Card
-1003,3,103,Michael Brown,38,"789 Maple St, Bengaluru",7654321098,michael.brown@email.com,456789908754,Teacher,2025-04-03,Rejected,Voter ID
+1002,1,102,Jane Smith,45,"456 Park Ave, Delhi",8765432109,jane.smith@email.com,456789908754,Doctor,2025-04-02,Approved,Aadhar Card
+1003,1,103,Michael Brown,38,"789 Maple St, Bengaluru",7654321098,michael.brown@email.com,456789908754,Teacher,2025-04-03,Rejected,Voter ID
 1004,4,104,Emily Davis,28,"101 Pine Rd, Chennai",6543210987,emily.davis@email.com,456789908754,Designer,2025-04-04,Pending,Driving License
 1005,5,105,Daniel Wilson,50,"202 Oak Ln, Pune",5432109876,daniel.wilson@email.com,456789908754,Architect,2025-04-05,Approved,Passport
 1006,6,106,Sophia Martinez,35,"303 Cedar Ave, Hyderabad",4321098765,sophia.martinez@email.com,456789908754,Engineer,2025-04-06,Rejected,Aadhar Card

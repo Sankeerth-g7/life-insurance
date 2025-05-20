@@ -2,13 +2,19 @@ sap.ui.define([
     "sap/ui/core/mvc/Controller",
     "sap/ui/model/json/JSONModel",
     "sap/m/MessageToast",
-    "myapp/model/formatter"
-], function (Controller, JSONModel, MessageToast,formatter) {
+    "myapp/model/formatter",
+    "sap/ui/model/odata/v2/ODataModel"
+], function (Controller, JSONModel, MessageToast,formatter, ODataModel) {
     "use strict";
 
     return Controller.extend("myapp.controller.viewPolicy", {
         formatter: formatter,
         onInit: function () {
+
+            var url = "/odata/v2/my/";
+            this.oModel = new ODataModel(url, true);
+            this.getView().setModel(this.oModel);
+
             this.loadPoliciesData();
             
   var oHeader = sap.ui.xmlfragment("myapp.view.fragments.CustomHeader", this);
@@ -16,17 +22,14 @@ sap.ui.define([
 
         },
 
-        loadPoliciesData: async function () {
-            var oModel = new JSONModel();
+        loadPoliciesData: function () {
             var that = this;
             
-            $.ajax({
-                url: "/odata/v4/my/getPolicies",
-                type: "GET",
-                success: function (data) {
-                    if (data && data.value) {
-                        oModel.setData({ Policies: data.value }); // Store only 'value' array
-                        that.getView().setModel(oModel, "policyModel");
+            this.oModel.read("/getPolicies", {
+                success: function (oData) {
+                    if (oData && oData.results) {
+                        var oPolicyModel = new sap.ui.model.json.JSONModel({ Policies: oData.results });
+                        that.getView().setModel(oPolicyModel, "policyModel");
                     } else {
                         MessageToast.show("No policies available.");
                     }
@@ -36,6 +39,7 @@ sap.ui.define([
                 }
             });
         },
+        
 
         onSelectPlan: function (oEvent) {
             var oItem = oEvent.getSource();

@@ -6,7 +6,8 @@
 <VBox id="navbarMyPoliciesContainer "/>
 
         <content>
-            <List id="applicationList" headerText="Policies" items="{/value}">
+        <Text text="{policyModel}" />
+            <List id="applicationList" headerText="Policies" items="{policyModel>/userPolicies}">
                 <items>
                     <ObjectListItem 
                         title="{applicantName}" 
@@ -27,18 +28,18 @@
                         </attributes>
 
                         <firstStatus>
-                            <ObjectStatus title="Policy Name" text="{policy/policyName}" state="Success"/>
+                            <ObjectStatus title="Policy Name" text="{policyDetails/policyName}" state="Success"/>
                         </firstStatus>
                         <secondStatus>
-                            <ObjectStatus title="Policy Type" text="{policy/policyType}" state="None"/>
+                            <ObjectStatus title="Policy Type" text="{policyDetails/policyType}" state="None"/>
                         </secondStatus>
 
                         <attributes>
-                            <ObjectAttribute title="Coverage Amount" text="{policy/coverageAmount}" />
-                            <ObjectAttribute title="Premium Amount" text="{policy/premiumAmount}" />
-                            <ObjectAttribute title="Policy Description" text="{policy/policyDescription}" />
-                            <ObjectAttribute title="Policy Start Date" text="{policy/startDate}" />
-                            <ObjectAttribute title="Policy Term Length" text="{policy/termLength}" />
+                            <ObjectAttribute title="Coverage Amount" text="{policyDetails/coverageAmount}" />
+                            <ObjectAttribute title="Premium Amount" text="{policyDetails/premiumAmount}" />
+                            <ObjectAttribute title="Policy Description" text="{policyDetails/policyDescription}" />
+                            <ObjectAttribute title="Policy Start Date" text="{policyDetails/startDate}" />
+                            <ObjectAttribute title="Policy Term Length" text="{policyDetails/termLength}" />
                         </attributes>
                     </ObjectListItem>
                 </items>

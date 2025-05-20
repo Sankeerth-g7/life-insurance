@@ -15,7 +15,7 @@
 <!-- Carousel and Text Side-by-Side -->
     <HBox class="carouselTextContainer" >
         <!-- Left: Carousel -->
-        <Carousel id="imageCarousel" height="435px" width="1350px" loop="true"  class="imageCarousel">
+        <Carousel id="imageCarousel" height="600px" width="1350px" loop="true"  class="imageCarousel">
         <pages>
         <Panel  class="carouselItem">
         <Image src="images/no.jpg"  class="carouselImage"/>
@@ -54,3 +54,6 @@
 
     </Page>
 </mvc:View>
+
+
+

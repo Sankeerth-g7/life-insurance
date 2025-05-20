@@ -3,7 +3,8 @@
     xmlns="sap.m"
     xmlns:core="sap.ui.core">
 
-    <Page title="Available Life Insurance Policies" class="viewpolicypg">
+    <Page  class="viewpolicypg"  >
+        <VBox id="navBarPolicyContainer"/>
         <FlexBox
             class="sapUiMediumMargin"
             direction="Row"

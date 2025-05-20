@@ -6,6 +6,10 @@ sap.ui.define([
 
     return Controller.extend("myapp.controller.myPolicies", {
         onInit() {
+            
+  var oHeader = sap.ui.xmlfragment("myapp.view.fragments.CustomHeader", this);
+    this.getView().byId("navbarMyPoliciesContainer").addItem(oHeader);
+
             // Simulating getting authenticated userId (Replace this with actual authentication logic)
             const userIdd = "1"; 
 

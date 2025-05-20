@@ -5,6 +5,9 @@
 
     <Page showHeader="false" class="loginPage darkBackground">
         <!-- Page Title -->
+        
+        <VBox id="navbarLoginContainer"/>
+
         <VBox class="sapUiSmallMargin" alignItems="Center">
             <Title text="LTI Life Insurance" level="H1" class="pageTitle" />
         </VBox>

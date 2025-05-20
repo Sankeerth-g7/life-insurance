@@ -9,6 +9,7 @@
     xmlns:f="sap.ui.layout.form"
     >
     <Page id="LApage" showHeader="true" enableScrolling="true" class="customPage">
+    <VBox id="navbarProfileContainer"/>
      <customHeader>
       <Bar design="Header" class="box">
       <contentLeft>

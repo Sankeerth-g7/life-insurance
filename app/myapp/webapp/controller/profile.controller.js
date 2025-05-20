@@ -12,6 +12,10 @@ sap.ui.define([
         // Initialize the model
         var oModel = new JSONModel("odata/v4/my/applications");
         this.getView().setModel(oModel);
+        
+  var oHeader = sap.ui.xmlfragment("myapp.view.fragments.CustomHeader", this);
+    this.getView().byId("navbarProfileContainer").addItem(oHeader);
+
  
      
     },

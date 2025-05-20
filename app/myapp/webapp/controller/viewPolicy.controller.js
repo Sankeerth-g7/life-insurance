@@ -10,6 +10,10 @@ sap.ui.define([
         formatter: formatter,
         onInit: function () {
             this.loadPoliciesData();
+            
+  var oHeader = sap.ui.xmlfragment("myapp.view.fragments.CustomHeader", this);
+    this.getView().byId("navBarPolicyContainer").addItem(oHeader);
+
         },
 
         loadPoliciesData: async function () {

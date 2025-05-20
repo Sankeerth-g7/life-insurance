@@ -9,6 +9,10 @@ sap.ui.define([
         var oCarousel = this.byId("imageCarousel");
         var iCurrentPage = 0;
         
+  var oHeader = sap.ui.xmlfragment("myapp.view.fragments.CustomHeader", this);
+    this.getView().byId("navbarHomeContainer").addItem(oHeader);
+
+        
         setInterval(function () {
             var aPages = oCarousel.getPages();
             iCurrentPage = (iCurrentPage + 1) % aPages.length;

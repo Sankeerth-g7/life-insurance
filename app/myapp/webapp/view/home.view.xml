@@ -5,25 +5,9 @@
 
 <Page title="Ltimindtree" class="fullPageBackground">
 
-<customHeader>
-    <Bar class="customToolbarHeight  headerBackground">
-    <contentLeft>
-    <HBox alignItems="Center" class="logoTitleBox"  >
-    <Image src="https://companieslogo.com/img/orig/LTIM.NS-dea59dc6.png" width="20px" height="20px"/>
-    <Title text="LTI Life Insurance " level="H1" class="logoTitleText "/>
-    </HBox>
-  
-    <HBox justifyContent="Start" class="navButtonsBox" >
-        <Button text="Home" press=".onNavHome"/>
-        <Button text="View Policy" press=".onNavViewPolicy"/>
-        <Button text="My Profile" press=".onNavMyProfile"/>
-        <Button text="My Policy" press=".onNavMyPolicy"/>
-        <Button text="Logout" press=".onLogout"/>
-        </HBox>
-</contentLeft>
+<VBox id="navbarHomeContainer"/>
 
-    </Bar>
-    </customHeader  >
+
 
     <VBox class="sapUiSmallMargin">
     <Text text="Welcome to the LTI Life Insurance Portal!" class="welcomeText"/>

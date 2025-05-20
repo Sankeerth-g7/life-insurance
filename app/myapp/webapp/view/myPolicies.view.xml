@@ -2,6 +2,9 @@
     xmlns:mvc="sap.ui.core.mvc"
     xmlns="sap.m">
     <Page title="User Policies">
+    
+<VBox id="navbarMyPoliciesContainer "/>
+
         <content>
             <List id="applicationList" headerText="Policies" items="{/value}">
                 <items>

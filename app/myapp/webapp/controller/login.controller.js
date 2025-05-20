@@ -1,13 +1,19 @@
 sap.ui.define([
     "sap/ui/core/mvc/Controller",
-    "sap/m/MessageToast"
-], function (Controller, MessageToast) {
+    "sap/m/MessageToast",
+    "sap/ui/model/odata/v2/ODataModel"
+], function (Controller, MessageToast, ODataModel) {
     "use strict";
 
     return Controller.extend("myapp.controller.login", {
      onInit: function () {
         this._loginForm = this.byId("loginForm");
         this._registerForm = this.byId("registerForm");
+        
+        var url = "/odata/v2/my/";
+        this.oModel = new ODataModel(url, true);
+        this.getView().setModel(this.oModel);
+
     },
     
     onLoginPress: function () {
@@ -32,7 +38,7 @@ sap.ui.define([
         } else {
             this.byId("passwordInput").setValueState("None");
         }
-                            MessageToast.show("Login successful!");
+        MessageToast.show("Login successful!");
     },
     
     onRegister: function () {
@@ -75,18 +81,14 @@ sap.ui.define([
             password: password,
             role: "User"
         };
-        $.ajax({
-            url: "/odata/v4/my/InsertUserDetails",
-            type: "POST",
-            contentType: "application/json",
-            data: JSON.stringify(oData),
+        this.oModel.create("/users", oData, {
             success: function () {
                 MessageToast.show("Registration successful!");
                 var oRouter = sap.ui.core.UIComponent.getRouterFor(oView);
                 oRouter.navTo("home");
             },
-            error: function (xhr) {
-                var errorMessage = xhr.responseText ? JSON.parse(xhr.responseText).error.message : "Unexpected error occurred.";
+            error: function (oError) {
+                var errorMessage = oError.responseText ? JSON.parse(oError.responseText).error.message : "Unexpected error occurred.";
                 MessageToast.show(errorMessage);
             }
         });
@@ -145,6 +147,14 @@ sap.ui.define([
         oDialog.open();
     },
     
+
+
+
+
+
+
+
+// password visibility
 
     onToggleForm: function () {
         var isLoginVisible = this._loginForm.getVisible();

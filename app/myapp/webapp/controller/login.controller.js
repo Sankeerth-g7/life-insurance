@@ -22,29 +22,61 @@ sap.ui.define([
     },
     
     onLoginPress: function () {
-        var email = this.byId("emailInput").getValue();
-        var password = this.byId("passwordInput").getValue();
+        var oView = this.getView();
+        var input = oView.byId("emailInput").getValue(); // Can be email or username
+        var password = oView.byId("passwordInput").getValue();
         var emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-         if (!email) {
-            MessageToast.show("Please enter your email.");
-            this.byId("emailInput").setValueState("Error");
-            return;
-         } else if (!emailPattern.test(email)) {
-            MessageToast.show("Please enter a valid email.");
-            this.byId("emailInput").setValueState("Error");
+    
+        if (!input) {
+            MessageToast.show("Please enter your email or username.");
+            oView.byId("emailInput").setValueState("Error");
             return;
         } else {
-            this.byId("emailInput").setValueState("None");
-         }
-         if (!password) {
-            MessageToast.show("Please enter your password.");
-            this.byId("passwordInput").setValueState("Error");
-            return;
-        } else {
-            this.byId("passwordInput").setValueState("None");
+            oView.byId("emailInput").setValueState("None");
         }
-        MessageToast.show("Login successful!");
+    
+        if (!password) {
+            MessageToast.show("Please enter your password.");
+            oView.byId("passwordInput").setValueState("Error");
+            return;
+        } else {
+            oView.byId("passwordInput").setValueState("None");
+        }
+    
+        // Create filters for email and username
+        var oFilterEmail = new sap.ui.model.Filter("email", sap.ui.model.FilterOperator.EQ, input);
+        var oFilterUsername = new sap.ui.model.Filter("username", sap.ui.model.FilterOperator.EQ, input);
+        var oCombinedFilter = new sap.ui.model.Filter({
+            filters: [oFilterEmail, oFilterUsername],
+            and: false
+        });
+    
+        var that = this;
+    
+        // Read from the model with filters
+        this.oModel.read("/users", {
+            filters: [oCombinedFilter],
+            success: function (oData) {
+                if (oData.results.length === 0) {
+                    MessageToast.show("User not found.");
+                    return;
+                }
+    
+                var user = oData.results[0];
+                if (user.password === password) {
+                    MessageToast.show("Login successful!");
+                    var oRouter = sap.ui.core.UIComponent.getRouterFor(that);
+                    oRouter.navTo("home");
+                } else {
+                    MessageToast.show("Incorrect password.");
+                }
+            },
+            error: function () {
+                MessageToast.show("Error while logging in. Please try again.");
+            }
+        });
     },
+    
     
     onRegister: function () {
         var oView = this.getView();

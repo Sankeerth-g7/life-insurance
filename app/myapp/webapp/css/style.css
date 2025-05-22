@@ -527,7 +527,7 @@
 
 
 
-   /* mypolicies styles  starts here */
+/* mypolicies styles - revised version */
 
 /* Page Background */
 .customPage {
@@ -542,13 +542,18 @@
 }
 
 /* Card List Layout */
+
+/* Horizontal Card List Layout */
 .customCardList {
     display: flex;
-    flex-wrap: wrap;
+    flex-direction: row;
+    flex-wrap: nowrap; /* Prevent wrapping to new lines */
     gap: 1.5rem;
     padding: 1rem;
+    overflow-x: auto; /* Enable horizontal scrolling */
     background: transparent;
     border: none;
+    scroll-snap-type: x mandatory;
 }
 
 /* Card Styling */
@@ -557,12 +562,18 @@
     border-radius: 14px;
     box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
     padding: 1.5rem;
-    width: calc(50% - 1rem);
+    min-width: 320px;
+    max-width: 400px;
+    flex: 0 0 auto; /* Prevent shrinking */
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     cursor: pointer;
     border-left: 6px solid transparent;
+    scroll-snap-align: start;
+    overflow-wrap: break-word;
+    word-break: break-word;
 }
 
+/* Hover Effect */
 .customCard:hover {
     transform: translateY(-6px);
     box-shadow: 0 10px 24px rgba(0, 0, 0, 0.15);
@@ -589,9 +600,10 @@
     border-left-color: #c62828;
 }
 
+
 /* Responsive Design */
-@media (max-width: 768px) {
+@media (max-width: 1024px) {
     .customCard {
-        width: 100%;
+        flex: 1 1 100%;
     }
 }

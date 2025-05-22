@@ -1,7 +1,9 @@
 <mvc:View controllerName="myapp.controller.myPolicy"
     xmlns:mvc="sap.ui.core.mvc"
     xmlns="sap.m">
-    <Page class="customPage" showHeader="false">
+    <Page title="User Policies">
+    
+<VBox id="navbarMyPolicysContainer"/>
 
         <VBox id="navbarMyPoliciesContainer"/>
 

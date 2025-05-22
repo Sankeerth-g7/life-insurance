@@ -25,24 +25,33 @@ sap.ui.define([
         
         
     onNavHome: function () {
-        this.getOwnerComponent().getRouter().navTo("Home");
+        var oRouter = sap.ui.core.UIComponent.getRouterFor(oView);
+        oRouter.navTo("home")
+        //this.getOwnerComponent().getRouter().navTo("Home");
     },
      onNavViewPolicy: function () {
-        this.getOwnerComponent().getRouter().navTo("ViewPolicy");
+        var oRouter = sap.ui.core.UIComponent.getRouterFor(oView);
+            oRouter.navTo("viewPolicy")
+        //this.getOwnerComponent().getRouter().navTo("ViewPolicy");
+
     },
     onNavMyProfile: function () {
         //console.log("button pressed");
         var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
-        oRouter.navTo("myprofile")
+        oRouter.navTo("myProfile")
         //this.getOwnerComponent().getRouter().navTo("MyProfile");
     },
     onNavMyPolicy: function () {
-        this.getOwnerComponent().getRouter().navTo("MyPolicy");
+        var oRouter = sap.ui.core.UIComponent.getRouterFor(oView);
+            oRouter.navTo("myPolicy")
+        //this.getOwnerComponent().getRouter().navTo("MyPolicy");
     },
     onLogout: function () {
+        var oRouter = sap.ui.core.UIComponent.getRouterFor(oView);
+        oRouter.navTo("logged out")
         MessageToast.show("You have been logged out.");
         // Optionally navigate to login or home page
-        this.getOwnerComponent().getRouter().navTo("Login");
+        //this.getOwnerComponent().getRouter().navTo("Login");
     }
     });
 });

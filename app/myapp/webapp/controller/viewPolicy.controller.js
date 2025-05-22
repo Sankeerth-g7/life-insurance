@@ -25,8 +25,8 @@ sap.ui.define([
 
         },
         onNavHome: function () {
-            var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
-        oRouter.navTo("home")
+        var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
+        oRouter.navTo("home");
         },
 
         loadPoliciesData: function () {
@@ -54,8 +54,18 @@ sap.ui.define([
             var oPolicy = oBindingContext.getObject();
             var oView = this.getView();
             var oRouter = sap.ui.core.UIComponent.getRouterFor(oView);
-            oRouter.navTo("profile");
+            oRouter.navTo("myProfile");
 
+        },
+
+        onLogout: function () {
+       
+            var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
+            oRouter.navTo("home");
+            MessageToast.show("Logged out!");
         }
+
+
+
     });
 });

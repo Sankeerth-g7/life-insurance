@@ -10,7 +10,7 @@ sap.ui.define([
         var iCurrentPage = 0;
         
   var oHeader = sap.ui.xmlfragment("myapp.view.fragments.CustomHeader", this);
-    this.getView().byId("navbarHomeContainer").addItem(oHeader);
+    this.getView().byId("navbarhomeContainer").addItem(oHeader);
 
             var oFooter = sap.ui.xmlfragment("myapp.view.fragments.CustomFooter", this);
             this.getView().byId("FooterHomeContainer").addItem(oFooter);

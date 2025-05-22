@@ -24,6 +24,10 @@ sap.ui.define([
             this.getView().byId("FooterviewPolicyContainer").addItem(oFooter);
 
         },
+        onNavHome: function () {
+            var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
+        oRouter.navTo("home")
+        },
 
         loadPoliciesData: function () {
             var that = this;

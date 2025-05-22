@@ -2,10 +2,10 @@
     controllerName="myapp.controller.viewPolicy"
     xmlns:mvc="sap.ui.core.mvc"
     xmlns="sap.m"
-    xmlns:core="sap.ui.core"
->
-    <Page class="viewpolicypg">
-        <VBox id="navBarPolicyContainer" />
+    xmlns:core="sap.ui.core">
+
+    <Page showHeader="false"  class="viewpolicypg"  >
+        <VBox id="navBarPolicyContainer"/>
         <FlexBox
             class="sapUiMediumMargin"
             direction="Row"

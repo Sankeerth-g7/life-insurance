@@ -24,10 +24,26 @@ sap.ui.define([
             this.getView().byId("FooterviewPolicyContainer").addItem(oFooter);
 
         },
-        onNavHome: function () {
-        var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
-        oRouter.navTo("home");
-        },
+       // onNavHome: function () {
+        //var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
+        //oRouter.navTo("home");
+        //},
+
+        
+        onLogout: function () {
+       
+            var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
+            oRouter.navTo("home");
+            MessageToast.show("Logged out!");
+           
+    
+          },
+          onNavHome: function () {
+            var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
+            oRouter.navTo("home");
+            MessageToast.show("Returned Home");
+           
+          },
 
         loadPoliciesData: function () {
             var that = this;

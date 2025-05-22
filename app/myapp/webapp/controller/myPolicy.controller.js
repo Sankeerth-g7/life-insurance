@@ -25,6 +25,22 @@ sap.ui.define([
             });
         },
 
+        
+        onLogout: function () {
+       
+            var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
+            oRouter.navTo("home");
+            MessageToast.show("Logged out!");
+           
+    
+          },
+          onNavHome: function () {
+            var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
+            oRouter.navTo("home");
+            MessageToast.show("Returned Home");
+           
+          },
+
         getUserPolicyDetails: function (userId) {
             const filterCondition = `user_userId eq '${userId}'`;
 

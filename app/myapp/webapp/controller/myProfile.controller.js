@@ -250,10 +250,9 @@ this.getView().byId("FooterProfileContainer").addItem(oFooter);
             oRouter.navTo("home");
             MessageToast.show("Logged out!");
            
-     
-   
+    
           },
-          onHome: function () {
+          onNavHome: function () {
             var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
             oRouter.navTo("home");
             MessageToast.show("Returned Home");

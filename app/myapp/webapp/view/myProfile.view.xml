@@ -10,6 +10,7 @@
     >
     <Page id="LApage" showHeader="true" enableScrolling="true" class="customPage">
     <VBox id="navbarmyProfileContainer"/>
+    
      <customHeader>
       <Bar design="Header" class="box">
       <contentLeft>

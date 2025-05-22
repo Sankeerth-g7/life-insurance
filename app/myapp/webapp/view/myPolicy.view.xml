@@ -3,9 +3,7 @@
     xmlns="sap.m">
     <Page title="User Policies">
     
-<VBox id="navbarMyPolicysContainer"/>
-
-        <VBox id="navbarMyPoliciesContainer"/>
+<VBox id="navbarMyPolicyContainer"/>
 
         <content>
             <List id="applicationList" items="{policyModel>/userPolicies}" class="customCardList">

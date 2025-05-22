@@ -25,12 +25,12 @@ sap.ui.define([
         
         
     onNavHome: function () {
-        var oRouter = sap.ui.core.UIComponent.getRouterFor(oView);
+        var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
         oRouter.navTo("home")
         //this.getOwnerComponent().getRouter().navTo("Home");
     },
      onNavViewPolicy: function () {
-        var oRouter = sap.ui.core.UIComponent.getRouterFor(oView);
+        var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
             oRouter.navTo("viewPolicy")
         //this.getOwnerComponent().getRouter().navTo("ViewPolicy");
 
@@ -42,12 +42,12 @@ sap.ui.define([
         //this.getOwnerComponent().getRouter().navTo("MyProfile");
     },
     onNavMyPolicy: function () {
-        var oRouter = sap.ui.core.UIComponent.getRouterFor(oView);
+        var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
             oRouter.navTo("myPolicy")
         //this.getOwnerComponent().getRouter().navTo("MyPolicy");
     },
     onLogout: function () {
-        var oRouter = sap.ui.core.UIComponent.getRouterFor(oView);
+        var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
         oRouter.navTo("logged out")
         MessageToast.show("You have been logged out.");
         // Optionally navigate to login or home page

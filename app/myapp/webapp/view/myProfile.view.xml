@@ -106,13 +106,12 @@
             </f:SimpleForm>
            
         </content>
-        <footer>
             <Toolbar id="LAtoolbar" class="sapUiSmallMargin">
                 <ToolbarSpacer id="LAtoolbarspacer" />
                 <Button id="LAbutton1" text="Submit" press="onSubmit" type="Emphasized" width="10%" class="customButton" />
                 <Button id="LAbutton2" text="Clear" press="onClear" type="Reject" width="10%" class="customButton" />
                 <ToolbarSpacer id="LAtoolbarspacer1" />
             </Toolbar>
-        </footer>
+        <VBox id="FooterProfileContainer"/>
     </Page>
 </mvc:View>

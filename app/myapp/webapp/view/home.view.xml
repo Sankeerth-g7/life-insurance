@@ -31,21 +31,7 @@
     
 
 </HBox>
-    <VBox class="footerContainer">
-    <HBox justifyContent="Center" class="footerLinksBox">
-        <HBox justifyContent="SpaceAround" width="80%" class="footerLinks">
-        <Link text="About Us" class="footerLink"/>
-        <Link text="Contact Us" class="footerLink"/>
-        <Link text="Terms  Conditions" class="footerLink"/>
-        <Link text="Privacy Policy" class="footerLink"/>
-        <Link text="FAQ" class="footerLink"/>
-        </HBox>
-    </HBox>
-    
-    <HBox justifyContent="Center" class="footerCopyrightBox">
-        <Text text="© 2025 LTI Life Insurance. All rights reserved." class="footerCopyright"/>
-    </HBox>
-    </VBox>
+    <VBox id="FooterHomeContainer"/>
 
     </Page>
 </mvc:View>

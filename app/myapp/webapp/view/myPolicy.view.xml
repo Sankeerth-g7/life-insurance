@@ -3,7 +3,8 @@
     xmlns="sap.m">
     <Page title="User Policies">
     
-    <VBox id="navbarmyPolicyContainer "/>
+<VBox id="navbarMyPoliciesContainer"/>
+
 
         <content>
         <Text text="{policyModel}" />
@@ -45,5 +46,6 @@
                 </items>
             </List>
         </content>
+        <VBox id="FooterMyPoliciesContainer"/>
     </Page>
 </mvc:View>

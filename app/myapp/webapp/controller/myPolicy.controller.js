@@ -9,12 +9,16 @@ sap.ui.define([
     return Controller.extend("myapp.controller.myPolicy", {
         onInit() {
             
-  var oHeader = sap.ui.xmlfragment("myapp.view.fragments.CustomHeader", this);
-    this.getView().byId("navbarmyPolicyContainer").addItem(oHeader);
+
+            var oHeader = sap.ui.xmlfragment("myapp.view.fragments.CustomHeader", this);
+            this.getView().byId("navbarMyPoliciesContainer").addItem(oHeader);
+
+            var oFooter = sap.ui.xmlfragment("myapp.view.fragments.CustomFooter", this);
+            this.getView().byId("FooterMyPoliciesContainer").addItem(oFooter);
 
             var url = "/odata/v2/my/";
             this.oModel = new ODataModel(url, true);
-            this.getView().setModel(this.oModel); 
+            this.getView().setModel(this.oModel);
 
             this.oModel.attachMetadataLoaded(() => {
                 this.getUserPolicyDetails("1"); // Ensure metadata is loaded before calling API

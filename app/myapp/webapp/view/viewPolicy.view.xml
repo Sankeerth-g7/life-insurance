@@ -1,32 +1,65 @@
-<mvc:View controllerName="myapp.controller.viewPolicy"
+<mvc:View
+    controllerName="myapp.controller.viewPolicy"
     xmlns:mvc="sap.ui.core.mvc"
     xmlns="sap.m"
-    xmlns:core="sap.ui.core">
-
-    <Page  class="viewpolicypg"  >
-        <VBox id="navBarPolicyContainer"/>
+    xmlns:core="sap.ui.core"
+>
+    <Page class="viewpolicypg">
+        <VBox id="navBarPolicyContainer" />
         <FlexBox
             class="sapUiMediumMargin"
             direction="Row"
             wrap="Wrap"
             justifyContent="Center"
-            items="{policyModel>/Policies}">
-
+            items="{policyModel>/Policies}"
+        >
             <items>
-                <VBox class="policyCard" backgroundDesign="Solid" width="400px">
-                
-                    <HBox alignItems="Center" class="cardHeader">                     
-                        <Image src="{path: 'policyModel>policyType', formatter: '.formatter.getPolicyIcon'}" width="40px" height="40px" />
-                        <Title text="{policyModel>policyName}" level="H3" class="cardTitle" />
+                <VBox
+                    class="policyCard"
+                    backgroundDesign="Solid"
+                    width="400px"
+                >
+                    <HBox
+                        alignItems="Center"
+                        class="cardHeader"
+                    >
+                        <Image
+                            src="{path: 'policyModel>policyType', formatter: '.formatter.getPolicyIcon'}"
+                            width="40px"
+                            height="40px"
+                        />
+                        <Title
+                            text="{policyModel>policyName}"
+                            level="H3"
+                            class="cardTitle"
+                        />
                     </HBox>
-                        <Text text="Type: {policyModel>policyType}" class="highlightText" />
-    <Text text="Term Length: {policyModel>termLength} years" class="highlightText" />
-    <Text text="Premium: ₹{policyModel>premiumAmount}" class="highlightText" />
-    <Text text="Coverage: ₹{policyModel>coverageAmount}" class="highlightText" />
-    <Text text="Description: {policyModel>policyDescription}" />
-                    <Button text="Select Plan" type="Emphasized" press="onSelectPlan" class="buttoncolor"/>
+                    <Text
+                        text="Type: {policyModel>policyType}"
+                        class="highlightText"
+                    />
+                    <Text
+                        text="Term Length: {policyModel>termLength} years"
+                        class="highlightText"
+                    />
+                    <Text
+                        text="Premium: ₹{policyModel>premiumAmount}"
+                        class="highlightText"
+                    />
+                    <Text
+                        text="Coverage: ₹{policyModel>coverageAmount}"
+                        class="highlightText"
+                    />
+                    <Text text="Description: {policyModel>policyDescription}" />
+                    <Button
+                        text="Select Plan"
+                        type="Emphasized"
+                        press="onSelectPlan"
+                        class="buttoncolor"
+                    />
                 </VBox>
             </items>
         </FlexBox>
+        <VBox id="FooterviewPolicyContainer" />
     </Page>
 </mvc:View>

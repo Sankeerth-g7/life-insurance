@@ -257,7 +257,17 @@ this.getView().byId("FooterProfileContainer").addItem(oFooter);
             oRouter.navTo("home");
             MessageToast.show("Returned Home");
            
-          }
+          },
+          onNavViewPolicy: function () {
+            var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
+            oRouter.navTo("viewPolicy");
+           
+          },
+          onNavMyPolicy: function () {
+            var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
+            oRouter.navTo("myPolicy");
+          },
+
          
    
     });

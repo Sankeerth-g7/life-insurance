@@ -45,6 +45,18 @@ sap.ui.define([
            
           },
 
+          onNavMyProfile: function () {
+            var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
+            oRouter.navTo("myProfile");
+           
+          },
+
+          onNavMyPolicy: function () {
+            var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
+            oRouter.navTo("myPolicy");
+          },
+         
+
         loadPoliciesData: function () {
             var that = this;
 

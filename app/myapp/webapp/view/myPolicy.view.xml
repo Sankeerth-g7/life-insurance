@@ -1,47 +1,32 @@
 <mvc:View controllerName="myapp.controller.myPolicy"
     xmlns:mvc="sap.ui.core.mvc"
     xmlns="sap.m">
-    <Page title="User Policies">
-    
-<VBox id="navbarMyPoliciesContainer"/>
+    <Page class="customPage" showHeader="false">
 
+        <VBox id="navbarMyPoliciesContainer"/>
 
         <content>
-        <Text text="{policyModel}" />
-            <List id="applicationList" headerText="Policies" items="{policyModel>/userPolicies}">
+            <List id="applicationList" items="{policyModel>/userPolicies}" class="customCardList">
                 <items>
                     <ObjectListItem 
-                        title="{applicantName}" 
-                        number="{applicationId}" 
-                        numberUnit="Application ID"
-                        icon="sap-icon://person-placeholder">
-                        
+                        title="{policyModel>applicantName}" 
+                        number="{policyModel>applicationId}" 
+                        numberUnit="App ID"
+                        icon="sap-icon://person-placeholder"
+                        class="customCard"
+                        type="Active">
+
                         <attributes>
-                            <ObjectAttribute title="Aadhar" text="{applicantAadhar}" />
-                            <ObjectAttribute title="Address" text="{applicantAddress}" />
-                            <ObjectAttribute title="Age" text="{applicantAge}" />
-                            <ObjectAttribute title="Email" text="{applicantEmail}" />
-                            <ObjectAttribute title="Mobile" text="{applicantMobileNo}" />
-                            <ObjectAttribute title="Occupation" text="{applicantOccupation}" />
-                            <ObjectAttribute title="Application Date" text="{applicationDate}" />
-                            <ObjectAttribute title="Document Type" text="{documentType}" />
-                            <ObjectAttribute title="Status" text="{status}" />
+                            <ObjectAttribute title="Email" text="{policyModel>applicantEmail}" />
+                            <ObjectAttribute title="Mobile" text="{policyModel>applicantMobileNo}" />
+                            <ObjectAttribute title="Policy" text="{policyModel>policyDetails/policyName}" />
+                            <ObjectAttribute title="Coverage" text="{policyModel>policyDetails/coverageAmount}" />
+                            <ObjectAttribute title="Premium" text="{policyModel>policyDetails/premiumAmount}" />
                         </attributes>
 
                         <firstStatus>
-                            <ObjectStatus title="Policy Name" text="{policyDetails/policyName}" state="Success"/>
+                            <ObjectStatus text="{policyModel>status}" class="statusIndicator"/>
                         </firstStatus>
-                        <secondStatus>
-                            <ObjectStatus title="Policy Type" text="{policyDetails/policyType}" state="None"/>
-                        </secondStatus>
-
-                        <attributes>
-                            <ObjectAttribute title="Coverage Amount" text="{policyDetails/coverageAmount}" />
-                            <ObjectAttribute title="Premium Amount" text="{policyDetails/premiumAmount}" />
-                            <ObjectAttribute title="Policy Description" text="{policyDetails/policyDescription}" />
-                            <ObjectAttribute title="Policy Start Date" text="{policyDetails/startDate}" />
-                            <ObjectAttribute title="Policy Term Length" text="{policyDetails/termLength}" />
-                        </attributes>
                     </ObjectListItem>
                 </items>
             </List>

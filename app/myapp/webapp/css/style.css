@@ -523,3 +523,75 @@
     text-align: center !important;
     color:white !important;
    }
+
+
+
+
+   /* mypolicies styles  starts here */
+
+/* Page Background */
+.customPage {
+    background-color: #f4f6f8;
+    font-family: "72", "72full", Arial, sans-serif;
+}
+
+/* Navbar Container */
+.customNavbar {
+    margin: 1rem;
+    padding: 1rem;
+}
+
+/* Card List Layout */
+.customCardList {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    padding: 1rem;
+    background: transparent;
+    border: none;
+}
+
+/* Card Styling */
+.customCard {
+    background-color: #ffffff;
+    border-radius: 14px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+    padding: 1.5rem;
+    width: calc(50% - 1rem);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+    border-left: 6px solid transparent;
+}
+
+.customCard:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 10px 24px rgba(0, 0, 0, 0.15);
+}
+
+/* Status-Based Background Colors */
+.customCard .statusIndicator::before {
+    content: '';
+    display: none;
+}
+
+.customCard .statusIndicator[text="Approved"] {
+    background-color: #e8f5e9;
+    border-left-color: #2e7d32;
+}
+
+.customCard .statusIndicator[text="Pending"] {
+    background-color: #fffde7;
+    border-left-color: #f9a825;
+}
+
+.customCard .statusIndicator[text="Rejected"] {
+    background-color: #ffebee;
+    border-left-color: #c62828;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .customCard {
+        width: 100%;
+    }
+}

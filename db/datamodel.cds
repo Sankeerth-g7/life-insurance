@@ -7,7 +7,12 @@ entity User {
     username: String;
     password: String;
     role: String;
+    failedAttempts: Integer;
+    lastFailedAttempt: DateTime;
+    isLocked: String;
+    lockUntil: DateTime;
 }
+
 
 entity Policies {
     key policyId: String;

@@ -13,8 +13,8 @@ sap.ui.define([
         var url = "/odata/v2/my/";
         this.oModel = new ODataModel(url, true);
         this.getView().setModel(this.oModel);
-  var oHeader = sap.ui.xmlfragment("myapp.view.fragments.CustomHeader", this);
-    this.getView().byId("navbarLoginContainer").addItem(oHeader);
+ var oHeader = sap.ui.xmlfragment("myapp.view.fragments.CustomHeader", this);
+ this.getView().byId("navbarLoginContainer").addItem(oHeader);
 
 // var oFooter = sap.ui.xmlfragment("myapp.view.fragments.CustomFooter", this);
 // this.getView().byId("FooterLoginContainer").addItem(oFooter);
@@ -25,7 +25,6 @@ sap.ui.define([
         var oView = this.getView();
         var input = oView.byId("emailInput").getValue(); // Can be email or username
         var password = oView.byId("passwordInput").getValue();
-        var emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     
         if (!input) {
             MessageToast.show("Please enter your email or username.");
@@ -43,7 +42,6 @@ sap.ui.define([
             oView.byId("passwordInput").setValueState("None");
         }
     
-        // Create filters for email and username
         var oFilterEmail = new sap.ui.model.Filter("email", sap.ui.model.FilterOperator.EQ, input);
         var oFilterUsername = new sap.ui.model.Filter("username", sap.ui.model.FilterOperator.EQ, input);
         var oCombinedFilter = new sap.ui.model.Filter({
@@ -53,7 +51,6 @@ sap.ui.define([
     
         var that = this;
     
-        // Read from the model with filters
         this.oModel.read("/users", {
             filters: [oCombinedFilter],
             success: function (oData) {
@@ -63,12 +60,50 @@ sap.ui.define([
                 }
     
                 var user = oData.results[0];
+                var now = new Date();
+    
+                if (user.isLocked && new Date(user.lockUntil) > now) {
+                    MessageToast.show("Account is locked. Try again later.");
+                    return;
+                }
+    
                 if (user.password === password) {
-                    MessageToast.show("Login successful!");
-                    var oRouter = sap.ui.core.UIComponent.getRouterFor(that);
-                    oRouter.navTo("home");
+                    user.failedAttempts = 0;
+                    user.isLocked = false;
+                    user.lockUntil = null;
+                    user.lastFailedAttempt = null;
+    
+                    that.oModel.update("/users(" + user.userId + ")", user, {
+                        success: function () {
+                            MessageToast.show("Login successful!");
+                            var oRouter = sap.ui.core.UIComponent.getRouterFor(that);
+                            oRouter.navTo("home");
+                        },
+                        error: function () {
+                            var oRouter = sap.ui.core.UIComponent.getRouterFor(that);
+                            oRouter.navTo("home")
+                            MessageToast.show("Login succeeded");
+                        }
+                    });
                 } else {
-                    MessageToast.show("Incorrect password.");
+                    user.failedAttempts = (user.failedAttempts || 0) + 1;
+                    user.lastFailedAttempt = now.toISOString();
+    
+                    if (user.failedAttempts >= 3) {
+                        user.isLocked = true;
+                        var lockUntil = new Date();
+                        lockUntil.setHours(lockUntil.getHours() + 1);
+                        user.lockUntil = lockUntil.toISOString();
+                        MessageToast.show("Account locked due to multiple failed attempts. Try again in 1 hour.");
+                    } else {
+                        MessageToast.show("Incorrect password.");
+                    }
+    
+                    that.oModel.update("/users(" + user.userId + ")", user, {
+                        error: function () {
+                            MessageToast.show("Failed to update login attempt.");
+                        }
+                    });
                 }
             },
             error: function () {
@@ -76,6 +111,7 @@ sap.ui.define([
             }
         });
     },
+    
     
     
     onRegister: function () {
@@ -116,8 +152,12 @@ sap.ui.define([
             phone: phone,
             username: username,
             password: password,
-            role: "User"
-        };
+            role: "User",
+            failedAttempts: 0,
+            lastFailedAttempt: null,
+            isLocked: "false",
+            lockUntil: null
+        };        
         this.oModel.create("/users", oData, {
             success: function () {
                 MessageToast.show("Registration successful!");

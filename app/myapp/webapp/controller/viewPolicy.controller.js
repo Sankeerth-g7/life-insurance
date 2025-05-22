@@ -17,8 +17,8 @@ sap.ui.define([
 
             this.loadPoliciesData();
             
-  var oHeader = sap.ui.xmlfragment("myapp.view.fragments.CustomHeader", this);
-    this.getView().byId("navBarPolicyContainer").addItem(oHeader);
+            var oHeader = sap.ui.xmlfragment("myapp.view.fragments.CustomHeader", this);
+            this.getView().byId("navBarPolicyContainer").addItem(oHeader);
 
         },
 
@@ -47,7 +47,7 @@ sap.ui.define([
             var oPolicy = oBindingContext.getObject();
             var oView = this.getView();
             var oRouter = sap.ui.core.UIComponent.getRouterFor(oView);
-            oRouter.navTo("profile");
+            oRouter.navTo("myprofile");
             
         }
     });

@@ -6,7 +6,7 @@ sap.ui.define([
 ], (Controller, MessageBox,MessageToast, JSONModel) => {
     "use strict";
  
-    return Controller.extend("myapp.controller.profile", {
+    return Controller.extend("myapp.controller.myprofile", {
       onInit() {
  
         // Initialize the model

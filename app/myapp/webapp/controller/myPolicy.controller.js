@@ -6,11 +6,11 @@ sap.ui.define([
 ], (Controller, JSONModel, MessageToast, ODataModel) => {
     "use strict";
 
-    return Controller.extend("myapp.controller.myPolicies", {
+    return Controller.extend("myapp.controller.myPolicy", {
         onInit() {
             
   var oHeader = sap.ui.xmlfragment("myapp.view.fragments.CustomHeader", this);
-    this.getView().byId("navbarMyPoliciesContainer").addItem(oHeader);
+    this.getView().byId("navbarmyPolicyContainer").addItem(oHeader);
 
             var url = "/odata/v2/my/";
             this.oModel = new ODataModel(url, true);

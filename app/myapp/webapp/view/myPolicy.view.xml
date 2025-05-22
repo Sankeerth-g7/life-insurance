@@ -1,9 +1,9 @@
-<mvc:View controllerName="myapp.controller.myPolicies"
+<mvc:View controllerName="myapp.controller.myPolicy"
     xmlns:mvc="sap.ui.core.mvc"
     xmlns="sap.m">
     <Page title="User Policies">
     
-<VBox id="navbarMyPoliciesContainer "/>
+    <VBox id="navbarmyPolicyContainer "/>
 
         <content>
         <Text text="{policyModel}" />

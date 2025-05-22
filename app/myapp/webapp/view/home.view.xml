@@ -3,18 +3,15 @@
     xmlns="sap.m"
     xmlns:layout="sap.ui.layout">
 
-<Page title="Ltimindtree" class="fullPageBackground">
+<Page  showHeader="false"  class="fullPageBackground">
 
-<VBox id="navbarHomeContainer"/>
-
-
+<VBox id="navbarhomeContainer"/>
 
     <VBox class="sapUiSmallMargin">
     <Text text="Welcome to the LTI Life Insurance Portal!" class="welcomeText"/>
     </VBox>
 <!-- Carousel and Text Side-by-Side -->
     <HBox class="carouselTextContainer" >
-        <!-- Left: Carousel -->
         <Carousel id="imageCarousel" height="600px" width="1350px" loop="true"  class="imageCarousel">
         <pages>
         <Panel  class="carouselItem">
@@ -34,8 +31,6 @@
     
 
 </HBox>
-
-<!-- Footer -->
     <VBox class="footerContainer">
     <HBox justifyContent="Center" class="footerLinksBox">
         <HBox justifyContent="SpaceAround" width="80%" class="footerLinks">

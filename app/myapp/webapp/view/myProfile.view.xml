@@ -1,5 +1,5 @@
 <mvc:View
-    controllerName="myapp.controller.profile"
+    controllerName="myapp.controller.myprofile"
     xmlns:mvc="sap.ui.core.mvc"
     displayBlock="true"
     xmlns="sap.m"
@@ -9,7 +9,7 @@
     xmlns:f="sap.ui.layout.form"
     >
     <Page id="LApage" showHeader="true" enableScrolling="true" class="customPage">
-    <VBox id="navbarProfileContainer"/>
+    <VBox id="navbarmyProfileContainer"/>
      <customHeader>
       <Bar design="Header" class="box">
       <contentLeft>

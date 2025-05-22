@@ -124,14 +124,14 @@
     },
   
       {
-        "name": "profile",
-        "pattern": "profile",
-        "target": ["Targetprofile"]
+        "name": "myProfile",
+        "pattern": "myProfile",
+        "target": ["TargetmyProfile"]
     },
     {
-      "name": "myPolicies",
-        "pattern": "myPolicies",
-        "target": ["TargetmyPolicies"]
+      "name": "myPolicy",
+        "pattern": "myPolicy",
+        "target": ["TargetmyPolicy"]
     }
       ],
       "targets": {
@@ -148,13 +148,13 @@
         "name": "viewPolicy"
     },
     
-        "Targetprofile": {
-      "id": "profile",
-      "name": "profile"
+        "TargetmyProfile": {
+      "id": "myProfile",
+      "name": "myProfile"
   },
-  "TargetmyPolicies": {
-    "id":"myPolicies",
-    "name": "myPolicies"
+  "TargetmyPolicy": {
+    "id":"myPolicy",
+    "name": "myPolicy"
   }
       }
     },

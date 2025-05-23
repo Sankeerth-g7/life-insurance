@@ -152,44 +152,44 @@ sap.ui.define([
             oFileUploader.click();
  
                 },
-        // onUpload: function () {
-        //     var file = this._file;
-        //     if(!file){
-        //       sap.m.MessageToast.show("Please choose a file first.");
-        //       return;
-        //     }
-        //     var filename = file.name;
-        //     var filesize = file.size;
-        //     var extension = filename.substr(filename.lastIndexOf('.')+1).toLowerCase();
-        //     console.log(extension);
+         onUpload: function () {
+             var file = this._file;
+             if(!file){
+               sap.m.MessageToast.show("Please choose a file first.");
+               return;
+             }
+             var filename = file.name;
+             var filesize = file.size;
+                 var extension = filename.substr(filename.lastIndexOf('.')+1).toLowerCase();
+             console.log(extension);
  
-        //     if(!["pdf", "jpeg", "png", "jpg"].includes(extension)) {
-        //       sap.m.MessageToast.show("Kindly upload only JPG, JPEG, PDF, and PNG files");
-        //       return;
+             if(!["pdf", "jpeg", "png", "jpg"].includes(extension)) {
+               sap.m.MessageToast.show("Kindly upload only JPG, JPEG, PDF, and PNG files");
+               return;
  
-        //     } else if (filesize > 2000000) {
-        //       sap.m.MessageToast.show("File size should not be more than 2MB.");
-        //       return;
-        //     }
+             } else if (filesize > 2000000) {
+               sap.m.MessageToast.show("File size should not be more than 2MB.");
+               return;
+             }
  
-        //     var reader = new FileReader();
-        //     reader.onload = function(e) {
-        //       var fileupArray = new Uint8Array(e.target.result);
-        //       this.fileData = fileupArray;
+             var reader = new FileReader();
+             reader.onload = function(e) {
+               var fileupArray = new Uint8Array(e.target.result);
+                    this.fileData = fileupArray;
  
-        //       //Convert Uint8Array to a string
-        //       var binaryString = Array.from(fileupArray, byte => String.fromCharCode(byte)).join('');
+               //Convert Uint8Array to a string
+               var binaryString = Array.from(fileupArray, byte => String.fromCharCode(byte)).join('');
  
-        //       // Convert binary string to Base64
-        //       var base64Stringfile = btoa(binaryString);
-        //       this.filebase64String = base64Stringfile;
-        //       console.log(this.filebase64String);
+               // Convert binary string to Base64
+               var base64Stringfile = btoa(binaryString);
+               this.filebase64String = base64Stringfile;
+               console.log(this.filebase64String);
  
-        //     }.bind(this);
-        //     reader.readAsArrayBuffer(file);
+             }.bind(this);
+             reader.readAsArrayBuffer(file);
  
  
-        // },
+         },
                
         onClear: function(){
             this.byId("enterApplicantName").setValue("");

@@ -17,7 +17,7 @@
       <Button id="homeLA" text="Home" press="onHome" class="mybuttonspacing"></Button>
       </contentLeft>
         <contentMiddle>
-        <Title text=" Insurance Loan" class="headerTitle" />
+        <Title text=" Insurance " class="headerTitle" />
         </contentMiddle>
         <contentRight>
           <Button id="logoutLA" text="Logout" press="onLogout" class="mybuttonspacing" />
@@ -74,7 +74,34 @@
                     </HBox>
                 </VBox>
  
+               <VBox class="customMargin" id="LAbox3">
+                <VBox class="customMargin">
+                <HBox alignItems="Center">
+                    <Label text="Upload Documents" required="true" class="customLabel" />
+                    <ComboBox id="selectDocumentType" width="100%" placeholder="Select Document Type" class="customInput" >
+                    <items>
+                    <core:ListItem text="JPEG" />
+                    <core:ListItem text="JPG" />
+                    <core:ListItem text="PDF" />
+                    </items>                  
+                    </ComboBox>
+                </HBox>
+                </VBox>
+                <HBox alignItems="Center" >
+                    <Label text="Images or Documents (Upload below 2mb)" required="true" class="documentLabel"/>
+                   
+                    <VBox >
+                    <Button id="chooseFileButton" text="Choose a file..." width="100%" class="customButton" press=".onChooseFile"/>
+                    <Input id="filePath" visible="true" editable="false" />
+                   
+                    <Button id="uploadDocumentsButton" text="Upload Documents" type="Accept"  width="100%" class="customButton" press=".onUpload"/>
+                    <Input id="insuranceId" visible="false" />
+ 
+                    </VBox>
+                </HBox>
+                </VBox>
                 
+
                 </VBox>
                 <VBox id="LAbox2" class="formContainer"  width="48%">
                <VBox class="customMargin">
@@ -89,9 +116,9 @@
                     <Input id="enterPanNo" placeholder="Enter Pan No" liveChange="panValidation"  class="customInput" />
                 </HBox>
                 </VBox>
-                
+               
  
-                
+               
                 <VBox class="customMargin">
                 <HBox alignItems="Center">
                     <Label id="LAlabel7" text="Enter the Applicant Age" required="true" class="customLabel"/>

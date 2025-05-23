@@ -26,7 +26,7 @@ entity Policies {
 }
 
 entity Applications {
-    key applicationId: String;
+    key applicationId: UUID;
     user: Association to one User;
     policy: Association to one Policies;
     applicantName: String;

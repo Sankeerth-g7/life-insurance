@@ -61,15 +61,25 @@ sap.ui.define([
     
                 var user = oData.results[0];
                 var now = new Date();
-    
-                if (user.isLocked && new Date(user.lockUntil) > now) {
+
+                var lockUntilDate = null;
+
+                if (user.lockUntil) {
+                    var lockUntilTimestamp = parseInt(user.lockUntil.match(/\d+/)[0], 10);
+                    lockUntilDate = new Date(lockUntilTimestamp);
+                }
+
+                console.log(user.isLocked, lockUntilDate, now, lockUntilDate && lockUntilDate > now);
+
+                if (user.isLocked === "true" && lockUntilDate && lockUntilDate > now) {
                     MessageToast.show("Account is locked. Try again later.");
                     return;
                 }
+
     
                 if (user.password === password) {
                     user.failedAttempts = 0;
-                    user.isLocked = false;
+                    user.isLocked = "false";
                     user.lockUntil = null;
                     user.lastFailedAttempt = null;
     
@@ -79,7 +89,8 @@ sap.ui.define([
                             var oRouter = sap.ui.core.UIComponent.getRouterFor(that);
                             oRouter.navTo("home");
                         },
-                        error: function () {
+                        error: function (oError) {
+                            console.log(oError)
                             var oRouter = sap.ui.core.UIComponent.getRouterFor(that);
                             oRouter.navTo("home")
                             MessageToast.show("Login succeeded");
@@ -90,14 +101,19 @@ sap.ui.define([
                     user.lastFailedAttempt = now.toISOString();
     
                     if (user.failedAttempts >= 3) {
-                        user.isLocked = true;
+                        user.isLocked = "true";
                         var lockUntil = new Date();
                         lockUntil.setHours(lockUntil.getHours() + 1);
-                        user.lockUntil = lockUntil.toISOString();
+                        console.log(lockUntil)
+                        user.lockUntil = lockUntil
+                        console.log(user.lockUntil,"qwertyuiuygtf")
                         MessageToast.show("Account locked due to multiple failed attempts. Try again in 1 hour.");
                     } else {
                         MessageToast.show("Incorrect password.");
                     }
+
+                    // console.log(user.lockUntil)
+                    console.log(user,"hereeee is userrrrr")
     
                     that.oModel.update("/users(" + user.userId + ")", user, {
                         error: function () {
@@ -157,7 +173,7 @@ sap.ui.define([
             lastFailedAttempt: null,
             isLocked: "false",
             lockUntil: null
-        };        
+        };
         this.oModel.create("/users", oData, {
             success: function () {
                 MessageToast.show("Registration successful!");

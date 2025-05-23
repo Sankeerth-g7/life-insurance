@@ -4,50 +4,135 @@ sap.ui.define([
     "sap/ui/model/odata/v2/ODataModel"
 ], function (Controller, MessageToast, ODataModel) {
     "use strict";
-
+ 
     return Controller.extend("myapp.controller.login", {
      onInit: function () {
         this._loginForm = this.byId("loginForm");
         this._registerForm = this.byId("registerForm");
-        
+       
         var url = "/odata/v2/my/";
         this.oModel = new ODataModel(url, true);
         this.getView().setModel(this.oModel);
  var oHeader = sap.ui.xmlfragment("myapp.view.fragments.CustomHeader", this);
  this.getView().byId("navbarLoginContainer").addItem(oHeader);
-
+ 
 // var oFooter = sap.ui.xmlfragment("myapp.view.fragments.CustomFooter", this);
 // this.getView().byId("FooterLoginContainer").addItem(oFooter);
-
+ 
     },
-    
+   
     onLoginPress: function () {
         var oView = this.getView();
-        var email = this.byId("emailInput").getValue();
-        var password = this.byId("passwordInput").getValue();
-        var emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-         if (!email) {
-            MessageToast.show("Please enter your email.");
-            this.byId("emailInput").setValueState("Error");
-            return;
-         } else if (!emailPattern.test(email)) {
-            MessageToast.show("Please enter a valid email.");
-            this.byId("emailInput").setValueState("Error");
+        var input = oView.byId("emailInput").getValue(); // Can be email or username
+        var password = oView.byId("passwordInput").getValue();
+   
+        if (!input) {
+            MessageToast.show("Please enter your email or username.");
+            oView.byId("emailInput").setValueState("Error");
             return;
         } else {
             oView.byId("emailInput").setValueState("None");
         }
-        MessageToast.show("Login successful!");
-        var oRouter = sap.ui.core.UIComponent.getRouterFor(oView);
-                oRouter.navTo("home");
-        
+   
+        if (!password) {
+            MessageToast.show("Please enter your password.");
+            oView.byId("passwordInput").setValueState("Error");
+            return;
+        } else {
+            oView.byId("passwordInput").setValueState("None");
+        }
+   
+        var oFilterEmail = new sap.ui.model.Filter("email", sap.ui.model.FilterOperator.EQ, input);
+        var oFilterUsername = new sap.ui.model.Filter("username", sap.ui.model.FilterOperator.EQ, input);
+        var oCombinedFilter = new sap.ui.model.Filter({
+            filters: [oFilterEmail, oFilterUsername],
+            and: false
+        });
+   
+        var that = this;
+   
+        this.oModel.read("/users", {
+            filters: [oCombinedFilter],
+            success: function (oData) {
+                if (oData.results.length === 0) {
+                    MessageToast.show("User not found.");
+                    return;
+                }
+   
+                var user = oData.results[0];
+                var now = new Date();
+ 
+                var lockUntilDate = null;
+ 
+                if (user.lockUntil) {
+                    var lockUntilTimestamp = parseInt(user.lockUntil.match(/\d+/)[0], 10);
+                    lockUntilDate = new Date(lockUntilTimestamp);
+                }
+ 
+                console.log(user.isLocked, lockUntilDate, now, lockUntilDate && lockUntilDate > now);
+ 
+                if (user.isLocked === "true" && lockUntilDate && lockUntilDate > now) {
+                    MessageToast.show("Account is locked. Try again later.");
+                    return;
+                }
+ 
+   
+                if (user.password === password) {
+                    user.failedAttempts = 0;
+                    user.isLocked = "false";
+                    user.lockUntil = null;
+                    user.lastFailedAttempt = null;
+   
+                    that.oModel.update("/users(" + user.userId + ")", user, {
+                        success: function () {
+                            MessageToast.show("Login successful!");
+                            var oRouter = sap.ui.core.UIComponent.getRouterFor(that);
+                            oRouter.navTo("home");
+                        },
+                        error: function (oError) {
+                            console.log(oError)
+                            var oRouter = sap.ui.core.UIComponent.getRouterFor(that);
+                            oRouter.navTo("home")
+                            MessageToast.show("Login succeeded");
+                        }
+                    });
+                } else {
+                    user.failedAttempts = (user.failedAttempts || 0) + 1;
+                    user.lastFailedAttempt = now.toISOString();
+   
+                    if (user.failedAttempts >= 3) {
+                        user.isLocked = "true";
+                        var lockUntil = new Date();
+                        lockUntil.setHours(lockUntil.getHours() + 1);
+                        console.log(lockUntil)
+                        user.lockUntil = lockUntil
+                        console.log(user.lockUntil,"qwertyuiuygtf")
+                        MessageToast.show("Account locked due to multiple failed attempts. Try again in 1 hour.");
+                    } else {
+                        MessageToast.show("Incorrect password.");
+                    }
+ 
+                    // console.log(user.lockUntil)
+                    console.log(user,"hereeee is userrrrr")
+   
+                    that.oModel.update("/users(" + user.userId + ")", user, {
+                        error: function () {
+                            MessageToast.show("Failed to update login attempt.");
+                        }
+                    });
+                }
+            },
+            error: function () {
+                MessageToast.show("Error while logging in. Please try again.");
+            }
+        });
     },
-    
-    
-    
+   
+   
+   
     onRegister: function () {
         var oView = this.getView();
-    
+   
         var fullName = oView.byId("fullName").getValue();
         var email = oView.byId("registerEmail").getValue();
         var phone = oView.byId("mobileNumber").getValue();
@@ -121,12 +206,12 @@ sap.ui.define([
                 enabled: false,
                 press: function () {
                     var sEmail = sap.ui.getCore().byId("forgotEmailInput").getValue();
-                    
+                   
                     if (!sEmail) {
                         sap.m.MessageToast.show("Please enter a valid email.");
                         return;
                     }
-    
+   
                     // Simulate backend call
                     $.ajax({
                         url: "/api/reset-password",
@@ -140,7 +225,7 @@ sap.ui.define([
                             sap.m.MessageToast.show("Error sending reset link.");
                         }
                     });
-    
+   
                     oDialog.close();
                 }
             }),
@@ -151,19 +236,19 @@ sap.ui.define([
                 }
             })
         });
-    
+   
         oDialog.open();
     },
-    
-
-
-
-
-
-
-
+   
+ 
+ 
+ 
+ 
+ 
+ 
+ 
 // password visibility
-
+ 
     onToggleForm: function () {
         var isLoginVisible = this._loginForm.getVisible();
         this._loginForm.setVisible(!isLoginVisible);
@@ -172,44 +257,42 @@ sap.ui.define([
     onToggleLoginPasswordVisibility: function (oEvent) {
     this._togglePasswordVisibility("passwordInput", oEvent);
 },
-
+ 
 onToggleRegisterPasswordVisibility: function (oEvent) {
     this._togglePasswordVisibility("registerPassword", oEvent);
 },
-
+ 
 onToggleConfirmPasswordVisibility: function (oEvent) {
     this._togglePasswordVisibility("confirmPassword", oEvent);
 },
-
+ 
 _togglePasswordVisibility: function (sInputId, oEvent) {
     var oInput = this.byId(sInputId);
     var oButton = oEvent.getSource();
     var bIsPassword = oInput.getType() === "Password";
-
+ 
     oInput.setType(bIsPassword ? "Text" : "Password");
     oButton.setIcon(bIsPassword ? "sap-icon://hide" : "sap-icon://show");
 },
 onToggleLoginPasswordVisibility: function () {
     this._togglePasswordVisibility("passwordInput");
 },
-
+ 
 onToggleRegisterPasswordVisibility: function () {
     this._togglePasswordVisibility("registerPassword");
 },
-
+ 
 onToggleConfirmPasswordVisibility: function () {
     this._togglePasswordVisibility("confirmPassword");
 },
-
+ 
 _togglePasswordVisibility: function (sInputId) {
     var oInput = this.byId(sInputId);
     var bIsPassword = oInput.getType() === "Password";
     oInput.setType(bIsPassword ? "Text" : "Password");
     oInput.setValueHelpIconSrc(bIsPassword ? "sap-icon://hide" : "sap-icon://show");
 }
-
-
+ 
+ 
     });
 });
-
-

@@ -12,8 +12,8 @@ sap.ui.define([
  var oHeader = sap.ui.xmlfragment("myapp.view.fragments.CustomHeader", this);
  this.getView().byId("navbarhomeContainer").addItem(oHeader);
 
-            var oFooter = sap.ui.xmlfragment("myapp.view.fragments.CustomFooter", this);
-            this.getView().byId("FooterHomeContainer").addItem(oFooter);
+        var oFooter = sap.ui.xmlfragment("myapp.view.fragments.CustomFooter", this);
+        this.getView().byId("FooterHomeContainer").addItem(oFooter);
 
 
             setInterval(function () {
@@ -22,9 +22,8 @@ sap.ui.define([
                 oCarousel.setActivePage(aPages[iCurrentPage]);
             }, 3000); // 3000 ms = 3 seconds
         },
-        
-        
-    onNavHome: function () {
+
+        onNavHome: function () {
         var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
         oRouter.navTo("home")
         //this.getOwnerComponent().getRouter().navTo("Home");

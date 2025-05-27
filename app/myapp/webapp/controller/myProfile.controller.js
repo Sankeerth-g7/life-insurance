@@ -12,7 +12,14 @@ sap.ui.define([
         // Initialize the model
         var oModel = new JSONModel("odata/v4/my/applications");
         this.getView().setModel(oModel);
- 
+        
+        var oHeader = sap.ui.xmlfragment("myapp.view.fragments.CustomHeader", this);
+        this.getView().byId("navbarmyProfileContainer").addItem(oHeader);
+//   var oHeader = sap.ui.xmlfragment("myapp.view.fragments.CustomHeader", this);
+//     this.getView().byId("navbarProfileContainer").addItem(oHeader);
+
+        var oFooter = sap.ui.xmlfragment("myapp.view.fragments.CustomFooter", this);
+        this.getView().byId("FooterProfileContainer").addItem(oFooter);
      
     },
     onSubmit: function() {
@@ -300,7 +307,6 @@ sap.ui.define([
           },
           
           onLogout: function () {
-       
             var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
             oRouter.navTo("dashboard");
             MessageToast.show("Logged out!");
@@ -314,7 +320,5 @@ sap.ui.define([
             MessageToast.show("Returned Home");
            
           }
-         
-   
     });
 });

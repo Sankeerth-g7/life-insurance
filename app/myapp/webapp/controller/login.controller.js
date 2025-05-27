@@ -13,12 +13,13 @@ sap.ui.define([
         var url = "/odata/v2/my/";
         this.oModel = new ODataModel(url, true);
         this.getView().setModel(this.oModel);
- var oHeader = sap.ui.xmlfragment("myapp.view.fragments.CustomHeader", this);
- this.getView().byId("navbarLoginContainer").addItem(oHeader);
- 
-// var oFooter = sap.ui.xmlfragment("myapp.view.fragments.CustomFooter", this);
-// this.getView().byId("FooterLoginContainer").addItem(oFooter);
- 
+        
+ //var oHeader = sap.ui.xmlfragment("myapp.view.fragments.CustomHeader", this);
+ //this.getView().byId("navbarLoginContainer").addItem(oHeader);
+
+    // var oFooter = sap.ui.xmlfragment("myapp.view.fragments.CustomFooter", this);
+    // this.getView().byId("FooterLoginContainer").addItem(oFooter);
+
     },
    
     onLoginPress: function () {

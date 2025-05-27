@@ -1,22 +1,15 @@
 .darkBackground {
     background-color: #ffffe3;
-    min-height: 100vh;
-    padding: 40px 0;
 }
- 
-.left-img {
-   margin: left;
-}
- 
  
 .pageTitle {
     font-size: 30px;
     font-weight: bold;
+   
     color: #808034;
     margin-bottom: 5px;
     font-family: 'Times New Roman', Times, serif, sans-serif;
 }
- 
  
 .loginContainer {
     align-items: center;
@@ -27,7 +20,7 @@
     width: 400px;
     height: 600px;
     transition: opacity 0.4s ease-in-out;
-    background-color: #2c3e50;
+    background-color: #dbd4ff;
     padding: 50px;
     border-radius: 12px;
     border: 2px solid #eaf1f1;
@@ -37,8 +30,7 @@
     flex-direction: column;
     justify-content: center;
 }
- 
- 
+
 .fadeIn {
     animation: fadeIn 0.4s ease-in-out;
 }
@@ -71,7 +63,7 @@
     height: 2.5rem;
     font-size: 1rem;
 }
- 
+
 .checkbox {
     margin: 15px 0;
     font-size: 0.95rem;
@@ -97,13 +89,251 @@
     margin-left: 2px;
 }
  
- 
 ::placeholder {
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     color: #6c757d;
     font-size: 1rem;
     opacity: 0.8; /* Slight transparency for a modern touch */
 }
+ 
+.sapUiSmallMargin {
+    height: 40px !important;
+    font-size: 20px !important;
+    padding-left: 0.2rem !important;
+    padding-top: 1rem !important;
+    padding-bottom: 1.2rem !important;
+}
+
+.customToolbarHeight {
+    height: 3rem !important;
+    padding-top: 1rem !important;
+    padding-bottom: 0.2rem !important;
+}
+
+.logoTitleBox {
+    justify-content: center;
+    gap: 1px;
+    padding-left: 0.1rem;
+    align-items: center;
+}
+
+.logoTitleText {
+font-size: 20px;
+font-weight: bold;
+margin-left: 4px;
+color: #8d106e !important; /* Dark purple */
+padding-left: 0.2rem;
+padding-right: 0.1rem;
+padding-top: 1.2rem;
+padding-bottom: 1rem;
+line-height: 1.5;
+}
+ 
+.navButtonsBox {
+color: rgb(218, 134, 134);
+padding-left:10rem;
+margin-left: 6px;
+font-size: 1.3rem;
+gap: 4rem;
+}
+   
+ 
+.fullPageBackground {
+    background-color: #7c4166c2; /* Light background for the whole page */
+    }
+ 
+    .welcomeText {
+        color: white;
+        font-size: 1.2rem;
+        font-weight: bold;
+        text-align: center;
+    }
+   
+    .welcomeBox {
+        background-color: rgb(180, 40, 40); /* Light blue background */
+        padding: 10px;
+    }
+    .carouselItem {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 100%;
+    }
+ 
+    .imageCarousel {
+        width: 100%;
+        height:100%;
+        object-fit: cover;
+        transition: opacity 1s ease-in-out;
+ 
+    }
+ 
+    .carouselCaption {
+        position: absolute;
+        top: 70%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        color: white;
+        font-size: 22px;
+        font-weight: bold;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+    }
+   
+    .footerContainer {
+        background-color: rgb(201, 226, 238);
+        color: rgb(31, 3, 3); /* This will make the text white */
+        padding: 10px ;
+      }
+     
+      .footerLink {
+        color: rgb(30, 44, 194) !important; /* Ensures links and copyright text are white */
+      }
+     
+      .footerCopyright {
+        color: rgb(2, 4, 26) !important; /* Ensures links and copyright text are white */
+      }
+     
+      .footerLinksBox, .footerCopyrightBox {
+        background-color: rgb(207, 227, 240);
+      }
+ 
+     
+.quoteSection {
+    position: relative;
+    width: 100%;
+    height: 400px;
+    }
+   
+.quoteImage {
+    width: 100%;
+    height: 100%;
+    }
+ 
+   
+.quoteOverlayText {
+    position: absolute;
+    bottom: 20%;
+    left: 40%;
+    transform: translate(-50%, -70%);
+    color: rgb(26, 2, 2);
+    font-size: 18px;
+    font-weight: bold;
+    text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.7);
+}
+ 
+ 
+ 
+ 
+   
+   
+   
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+.sapUiSmallMargin {
+    height: 40px !important;
+    font-size: 20px !important;
+    padding-left: 0.2rem !important;
+    padding-top: 1rem !important;
+    padding-bottom: 1.2rem !important;
+ 
+}
+ 
+ 
+.customToolbarHeight {
+    height: 3rem !important;
+    padding-top: 1rem !important;
+    padding-bottom: 0.2rem !important;
+}
+
+ 
+    .carouselImage {
+        width: 150%;
+        height:100%;
+        object-fit: cover;
+        transition: opacity 1s ease-in-out;
+ 
+    }
+ 
+    .carouselCaption {
+        position: absolute;
+        top: 70%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        color: white;
+        font-size: 22px;
+        font-weight: bold;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+    }
+ 
+ 
+ 
+ 
+    .footerContainer {
+        background-color: rgb(201, 226, 238);
+        color: rgb(31, 3, 3); /* This will make the text white */
+        padding: 10px ;
+      }
+     
+      .footerLink {
+        color: rgb(30, 44, 194) !important; /* Ensures links and copyright text are white */
+      }
+     
+      .footerCopyright {
+        color: rgb(2, 4, 26) !important; /* Ensures links and copyright text are white */
+      }
+     
+      .footerLinksBox, .footerCopyrightBox {
+        background-color: rgb(207, 227, 240);
+      }
+ 
+     
+.quoteSection {
+    position: relative;
+    width: 100%;
+    height: 400px;
+    }
+   
+.quoteImage {
+    width: 100%;
+    height: 100%;
+    }
+ 
+   
+.quoteOverlayText {
+    position: absolute;
+    bottom: 20%;
+    left: 40%;
+    transform: translate(-50%, -70%);
+    color: rgb(26, 2, 2);
+    font-size: 18px;
+    font-weight: bold;
+    text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.7);
+}
+ 
+ 
+ 
+ 
+   
+   
+   
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
  
 .policyCard {
     width: 90%;
@@ -112,7 +342,7 @@
     margin: 20px auto;
     border-radius: 12px;
     box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
-    background-color: #f0f4f8;
+    background-color:#dbd4ff;
     transition: transform 0.3s ease;
 }
  
@@ -126,9 +356,18 @@
 }
  
 .cardTitle {
+    font-size: 1.5rem;
     font-weight: bold;
-    color: #2c3e50;
+    color: #808034; /* A warm highlight color */
+    margin-bottom: 10px;
+    font-family: "Georgia", "Times New Roman", serif;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.4);
+    letter-spacing: 0.5px;
 }
+.viewpolicypg{
+    background-color: #ffffe3;
+}
+ 
 .bgWholeLife {
     background-image: url("images/life-icon.png");
     background-size: cover;
@@ -138,14 +377,7 @@
     color: white;
 }
  
-.bgTerm {
-    background-image: url("images/term-icon.png");
-    background-size: cover;
-    background-position: center;
-    border-radius: 10px;
-    padding: 16px;
-    color: white;
-}
+
  
 .bgEndowment {
     background-image: url("images/endowment-icon.png");
@@ -161,7 +393,181 @@
     border-radius: 10px;
     padding: 16px;
 }
+.highlightText {
+    font-size: 1rem;
+    font-weight: 500;
+    color: #274479;
+    background-color: rgba(255, 255, 255, 0.05);
+    padding: 6px 10px;
+    border-radius: 6px;
+    margin-bottom: 8px;
+    font-family: "Segoe UI", "Roboto", sans-serif;
+    line-height: 1.4;
+}
+.buttoncolor{
+  color: #808034;
+}
  
+ 
+/* === Header Bar Styling === */
+.box {
+    background-color: #00264d !important;
+    color: white !important;
+  }
+   
+  .box .sapMBarLeft,
+  .box .sapMBarRight,
+  .box .sapMBarMiddle{
+  text-align: center !important;
+  }
+  .box .sapMBtnInner {
+    color: white !important;
+   
+  }
+   
+  .box .sapMBtnInner {
+    background-color: transparent !important;
+  }
+ 
+  .mybuttonspacing{
+    margin-right: 60px;
+}
+.customMargin {
+    margin-bottom: 25px;
+  }
+  .formContainer {
+    margin-bottom: 25px;
+  }
+  .customInput .sapMInputBaseContentWrapper::placeholder {
+    color: blue !important;
+    opacity: 1;
+  }
+  .customLabel {
+    width:180px;
+   }
+ 
+   .subHeader{
+    text-align: center !important;
+    font-size: large !important;
+   }
+   .headerTitle{
+    text-align: center !important;
+    color:white !important;
+   }
+ 
+ 
+ 
+ 
+/* mypolicies styles - revised version */
+ 
+/* Page Background */
+.customPage {
+    background-color: #f4f6f8;
+    font-family: "72", "72full", Arial, sans-serif;
+}
+ 
+/* Navbar Container */
+.customNavbar {
+    margin: 1rem;
+    padding: 1rem;
+}
+ 
+/* Card List Layout */
+ 
+/* Horizontal Card List Layout */
+.customCardList {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap; /* Prevent wrapping to new lines */
+    gap: 1.5rem;
+    padding: 1rem;
+    overflow-x: auto; /* Enable horizontal scrolling */
+    background: transparent;
+    border: none;
+    scroll-snap-type: x mandatory;
+}
+ 
+/* Card Styling */
+.customCard {
+    background-color: #ffffff;
+    border-radius: 14px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+    padding: 1.5rem;
+    min-width: 320px;
+    max-width: 400px;
+    flex: 0 0 auto; /* Prevent shrinking */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+    border-left: 6px solid transparent;
+    scroll-snap-align: start;
+    overflow-wrap: break-word;
+    word-break: break-word;
+}
+ 
+/* Hover Effect */
+.customCard:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 10px 24px rgba(0, 0, 0, 0.15);
+}
+ 
+/* Status-Based Background Colors */
+.customCard .statusIndicator::before {
+    content: '';
+    display: none;
+}
+ 
+.customCard .statusIndicator[text="Approved"] {
+    background-color: #e8f5e9;
+    border-left-color: #2e7d32;
+}
+ 
+.customCard .statusIndicator[text="Pending"] {
+    background-color: #fffde7;
+    border-left-color: #f9a825;
+}
+ 
+.customCard .statusIndicator[text="Rejected"] {
+    background-color: #ffebee;
+    border-left-color: #c62828;
+}
+ 
+ 
+/* Responsive Design */
+@media (max-width: 1024px) {
+    .customCard {
+        flex: 1 1 100%;
+    }
+}
+
+
+ 
+.left-img {
+   margin: left;
+}
+ 
+ 
+
+ 
+ 
+.loginContainer {
+    align-items: center;
+    justify-content: center;
+}
+
+
+ 
+.bgTerm {
+    background-image: url("images/term-icon.png");
+    background-size: cover;
+    background-position: center;
+    border-radius: 10px;
+    padding: 16px;
+    color: white;
+}
+ 
+
+ 
+
 /* === Header Bar Styling === */
 .box {
     background-color: #dbd4ff !important;

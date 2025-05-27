@@ -4,9 +4,7 @@
     xmlns="sap.m"
     xmlns:core="sap.ui.core">
 
-    <Page showHeader="false" class="
-var userId = oUserModel.getProperty("/userId");
-">
+    <Page showHeader="false" class="">
         <VBox id="navbarMyPolicyContainer"/>
 
         <FlexBox

@@ -332,5 +332,10 @@ sap.ui.define([
           var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
           oRouter.navTo("myPolicy");
         },
+        onNavViewPolicy: function () {
+          var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
+          oRouter.navTo("viewPolicy");
+         
+        },
     });
 });

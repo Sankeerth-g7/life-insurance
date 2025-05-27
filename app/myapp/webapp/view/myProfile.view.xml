@@ -8,7 +8,7 @@
     xmlns:unified="sap.ui.unified"
     xmlns:f="sap.ui.layout.form"
     >
-    <Page id="LApage" showHeader="true" enableScrolling="true" class="customPage1">
+    <Page id="LApage" showHeader="false" enableScrolling="true" class="customPage1">
     <VBox id="navbarmyProfileContainer"/>
     
      

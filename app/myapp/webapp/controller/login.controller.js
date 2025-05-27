@@ -69,7 +69,7 @@ sap.ui.define([
                     lockUntilDate = new Date(lockUntilTimestamp);
                 }
  
-                console.log(user.isLocked, lockUntilDate, now, lockUntilDate && lockUntilDate > now);
+                // console.log(user.isLocked, lockUntilDate, now, lockUntilDate && lockUntilDate > now);
  
                 if (user.isLocked === "true" && lockUntilDate && lockUntilDate > now) {
                     MessageToast.show("Account is locked. Try again later.");
@@ -88,12 +88,14 @@ sap.ui.define([
                             MessageToast.show("Login successful!");
                             var oRouter = sap.ui.core.UIComponent.getRouterFor(that);
                             oRouter.navTo("home");
+                            var oUserModel = new sap.ui.model.json.JSONModel({ userId: user.userId });
+                            that.getOwnerComponent().setModel(oUserModel, "userModel");
                         },
                         error: function (oError) {
                             console.log(oError)
-                            var oRouter = sap.ui.core.UIComponent.getRouterFor(that);
-                            oRouter.navTo("home")
-                            MessageToast.show("Login succeeded");
+                            // var oRouter = sap.ui.core.UIComponent.getRouterFor(that);
+                            // oRouter.navTo("home")
+                            MessageToast.show("Some Error occured please try later");
                         }
                     });
                 } else {
@@ -179,6 +181,8 @@ sap.ui.define([
                 MessageToast.show("Registration successful!");
                 var oRouter = sap.ui.core.UIComponent.getRouterFor(oView);
                 oRouter.navTo("home");
+
+
             },
             error: function (oError) {
                 var errorMessage = oError.responseText ? JSON.parse(oError.responseText).error.message : "Unexpected error occurred.";

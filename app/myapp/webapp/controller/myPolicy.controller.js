@@ -19,9 +19,14 @@ sap.ui.define([
             var url = "/odata/v2/my/";
             this.oModel = new ODataModel(url, true);
             this.getView().setModel(this.oModel);
+            var oUserModel = this.getOwnerComponent().getModel("userModel");
+            var userId = oUserModel.getProperty("/userId");
+            // console.log(userId)
+
+
 
             this.oModel.attachMetadataLoaded(() => {
-                this.getUserPolicyDetails("1"); // Ensure metadata is loaded before calling API
+                this.getUserPolicyDetails(userId);
             });
         },
 
@@ -79,11 +84,11 @@ sap.ui.define([
                             policyDetails: application.policy
                         }));
 
-                        console.log(userPolicies)
+                        // console.log(userPolicies)
 
                         const policyModel = new JSONModel({ userPolicies });
                         this.getView().setModel(policyModel, "policyModel");
-                        console.log(this.getView().getModel("policyModel").getProperty("/userPolicies"));
+                        // console.log(this.getView().getModel("policyModel").getProperty("/userPolicies"));
 
                     } else {
                         MessageToast.show("No policy details found for the given user.");

@@ -9,8 +9,8 @@ sap.ui.define([
         var oCarousel = this.byId("imageCarousel");
         var iCurrentPage = 0;
         
-  var oHeader = sap.ui.xmlfragment("myapp.view.fragments.CustomHeader", this);
-    this.getView().byId("navbarhomeContainer").addItem(oHeader);
+ var oHeader = sap.ui.xmlfragment("myapp.view.fragments.CustomHeader", this);
+ this.getView().byId("navbarhomeContainer").addItem(oHeader);
 
             var oFooter = sap.ui.xmlfragment("myapp.view.fragments.CustomFooter", this);
             this.getView().byId("FooterHomeContainer").addItem(oFooter);
@@ -38,13 +38,14 @@ sap.ui.define([
     onNavMyProfile: function () {
         //console.log("button pressed");
         var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
-        oRouter.navTo("myProfile")
+        oRouter.navTo("myProfile");
         //this.getOwnerComponent().getRouter().navTo("MyProfile");
     },
     onNavMyPolicy: function () {
+        
         var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
-            oRouter.navTo("myPolicy")
-        //this.getOwnerComponent().getRouter().navTo("MyPolicy");
+        oRouter.navTo("myPolicy");
+
     },
     onLogout: function () {
         var oRouter = sap.ui.core.UIComponent.getRouterFor(this);

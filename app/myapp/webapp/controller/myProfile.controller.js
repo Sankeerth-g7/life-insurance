@@ -306,19 +306,31 @@ sap.ui.define([
  
           },
           
-          onLogout: function () {
-            var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
-            oRouter.navTo("dashboard");
-            MessageToast.show("Logged out!");
-           
-     
-   
-          },
-          onHome: function () {
-            var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
-            oRouter.navTo("dashboard");
-            MessageToast.show("Returned Home");
-           
-          }
+         
+        onLogout: function () {
+       
+          var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
+          oRouter.navTo("home");
+          MessageToast.show("Logged out!");
+         
+  
+        },
+        onNavHome: function () {
+          var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
+          oRouter.navTo("home");
+          MessageToast.show("Returned Home");
+         
+        },
+
+        onNavMyProfile: function () {
+          var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
+          oRouter.navTo("myProfile");
+         
+        },
+
+        onNavMyPolicy: function () {
+          var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
+          oRouter.navTo("myPolicy");
+        },
     });
 });

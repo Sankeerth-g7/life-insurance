@@ -97,11 +97,11 @@
 }
  
 .sapUiSmallMargin {
-    height: 40px !important;
+    height: 25px !important;
     font-size: 20px !important;
     padding-left: 0.2rem !important;
     padding-top: 1rem !important;
-    padding-bottom: 1.2rem !important;
+    padding-bottom: 1rem !important;
 }
 
 .customToolbarHeight {
@@ -223,30 +223,7 @@ gap: 4rem;
 }
  
  
- 
- 
-   
-   
-   
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
-.sapUiSmallMargin {
-    height: 40px !important;
-    font-size: 20px !important;
-    padding-left: 0.2rem !important;
-    padding-top: 1rem !important;
-    padding-bottom: 1.2rem !important;
- 
-}
- 
+
  
 .customToolbarHeight {
     height: 3rem !important;
@@ -318,23 +295,7 @@ gap: 4rem;
     font-weight: bold;
     text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.7);
 }
- 
- 
- 
- 
-   
-   
-   
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
+
 .policyCard {
     width: 90%;
     max-width: 500px;
@@ -455,9 +416,7 @@ gap: 4rem;
     color:white !important;
    }
  
- 
- 
- 
+
 /* mypolicies styles - revised version */
  
 /* Page Background */
@@ -539,23 +498,16 @@ gap: 4rem;
     }
 }
 
-
- 
 .left-img {
    margin: left;
 }
  
- 
 
- 
- 
 .loginContainer {
     align-items: center;
     justify-content: center;
 }
 
-
- 
 .bgTerm {
     background-image: url("images/term-icon.png");
     background-size: cover;
@@ -565,9 +517,6 @@ gap: 4rem;
     color: white;
 }
  
-
- 
-
 /* === Header Bar Styling === */
 .box {
     background-color: #dbd4ff !important;

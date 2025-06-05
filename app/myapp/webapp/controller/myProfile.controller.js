@@ -80,40 +80,50 @@ sap.ui.define([
           applicantPan: ApplicantPanNo,
           applicantAge: ApplicantAge,
           applicationId: ApplicationId,
-          // doucument: this.filebase64String,
-          // Id: LoanId
+          
       };
   
+      
       // Checking for wrong format
-      let formatErrors = [];
-      if (!ApplicantName.match(nameFormat)) formatErrors.push("Applicant name (only alphabets are allowed)");
-      if (!ApplicantMobileNo.match(mobileFormat)) formatErrors.push("Applicant Mobile No (Must be 10 digits)");
-      if (!ApplicantEmailId.match(emailFormat)) formatErrors.push("Applicant Email Id (Invalid email format)");
-      if (!ApplicantAadharNo.match(aadhaarFormat)) formatErrors.push("Applicant Aadhaar No (Must be 12 digits)");
-      if (!ApplicantPanNo.match(panFormat)) formatErrors.push("Applicant Pan No (Must be 12 digits)");
-      if (!ApplicantAge.match(ageFormat)) formatErrors.push("Applicant Age (only numbers allowed)");
-      if (!ApplicationId.match(IdFormat)) formatErrors.push("Application id (only Numbers are allowed)");
-  
-      if (formatErrors.length > 0) {
-          sap.m.MessageBox.error("Please correct the following fields:\n" + formatErrors.join("\n"));
-          return;
-      }
-  
-      // Missing fields
-      let missingFields = [];
-      if (!ApplicantName) missingFields.push("Applicant Name");
-      if (!ApplicantAddress) missingFields.push("Applicant Address");
-      if (!ApplicantMobileNo) missingFields.push("Applicant Mobile No");
-      if (!ApplicantAadharNo) missingFields.push("Applicant Aadhar No");
-      if (!ApplicantPanNo) missingFields.push("Applicant Pan No");
-      if (!ApplicantEmailId) missingFields.push("Applicant Email Id");
-      if (!ApplicantAge) missingFields.push("Applicant Age");
-      if (!ApplicationId) missingFields.push("Application id");
-  
-      if (missingFields.length > 0) {
-          sap.m.MessageBox.error("Please fill the required fields:\n" + missingFields.join("\n"));
-          return;
-      }
+      
+      // Format validation
+let formatErrors = [];
+if (ApplicantName && !ApplicantName.match(nameFormat)) formatErrors.push("Applicant name (only alphabets are allowed)");
+if (ApplicantMobileNo && !ApplicantMobileNo.match(mobileFormat)) formatErrors.push("Applicant Mobile No (Must be 10 digits)");
+if (ApplicantEmailId && !ApplicantEmailId.match(emailFormat)) formatErrors.push("Applicant Email Id (Invalid email format)");
+if (ApplicantAadharNo && !ApplicantAadharNo.match(aadhaarFormat)) formatErrors.push("Applicant Aadhaar No (Must be 12 digits)");
+if (ApplicantPanNo && !ApplicantPanNo.match(panFormat)) formatErrors.push("Applicant Pan No (Must be 12 digits)");
+if (ApplicantAge && !ApplicantAge.match(ageFormat)) formatErrors.push("Applicant Age (only numbers allowed)");
+if (ApplicationId && !ApplicationId.match(IdFormat)) formatErrors.push("Application id (only Numbers are allowed)");
+
+if (formatErrors.length > 0) {
+    sap.m.MessageBox.error("Please correct the following fields:\n" + formatErrors.join("\n"));
+    return;
+}
+
+// Missing fields
+let missingFields = [];
+if (!ApplicantName) missingFields.push("Applicant Name");
+if (!ApplicantAddress) missingFields.push("Applicant Address");
+if (!ApplicantMobileNo) missingFields.push("Applicant Mobile No");
+if (!ApplicantAadharNo) missingFields.push("Applicant Aadhar No");
+if (!ApplicantPanNo) missingFields.push("Applicant Pan No");
+if (!ApplicantEmailId) missingFields.push("Applicant Email Id");
+if (!ApplicantAge) missingFields.push("Applicant Age");
+if (!ApplicationId) missingFields.push("Application id");
+
+const totalFields = 8; // Total number of required fields
+
+if (missingFields.length === totalFields) {
+    sap.m.MessageBox.error("Please fill the form.");
+    return;
+} else if (missingFields.length > 0) {
+    sap.m.MessageBox.error("Please fill the required fields:\n" + missingFields.join("\n"));
+    return;
+}
+
+
+      
   
       // Posting data
       $.ajax({
@@ -203,10 +213,13 @@ sap.ui.define([
             this.byId("enterApplicantAddress").setValue("");
             this.byId("enterApplicantMobileNo").setValue("");
             this.byId("enterEmailId").setValue("");
-            this.byId("enterAadharNo").setValue("");
-            this.byId("enterPanNo").setValue("");
+            this.byId("selectDocumentType").setSelectedKey(null);
+            this.byId("filePath").setSelectedKey(null);
             this.byId("entertheapplicantage").setValue("");
-            this.byId("applicantongoingid").setValue("");
+            this.byId("enterAadhaarNo").setValue("");
+            this.byId("enterPanNo").setValue("");
+            this.byId("applicationid").setValue("");
+            
  
  
         },
@@ -291,12 +304,12 @@ sap.ui.define([
           ageValidation: function(oEvent) {
             var fieldValue = oEvent.getSource().getValue();
             var fieldName = oEvent.getSource();
-            var format = (/^[0-3]{3}$/);
+            var format = (/^[0-9]{9}$/);
             var blen = fieldValue.length;
          
             if (blen !== 12) {
               fieldName.setValueState(sap.ui.core.ValueState.Error);
-              fieldName.setValueStateText("Age number must be 3 digits");
+              fieldName.setValueStateText("Age number must be 9 digits");
             } else if (!fieldValue.match(format)) {
               fieldName.setValueState(sap.ui.core.ValueState.Error);
               fieldName.setValueStateText("Only Numbers can Accepted");

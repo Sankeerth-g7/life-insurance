@@ -541,32 +541,51 @@ gap: 4rem;
     margin-right: 60px;
 }
 .customMargin1 {
-    margin-bottom: 25px;
-  }
-  .formContainer1 {
-    margin-bottom: 25px;
-  }
-  .customInput1 .sapMInputBaseContentWrapper::placeholder {
-    color: blue !important;
-   
-    opacity: 1;
-  }
-  .sapUiSmallMargin1 .center{
-    height: fit-content !important;
-  }
-  .customLabel1 {
-    width:180px;
-   }
+  margin-bottom: 20px;
+}
+.formContainer1 {
+  margin-bottom: 5px;
+}
+.customInput1 .sapMInputBaseContentWrapper::placeholder {
+  color: blue !important;
+  
+  
+  opacity: 1;
+}
+.sapUiSmallMargin1 .center{
+  height: fit-content !important;
+}
+.customLabel1 {
+  width:200px;
+ }
  
-   .subHeader1{
-    text-align: center !important;
-    font-size: large !important;
-   }
-   .headerTitle{
-    text-align: center !important;
-    color:white !important;
+ .subHeader1{
+  text-align: center !important;
+  font-size:x-large !important;
+  font-weight: bold !important;
+  color: rgb(1, 1, 19)important;
+ }
+
  
-   }
-   .customPage1 {
-    background-color: rgb(255, 255, 255);
+ .customPage1 {
+  background: linear-gradient(to right, #003366, #0055A5);
+  
+  min-height: 100vh;
+  padding: 40px;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+
+
+.customInput1 {
+width: 280px !important;
+font-style: italic;
+
+}
+.sapMPageHeader {
+  background-color:  transparent!important;
+  box-sizing: 100px;
+  width: 100px;
+  height: 100px;
+
 }

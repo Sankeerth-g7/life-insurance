@@ -22,7 +22,15 @@ sap.ui.define([
         this.getView().byId("FooterProfileContainer").addItem(oFooter);
      
     },
-    onSubmit: function() {
+
+    onRouteMatched: function (oEvent) {
+      var sPlanName = decodeURIComponent(oEvent.getParameter("arguments").planName);
+      if (sPlanName) {
+        sap.m.MessageToast.show("You're applying for the plan: " + sPlanName);
+      }
+    },
+
+    onSubmit: function () {
       // Capturing the data in variables
       var ApplicantName = this.getView().byId("enterApplicantName").getValue();
       var ApplicantAddress = this.getView().byId("enterApplicantAddress").getValue();
@@ -32,7 +40,7 @@ sap.ui.define([
       var ApplicantPanNo = this.getView().byId("enterPanNo").getValue();
       var ApplicantAge = this.getView().byId("entertheapplicantage").getValue();
       var ApplicationId = this.getView().byId("applicationid").getValue();
-  
+
       // Log the captured data for debugging
       console.log("Applicant Name:", ApplicantName);
       console.log("Applicant Address:", ApplicantAddress);
@@ -42,7 +50,7 @@ sap.ui.define([
       console.log("Pan No:", ApplicantAadharNo);
       console.log("Age:", ApplicantAge);
       console.log("Application id:", ApplicationId);
-  
+
       // Validation formats
       var nameFormat = /^[a-zA-Z\s]+$/;
       var mobileFormat = /^[0-9]{10}$/;
@@ -51,25 +59,25 @@ sap.ui.define([
       var panFormat = /[A-Z]{5}[0-9]{4}[A-Z]{1}$/;
       var ageFormat = /^(1[89]|[2-5][0-9]|6[0-5])$/;
       var IdFormat = /^[0-9]*$/; // Correctly define the format
-  
+
       // Generate loan id
       function generateLoanId() {
-          const currentYear = new Date().getFullYear();
-          const randomNumber = Math.floor(Math.random() * 10000); // Generates a random number between 0 and 9999
-          return `${currentYear}-${appName}-${randomNumber}`;
+        const currentYear = new Date().getFullYear();
+        const randomNumber = Math.floor(Math.random() * 10000); // Generates a random number between 0 and 9999
+        return `${currentYear}-${appName}-${randomNumber}`;
       }
-  
+
       // Example usage:
       const appName = "Insurance Loan";
       const randomString = generateLoanId();
       // Output: 2025-myApp-1234 (example)
-  
+
       // Storing the generated string in a variable
       const LoanId = randomString;
-  
+
       // You can now use 'storedString' wherever needed
       console.log(LoanId);
-  
+
       // Creating new object
       var NewUser = {
           applicantName: ApplicantName,

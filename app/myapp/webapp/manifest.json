@@ -117,6 +117,13 @@
           "pattern": "home",
           "target": ["Targethome"]
       },
+
+      {
+        "name": "Admin",
+          "pattern": "Admin",
+          "target": ["TargetAdmin"]
+      },
+
       {
         "name": "viewPolicy",
         "pattern": "viewPolicy",
@@ -124,9 +131,14 @@
       },
       {
         "name": "myProfile",
-        "pattern": "myProfile",
+        "pattern": "myProfile/{planName}",
         "target": ["TargetmyProfile"]
     },
+    {
+      "name": "AddPolicy",
+      "pattern": "AddPolicy",
+      "target": ["TargetAddPolicy"]
+  },
     {
       "name": "myPolicy",
         "pattern": "myPolicy",
@@ -142,9 +154,17 @@
         "id": "home",
         "name": "home"
     },
+    "TargetAdmin":{
+       "id":"Admin",
+       "name":"Admin"
+      },
     "TargetviewPolicy": {
         "id": "viewPolicy",
         "name": "viewPolicy"
+    },
+    "TargetAddPolicy":{
+      "id":"AddPolicy",
+      "name":"AddPolicy"
     },
     
         "TargetmyProfile": {

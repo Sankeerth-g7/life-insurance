@@ -17,12 +17,14 @@ entity User {
 entity Policies {
     key policyId: String;
     policyName: String;
-    policyType: String;
+    policyType:String;
+    applicableAge: String;
     policyDescription: String;
-    premiumAmount: Decimal;
-    coverageAmount: Decimal;
+    claimAmount: Decimal;
+    Interest:Decimal;
     termLength: Integer;
     startDate: Date;
+    termsAndConditions:String;
 }
 
 entity Applications {

@@ -1,0 +1,21 @@
+
+<core:FragmentDefinition xmlns="sap.m"
+    xmlns:core="sap.ui.core"
+    xmlns:layout="sap.ui.layout">
+    <Bar class="customToolbarHeight headerBackground">
+        <contentLeft>
+            <HBox alignItems="Center" class="logoTitleBox">
+                <Image src="https://companieslogo.com/img/orig/LTIM.NS-dea59dc6.png" width="20px" height="20px"/>
+                <Title text="LTI Life Insurance" level="H1" class="logoTitleText"/>
+            </HBox>
+            <HBox justifyContent="Start" class="navButtonsBox">
+                <Button text="Add Policy" press=".onAddPolicyPress"/>
+                <Button text="Policy Details" press=".onNavViewPolicy"/>
+                <Button text="Applicant Details" press=".onNavMyProfile"/>
+                <Button text="Logout" press=".onLogout"/>
+            </HBox>
+        </contentLeft>
+    </Bar>
+</core:FragmentDefinition>
+
+

@@ -43,14 +43,13 @@
                         class="highlightText"
                     />
                     <Text
-                        text="Premium: ₹{policyModel>premiumAmount}"
-                        class="highlightText"
-                    />
-                    <Text
-                        text="Coverage: ₹{policyModel>coverageAmount}"
+                        text="Coverage: ₹{policyModel>claimAmount}"
                         class="highlightText"
                     />
                     <Text text="Description: {policyModel>policyDescription}" />
+                     <Text
+                        text="Terms and Conditions: {policyModel>termsAndConditions}"
+                    />
                     <Button
                         text="Select Plan"
                         type="Emphasized"

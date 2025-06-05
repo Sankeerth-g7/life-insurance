@@ -24,38 +24,38 @@ sap.ui.define([
             this.getView().byId("FooterviewPolicyContainer").addItem(oFooter);
 
         },
-       // onNavHome: function () {
+        // onNavHome: function () {
         //var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
         //oRouter.navTo("home");
         //},
 
-        
+
         onLogout: function () {
-       
+
             var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
             oRouter.navTo("home");
             MessageToast.show("Logged out!");
-           
-    
-          },
-          onNavHome: function () {
+
+
+        },
+        onNavHome: function () {
             var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
             oRouter.navTo("home");
             MessageToast.show("Returned Home");
-           
-          },
 
-          onNavMyProfile: function () {
+        },
+
+        onNavMyProfile: function () {
             var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
             oRouter.navTo("myProfile");
-           
-          },
 
-          onNavMyPolicy: function () {
+        },
+
+        onNavMyPolicy: function () {
             var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
             oRouter.navTo("myPolicy");
-          },
-         
+        },
+
 
         loadPoliciesData: function () {
             var that = this;
@@ -82,12 +82,18 @@ sap.ui.define([
             var oPolicy = oBindingContext.getObject();
             var oView = this.getView();
             var oRouter = sap.ui.core.UIComponent.getRouterFor(oView);
-            oRouter.navTo("myProfile");
+            //oRouter.navTo("myProfile");
+
+
+            oRouter.navTo("myProfile", {
+                planName: encodeURIComponent(oPolicy.planName) // or use oPolicy.id
+            });
+
 
         },
 
         onLogout: function () {
-       
+
             var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
             oRouter.navTo("home");
             MessageToast.show("Logged out!");

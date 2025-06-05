@@ -1,0 +1,231 @@
+<mvc:View
+    controllerName="myapp.controller.AddPolicy"
+    xmlns:mvc="sap.ui.core.mvc"
+    displayBlock="true"
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core"
+    xmlns:l="sap.ui.layout"
+    xmlns:f="sap.ui.layout.form"
+>
+    <Page
+        showHeader="false"
+        class="policy-page"
+        enableScrolling="false"
+    >
+    <VBox height="100%" justifyContent="SpaceBetween">
+        <VBox id="navbarAddPolicyContainer" />
+        <f:SimpleForm class="form-wrapper">
+            <FlexBox
+                direction="Row"
+                justifyContent="SpaceBetween"
+                fitContainer="true"
+                class="form-flexbox"
+            >
+                <!-- Left Column -->
+                <VBox
+                    class="form-column"
+                    width="48%"
+                >
+                    <VBox class="form-group">
+                        <HBox alignItems="Center">
+                            <Label
+                                text="Policy Name"
+                                required="true"
+                                class="form-label"
+                            />
+                            <Input
+                                id="policyName"
+                                placeholder="Enter policy name"
+                                class="form-input"
+                            />
+                        </HBox>
+                    </VBox>
+                    <VBox class="form-group">
+                        <HBox alignItems="Center">
+                            <Label
+                                text="Applicable Age"
+                                required="true"
+                                class="form-label"
+                            />
+                            <Input
+                                id="applicableAge"
+                                placeholder="Enter applicable age"
+                                type="Number"
+                                class="form-input"
+                            />
+                        </HBox>
+                    </VBox>
+                    <VBox class="form-group">
+                        <HBox alignItems="Center">
+                            <Label
+                                text="Claim Amount"
+                                required="true"
+                                class="form-label"
+                            />
+                            <Input
+                                id="claimAmount"
+                                placeholder="Enter claim amount"
+                                type="Number"
+                                class="form-input"
+                            />
+                        </HBox>
+                    </VBox>
+
+                    <VBox class="form-group">
+                        <HBox alignItems="Center">
+                            <Label
+                                text="No. of Years Plan"
+                                required="true"
+                                class="form-label"
+                            />
+                            <Input
+                                id="noOfYearsPlan"
+                                placeholder="Enter number of years"
+                                type="Number"
+                                class="form-input"
+                            />
+                        </HBox>
+                    </VBox>
+                </VBox>
+                <!-- Right Column -->
+                <VBox width="48%">
+                    <VBox class="form-group">
+                        <HBox alignItems="Center">
+                            <Label
+                                text="Rate of Interest (%)"
+                                required="true"
+                                class="form-label"
+                            />
+                            <Input
+                                id="rateOfInterest"
+                                placeholder="Enter rate of interest"
+                                type="Number"
+                                class="form-input"
+                            />
+                        </HBox>
+                    </VBox>
+
+
+                    <VBox class="form-group">
+
+                        <HBox alignItems="Center">
+
+                            <Label
+                                text="Policy Type"
+                                required="true"
+                                class="form-label"
+                            />
+
+                            <Select
+                                id="policyType"
+                                class="form-input"
+                            >
+
+                                <items>
+                                <core:Item key=""  text="-- Select Policy Type --" />
+
+                                    <core:Item
+                                        key="Whole Life"
+                                        text="Whole Life"
+                                    />
+
+                                    <core:Item
+                                        key="Whole Life Insurance"
+                                        text="Whole Life Insurance"
+                                    />
+
+                                    <core:Item
+                                        key="Endowment Plan"
+                                        text="Endowment Plan"
+                                    />
+
+                                    <core:Item
+                                        key="Health Insurance"
+                                        text="Health Insurance"
+                                    />
+
+                                    <core:Item
+                                        key="Pension Plan"
+                                        text="Pension Plan"
+                                    />
+
+                                    <core:Item
+                                        key="Group Insurance"
+                                        text="Group Insurance"
+                                    />
+
+                                    <core:Item
+                                        key="Child Plan"
+                                        text="Child Plan"
+                                    />
+
+                                    <core:Item
+                                        key="Accident Cover"
+                                        text="Accident Cover"
+                                    />
+
+                                    <core:Item
+                                        key="Travel Insurance"
+                                        text="Travel Insurance"
+                                    />
+
+                                </items>
+
+                            </Select>
+
+                        </HBox>
+
+                    </VBox>
+
+                    <VBox class="form-group">
+                        <HBox alignItems="Start">
+                            <Label
+                                text="Policy Details"
+                                required="true"
+                                class="form-label"
+                            />
+                            <TextArea
+                                id="enterPolicyDetails"
+                                placeholder="Enter policy details"
+                                width="100%"
+                            />
+                        </HBox>
+                    </VBox>
+
+                    <VBox class="form-group">
+                        <HBox alignItems="Start">
+                            <Label
+                                text="Terms and Conditions"
+                                required="true"
+                                class="form-label"
+                            />
+                            <TextArea
+                                id="enterTermsAndConditions"
+                                placeholder="Enter terms and conditions"
+                                width="100%"
+                                class="form-textarea"
+                            />
+                        </HBox>
+                    </VBox>
+                </VBox>
+            </FlexBox>
+        </f:SimpleForm>
+
+        <Toolbar class="form-toolbar">
+            <ToolbarSpacer />
+            <Button
+                text="Add Policy"
+                type="Emphasized"
+                press="onAddPolicy"
+                width="10%"
+                class="form-button"
+            />
+            <Button id="LAbutton" text="Clear" press="onClear" type="Reject" width="10%" class="customButton" />
+            <ToolbarSpacer />
+        </Toolbar  >
+        <VBox height="10px" />
+        <VBox id="FooterContainer" class="footer" />
+        </VBox>
+    </Page>
+    
+</mvc:View>

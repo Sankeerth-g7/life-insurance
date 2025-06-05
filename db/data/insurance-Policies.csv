@@ -1,10 +1,10 @@
-policyId,policyName,policyType,policyDescription,premiumAmount,coverageAmount,termLength,startDate
-101,SecureLife,Whole Life,Provides coverage for a fixed term with no savings,5000,1000000,20,2025-01-01
-102,WholeGuard,Whole Life Insurance,Coverage for the entire life with savings benefits,8000,2000000,1,2025-02-01
-103,SmartSave,Endowment Plan,Combines savings and insurance with guaranteed benefits,7000,1800000,25,2025-04-01
-104,HealthProtect,Health Insurance,Covers medical expenses and hospitalizations,3000,500000,10,2025-05-01
-105,RetireShield,Pension Plan,Guaranteed pension payouts post-retirement,9000,2500000,30,2025-06-01
-106,FamilyCare,Group Insurance,Covers multiple family members under one plan,5500,1200000,20,2025-07-01
-107,ChildSecure,Child Plan,Savings and insurance for child education and future,4500,800000,18,2025-08-01
-108,AccidentGuard,Accident Cover,Covers accidental injuries and medical treatments,4000,700000,12,2025-09-01
-109,TravelSafe,Travel Insurance,Covers trip cancellations,2500,500000,1,2025-10-01
+policyId,policyName,policyType,applicableAge,policyDescription,claimAmount,Interest,termLength,startDate,termsAndConditions
+101,SecureLife,Whole Life,18-60,Provides coverage for a fixed term with no savings,1000000,5000,20,2025-01-01,Whole Life
+102,WholeGuard,Whole Life Insurance,18-60,Coverage for the entire life with savings benefits,2000000,8000,1,2025-02-01,Whole Life Insurance
+103,SmartSave,Endowment Plan,18-60,Combines savings and insurance with guaranteed benefits,1800000,7000,25,2025-04-01,Endowment Plan
+104,HealthProtect,Health Insurance,18-60,Covers medical expenses and hospitalizations,500000,3000,10,2025-05-01,Health Insurance
+105,RetireShield,Pension Plan,18-60,Guaranteed pension payouts post-retirement,2500000,9000,30,2025-06-01,Pension Plan
+106,FamilyCare,Endowment Plan,18-60,Covers multiple family members under one plan,1200000,5500,20,2025-07-01,Group Insurance
+107,ChildSecure,Whole Life Insurance,0-18,Savings and insurance for child education and future,800000,4500,18,2025-08-01,Child Plan
+108,AccidentGuard,Health Insurance,18-60,Covers accidental injuries and medical treatments,700000,4000,12,2025-09-01,Accident Cover
+109,TravelSafe,Travel Insurance,18-60,Covers trip cancellations,500000,2500,1,2025-10-01,Travel Insurance

@@ -57,33 +57,23 @@
                         class="loginTitle"
                     />
 
-                    <HBox>
                         <Label
                             text="Email Address"
                             class="inputLabel"
+                            required="true"
                         />
-                        <Text
-                            text="*"
-                            class="requiredAsterisk"
-                        />
-                    </HBox>
+                    
                     <Input
                         id="emailInput"
                         type="Email"
                         class="inputField"
                         placeholder="Enter your email address"
                     />
-
-                    <HBox>
                         <Label
                             text="Password"
                             class="inputLabel"
+                            required="true"
                         />
-                        <Text
-                            text="*"
-                            class="requiredAsterisk"
-                        />
-                    </HBox>
                     <Input
                         id="passwordInput"
                         type="Password"
@@ -127,83 +117,53 @@
                         class="loginTitle"
                     />
 
-                    <HBox>
                         <Label
                             text="Full Name"
                             class="inputLabel"
+                            required="true"
                         />
-                        <Text
-                            text="*"
-                            class="requiredAsterisk"
-                        />
-                    </HBox>
                     <Input
                         id="fullName"
                         placeholder="Enter your full name"
                         class="inputField"
                     />
-
-                    <HBox>
                         <Label
                             text="Email Address"
                             class="inputLabel"
+                            required="true"
                         />
-                        <Text
-                            text="*"
-                            class="requiredAsterisk"
-                        />
-                    </HBox>
                     <Input
                         id="registerEmail"
                         placeholder="Enter your email"
                         type="Email"
                         class="inputField"
                     />
-
-                    <HBox>
                         <Label
                             text="Mobile Number"
                             class="inputLabel"
+                            required="true"
                         />
-                        <Text
-                            text="*"
-                            class="requiredAsterisk"
-                        />
-                    </HBox>
                     <Input
                         id="mobileNumber"
                         placeholder="Enter your mobile number"
                         type="Tel"
                         class="inputField"
                     />
-
-                    <HBox>
                         <Label
                             text="Username"
                             class="inputLabel"
+                            required="true"
                         />
-                        <Text
-                            text="*"
-                            class="requiredAsterisk"
-                        />
-                    </HBox>
                     <Input
                         id="username"
                         placeholder="Choose a username"
                         class="inputField"
                     />
-
-                    <HBox>
                         <Label
                             text="Password"
                             class="inputLabel"
+                            required="true"
                         />
-                        <Text
-                            text="*"
-                            class="requiredAsterisk"
-                        />
-                    </HBox>
-
                     <Input
                         id="registerPassword"
                         placeholder="Create a password"
@@ -213,17 +173,11 @@
                         valueHelpIconSrc="sap-icon://show"
                         valueHelpRequest="onToggleRegisterPasswordVisibility"
                     />
-
-                    <HBox>
                         <Label
                             text="Confirm Password"
                             class="inputLabel"
+                            required="true"
                         />
-                        <Text
-                            text="*"
-                            class="requiredAsterisk"
-                        />
-                    </HBox>
 
                     <Input
                         id="confirmPassword"
@@ -234,7 +188,6 @@
                         valueHelpIconSrc="sap-icon://show"
                         valueHelpRequest="onToggleConfirmPasswordVisibility"
                     />
-
                     <CheckBox
                         id="terms"
                         text="I agree to the Terms &amp; Conditions"

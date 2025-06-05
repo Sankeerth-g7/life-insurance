@@ -1,0 +1,9 @@
+<mvc:View controllerName="myapp.controller.Admin"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"
+    xmlns:layout="sap.ui.layout">
+
+<Page  showHeader="false"  class="fullPageBackground">
+<VBox id="navbarAdminContainer"/>
+</Page>
+</mvc:View>

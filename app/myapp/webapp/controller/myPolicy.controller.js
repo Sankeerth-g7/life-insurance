@@ -11,10 +11,10 @@ sap.ui.define([
             
 
             var oHeader = sap.ui.xmlfragment("myapp.view.fragments.CustomHeader", this);
-            this.getView().byId("navbarMyPolicyContainer").addItem(oHeader);
+            this.getView().byId("navbarmyPolicyContainer").addItem(oHeader);
 
-            var oFooter = sap.ui.xmlfragment("myapp.view.fragments.CustomFooter", this);
-            this.getView().byId("FooterMyPoliciesContainer").addItem(oFooter);
+            //var oFooter = sap.ui.xmlfragment("myapp.view.fragments.CustomFooter", this);
+            //this.getView().byId("FooterMyPoliciesContainer").addItem(oFooter);
 
             var url = "/odata/v2/my/";
             this.oModel = new ODataModel(url, true);

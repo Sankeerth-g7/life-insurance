@@ -135,6 +135,6 @@
                 <Button id="LAbutton2" text="Clear" press="onClear" type="Reject" width="10%" class="customButton1" />
                 <ToolbarSpacer id="LAtoolbarspacer1" />
             </Toolbar>
-        <VBox id="FooterProfileContainer"/>
+        <VBox id="FootermyProfileContainer"/>
     </Page>
 </mvc:View>

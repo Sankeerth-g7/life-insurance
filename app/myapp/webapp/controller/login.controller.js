@@ -9,10 +9,11 @@ sap.ui.define([
      onInit: function () {
         this._loginForm = this.byId("loginForm");
         this._registerForm = this.byId("registerForm");
-       
-        var url = "/odata/v2/my/";
+        
+       var url = "/odata/v2/my/";
         this.oModel = new ODataModel(url, true);
         this.getView().setModel(this.oModel);
+        
         
  //var oHeader = sap.ui.xmlfragment("myapp.view.fragments.CustomHeader", this);
  //this.getView().byId("navbarLoginContainer").addItem(oHeader);
@@ -28,7 +29,7 @@ sap.ui.define([
         var password = oView.byId("passwordInput").getValue();
    
         if (!input) {
-            MessageToast.show("Please enter your email or username.");
+            sap.m.MessageBox.information("Please enter your email or username.");
             oView.byId("emailInput").setValueState("Error");
             return;
         } else {
@@ -36,7 +37,7 @@ sap.ui.define([
         }
    
         if (!password) {
-            MessageToast.show("Please enter your password.");
+            sap.m.MessageBox.error("Please enter your password.");
             oView.byId("passwordInput").setValueState("Error");
             return;
         } else {
@@ -73,7 +74,7 @@ sap.ui.define([
                 // console.log(user.isLocked, lockUntilDate, now, lockUntilDate && lockUntilDate > now);
  
                 if (user.isLocked === "true" && lockUntilDate && lockUntilDate > now) {
-                    MessageToast.show("Account is locked. Try again later.");
+                    sap.m.MessageBox.warning("Account is locked. Try again later.");
                     return;
                 }
  
@@ -86,7 +87,7 @@ sap.ui.define([
    
                     that.oModel.update("/users(" + user.userId + ")", user, {
                         success: function () {
-                            MessageToast.show("Login successful!");
+                            sap.m.MessageBox.success("Login successful!");
                             var oRouter = sap.ui.core.UIComponent.getRouterFor(that);
                             oRouter.navTo("home");
                             var oUserModel = new sap.ui.model.json.JSONModel({ userId: user.userId });
@@ -96,7 +97,7 @@ sap.ui.define([
                             console.log(oError)
                             // var oRouter = sap.ui.core.UIComponent.getRouterFor(that);
                             // oRouter.navTo("home")
-                            MessageToast.show("Some Error occured please try later");
+                            sap.m.MessageBox.error("Some Error occured please try later");
                         }
                     });
                 } else {
@@ -244,14 +245,7 @@ sap.ui.define([
    
         oDialog.open();
     },
-   
- 
- 
- 
- 
- 
- 
- 
+
 // password visibility
  
     onToggleForm: function () {
@@ -301,3 +295,5 @@ _togglePasswordVisibility: function (sInputId) {
  
     });
 });
+
+

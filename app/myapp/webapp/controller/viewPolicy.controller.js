@@ -29,7 +29,6 @@ sap.ui.define([
         //oRouter.navTo("home");
         //},
 
-
         onLogout: function () {
 
             var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
@@ -54,9 +53,8 @@ sap.ui.define([
         onNavMyPolicy: function () {
             var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
             oRouter.navTo("myPolicy");
-        },
-
-
+          },
+         
         loadPoliciesData: function () {
             var that = this;
 
@@ -98,8 +96,5 @@ sap.ui.define([
             oRouter.navTo("home");
             MessageToast.show("Logged out!");
         }
-
-
-
     });
 });

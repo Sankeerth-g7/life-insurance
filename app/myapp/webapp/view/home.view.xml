@@ -12,7 +12,7 @@
     </VBox>
 <!-- Carousel and Text Side-by-Side -->
     <HBox class="carouselTextContainer" >
-        <Carousel id="imageCarousel" height="412px" width="1360px" loop="true"  class="imageCarousel">
+        <Carousel id="imageCarousel" height="415px" width="1360px" loop="true"  class="imageCarousel">
         <pages>
         <Panel  class="carouselItem">
         <Image src="images/no.jpg"  class="carouselImage"/>
@@ -29,7 +29,7 @@
         </pages>
         </Carousel>
 </HBox>
-    <VBox id="FooterHomeContainer"/>
+    <VBox id="FooterhomeContainer"/>
 
     </Page>
 </mvc:View>

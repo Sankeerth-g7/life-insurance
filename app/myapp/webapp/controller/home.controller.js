@@ -13,8 +13,7 @@ sap.ui.define([
  this.getView().byId("navbarhomeContainer").addItem(oHeader);
 
         var oFooter = sap.ui.xmlfragment("myapp.view.fragments.CustomFooter", this);
-        this.getView().byId("FooterHomeContainer").addItem(oFooter);
-
+        this.getView().byId("FooterhomeContainer").addItem(oFooter);
 
             setInterval(function () {
                 var aPages = oCarousel.getPages();
@@ -55,5 +54,7 @@ sap.ui.define([
     }
     });
 });
+
+
 
 

@@ -2,177 +2,128 @@
     controllerName="myapp.controller.login"
     xmlns:mvc="sap.ui.core.mvc"
     xmlns="sap.m"
-    xmlns:layout="sap.ui.layout"
->
-    <Page
-        showHeader="false"
-        class="loginPage darkBackground"
-    >
-        <!-- Page Title -->
+    xmlns:layout="sap.ui.layout">
+    <Page showHeader="false" class="loginPage darkBackground" >
 
-        <VBox id="navbarLoginContainer" />
+    <!-- <VBox id="navbarLoginContainer" /> -->
 
-        <VBox
-            class="sapUiSmallMargin"
-            alignItems="Center"
-        >
-            <Title
-                text="LTI Life Insurance"
-                level="H1"
-                class="pageTitle"
-            />
-        </VBox>
+    <VBox class="sapUiSmallMargin" alignItems="Center" >
+     <Title text="LTI Life Insurance" level="H1" class="pageTitle" />
+    </VBox>
 
-        <layout:HorizontalLayout class="loginContainer">
-            <!-- Left Image Section -->
-            <VBox class="sapUiSmallMargin left-img">
-                <Image
-                    src="images/login.png"
-                    width="120%"
-                    height="600px"
-                />
-            </VBox>
+    <layout:HorizontalLayout class="loginContainer">
+    <VBox class="sapUiSmallMargin left-img">
+        <Image src="images/login.png" width="140%" height="500px" />
+    </VBox>
 
-            <VBox width="50px" />
+    <VBox width="250px" />
+    <!-- Main Form Container -->
+    <VBox id="formContainer" width="120%" class="loginBox sapUiSmallMargin" >
+    <!-- Login Form -->
+    <VBox id="loginForm" class="formBox fadeIn" >
+    <Image src="https://companieslogo.com/img/orig/LTIM.NS-dea59dc6.png" width="80px" class="logo" />
+    <Title text="Login to Your Account" level="H1" class="loginTitle" />
+    <HBox>
+    <Label text="Email Address" class="inputLabel" />
+        <Text text="*" class="requiredAsterisk" />
+    </HBox>
+        <Input id="emailInput" type="Email" class="inputField" placeholder="Enter your email address" />
 
-            <!-- Main Form Container -->
-            <VBox
-                id="formContainer"
-                width="180%"
-                class="loginBox sapUiSmallMargin"
-            >
-                <!-- Login Form -->
-                <VBox
-                    id="loginForm"
-                    class="formBox fadeIn"
-                >
-                    <Image
-                        src="https://companieslogo.com/img/orig/LTIM.NS-dea59dc6.png"
-                        width="100px"
-                        class="logo"
-                    />
-                    <Title
-                        text="Login to Your Account"
-                        level="H1"
-                        class="loginTitle"
-                    />
+    <HBox>
+        <Label text="Password" class="inputLabel" />
+        <Text text="*" class="requiredAsterisk" />
+    </HBox>
+    <Input
+        id="passwordInput"
+        type="Password"
+        class="inputField"
+        showValueHelp="true"
+        valueHelpIconSrc="sap-icon://show"
+        placeholder="enter your password"
+        valueHelpRequest="onToggleLoginPasswordVisibility" />
 
-                        <Label
-                            text="Email Address"
-                            class="inputLabel"
-                            required="true"
-                        />
-                    
-                    <Input
-                        id="emailInput"
-                        type="Email"
-                        class="inputField"
-                        placeholder="Enter your email address"
-                    />
-                        <Label
-                            text="Password"
-                            class="inputLabel"
-                            required="true"
-                        />
-                    <Input
-                        id="passwordInput"
-                        type="Password"
-                        class="inputField"
-                        showValueHelp="true"
-                        valueHelpIconSrc="sap-icon://show"
-                        placeholder="enter your password"
-                        valueHelpRequest="onToggleLoginPasswordVisibility"
-                    />
+    <CheckBox text="Remember Me" class="checkbox" />
+    <Button text="Sign In" press="onLoginPress" class="loginButton" />
+    <Link text="Forgot your password?" press="onForgotPasswordPress" class="link" />
+    <Link text="New here? Create an account" press="onToggleForm" class="link" />
 
-                    <CheckBox
-                        text="Remember Me"
-                        class="checkbox"
-                    />
-                    <Button
-                        text="Sign In"
-                        press="onLoginPress"
-                        class="loginButton"
-                    />
-                    <Link
-                        text="Forgot your password?"
-                        press="onForgotPasswordPress"
-                        class="link"
-                    />
-                    <Link
-                        text="New here? Create an account"
-                        press="onToggleForm"
-                        class="link"
-                    />
-                </VBox>
+    </VBox>
+    <!-- Registration Form -->
+    <VBox
+        id="registerForm"
+        visible="false"
+        class="formBox fadeIn" >
+    <Title
+        text="Create Your Account"
+        level="H1"
+        class="loginTitle" />
 
-                <!-- Registration Form -->
-                <VBox
-                    id="registerForm"
-                    visible="false"
-                    class="formBox fadeIn"
-                >
-                    <Title
-                        text="Create Your Account"
-                        level="H1"
-                        class="loginTitle"
-                    />
+    <HBox>
+        <Label
+        text="Full Name"
+        class="inputLabel" />
+        <Text text="*" class="requiredAsterisk" />
+    </HBox>
+        <Input
+        id="fullName"
+        placeholder="Enter your full name"
+        class="inputField" />
 
-                        <Label
-                            text="Full Name"
-                            class="inputLabel"
-                            required="true"
-                        />
-                    <Input
-                        id="fullName"
-                        placeholder="Enter your full name"
-                        class="inputField"
-                    />
-                        <Label
-                            text="Email Address"
-                            class="inputLabel"
-                            required="true"
-                        />
-                    <Input
-                        id="registerEmail"
-                        placeholder="Enter your email"
-                        type="Email"
-                        class="inputField"
-                    />
-                        <Label
-                            text="Mobile Number"
-                            class="inputLabel"
-                            required="true"
-                        />
-                    <Input
-                        id="mobileNumber"
-                        placeholder="Enter your mobile number"
-                        type="Tel"
-                        class="inputField"
-                    />
-                        <Label
-                            text="Username"
-                            class="inputLabel"
-                            required="true"
-                        />
-                    <Input
-                        id="username"
-                        placeholder="Choose a username"
-                        class="inputField"
-                    />
-                        <Label
-                            text="Password"
-                            class="inputLabel"
-                            required="true"
-                        />
-                    <Input
-                        id="registerPassword"
-                        placeholder="Create a password"
-                        type="Password"
-                        class="inputField"
-                        showValueHelp="true"
-                        valueHelpIconSrc="sap-icon://show"
-                        valueHelpRequest="onToggleRegisterPasswordVisibility"
-                    />
+    <HBox>
+        <Label
+        text="Email Address"
+        class="inputLabel" />
+        <Text text="*" class="requiredAsterisk" />
+    </HBox>
+        <Input
+        id="registerEmail"
+        placeholder="Enter your email"
+        type="Email"
+        class="inputField" />
+
+    <HBox>
+        <Label
+        text="Mobile Number"
+        class="inputLabel" />
+        <Text
+        text="*"
+        class="requiredAsterisk" />
+    </HBox>
+        <Input
+        id="mobileNumber"
+        placeholder="Enter your mobile number"
+        type="Tel"
+        class="inputField" />
+
+    <HBox>
+        <Label
+        text="Username"
+        class="inputLabel" />
+        <Text
+        text="*"
+        class="requiredAsterisk" />
+    </HBox>
+        <Input
+        id="username"
+        placeholder="Choose a username"
+        class="inputField" />
+
+    <HBox>
+    <Label
+    text="Password"
+    class="inputLabel" />
+    <Text text="*" class="requiredAsterisk" />
+    </HBox>
+    <Input
+        id="registerPassword"
+        placeholder="Create a password"
+        type="Password"
+        class="inputField"
+        showValueHelp="true"
+        valueHelpIconSrc="sap-icon://show"
+        valueHelpRequest="onToggleRegisterPasswordVisibility" />
+
+                <HBox>
                         <Label
                             text="Confirm Password"
                             class="inputLabel"

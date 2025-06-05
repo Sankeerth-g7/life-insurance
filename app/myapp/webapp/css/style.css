@@ -3,22 +3,22 @@
 }
  
 .pageTitle {
-    font-size: 30px;
+    font-size: 25px;
     font-weight: bold;
-   
     color: #808034;
-    margin-bottom: 5px;
+    margin-top:0.5px;
+    margin-bottom: 1px;
     font-family: 'Times New Roman', Times, serif, sans-serif;
 }
- 
+
 .loginContainer {
     align-items: center;
     justify-content: center;
 }
  
 .formBox {
-    width: 400px;
-    height: 600px;
+    width: 370px;
+    height: 500px;
     transition: opacity 0.4s ease-in-out;
     background-color: #dbd4ff;
     padding: 50px;
@@ -39,7 +39,6 @@
     from {
         opacity: 0;
     }
- 
     to {
         opacity: 1;
     }
@@ -48,38 +47,38 @@
 .logo {
     display: block;
     margin: 0 auto 30px;
-    width: 120px;
+    width: 80px;
 }
- 
+
 .loginTitle {
     text-align: center;
-    margin-bottom: 30px;
-    font-size: 24px;
+    margin-bottom: 8px;
+    font-size: 18px;
     font-weight: bold;
 }
  
 .inputField {
-    margin-bottom: 15px;
-    height: 2.5rem;
-    font-size: 1rem;
+    margin-bottom: 8px;
+    height: 2rem;
+    font-size: 0.95rem;
 }
  
 .checkbox {
-    margin: 15px 0;
+    margin: 10px 0;
     font-size: 0.95rem;
 }
  
 .loginButton {
     width: 100%;
-    margin-top: 15px;
-    height: 2.5rem;
+    margin-top: 10px;
+    height: 2.2rem;
     font-size: 1rem;
 }
  
 .link {
     display: block;
     text-align: center;
-    margin-top: 15px;
+    margin-top: 10px;
     font-size: 0.95rem;
     cursor: pointer;
 }
@@ -93,11 +92,11 @@
 }
  
 .sapUiSmallMargin {
-    height: 25px !important;
-    font-size: 20px !important;
+    height: 20px !important;
+    font-size: 18px !important;
     padding-left: 0.2rem !important;
-    padding-top: 1rem !important;
-    padding-bottom: 1rem !important;
+    padding-top: 0.5rem !important;
+    padding-bottom: 0.5rem !important;
 }
  
 .customToolbarHeight {
@@ -105,7 +104,7 @@
     padding-top: 1rem !important;
     padding-bottom: 0.2rem !important;
 }
- 
+ /*home page*/
 .logoTitleBox {
     justify-content: center;
     gap: 1px;
@@ -133,7 +132,8 @@ font-size: 1.3rem;
 gap: 4rem;
 }
    
- 
+/*home page*/
+
 .fullPageBackground {
     background-color: #7c4166c2; /* Light background for the whole page */
     }
@@ -176,24 +176,6 @@ gap: 4rem;
         text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
     }
    
-    .footerContainer {
-        background-color: rgb(201, 226, 238);
-        color: rgb(31, 3, 3); /* This will make the text white */
-        padding: 10px ;
-      }
-     
-      .footerLink {
-        color: rgb(30, 44, 194) !important; /* Ensures links and copyright text are white */
-      }
-     
-      .footerCopyright {
-        color: rgb(2, 4, 26) !important; /* Ensures links and copyright text are white */
-      }
-     
-      .footerLinksBox, .footerCopyrightBox {
-        background-color: rgb(207, 227, 240);
-      }
- 
      
 .quoteSection {
     position: relative;
@@ -247,9 +229,6 @@ gap: 4rem;
         text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
     }
  
- 
- 
- 
     .footerContainer {
         background-color: rgb(201, 226, 238);
         color: rgb(31, 3, 3); /* This will make the text white */
@@ -257,18 +236,29 @@ gap: 4rem;
       }
      
       .footerLink {
-        color: rgb(30, 44, 194) !important; /* Ensures links and copyright text are white */
+        /*color: rgb(50, 50, 190) !important; /* Ensures links and copyright text are white */
+        color: #0070ba; 
+        text-decoration: none;
+        font-size: 0.95rem;
+        cursor: pointer;
+        transition: color 0.3s ease;
       }
      
-      .footerCopyright {
-        color: rgb(2, 4, 26) !important; /* Ensures links and copyright text are white */
+      .footerLinksBox {
+        background-color: rgb(201, 220, 233);
       }
-     
-      .footerLinksBox, .footerCopyrightBox {
-        background-color: rgb(207, 227, 240);
+
+      .footerCopyrightBox {
+        padding-top: 10px; 
+        justify-content: center;
       }
- 
-     
+      
+    .footerCopyright {
+        font-size: 0.85rem;
+        color: #666;
+        text-align: center;
+    }
+    
 .quoteSection {
     position: relative;
     width: 100%;
@@ -291,7 +281,9 @@ gap: 4rem;
     font-weight: bold;
     text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.7);
 }
- 
+
+ /* view policy page css*/
+
 .policyCard {
     width: 90%;
     max-width: 500px;
@@ -335,8 +327,6 @@ gap: 4rem;
     padding: 16px;
     color: white;
 }
- 
- 
  
 .bgEndowment {
     background-image: url("images/endowment-icon.png");

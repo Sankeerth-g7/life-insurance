@@ -1,37 +1,44 @@
 <mvc:View 
     controllerName="myapp.controller.myPolicy"
-    xmlns:mvc="sap.ui.core.mvc"
-    xmlns="sap.m"
-    xmlns:core="sap.ui.core">
-
-    <Page showHeader="false" class="">
-        <VBox id="navbarMyPolicyContainer"/>
-
-        <FlexBox
-            class="sapUiMediumMargin customCardList"
+	xmlns:mvc="sap.ui.core.mvc"
+	xmlns="sap.m"
+	xmlns:core="sap.ui.core">
+	<Page showHeader="false" class="mypolicypg">
+		<VBox id="navbarMyPolicyContainer"/>
+		<FlexBox
+            class="customCardList0"
             direction="Row"
             wrap="Wrap"
             justifyContent="Start"
             items="{policyModel>/userPolicies}"
         >
-            <items>
-                <VBox class="policyCard" backgroundDesign="Solid" width="400px">
-                    <HBox alignItems="Center" class="cardHeader">
-                        <!-- <Icon src="sap-icon://person-placeholder" size="2rem" /> -->
-                        <Title text="{policyModel>applicantName}" level="H3" class="cardTitle" />
-                    </HBox>
-
-                    <Text text="App ID: {policyModel>applicationId}" class="highlightText" />
-                    <Text text="Email: {policyModel>applicantEmail}" class="highlightText" />
-                    <Text text="Mobile: {policyModel>applicantMobileNo}" class="highlightText" />
-                    <Text text="Policy: {policyModel>policyDetails/policyName}" class="highlightText" />
-                    <Text text="Coverage: ₹{policyModel>policyDetails/coverageAmount}" class="highlightText" />
-                    <Text text="Premium: ₹{policyModel>policyDetails/premiumAmount}" class="highlightText" />
-                    <ObjectStatus text="{policyModel>status}" class="statusIndicator" />
-                </VBox>
-            </items>
-        </FlexBox>
-
-        <VBox id="FooterMyPoliciesContainer"/>
-    </Page>
+			<items>
+				<VBox class="applicationCard" backgroundDesign="Solid" width="400px">
+					<customData>
+						<core:CustomData key="status" value="{policyModel>status}" writeToDom="true"/>
+					</customData>
+					<HBox alignItems="Center" class="cardHeader0">
+						<Image src="https://i.ibb.co/7Jct4sNX/file-00000000c88861fbb343ad3beae8ec50.png" width="2rem" class="applicantIcon"/>
+						<Title text="{policyModel>applicantName}" level="H3" class="cardTitle0" />
+					</HBox>
+					<!-- First Row -->
+					<HBox class="cardRow">
+						<VBox class="cardColumn">
+							<Text text="App ID: {policyModel>applicationId}" class="highlightText0" />
+							<Text text="Email: {policyModel>applicantEmail}" class="highlightText0" />
+							<Text text="Mobile: {policyModel>applicantMobileNo}" class="highlightText0" />
+						</VBox>
+						<VBox class="cardColumn">
+							<Text text="Policy: {policyModel>policyDetails/policyName}" class="highlightText0" />
+							<Text text="Coverage: ₹{policyModel>policyDetails/coverageAmount}" class="highlightText0" />
+							<Text text="Premium: ₹{policyModel>policyDetails/premiumAmount}" class="highlightText0" />
+						</VBox>
+					</HBox>
+					<!-- Status -->
+					<Text text="Status: {policyModel>status}" class="statusText" />
+				</VBox>
+			</items>
+		</FlexBox>
+		<VBox id="FooterMyPoliciesContainer"/>
+	</Page>
 </mvc:View>

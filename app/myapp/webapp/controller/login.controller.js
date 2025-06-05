@@ -107,16 +107,16 @@ sap.ui.define([
                         user.isLocked = "true";
                         var lockUntil = new Date();
                         lockUntil.setHours(lockUntil.getHours() + 1);
-                        console.log(lockUntil)
+                        // console.log(lockUntil)
                         user.lockUntil = lockUntil
-                        console.log(user.lockUntil,"qwertyuiuygtf")
+                        // console.log(user.lockUntil,"qwertyuiuygtf")
                         MessageToast.show("Account locked due to multiple failed attempts. Try again in 1 hour.");
                     } else {
                         MessageToast.show("Incorrect password.");
                     }
  
                     // console.log(user.lockUntil)
-                    console.log(user,"hereeee is userrrrr")
+                    // console.log(user,"hereeee is userrrrr")
    
                     that.oModel.update("/users(" + user.userId + ")", user, {
                         error: function () {
@@ -182,8 +182,8 @@ sap.ui.define([
                 MessageToast.show("Registration successful!");
                 var oRouter = sap.ui.core.UIComponent.getRouterFor(oView);
                 oRouter.navTo("home");
-
-
+                var oUserModel = new sap.ui.model.json.JSONModel({ userId: oData.userId });
+                oView.getController().getOwnerComponent().setModel(oUserModel, "userModel");
             },
             error: function (oError) {
                 var errorMessage = oError.responseText ? JSON.parse(oError.responseText).error.message : "Unexpected error occurred.";

@@ -17,7 +17,7 @@ sap.ui.define([
 
 
             var oHeader = sap.ui.xmlfragment("myapp.view.fragments.CustomHeader", this);
-            this.getView().byId("navbarmyPolicyContainer").addItem(oHeader);
+            this.getView().byId("navbarMyPolicyContainer").addItem(oHeader);
 
             //var oFooter = sap.ui.xmlfragment("myapp.view.fragments.CustomFooter", this);
             //this.getView().byId("FooterMyPoliciesContainer").addItem(oFooter);

@@ -5,11 +5,11 @@
     <VBox class="footerContainer">
     <HBox justifyContent="Center" class="footerLinksBox">
         <HBox justifyContent="SpaceAround" width="80%" class="footerLinks">
-        <Link text="About Us" class="footerLink" press=".onAboutUsPress" />
-        <Link text="Contact Us" class="footerLink" press=".onContactUsPress"/>
-        <Link text="Terms  Conditions" class="footerLink" press=".onTermsPress"/>
-        <Link text="Privacy Policy" class="footerLink" press=".onPrivacyPress"/>
-        <Link text="FAQ" class="footerLink" press=".onFaqPress"/>
+        <Link text="About Us" class="footerLink" press=".onLinkPress" />
+        <Link text="Contact Us" class="footerLink" press=".onLinkPress"/>
+        <Link text="Terms  Conditions" class="footerLink" press=".onLinkPress"/>
+        <Link text="Privacy Policy" class="footerLink" press=".onLinkPress"/>
+        <Link text="FAQ" class="footerLink" press=".onLinkPress"/>
         </HBox>
     </HBox>
     

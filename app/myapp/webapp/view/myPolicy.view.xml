@@ -6,14 +6,15 @@
 	<Page showHeader="false" class="mypolicypg">
 		<VBox id="navbarMyPolicyContainer"/>
 		<FlexBox
-            class="customCardList0"
-            direction="Row"
-            wrap="Wrap"
-            justifyContent="Start"
-            items="{policyModel>/userPolicies}"
-        >
+    class="customCardList0"
+    direction="Row"
+    wrap="Wrap"
+    justifyContent="SpaceBetween"
+    items="{policyModel>/userPolicies}"
+>
+
 			<items>
-				<VBox class="applicationCard" backgroundDesign="Solid" width="400px">
+				<VBox class="applicationCard" backgroundDesign="Solid" width="100%">
 					<customData>
 						<core:CustomData key="status" value="{policyModel>status}" writeToDom="true"/>
 					</customData>

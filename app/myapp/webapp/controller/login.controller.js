@@ -1,8 +1,9 @@
 sap.ui.define([
     "sap/ui/core/mvc/Controller",
-    "sap/m/MessageToast",
+    //"sap/m/MessageToast",
+    "sap/m/MessageBox", 
     "sap/ui/model/odata/v2/ODataModel"
-], function (Controller, MessageToast, ODataModel) {
+], function (Controller, MessageBox, ODataModel) {
     "use strict";
  
     return Controller.extend("myapp.controller.login", {
@@ -29,7 +30,7 @@ sap.ui.define([
         var password = oView.byId("passwordInput").getValue();
    
         if (!input) {
-            sap.m.MessageBox.information("Please enter your email or username.");
+            MessageBox.information("Please enter your email or username.");
             oView.byId("emailInput").setValueState("Error");
             return;
         } else {
@@ -37,7 +38,7 @@ sap.ui.define([
         }
    
         if (!password) {
-            sap.m.MessageBox.error("Please enter your password.");
+            MessageBox.error("Please enter your password.");
             oView.byId("passwordInput").setValueState("Error");
             return;
         } else {
@@ -57,7 +58,7 @@ sap.ui.define([
             filters: [oCombinedFilter],
             success: function (oData) {
                 if (oData.results.length === 0) {
-                    sap.m.MessageBox.information("User not found.");
+                    MessageBox.information("User not found.");
                     return;
                 }
    
@@ -74,7 +75,7 @@ sap.ui.define([
                 // console.log(user.isLocked, lockUntilDate, now, lockUntilDate && lockUntilDate > now);
  
                 if (user.isLocked === "true" && lockUntilDate && lockUntilDate > now) {
-                    sap.m.MessageBox.warning("Account is locked. Try again later.");
+                    MessageBox.warning("Account is locked. Try again later.");
                     return;
                 }
  
@@ -87,7 +88,7 @@ sap.ui.define([
    
                     that.oModel.update("/users(" + user.userId + ")", user, {
                         success: function () {
-                            sap.m.MessageBox.success("Login successful!");
+                            MessageBox.success("Login successful!");
                             var oRouter = sap.ui.core.UIComponent.getRouterFor(that);
                             oRouter.navTo("home");
                             var oUserModel = new sap.ui.model.json.JSONModel({ userId: user.userId });
@@ -111,9 +112,9 @@ sap.ui.define([
                         // console.log(lockUntil)
                         user.lockUntil = lockUntil
                         // console.log(user.lockUntil,"qwertyuiuygtf")
-                        sap.m.MessageBox.warning("Account locked due to multiple failed attempts. Try again in 1 hour.");
+                        MessageBox.warning("Account locked due to multiple failed attempts. Try again in 1 hour.");
                     } else {
-                        sap.m.MessageBox.error("Incorrect password.");
+                        MessageBox.error("Incorrect password.");
                     }
  
                     // console.log(user.lockUntil)
@@ -121,19 +122,17 @@ sap.ui.define([
    
                     that.oModel.update("/users(" + user.userId + ")", user, {
                         error: function () {
-                            sap.m.MessageBox.error("Failed to update login attempt.");
+                            MessageBox.error("Failed to update login attempt.");
                         }
                     });
                 }
             },
             error: function () {
-                sap.m.MessageBox.error("Error while logging in. Please try again.");
+                MessageBox.error("Error while logging in. Please try again.");
             }
         });
     },
-   
-   
-   
+
     onRegister: function () {
         var oView = this.getView();
    
@@ -147,23 +146,23 @@ sap.ui.define([
         var emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
         var phonePattern = /^[0-9]{10}$/;
         if (!fullName || !email || !phone || !username || !password || !confirmPassword) {
-            sap.m.MessageBox.warning("Please fill in all mandatory fields.");
+            MessageBox.warning("Please fill in all mandatory fields.");
             return;
         }
         if (!emailPattern.test(email)) {
-            sap.m.MessageBox.warning("Please enter a valid email address.");
+            MessageBox.warning("Please enter a valid email address.");
             return;
         }
         if (!phonePattern.test(phone)) {
-            sap.m.MessageBox.warning("Please enter a valid 10-digit mobile number.");
+            MessageBox.warning("Please enter a valid 10-digit mobile number.");
             return;
         }
         if (password !== confirmPassword) {
-            sap.m.MessageBox.warning("Passwords do not match.");
+            MessageBox.warning("Passwords do not match.");
             return;
         }
         if (!termsAccepted) {
-            sap.m.MessageBox.warning("Please accept the Terms & Conditions.");
+            MessageBox.warning("Please accept the Terms & Conditions.");
             return;
         }
         var oData = {
@@ -180,7 +179,7 @@ sap.ui.define([
         };
         this.oModel.create("/users", oData, {
             success: function () {
-                sap.m.MessageBox.success("Registration successful!");
+                MessageBox.success("Registration successful!");
                 var oRouter = sap.ui.core.UIComponent.getRouterFor(oView);
                 oRouter.navTo("home");
                 var oUserModel = new sap.ui.model.json.JSONModel({ userId: oData.userId });
@@ -188,16 +187,15 @@ sap.ui.define([
             },
             error: function (oError) {
                 var errorMessage = oError.responseText ? JSON.parse(oError.responseText).error.message : "Unexpected error occurred.";
-                sap.m.MessageBox.error(errorMessage);
+                MessageBox.error(errorMessage);
             }
         });
     },
-     
     onForgotPasswordPress: function () {
         var oDialog = new sap.m.Dialog({
             title: "Reset Password",
             content: [
-                new sap.m.Label({ text: "Enter your registered email:", labelFor: "emailInput" }),
+                new sap.m.Label({ text: "Enter your registered email:", labelFor: "forgotEmailInput" }),
                 new sap.m.Input("forgotEmailInput", {
                     type: sap.m.InputType.Email,
                     placeholder: "Enter your email",
@@ -208,31 +206,28 @@ sap.ui.define([
                 })
             ],
             beginButton: new sap.m.Button({
-                text: "Send Reset Link",
+                text: "Send OTP",
                 enabled: false,
                 press: function () {
                     var sEmail = sap.ui.getCore().byId("forgotEmailInput").getValue();
-                   
                     if (!sEmail) {
                         sap.m.MessageToast.show("Please enter a valid email.");
                         return;
                     }
-   
-                    // Simulate backend call
-                    $.ajax({
-                        url: "/api/reset-password",
-                        type: "POST",
-                        data: JSON.stringify({ email: sEmail }),
-                        contentType: "application/json",
+    
+                    // Call OData service to send OTP
+                    var oModel = new sap.ui.model.odata.v2.ODataModel("/sap/opu/odata/sap/ZUSER_MGMT_SRV/");
+                    oModel.create("/SendOtpSet", { Email: sEmail }, {
                         success: function () {
-                            sap.m.MessageToast.show("Reset link sent to " + sEmail);
+                            sap.m.MessageToast.show("OTP sent to " + sEmail);
+                            oDialog.close();
+                            // Open OTP verification dialog
+                            that._openOtpVerificationDialog(sEmail);
                         },
                         error: function () {
-                            sap.m.MessageToast.show("Error sending reset link.");
+                            sap.m.MessageToast.show("Failed to send OTP.");
                         }
                     });
-   
-                    oDialog.close();
                 }
             }),
             endButton: new sap.m.Button({
@@ -242,9 +237,101 @@ sap.ui.define([
                 }
             })
         });
-   
+    
         oDialog.open();
     },
+
+//otp verification
+_openOtpVerificationDialog: function (sEmail) {
+    var oDialog = new sap.m.Dialog({
+        title: "Verify OTP",
+        content: [
+            new sap.m.Label({ text: "Enter OTP sent to your email:" }),
+            new sap.m.Input("otpInput", {
+                type: sap.m.InputType.Number,
+                placeholder: "Enter OTP"
+            })
+        ],
+        beginButton: new sap.m.Button({
+            text: "Verify",
+            press: function () {
+                var sOtp = sap.ui.getCore().byId("otpInput").getValue();
+                var oModel = new sap.ui.model.odata.v2.ODataModel("/sap/opu/odata/sap/ZUSER_MGMT_SRV/");
+                oModel.create("/VerifyOtpSet", { Email: sEmail, Otp: sOtp }, {
+                    success: function () {
+                        sap.m.MessageToast.show("OTP verified.");
+                        oDialog.close();
+                        // Open new password dialog
+                        that._openNewPasswordDialog(sEmail);
+                    },
+                    error: function () {
+                        sap.m.MessageToast.show("Invalid OTP.");
+                    }
+                });
+            }
+        }),
+        endButton: new sap.m.Button({
+            text: "Cancel",
+            press: function () {
+                oDialog.close();
+            }
+        })
+    });
+
+    oDialog.open();
+},
+// new passsword setup
+_openNewPasswordDialog: function (sEmail) {
+    var oDialog = new sap.m.Dialog({
+        title: "Create New Password",
+        content: [
+            new sap.m.Label({ text: "New Password:" }),
+            new sap.m.Input("newPasswordInput", {
+                type: sap.m.InputType.Password,
+                placeholder: "Enter new password"
+            }),
+            new sap.m.Label({ text: "Confirm Password:" }),
+            new sap.m.Input("confirmPasswordInput", {
+                type: sap.m.InputType.Password,
+                placeholder: "Confirm new password"
+            })
+        ],
+        beginButton: new sap.m.Button({
+            text: "Reset Password",
+            press: function () {
+                var sNewPassword = sap.ui.getCore().byId("newPasswordInput").getValue();
+                var sConfirmPassword = sap.ui.getCore().byId("confirmPasswordInput").getValue();
+
+                if (sNewPassword !== sConfirmPassword) {
+                    sap.m.MessageToast.show("Passwords do not match.");
+                    return;
+                }
+
+                var oModel = new sap.ui.model.odata.v2.ODataModel("/sap/opu/odata/sap/ZUSER_MGMT_SRV/");
+                oModel.create("/ResetPasswordSet", {
+                    Email: sEmail,
+                    NewPassword: sNewPassword
+                }, {
+                    success: function () {
+                        sap.m.MessageToast.show("Password reset successfully.");
+                        oDialog.close();
+                    },
+                    error: function () {
+                        sap.m.MessageToast.show("Failed to reset password.");
+                    }
+                });
+            }
+        }),
+        endButton: new sap.m.Button({
+            text: "Cancel",
+            press: function () {
+                oDialog.close();
+            }
+        })
+    });
+
+    oDialog.open();
+},
 
 // password visibility
  
@@ -291,8 +378,6 @@ _togglePasswordVisibility: function (sInputId) {
     oInput.setType(bIsPassword ? "Text" : "Password");
     oInput.setValueHelpIconSrc(bIsPassword ? "sap-icon://hide" : "sap-icon://show");
 }
- 
- 
     });
 });
 

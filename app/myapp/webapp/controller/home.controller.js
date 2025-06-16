@@ -1,8 +1,9 @@
 sap.ui.define([
     "sap/ui/core/mvc/Controller",
     "sap/m/MessageToast",
-    "myapp/controller/footer"
-], function (Controller, MessageToast, footerFactory) {
+    "myapp/controller/footer",
+    "sap/m/MessageBox"
+], function (Controller, MessageToast, footerFactory MessageBox ) {
     "use strict";
 
     return Controller.extend("myapp.controller.home", {
@@ -51,14 +52,14 @@ sap.ui.define([
             var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
             oRouter.navTo("myPolicy");
 
-        },
-        onLogout: function () {
-            var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
-            oRouter.navTo("logged out")
-            MessageToast.show("You have been logged out.");
-            // Optionally navigate to login or home page
-            //this.getOwnerComponent().getRouter().navTo("Login");
-        }
+    },
+    onLogout: function () {
+        var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
+        oRouter.navTo("login")
+        MessageBox.Information("You have been logged out.");
+        // Optionally navigate to login or home page
+        //this.getOwnerComponent().getRouter().navTo("Login");
+    }
     });
 });
 

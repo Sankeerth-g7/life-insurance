@@ -18,9 +18,9 @@ sap.ui.define([
 //   var oHeader = sap.ui.xmlfragment("myapp.view.fragments.CustomHeader", this);
 //     this.getView().byId("navbarProfileContainer").addItem(oHeader);
 
-        var oFooter = sap.ui.xmlfragment("myapp.view.fragments.CustomFooter", this);
+        //var oFooter = sap.ui.xmlfragment("myapp.view.fragments.CustomFooter", this);
         //this.getView().byId("FootermyProfileContainer").addItem(oFooter);
-        this.getview().byId("FootermyProfileContainer").addItem(oFooter);
+        //this.getview().byId("FootermyProfileContainer").addItem(oFooter);
     },
 
     onRouteMatched: function (oEvent) {

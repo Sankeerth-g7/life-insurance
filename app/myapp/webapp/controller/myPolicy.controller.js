@@ -2,13 +2,19 @@ sap.ui.define([
     "sap/ui/core/mvc/Controller",
     "sap/ui/model/json/JSONModel",
     "sap/m/MessageToast",
-    "sap/ui/model/odata/v2/ODataModel"
-], (Controller, JSONModel, MessageToast, ODataModel) => {
+    "sap/ui/model/odata/v2/ODataModel",
+    "sap/m/MessageBox"
+], (Controller, JSONModel, MessageToast, ODataModel, MessageBox) => {
     "use strict";
 
     return Controller.extend("myapp.controller.myPolicy", {
         onInit() {
-            
+
+
+            var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
+            oRouter.getRoute("myPolicy").attachPatternMatched(this._onRouteMatched, this);
+
+
 
             var oHeader = sap.ui.xmlfragment("myapp.view.fragments.CustomHeader", this);
             this.getView().byId("navbarmyPolicyContainer").addItem(oHeader);
@@ -19,44 +25,77 @@ sap.ui.define([
             var url = "/odata/v2/my/";
             this.oModel = new ODataModel(url, true);
             this.getView().setModel(this.oModel);
-            var oUserModel = this.getOwnerComponent().getModel("userModel");
-            var userId = oUserModel.getProperty("/userId");
-            // console.log(userId)
+            // var oUserModel = this.getOwnerComponent().getModel("userModel");
 
+            // // console.log(userId)
 
-
-            this.oModel.attachMetadataLoaded(() => {
-                this.getUserPolicyDetails(userId);
-            });
+            // if (!oUserModel || !oUserModel.getProperty("/userId")) {
+            //     console.log("camee")
+            //     MessageBox.warning("⚠️ Please login first", {
+            //         title: "Authentication Required",
+            //         actions: [MessageBox.Action.OK],
+            //         emphasizedAction: MessageBox.Action.OK,
+            //         onClose: function () {
+            //             var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
+            //             oRouter.navTo("Routelogin");
+            //         }.bind(this)
+            //     });
+            //     return
+            // }
+            // var userId = oUserModel.getProperty("/userId");
+            // this.oModel.attachMetadataLoaded(() => {
+            //     this.getUserPolicyDetails(userId);
+            // });
         },
 
+        _onRouteMatched: function () {
+            var oUserModel = this.getOwnerComponent().getModel("userModel");
         
+            if (!oUserModel || !oUserModel.getProperty("/userId")) {
+                MessageBox.warning("⚠️ Please login first", {
+                    title: "Authentication Required",
+                    actions: [MessageBox.Action.OK],
+                    emphasizedAction: MessageBox.Action.OK,
+                    onClose: function () {
+                        var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
+                        oRouter.navTo("Routelogin");
+                    }.bind(this)
+                });
+                return;
+            }
+        
+            var userId = oUserModel.getProperty("/userId");
+            this.getUserPolicyDetails(userId);
+        },
+        
+
+
         onLogout: function () {
-       
+
             var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
             oRouter.navTo("home");
             MessageToast.show("Logged out!");
-           
-    
-          },
-          onNavHome: function () {
+
+
+        },
+        onNavHome: function () {
             var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
             oRouter.navTo("home");
             MessageToast.show("Returned Home");
-           
-          },
 
-          onNavViewPolicy: function () {
+        },
+
+        onNavViewPolicy: function () {
             var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
             oRouter.navTo("viewPolicy");
-           
-          },
 
-          onNavMyProfile: function () {
+        },
+
+        onNavMyProfile: function () {
             var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
             oRouter.navTo("myProfile");
-           
-          },
+
+        },
 
         getUserPolicyDetails: function (userId) {
             const filterCondition = `user_userId eq '${userId}'`;

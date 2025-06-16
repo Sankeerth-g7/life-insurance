@@ -677,6 +677,7 @@
 
 .footer {
     margin-top: auto;
+    color: red;
 }
 
 
@@ -696,15 +697,17 @@
     scroll-snap-type: x mandatory;
 }
 
+
 .applicationCard {
-    width: 100%;
-    max-width: 8000px;
-    padding: 20px;
-    margin: 20px auto;
+    width: 200%;
+    padding: 10px;
+    margin:  auto;
     border-radius: 12px;
-    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
-    background-color: #dbd4ff;
-    /* transition: transform 0.3s ease; */
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.5);
+    background-color:#ffffff;
+    height: 100%;
+    margin-top: 20px;
+    margin-bottom: 20px;
 }
 
 /* .applicationCard:hover {
@@ -719,12 +722,12 @@
 .cardTitle0 {
     font-size: 1.5rem;
     font-weight: bold;
-    color: #808034;
-    /* A warm highlight color */
+    color: black; /* A warm highlight color */
     margin-bottom: 10px;
     font-family: "Georgia", "Times New Roman", serif;
     text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.4);
     letter-spacing: 0.5px;
+    margin-top: 12px;
 }
 
 .highlightText0 {
@@ -740,23 +743,7 @@
 }
 
 /* Status-Based Background Colors */
-.applicationCard[data-status="Approved"] {
-    background-color: #e8f5e9;
-    /* light green */
-    border-left: 5px solid #2e7d32;
-}
 
-.applicationCard[data-status="Pending"] {
-    background-color: #fffde7;
-    /* light yellow */
-    border-left: 5px solid #f9a825;
-}
-
-.applicationCard[data-status="Rejected"] {
-    background-color: #ffebee;
-    /* light red */
-    border-left: 5px solid #c62828;
-}
 
 .applicantIcon {
     color: #5c6bc0;
@@ -767,8 +754,9 @@
 .cardRow {
     display: flex;
     justify-content: space-between;
-    gap: 1rem;
+    gap: 2rem;
     margin-top: 10px;
+    width: 100%;
 }
 
 .cardColumn {
@@ -776,6 +764,7 @@
     display: flex;
     flex-direction: column;
     gap: 6px;
+    width:100%
 }
 
 .statusText {
@@ -784,10 +773,26 @@
     color: #333;
     margin-top: 12px;
     padding: 6px 10px;
-    background-color: rgba(0, 0, 0, 0.05);
     border-radius: 6px;
     text-align: center;
 }
+
+/* Status-Based Background Colors for statusText */
+.statusText[data-status="Approved"] {
+    color: #2e7d32;
+    border-left: 5px solid #2e7d32;
+}
+
+.statusText[data-status="Pending"] {
+    color: #f9a825;
+    border-left: 5px solid #f9a825;
+}
+
+.statusText[data-status="Rejected"] {
+    color: #c62828;
+    border-left: 5px solid #c62828;
+}
+
 
 /* .mypolicypg {} */
 

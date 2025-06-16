@@ -1,5 +1,5 @@
-<!-- Footer -->
-<core:FragmentDefinition xmlns="sap.m"
+<core:FragmentDefinition 
+    xmlns="sap.m"
     xmlns:core="sap.ui.core"
     xmlns:layout="sap.ui.layout">
     <VBox class="footerContainer">

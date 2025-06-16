@@ -30,15 +30,20 @@
 						</VBox>
 						<VBox class="cardColumn">
 							<Text text="Policy: {policyModel>policyDetails/policyName}" class="highlightText0" />
-							<Text text="Coverage: ₹{policyModel>policyDetails/coverageAmount}" class="highlightText0" />
-							<Text text="Premium: ₹{policyModel>policyDetails/premiumAmount}" class="highlightText0" />
+							<Text text="Claim: ₹{policyModel>policyDetails/claimAmount}" class="highlightText0" />
+							<Text text="Term Length: ₹{policyModel>policyDetails/termLength}" class="highlightText0" />
 						</VBox>
 					</HBox>
 					<!-- Status -->
-					<Text text="Status: {policyModel>status}" class="statusText" />
+					<Text text="Status: {policyModel>status}" class="statusText">
+						<customData>
+							<core:CustomData key="status" value="{policyModel>status}" writeToDom="true"/>
+						</customData>
+					</Text>
+
 				</VBox>
 			</items>
 		</FlexBox>
-		<VBox id="FooterMyPoliciesContainer"/>
+		<VBox id="FooterMyPoliciesContainer" class="footer"/>
 	</Page>
 </mvc:View>

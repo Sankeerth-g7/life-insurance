@@ -57,7 +57,7 @@ sap.ui.define([
             filters: [oCombinedFilter],
             success: function (oData) {
                 if (oData.results.length === 0) {
-                    MessageToast.show("User not found.");
+                    sap.m.MessageBox.information("User not found.");
                     return;
                 }
    
@@ -111,9 +111,9 @@ sap.ui.define([
                         // console.log(lockUntil)
                         user.lockUntil = lockUntil
                         // console.log(user.lockUntil,"qwertyuiuygtf")
-                        MessageToast.show("Account locked due to multiple failed attempts. Try again in 1 hour.");
+                        sap.m.MessageBox.warning("Account locked due to multiple failed attempts. Try again in 1 hour.");
                     } else {
-                        MessageToast.show("Incorrect password.");
+                        sap.m.MessageBox.error("Incorrect password.");
                     }
  
                     // console.log(user.lockUntil)
@@ -121,13 +121,13 @@ sap.ui.define([
    
                     that.oModel.update("/users(" + user.userId + ")", user, {
                         error: function () {
-                            MessageToast.show("Failed to update login attempt.");
+                            sap.m.MessageBox.error("Failed to update login attempt.");
                         }
                     });
                 }
             },
             error: function () {
-                MessageToast.show("Error while logging in. Please try again.");
+                sap.m.MessageBox.error("Error while logging in. Please try again.");
             }
         });
     },
@@ -147,23 +147,23 @@ sap.ui.define([
         var emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
         var phonePattern = /^[0-9]{10}$/;
         if (!fullName || !email || !phone || !username || !password || !confirmPassword) {
-            MessageToast.show("Please fill in all mandatory fields.");
+            sap.m.MessageBox.warning("Please fill in all mandatory fields.");
             return;
         }
         if (!emailPattern.test(email)) {
-            MessageToast.show("Please enter a valid email address.");
+            sap.m.MessageBox.warning("Please enter a valid email address.");
             return;
         }
         if (!phonePattern.test(phone)) {
-            MessageToast.show("Please enter a valid 10-digit mobile number.");
+            sap.m.MessageBox.warning("Please enter a valid 10-digit mobile number.");
             return;
         }
         if (password !== confirmPassword) {
-            MessageToast.show("Passwords do not match.");
+            sap.m.MessageBox.warning("Passwords do not match.");
             return;
         }
         if (!termsAccepted) {
-            MessageToast.show("Please accept the Terms & Conditions.");
+            sap.m.MessageBox.warning("Please accept the Terms & Conditions.");
             return;
         }
         var oData = {
@@ -180,7 +180,7 @@ sap.ui.define([
         };
         this.oModel.create("/users", oData, {
             success: function () {
-                MessageToast.show("Registration successful!");
+                sap.m.MessageBox.success("Registration successful!");
                 var oRouter = sap.ui.core.UIComponent.getRouterFor(oView);
                 oRouter.navTo("home");
                 var oUserModel = new sap.ui.model.json.JSONModel({ userId: oData.userId });
@@ -188,7 +188,7 @@ sap.ui.define([
             },
             error: function (oError) {
                 var errorMessage = oError.responseText ? JSON.parse(oError.responseText).error.message : "Unexpected error occurred.";
-                MessageToast.show(errorMessage);
+                sap.m.MessageBox.error(errorMessage);
             }
         });
     },

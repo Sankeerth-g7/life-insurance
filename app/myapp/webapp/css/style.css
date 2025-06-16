@@ -326,9 +326,9 @@
     transition: transform 0.3s ease;
 }
 
-.policyCard:hover {
+/* .policyCard:hover {
     transform: translateY(-5px);
-}
+} */
 
 .cardHeader {
     margin-bottom: 10px;
@@ -821,4 +821,15 @@
 .sapUiFormResGrid,
 .sapUiFormBackgrTranslucent {
     background-color: transparent !important;
+}
+
+
+.searchBarContainer {
+    margin: 1rem 0;
+    gap: 0.5rem;
+}
+
+.searchButton {
+    background-color: black;
+    color: white;
 }

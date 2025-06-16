@@ -143,6 +143,11 @@
       "name": "myPolicy",
         "pattern": "myPolicy",
         "target": ["TargetmyPolicy"]
+    },
+    {
+      "name" :"PolicyDetails",
+      "pattern":"PolicyDetails",
+      "target":["TargetPolicyDetails"]
     }
       ],
       "targets": {
@@ -174,6 +179,10 @@
   "TargetmyPolicy": {
     "id":"myPolicy",
     "name": "myPolicy"
+  },
+  "TargetPolicyDetails":{
+    "id": "PolicyDetails",
+    "name": "PolicyDetails"
   }
       }
     },

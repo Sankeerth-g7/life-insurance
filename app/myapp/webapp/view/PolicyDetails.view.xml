@@ -1,0 +1,96 @@
+<mvc:View
+    controllerName="myapp.controller.PolicyDetails"
+    displayBlock="true"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"
+>
+    <Page showHeader="false">
+        <VBox id="navbarPolicyDetailsContainer" />
+        
+<HBox
+    class="searchBarContainer"
+    justifyContent="Center"
+    alignItems="Center"
+>
+    <SearchField
+        id="policySearchField"
+        width="300px"
+        placeholder="Type here to search policy"
+        liveChange="onSearchPolicy"
+    />
+    <Button
+        text="Search"
+        type="Default"
+        press="onSearchPolicyButton"
+        class="searchButton"
+    />
+</HBox>
+
+
+        <FlexBox
+            class="sapUiMediumMargin"
+            direction="Row"
+            wrap="Wrap"
+            justifyContent="Center"
+            items="{policyModel>/Policies}"
+        >
+            <items>
+                <VBox
+                    class="policyCard"
+                    backgroundDesign="Solid"
+                    width="400px"
+                >
+                    <HBox
+                        alignItems="Center"
+                        class="cardHeader"
+                    >
+                        <Image
+                            src="{path: 'policyModel>policyType', formatter: '.formatter.getPolicyIcon'}"
+                            width="40px"
+                            height="40px"
+                        />
+                        <Title
+                            text="{policyModel>policyName}"
+                            level="H3"
+                            class="cardTitle"
+                        />
+                    </HBox>
+                    <Text
+                        text="Type: {policyModel>policyType}"
+                        class="highlightText"
+                    />
+                    <Text
+                        text="Term Length: {policyModel>termLength} years"
+                        class="highlightText"
+                    />
+                    <Text
+                        text="Coverage: ₹{policyModel>claimAmount}"
+                        class="highlightText"
+                    />
+                    <Text text="Description: {policyModel>policyDescription}" />
+                    <Text
+                        text="Terms and Conditions: {policyModel>termsAndConditions}"
+                    />
+                    <HBox
+                        justifyContent="End"
+                        class="cardActions"
+                    >
+                    <Button
+                            icon="sap-icon://delete"
+                            tooltip="Delete Policy"
+                            press="onDeletePolicy"
+                            class="actionButton"
+                        />
+    
+                        <Button
+                            icon="sap-icon://edit"
+                            tooltip="Edit Policy"
+                            press="onEditPolicy"
+                            class="actionButton"
+                        />   
+                    </HBox>
+                </VBox>
+            </items>
+        </FlexBox>
+    </Page>
+</mvc:View>

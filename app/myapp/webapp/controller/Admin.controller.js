@@ -12,6 +12,11 @@ sap.ui.define([
       var oView = this.getView();
       var oRouter = sap.ui.core.UIComponent.getRouterFor(oView);
       oRouter.navTo("AddPolicy");
+    },
+    onPolicyDetailsPress:function(){
+      var oView=this.getView();
+      var oRouter=sap.ui.core.UIComponent.getRouterFor(oView);
+      oRouter.navTo("PolicyDetails");
     }
 
   });

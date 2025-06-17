@@ -1,9 +1,9 @@
 sap.ui.define([
     "sap/ui/core/mvc/Controller",
-    "sap/m/MessageToast",
+   // "sap/m/MessageToast",
     "myapp/controller/footer",
     "sap/m/MessageBox"
-], function (Controller, MessageToast, footerFactory, MessageBox ) {
+], function (Controller, footerFactory, MessageBox ) {
     "use strict";
 
     return Controller.extend("myapp.controller.home", {

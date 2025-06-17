@@ -139,6 +139,11 @@
       "pattern": "AddPolicy",
       "target": ["TargetAddPolicy"]
   },
+  {
+    "name": "ApplicantDetails",
+    "pattern": "AddPolicy",
+    "target": ["TargetAddPolicy"]
+},
     {
       "name": "myPolicy",
         "pattern": "myPolicy",

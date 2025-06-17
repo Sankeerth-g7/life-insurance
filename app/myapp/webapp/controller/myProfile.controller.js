@@ -2,32 +2,27 @@ sap.ui.define([
   "sap/ui/core/mvc/Controller",
   "sap/m/MessageBox",
   "sap/m/MessageToast",
-  "sap/ui/model/json/JSONModel"
-], (Controller, MessageBox,MessageToast, JSONModel) => {
-    "use strict";
- 
-    return Controller.extend("myapp.controller.profile", {
-      onInit() {
- 
-        // Initialize the model
-        var oModel = new JSONModel("odata/v4/my/applications");
-        this.getView().setModel(oModel);
-        
-        var oHeader = sap.ui.xmlfragment("myapp.view.fragments.CustomHeader", this);
-        this.getView().byId("navbarmyProfileContainer").addItem(oHeader);
-//   var oHeader = sap.ui.xmlfragment("myapp.view.fragments.CustomHeader", this);
-//     this.getView().byId("navbarProfileContainer").addItem(oHeader);
+  "sap/ui/model/json/JSONModel",
+  "sap/ui/model/odata/v2/ODataModel"
+], (Controller, MessageBox, MessageToast, JSONModel, ODataModel) => {
+  "use strict";
 
-        //var oFooter = sap.ui.xmlfragment("myapp.view.fragments.CustomFooter", this);
-        //this.getView().byId("FootermyProfileContainer").addItem(oFooter);
-        //this.getview().byId("FootermyProfileContainer").addItem(oFooter);
-    },
+  return Controller.extend("myapp.controller.profile", {
+    onInit() {
 
-    onRouteMatched: function (oEvent) {
-      var sPlanName = decodeURIComponent(oEvent.getParameter("arguments").planName);
-      if (sPlanName) {
-        sap.m.MessageToast.show("You're applying for the plan: " + sPlanName);
-      }
+      // Initialize the model
+      var url = "/odata/v2/my/";
+      this.oModel = new ODataModel(url, true);
+      this.getView().setModel(this.oModel);
+
+      var oHeader = sap.ui.xmlfragment("myapp.view.fragments.CustomHeader", this);
+      this.getView().byId("navbarmyProfileContainer").addItem(oHeader);
+      //   var oHeader = sap.ui.xmlfragment("myapp.view.fragments.CustomHeader", this);
+      //     this.getView().byId("navbarProfileContainer").addItem(oHeader);
+
+      //var oFooter = sap.ui.xmlfragment("myapp.view.fragments.CustomFooter", this);
+      //this.getView().byId("FootermyProfileContainer").addItem(oFooter);
+      //this.getview().byId("FootermyProfileContainer").addItem(oFooter);
     },
 
     onSubmit: function () {
@@ -60,7 +55,6 @@ sap.ui.define([
       var ageFormat = /^(1[89]|[2-5][0-9]|6[0-5])$/;
       var IdFormat = /^[0-9]*$/; // Correctly define the format
 
-      // Generate loan id
       function generateLoanId() {
         const randomNumber = Math.floor(Math.random() * 10000); // Generates a random number between 0 and 9999
         return `${appName}-${randomNumber}`;
@@ -79,35 +73,35 @@ sap.ui.define([
 
       // Creating new object
       var NewUser = {
-          applicantName: ApplicantName,
-          applicantAddress: ApplicantAddress,
-          applicantMobileNo: ApplicantMobileNo,
-          applicantEmail: ApplicantEmailId,
-          applicantAadhar: ApplicantAadharNo,
-          applicantPan: ApplicantPanNo,
-          applicantAge: ApplicantAge,
-          applicationId: ApplicationId,
-          
-      };
-  
-      
-      // Checking for wrong format
-      
-      // Format validation
-let formatErrors = [];
-if (ApplicantName && !ApplicantName.match(nameFormat)) formatErrors.push("Applicant name (only alphabets are allowed)");
-if (ApplicantMobileNo && !ApplicantMobileNo.match(mobileFormat)) formatErrors.push("Applicant Mobile No (Must be 10 digits)");
-if (ApplicantEmailId && !ApplicantEmailId.match(emailFormat)) formatErrors.push("Applicant Email Id (Invalid email format)");
-if (ApplicantAadharNo && !ApplicantAadharNo.match(aadhaarFormat)) formatErrors.push("Applicant Aadhaar No (Must be 12 digits)");
-if (ApplicantPanNo && !ApplicantPanNo.match(panFormat)) formatErrors.push("Applicant Pan No (Must be 12 digits)");
-if (ApplicantAge && !ApplicantAge.match(ageFormat)) formatErrors.push("Applicant Age (only numbers allowed)");
-if (ApplicationId && !ApplicationId.match(IdFormat)) formatErrors.push("Application id (only Numbers are allowed)");
+        applicantName: ApplicantName,
+        applicantAddress: ApplicantAddress,
+        applicantMobileNo: ApplicantMobileNo,
+        applicantEmail: ApplicantEmailId,
+        applicantAadhar: ApplicantAadharNo,
+        applicantPan: ApplicantPanNo,
+        applicantAge: ApplicantAge,
+        applicationId: ApplicationId,
 
-if (formatErrors.length > 0) {
-  console.log("CAME",formatErrors)
-    sap.m.MessageBox.error("Please correct the following fields:\n" + formatErrors.join("\n"));
-    return;
-}
+        documentFileName: this._file.name,
+        documentMimeType: this._file.type,
+        documentContent: this.filebase64String
+
+      };
+
+
+      let formatErrors = [];
+      if (ApplicantName && !ApplicantName.match(nameFormat)) formatErrors.push("Applicant name (only alphabets are allowed)");
+      if (ApplicantMobileNo && !ApplicantMobileNo.match(mobileFormat)) formatErrors.push("Applicant Mobile No (Must be 10 digits)");
+      if (ApplicantEmailId && !ApplicantEmailId.match(emailFormat)) formatErrors.push("Applicant Email Id (Invalid email format)");
+      if (ApplicantAadharNo && !ApplicantAadharNo.match(aadhaarFormat)) formatErrors.push("Applicant Aadhaar No (Must be 12 digits)");
+      if (ApplicantPanNo && !ApplicantPanNo.match(panFormat)) formatErrors.push("Applicant Pan No (Must be 12 digits)");
+      if (ApplicantAge && !ApplicantAge.match(ageFormat)) formatErrors.push("Applicant Age (only numbers allowed)");
+      if (ApplicationId && !ApplicationId.match(IdFormat)) formatErrors.push("Application id (only Numbers are allowed)");
+
+      if (formatErrors.length > 0) {
+        sap.m.MessageBox.error("Please correct the following fields:\n" + formatErrors.join("\n"));
+        return;
+      }
 
 // Missing fields
 
@@ -136,234 +130,227 @@ if (missingFields.length >= totalFields) {
 }
 
 
-      
-  
-      // Posting data
-      $.ajax({
-          url: "/odata/v4/my/applications",
-          method: "POST",
-          contentType: "application/json",
-          data: JSON.stringify(NewUser),
-          success: (data) => {
-              MessageBox.success("You have applied for insurance successfully\nYour insurance id:" + data.Id, {
-                  onClose: () => {
-                      this.byId("enterApplicantName").setValue("");
-                      this.byId("enterApplicantAddress").setValue("");
-                      this.byId("enterApplicantMobileNo").setValue("");
-                      this.byId("enterEmailId").setValue("");
-                      this.byId("enterAadhaarNo").setValue("");              
-                      this.getView().byId("selectDocumentType").setValue(""); 
-                      this.getView().byId("filePath").setValue(""); 
-                      this.byId("enterPanNo").setValue("");
-                      this.byId("entertheapplicantage").setValue("");
-                      this.byId("applicationid").setValue("");
-                  }
-              });
-          },
-          error: (error) => {
-              MessageToast.show("Error submitting: " + error.responseText);
-          }
+
+      this.oModel.create("/applications", NewUser, {
+        success: function (data) {
+          MessageBox.success("You have applied for insurance successfully\nYour insurance id: " + data.Id, {
+            onClose: function () {
+              var oView = this.getView();
+              oView.byId("enterApplicantName").setValue("");
+              oView.byId("enterApplicantAddress").setValue("");
+              oView.byId("enterApplicantMobileNo").setValue("");
+              oView.byId("enterEmailId").setValue("");
+              oView.byId("enterAadhaarNo").setValue("");
+              oView.byId("enterPanNo").setValue("");
+              oView.byId("entertheapplicantage").setValue("");
+              oView.byId("applicationid").setValue("");
+            }.bind(this)
+          });
+        }.bind(this),
+        error: function (oError) {
+          var errorMessage = oError.responseText ? JSON.parse(oError.responseText).error.message : "Unexpected error occurred.";
+          MessageToast.show("Error submitting: " + errorMessage);
+        }
       });
-  },  
- 
-        onCancel() {
-            sap.m.MessageToast.show("Loan application cancelled");
-           
-        },
-       
-        onChooseFile: function () {
-            var oFileUploader = document.createElement('input');
-            oFileUploader.type = 'file';
-            oFileUploader.onchange = function (event) {
-              var file = event.target.files[0];
-              this._file = file;
-              var oFilePathInput = this.byId("filePath");
-              oFilePathInput.setValue(file.name);
- 
-            }.bind(this);
-            oFileUploader.click();
- 
-                },
-         onUpload: function () {
-             var file = this._file;
-             if(!file){
-               sap.m.MessageToast.show("Please choose a file first.");
-               return;
-             }
-             var filename = file.name;
-             var filesize = file.size;
-                 var extension = filename.substr(filename.lastIndexOf('.')+1).toLowerCase();
-             console.log(extension);
- 
-             if(!["pancard", "aadharcard"].includes(extension)) {
-               sap.m.MessageToast.show("Kindly upload only pan and aadhar card");
-               return;
- 
-             } else if (filesize > 2000000) {
-               sap.m.MessageToast.show("File size should not be more than 2MB.");
-               return;
-             }
- 
-             var reader = new FileReader();
-             reader.onload = function(e) {
-               var fileupArray = new Uint8Array(e.target.result);
-                    this.fileData = fileupArray;
- 
-               //Convert Uint8Array to a string
-               var binaryString = Array.from(fileupArray, byte => String.fromCharCode(byte)).join('');
- 
-               // Convert binary string to Base64
-               var base64Stringfile = btoa(binaryString);
-               this.filebase64String = base64Stringfile;
-               console.log(this.filebase64String);
- 
-             }.bind(this);
-             reader.readAsArrayBuffer(file);
- 
- 
-         },
-               
-        onClear: function(){
-            this.byId("enterApplicantName").setValue("");
-            this.byId("enterApplicantAddress").setValue("");
-            this.byId("enterApplicantMobileNo").setValue("");
-            this.byId("enterEmailId").setValue("");
-            this.byId("selectDocumentType").setSelectedKey(null);
-            this.byId("filePath").setSelectedKey(null);
-            this.byId("entertheapplicantage").setValue("");
-            this.byId("enterAadhaarNo").setValue("");
-            this.byId("enterPanNo").setValue("");
-            this.byId("applicationid").setValue("");
-            
- 
- 
-        },
-        nameValidation: function(oEvent) {
-            var fieldValue = oEvent.getSource().getValue();
-            var fieldName = oEvent.getSource();
-            var format = (/^[a-zA-Z\s]+$/);
-            var blen = fieldValue.length;
-         
-            if (blen == 50) {
-              fieldName.setValueState(sap.ui.core.ValueState.Error);
-              fieldName.setValueStateText("More Than 50 Characters Not Accepted");
-            } else if (!fieldValue.match(format)) {
-              fieldName.setValueState(sap.ui.core.ValueState.Error);
-              fieldName.setValueStateText("Only Alphabets can Accepted");
-            } else {
-              fieldName.setValueState(sap.ui.core.ValueState.None);
-            }
-          },
-          numValidation: function(oEvent) {
-            var fieldValue = oEvent.getSource().getValue();
-            var fieldName = oEvent.getSource();
-            var format = (/^[0-9]{10}$/);
-            var blen = fieldValue.length;
-         
-            if (blen !== 10) {
-              fieldName.setValueState(sap.ui.core.ValueState.Error);
-              fieldName.setValueStateText("Mobile number must be 10 digits");
-            } else if (!fieldValue.match(format)) {
-              fieldName.setValueState(sap.ui.core.ValueState.Error);
-              fieldName.setValueStateText("Only Numbers can Accepted");
-            } else {
-              fieldName.setValueState(sap.ui.core.ValueState.None);
-            }
-          },
-          emailValidation: function(oEvent) {
-            var fieldValue = oEvent.getSource().getValue();
-            var fieldName = oEvent.getSource();
-            var format = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-         
-            if (!fieldValue.match(format)) {
-              fieldName.setValueState(sap.ui.core.ValueState.Error);
-              fieldName.setValueStateText("Invalid email address");
-             
-            } else {
-              fieldName.setValueState(sap.ui.core.ValueState.None);
-            }
-          },
-          aadharValidation: function(oEvent) {
-            var fieldValue = oEvent.getSource().getValue();
-            var fieldName = oEvent.getSource();
-            var format = (/^[0-9]{12}$/);
-            var blen = fieldValue.length;
-         
-            if (blen !== 12) {
-              fieldName.setValueState(sap.ui.core.ValueState.Error);
-              fieldName.setValueStateText("Aadhar number must be 12 digits");
-            } else if (!fieldValue.match(format)) {
-              fieldName.setValueState(sap.ui.core.ValueState.Error);
-              fieldName.setValueStateText("Only Numbers can Accepted");
-            } else {
-              fieldName.setValueState(sap.ui.core.ValueState.None);
-            }
- 
-          },
-          panValidation: function(oEvent) {
-            var fieldValue = oEvent.getSource().getValue();
-            var fieldName = oEvent.getSource();
-            var format = /[A-Z]{5}[0-9]{4}[A-Z]{1}$/;
-            var blen = fieldValue.length;
-         
-            if (blen !== 10) {
-              fieldName.setValueState(sap.ui.core.ValueState.Error);
-              fieldName.setValueStateText("Pan number must be 10 digits");
-            } else if (!fieldValue.match(format)) {
-              fieldName.setValueState(sap.ui.core.ValueState.Error);
-              fieldName.setValueStateText("Invalid Pan number");
-            } else {
-              fieldName.setValueState(sap.ui.core.ValueState.None);
-            }
-          },
-          ageValidation: function(oEvent) {
-            var fieldValue = oEvent.getSource().getValue();
-            var fieldName = oEvent.getSource();
-            var format = (/^[0-9]{9}$/);
-            var blen = fieldValue.length;
-         
-            if (blen !== 12) {
-              fieldName.setValueState(sap.ui.core.ValueState.Error);
-              fieldName.setValueStateText("Age number must be 9 digits");
-            } else if (!fieldValue.match(format)) {
-              fieldName.setValueState(sap.ui.core.ValueState.Error);
-              fieldName.setValueStateText("Only Numbers can Accepted");
-            } else {
-              fieldName.setValueState(sap.ui.core.ValueState.None);
-            }
- 
-          },
-          
-         
-        onLogout: function () {
-       
-          var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
-          oRouter.navTo("home");
-          MessageToast.show("Logged out!");
-         
-  
-        },
-        onNavHome: function () {
-          var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
-          oRouter.navTo("home");
-          MessageToast.show("Returned Home");
-         
-        },
 
-        onNavMyProfile: function () {
-          var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
-          oRouter.navTo("myProfile");
-         
-        },
+    },
 
-        onNavMyPolicy: function () {
-          var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
-          oRouter.navTo("myPolicy");
-        },
-        onNavViewPolicy: function () {
-          var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
-          oRouter.navTo("viewPolicy");
-         
-        },
-    });
+    onCancel() {
+      sap.m.MessageToast.show("Loan application cancelled");
+
+    },
+
+    onChooseFile: function () {
+      var oFileUploader = document.createElement('input');
+      oFileUploader.type = 'file';
+      oFileUploader.onchange = function (event) {
+        var file = event.target.files[0];
+        this._file = file;
+        var oFilePathInput = this.byId("filePath");
+        oFilePathInput.setValue(file.name);
+
+      }.bind(this);
+      oFileUploader.click();
+
+    },
+    onUpload: function () {
+      var file = this._file;
+      if (!file) {
+        sap.m.MessageToast.show("Please choose a file first.");
+        return;
+      }
+      var filename = file.name;
+      var filesize = file.size;
+      var extension = filename.substr(filename.lastIndexOf('.') + 1).toLowerCase();
+      console.log(extension);
+
+      if (!["pdf", "jpeg", "png", "jpg"].includes(extension)) {
+        sap.m.MessageToast.show("Kindly upload only JPG, JPEG, PDF, and PNG files");
+        return;
+
+      } else if (filesize > 2000000) {
+        sap.m.MessageToast.show("File size should not be more than 2MB.");
+        return;
+      }
+
+      var reader = new FileReader();
+      reader.onload = function (e) {
+        var fileupArray = new Uint8Array(e.target.result);
+        this.fileData = fileupArray;
+
+        //Convert Uint8Array to a string
+        var binaryString = Array.from(fileupArray, byte => String.fromCharCode(byte)).join('');
+
+        // Convert binary string to Base64
+        var base64Stringfile = btoa(binaryString);
+        this.filebase64String = base64Stringfile;
+        console.log(this.filebase64String);
+
+      }.bind(this);
+      reader.readAsArrayBuffer(file);
+    },
+
+    onClear: function () {
+      this.byId("enterApplicantName").setValue("");
+      this.byId("enterApplicantAddress").setValue("");
+      this.byId("enterApplicantMobileNo").setValue("");
+      this.byId("enterEmailId").setValue("");
+      this.byId("selectDocumentType").setSelectedKey(null);
+      this.byId("filePath").setSelectedKey(null);
+      this.byId("entertheapplicantage").setValue("");
+      this.byId("enterAadhaarNo").setValue("");
+      this.byId("enterPanNo").setValue("");
+      this.byId("applicationid").setValue("");
+
+
+
+    },
+    nameValidation: function (oEvent) {
+      var fieldValue = oEvent.getSource().getValue();
+      var fieldName = oEvent.getSource();
+      var format = (/^[a-zA-Z\s]+$/);
+      var blen = fieldValue.length;
+
+      if (blen == 50) {
+        fieldName.setValueState(sap.ui.core.ValueState.Error);
+        fieldName.setValueStateText("More Than 50 Characters Not Accepted");
+      } else if (!fieldValue.match(format)) {
+        fieldName.setValueState(sap.ui.core.ValueState.Error);
+        fieldName.setValueStateText("Only Alphabets can Accepted");
+      } else {
+        fieldName.setValueState(sap.ui.core.ValueState.None);
+      }
+    },
+    numValidation: function (oEvent) {
+      var fieldValue = oEvent.getSource().getValue();
+      var fieldName = oEvent.getSource();
+      var format = (/^[0-9]{10}$/);
+      var blen = fieldValue.length;
+
+      if (blen !== 10) {
+        fieldName.setValueState(sap.ui.core.ValueState.Error);
+        fieldName.setValueStateText("Mobile number must be 10 digits");
+      } else if (!fieldValue.match(format)) {
+        fieldName.setValueState(sap.ui.core.ValueState.Error);
+        fieldName.setValueStateText("Only Numbers can Accepted");
+      } else {
+        fieldName.setValueState(sap.ui.core.ValueState.None);
+      }
+    },
+    emailValidation: function (oEvent) {
+      var fieldValue = oEvent.getSource().getValue();
+      var fieldName = oEvent.getSource();
+      var format = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+      if (!fieldValue.match(format)) {
+        fieldName.setValueState(sap.ui.core.ValueState.Error);
+        fieldName.setValueStateText("Invalid email address");
+
+      } else {
+        fieldName.setValueState(sap.ui.core.ValueState.None);
+      }
+    },
+    aadharValidation: function (oEvent) {
+      var fieldValue = oEvent.getSource().getValue();
+      var fieldName = oEvent.getSource();
+      var format = (/^[0-9]{12}$/);
+      var blen = fieldValue.length;
+
+      if (blen !== 12) {
+        fieldName.setValueState(sap.ui.core.ValueState.Error);
+        fieldName.setValueStateText("Aadhar number must be 12 digits");
+      } else if (!fieldValue.match(format)) {
+        fieldName.setValueState(sap.ui.core.ValueState.Error);
+        fieldName.setValueStateText("Only Numbers can Accepted");
+      } else {
+        fieldName.setValueState(sap.ui.core.ValueState.None);
+      }
+
+    },
+    panValidation: function (oEvent) {
+      var fieldValue = oEvent.getSource().getValue();
+      var fieldName = oEvent.getSource();
+      var format = /[A-Z]{5}[0-9]{4}[A-Z]{1}$/;
+      var blen = fieldValue.length;
+
+      if (blen !== 10) {
+        fieldName.setValueState(sap.ui.core.ValueState.Error);
+        fieldName.setValueStateText("Pan number must be 10 digits");
+      } else if (!fieldValue.match(format)) {
+        fieldName.setValueState(sap.ui.core.ValueState.Error);
+        fieldName.setValueStateText("Invalid Pan number");
+      } else {
+        fieldName.setValueState(sap.ui.core.ValueState.None);
+      }
+    },
+    ageValidation: function (oEvent) {
+      var fieldValue = oEvent.getSource().getValue();
+      var fieldName = oEvent.getSource();
+      var format = (/^[0-9]{9}$/);
+      var blen = fieldValue.length;
+
+      if (blen !== 12) {
+        fieldName.setValueState(sap.ui.core.ValueState.Error);
+        fieldName.setValueStateText("Age number must be 9 digits");
+      } else if (!fieldValue.match(format)) {
+        fieldName.setValueState(sap.ui.core.ValueState.Error);
+        fieldName.setValueStateText("Only Numbers can Accepted");
+      } else {
+        fieldName.setValueState(sap.ui.core.ValueState.None);
+      }
+
+    },
+
+
+    onLogout: function () {
+
+      var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
+      oRouter.navTo("home");
+      MessageToast.show("Logged out!");
+
+
+    },
+    onNavHome: function () {
+      var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
+      oRouter.navTo("home");
+      MessageToast.show("Returned Home");
+
+    },
+
+    onNavMyProfile: function () {
+      var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
+      oRouter.navTo("myProfile");
+
+    },
+
+    onNavMyPolicy: function () {
+      var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
+      oRouter.navTo("myPolicy");
+    },
+    onNavViewPolicy: function () {
+      var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
+      oRouter.navTo("viewPolicy");
+
+    },
+  });
 });

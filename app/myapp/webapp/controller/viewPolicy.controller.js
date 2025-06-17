@@ -74,20 +74,9 @@ sap.ui.define([
         },
 
 
-        onSelectPlan: function (oEvent) {
-            var oItem = oEvent.getSource();
-            var oBindingContext = oItem.getBindingContext("policyModel");
-            var oPolicy = oBindingContext.getObject();
-            var oView = this.getView();
-            var oRouter = sap.ui.core.UIComponent.getRouterFor(oView);
-            //oRouter.navTo("myProfile");
-
-
-            oRouter.navTo("myProfile", {
-                planName: encodeURIComponent(oPolicy.planName) // or use oPolicy.id
-            });
-
-
+        onSelectPlan: function () {
+            var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
+            oRouter.navTo("myProfile");
         },
 
         onLogout: function () {

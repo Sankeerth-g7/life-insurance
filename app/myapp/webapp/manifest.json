@@ -131,7 +131,7 @@
       },
       {
         "name": "myProfile",
-        "pattern": "myProfile/{planName}",
+        "pattern": "myProfile",
         "target": ["TargetmyProfile"]
     },
     {

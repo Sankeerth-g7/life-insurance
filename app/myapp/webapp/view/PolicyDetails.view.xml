@@ -28,11 +28,13 @@
 
 
         <FlexBox
+             id="policyFlexBox"
             class="sapUiMediumMargin"
             direction="Row"
             wrap="Wrap"
             justifyContent="Center"
             items="{policyModel>/Policies}"
+
         >
             <items>
                 <VBox

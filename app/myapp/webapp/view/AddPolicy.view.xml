@@ -189,6 +189,7 @@
 			<Toolbar class="form-toolbar">
 				<ToolbarSpacer />
 				<Button
+                id="addPolicyButton"
                 text="Add Policy"
                 type="Emphasized"
                 press="onAddPolicy"

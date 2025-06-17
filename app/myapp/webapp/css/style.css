@@ -655,7 +655,7 @@ darkBackground {
 }
 
 .form-textarea {
-    width: 100%;
+    width: 150%;
     height: 100%;
     box-sizing: border-box;
     resize: vertical;
@@ -840,6 +840,6 @@ darkBackground {
 }
 
 .searchButton {
-    background-color: black;
+    /* background-color: black; */
     color: white;
 }

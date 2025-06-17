@@ -843,3 +843,70 @@
     /* background-color: black; */
     color: white;
 }
+
+
+/* user detailsssss */
+
+
+.userProfilePage {
+    padding: 2rem;
+    gap: 2rem;
+    background-color: #f4f6f9;
+}
+
+.userProfileCard {
+    background-color: #ffffff;
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.userProfileHeader {
+    gap: 2rem;
+}
+
+.userProfileInfo {
+    gap: 0.5rem;
+}
+
+.userProfileUsername,
+.userProfileEmail,
+.userProfilePhone,
+.userProfileRole {
+    font-size: 1.1rem;
+    color: #333;
+}
+
+.userProfileStatusActive {
+    color: #2ecc71;
+    font-weight: bold;
+}
+
+.userProfileStatusLocked {
+    color: #e74c3c;
+    font-weight: bold;
+}
+
+.userPasswordCard {
+    background-color: #ffffff;
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    gap: 1rem;
+}
+
+.userPasswordTitle {
+    font-size: 1.3rem;
+    font-weight: bold;
+    margin-bottom: 1rem;
+}
+
+.userPasswordInput {
+    width: 100%;
+}
+
+.userPasswordButton {
+    margin-top: 1rem;
+    background-color: #3498db;
+    color: white;
+}

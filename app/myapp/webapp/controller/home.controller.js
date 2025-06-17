@@ -44,7 +44,7 @@ sap.ui.define([
         onNavMyProfile: function () {
             //console.log("button pressed");
             var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
-            oRouter.navTo("myProfile");
+            oRouter.navTo("user");
             //this.getOwnerComponent().getRouter().navTo("MyProfile");
         },
         onNavMyPolicy: function () {

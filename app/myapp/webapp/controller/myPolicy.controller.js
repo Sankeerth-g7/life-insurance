@@ -93,7 +93,7 @@ sap.ui.define([
 
         onNavMyProfile: function () {
             var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
-            oRouter.navTo("myProfile");
+            oRouter.navTo("user");
 
         },
 
@@ -126,6 +126,7 @@ sap.ui.define([
                         // console.log(userPolicies)
 
                         const policyModel = new JSONModel({ userPolicies });
+                        console.log(policyModel)
                         this.getView().setModel(policyModel, "policyModel");
                         // console.log(this.getView().getModel("policyModel").getProperty("/userPolicies"));
 

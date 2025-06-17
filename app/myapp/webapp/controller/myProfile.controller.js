@@ -23,6 +23,8 @@ sap.ui.define([
       //var oFooter = sap.ui.xmlfragment("myapp.view.fragments.CustomFooter", this);
       //this.getView().byId("FootermyProfileContainer").addItem(oFooter);
       //this.getview().byId("FootermyProfileContainer").addItem(oFooter);
+
+
     },
 
     onSubmit: function () {
@@ -35,6 +37,16 @@ sap.ui.define([
       var ApplicantAge = this.getView().byId("entertheapplicantage").getValue();
       var ApplicationId = this.getView().byId("applicationid").getValue();
       var ApplicantAadharNo = this.getView().byId("enterAadhaarNo").getValue();
+
+      //get userId and policyId usin omodel also need to check if user is logged in or not
+
+      var oUserModel = this.getOwnerComponent().getModel("userModel");
+      var userId = oUserModel.getProperty("/userId");
+      console.log(userId);
+
+      var oSelectedPolicyModel = this.getOwnerComponent().getModel("selectedPolicyModel");
+      var policyId = oSelectedPolicyModel.getProperty("/policyId");
+      console.log(policyId)
 
       // Log the captured data for debugging
        console.log("Applicant Name:", ApplicantName);
@@ -73,6 +85,8 @@ sap.ui.define([
 
       // Creating new object
       var NewUser = {
+        user_userId: userId,
+        policy_policyId: policyId,
         applicantName: ApplicantName,
         applicantAddress: ApplicantAddress,
         applicantMobileNo: ApplicantMobileNo,
@@ -81,10 +95,10 @@ sap.ui.define([
         applicantPan: ApplicantPanNo,
         applicantAge: ApplicantAge,
         applicationId: ApplicationId,
-
-        documentFileName: this._file.name,
-        documentMimeType: this._file.type,
-        documentContent: this.filebase64String
+        status:"Pending",
+        // documentFileName: this._file.name,
+        // documentMimeType: this._file.type,
+        // documentContent: this.filebase64String
 
       };
 
@@ -121,7 +135,9 @@ if (!ApplicationId) missingFields.push("Application id");
 
 const totalFields = 9;
 
+
 if (missingFields.length >= totalFields) {
+  console.log(missingFields)
     sap.m.MessageBox.error("Please fill the form.");
     return;
 } else if (missingFields.length > 0) {
@@ -156,7 +172,7 @@ if (missingFields.length >= totalFields) {
     },
 
     onCancel() {
-      sap.m.MessageToast.show("Loan application cancelled");
+      sap.m.MessageToast.show("insurance application cancelled");
 
     },
 
@@ -339,7 +355,7 @@ if (missingFields.length >= totalFields) {
 
     onNavMyProfile: function () {
       var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
-      oRouter.navTo("myProfile");
+      oRouter.navTo("user");
 
     },
 

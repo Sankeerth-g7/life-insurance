@@ -46,8 +46,6 @@ entity Applications {
         documentContent     : LargeBinary;
         @Core.IsMediaType: true
         documentMimeType    : String;
-
-
 }
 
 entity Documents {

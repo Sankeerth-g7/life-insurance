@@ -153,6 +153,11 @@
       "name" :"PolicyDetails",
       "pattern":"PolicyDetails",
       "target":["TargetPolicyDetails"]
+    },
+    {
+      "name" : "user",
+      "pattern" : "user",
+      "target" : ["Targetuser"]
     }
       ],
       "targets": {
@@ -188,6 +193,10 @@
   "TargetPolicyDetails":{
     "id": "PolicyDetails",
     "name": "PolicyDetails"
+  },
+  "Targetuser":{
+    "id": "user",
+    "name": "user"
   }
       }
     },

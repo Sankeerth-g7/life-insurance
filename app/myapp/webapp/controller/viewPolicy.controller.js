@@ -46,7 +46,7 @@ sap.ui.define([
 
         onNavMyProfile: function () {
             var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
-            oRouter.navTo("myProfile");
+            oRouter.navTo("user");
 
         },
 
@@ -74,10 +74,25 @@ sap.ui.define([
         },
 
 
-        onSelectPlan: function () {
+        onSelectPlan: function (oEvent) {
+            var oSelectedItem = oEvent.getSource();
+            var oContext = oSelectedItem.getBindingContext("policyModel");
+            var oPolicy = oContext.getObject();
+            var policyId = oPolicy.policyId;
+        
+            // Create a JSON model with the selected policyId
+            var oSelectedPolicyModel = new sap.ui.model.json.JSONModel({ policyId: policyId });
+        
+            // Set it on the component so it's accessible across views
+            this.getOwnerComponent().setModel(oSelectedPolicyModel, "selectedPolicyModel");
+        
+            MessageToast.show("Policy ID stored: " + policyId);
+
             var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
             oRouter.navTo("myProfile");
+
         },
+        
 
         onLogout: function () {
 

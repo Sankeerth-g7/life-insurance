@@ -33,6 +33,29 @@ sap.ui.define([
       }
     },
 
+    onNavHome: function () {
+      var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
+      oRouter.navTo("home")
+      //this.getOwnerComponent().getRouter().navTo("Home");
+  },
+  onNavViewPolicy: function () {
+      var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
+      oRouter.navTo("viewPolicy")
+      //this.getOwnerComponent().getRouter().navTo("ViewPolicy");
+
+  },
+  onNavMyProfile: function () {
+      //console.log("button pressed");
+      var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
+      oRouter.navTo("user");
+      //this.getOwnerComponent().getRouter().navTo("MyProfile");
+  },
+  onNavMyPolicy: function () {
+
+      var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
+      oRouter.navTo("myPolicy");
+
+},
     getUserDetails: function (userId) {
       const filter = new sap.ui.model.Filter("userId", "EQ", userId);
 

@@ -36,20 +36,20 @@ sap.ui.define([
       var ApplicantAddress = this.getView().byId("enterApplicantAddress").getValue();
       var ApplicantMobileNo = this.getView().byId("enterApplicantMobileNo").getValue();
       var ApplicantEmailId = this.getView().byId("enterEmailId").getValue();
-      var ApplicantAadharNo = this.getView().byId("enterAadhaarNo").getValue();
       var ApplicantPanNo = this.getView().byId("enterPanNo").getValue();
       var ApplicantAge = this.getView().byId("entertheapplicantage").getValue();
       var ApplicationId = this.getView().byId("applicationid").getValue();
+      var ApplicantAadharNo = this.getView().byId("enterAadhaarNo").getValue();
 
       // Log the captured data for debugging
-      console.log("Applicant Name:", ApplicantName);
-      console.log("Applicant Address:", ApplicantAddress);
-      console.log("Applicant Mobile No:", ApplicantMobileNo);
-      console.log("Applicant Email Id:", ApplicantEmailId);
-      console.log("Aadhar No:", ApplicantAadharNo);
-      console.log("Pan No:", ApplicantAadharNo);
-      console.log("Age:", ApplicantAge);
-      console.log("Application id:", ApplicationId);
+       console.log("Applicant Name:", ApplicantName);
+       console.log("Applicant Address:", ApplicantAddress);
+       console.log("Applicant Mobile No:", ApplicantMobileNo);
+       console.log("Applicant Email Id:", ApplicantEmailId);
+       console.log("Aadhar No:", ApplicantAadharNo);
+       console.log("Pan No:", ApplicantAadharNo);
+       console.log("Age:", ApplicantAge);
+       console.log("Application id:", ApplicationId);
 
       // Validation formats
       var nameFormat = /^[a-zA-Z\s]+$/;
@@ -62,9 +62,8 @@ sap.ui.define([
 
       // Generate loan id
       function generateLoanId() {
-        const currentYear = new Date().getFullYear();
         const randomNumber = Math.floor(Math.random() * 10000); // Generates a random number between 0 and 9999
-        return `${currentYear}-${appName}-${randomNumber}`;
+        return `${appName}-${randomNumber}`;
       }
 
       // Example usage:
@@ -105,11 +104,16 @@ if (ApplicantAge && !ApplicantAge.match(ageFormat)) formatErrors.push("Applicant
 if (ApplicationId && !ApplicationId.match(IdFormat)) formatErrors.push("Application id (only Numbers are allowed)");
 
 if (formatErrors.length > 0) {
+  console.log("CAME",formatErrors)
     sap.m.MessageBox.error("Please correct the following fields:\n" + formatErrors.join("\n"));
     return;
 }
 
 // Missing fields
+
+var DocumentType = this.getView().byId("selectDocumentType").getSelectedKey();
+var FilePath = this.getView().byId("filePath").getValue();
+
 let missingFields = [];
 if (!ApplicantName) missingFields.push("Applicant Name");
 if (!ApplicantAddress) missingFields.push("Applicant Address");
@@ -117,12 +121,13 @@ if (!ApplicantMobileNo) missingFields.push("Applicant Mobile No");
 if (!ApplicantAadharNo) missingFields.push("Applicant Aadhar No");
 if (!ApplicantPanNo) missingFields.push("Applicant Pan No");
 if (!ApplicantEmailId) missingFields.push("Applicant Email Id");
+if (!FilePath) missingFields.push("Uploaded File");
 if (!ApplicantAge) missingFields.push("Applicant Age");
 if (!ApplicationId) missingFields.push("Application id");
 
-const totalFields = 8; // Total number of required fields
+const totalFields = 9;
 
-if (missingFields.length === totalFields) {
+if (missingFields.length >= totalFields) {
     sap.m.MessageBox.error("Please fill the form.");
     return;
 } else if (missingFields.length > 0) {
@@ -146,7 +151,9 @@ if (missingFields.length === totalFields) {
                       this.byId("enterApplicantAddress").setValue("");
                       this.byId("enterApplicantMobileNo").setValue("");
                       this.byId("enterEmailId").setValue("");
-                      this.byId("enterAadhaarNo").setValue("");
+                      this.byId("enterAadhaarNo").setValue("");              
+                      this.getView().byId("selectDocumentType").setValue(""); 
+                      this.getView().byId("filePath").setValue(""); 
                       this.byId("enterPanNo").setValue("");
                       this.byId("entertheapplicantage").setValue("");
                       this.byId("applicationid").setValue("");
@@ -188,8 +195,8 @@ if (missingFields.length === totalFields) {
                  var extension = filename.substr(filename.lastIndexOf('.')+1).toLowerCase();
              console.log(extension);
  
-             if(!["pdf", "jpeg", "png", "jpg"].includes(extension)) {
-               sap.m.MessageToast.show("Kindly upload only JPG, JPEG, PDF, and PNG files");
+             if(!["pancard", "aadharcard"].includes(extension)) {
+               sap.m.MessageToast.show("Kindly upload only pan and aadhar card");
                return;
  
              } else if (filesize > 2000000) {

@@ -8,18 +8,19 @@
     xmlns:unified="sap.ui.unified"
     xmlns:f="sap.ui.layout.form"
     >
-    <Page id="LApage" showHeader="false" enableScrolling="true" class="customPage1">
+    <Page id="LApage" showHeader="false"  enableScrolling="true" class="customPage1">
     <VBox id="navbarmyProfileContainer"/>
     
      
    
     <content>
-    <Bar>
-    <contentMiddle >
-    <Text text="Application Form"  class="subHeader1" />
+  <Bar class="headerBar">
+    <contentMiddle>
+      <Text text="Application Form" class="subHeader1" />
     </contentMiddle>
-    </Bar>
-    </content>
+  </Bar>
+</content>
+
    
      
         <content>
@@ -30,19 +31,21 @@
                 direction="Row"
                 justifyContent="SpaceBetween"
                 fitContainer="true"
-                class="sapUiSmallMargin1">
+                
+            class="sapUiSmallMargin1 customFlexboxBackground">
+
                
             <VBox class="formContainer1" width="60%">
                 <VBox class="customMargin1">
                 <HBox  alignItems="Center">
-                    <Label id="LAlabel1" text="Enter Applicant Name" required="true"  class="customLabel1"/>
+                    <Label id="LAlabel1" text="Enter Applicant Name" required="true"  class="customLabel1" design="Bold" />
                     <Input id="enterApplicantName" placeholder="Enter Applicant Name"  liveChange=".nameValidation" class="customInput1" />
                 </HBox>
                 </VBox>
  
                 <VBox class="customMargin1">
                 <HBox alignItems="Center">
-                    <Label id="LAlabel2" text="Enter Applicant Address" required="true" class="customLabel1" />
+                    <Label id="LAlabel2" text="Enter Applicant Address" required="true" class="customLabel1" design="Bold"  />
                     <Input id="enterApplicantAddress" placeholder="Enter Applicant Address"  class="customInput1"  />
                 </HBox>
                 </VBox>
@@ -50,33 +53,32 @@
  
                 <VBox class="customMargin1">
                 <HBox alignItems="Center">
-                    <Label id="LAlabel3" text="Enter Applicant Mobile No"  required="true" class="customLabel1"/>
-                    <Input id="enterApplicantMobileNo" placeholder="Enter Applicant Mobile No" liveChange="numValidation" class="customInput1"/>
+                    <Label id="LAlabel3" text="Enter Applicant Mobile No"  required="true" class="customLabel1" design="Bold" />
+                    <Input id="enterApplicantMobileNo" placeholder="Enter Applicant Mobile No" liveChange="numValidation" class="customInput1" design="Bold" />
                 </HBox>
                 </VBox>
  
                 <VBox class="customMargin1">
                 <HBox alignItems="Center">
-                    <Label id="LAlabel4" text="Enter Applicant Email Id" required="true" class="customLabel1"/>
-                    <Input id="enterEmailId" placeholder="Enter Applicant Email Id" liveChange="emailValidation" class="customInput1"/>
+                    <Label id="LAlabel4" text="Enter Applicant Email Id" required="true" class="customLabel1" design="Bold" />
+                    <Input id="enterEmailId" placeholder="Enter Applicant Email Id" liveChange="emailValidation" class="customInput1" design="Bold" />
                     </HBox>
                 </VBox>
  
                <VBox class="customMargin1" id="LAbox3">
                 <VBox class="customMargin1">
                 <HBox alignItems="Center">
-                    <Label text="Upload Documents" required="true" class="customLabel1" />
-                    <ComboBox id="selectDocumentType" width="100%" placeholder="Select Document Type" class="customInput1" >
+                    <Label text="Upload Documents" required="true" class="customLabel1"  design="Bold" />
+                    <ComboBox id="selectDocumentType" width="100%" placeholder="Select Document Type" class="customInput1"  >
                     <items>
-                    <core:ListItem text="JPEG" />
-                    <core:ListItem text="JPG" />
-                    <core:ListItem text="PDF" />
+                    <core:ListItem text="PAN CARD" />
+                    <core:ListItem text="AADHAR CARD" />
                     </items>                  
                     </ComboBox>
                 </HBox>
                 </VBox>
                 <HBox alignItems="Center" >
-                    <Label text="Images or Documents (Upload below 2mb)" required="true" class="documentLabel1"/>
+                    <Label text="Images or Documents (Upload below 2mb)" required="true" class="documentLabel1" design="Bold" />
                    
                     <VBox >
                     <Button id="chooseFileButton" text="Choose a file..." width="100%" class="customButton1" press=".onChooseFile"/>
@@ -94,14 +96,14 @@
                 <VBox id="LAbox2" class="formContainer1"  width="48%">
                <VBox class="customMargin1">
                 <HBox alignItems="Center">
-                    <Label id="LAlabel5" text="Enter Aadhaar No" required="true" class="customLabel1" />
+                    <Label id="LAlabel5" text="Enter Aadhaar No" required="true" class="customLabel1"  design="Bold" />
                     <Input id="enterAadhaarNo" placeholder="Enter Aadhaar No" liveChange="aadhaarValidation"  class="customInput1" />
                 </HBox>
                 </VBox>
                 <VBox class="customMargin1">
                 <HBox alignItems="Center">
-                    <Label id="LAlabel6" text="Enter Pan No" required="true" class="customLabel1" />
-                    <Input id="enterPanNo" placeholder="Enter Pan No" liveChange="panValidation"  class="customInput1" />
+                    <Label id="LAlabel6" text="Enter PAN No" required="true" class="customLabel1" design="Bold"  />
+                    <Input id="enterPanNo" placeholder="Enter PAN No" liveChange="panValidation"  class="customInput1" />
                 </HBox>
                 </VBox>
                
@@ -109,14 +111,14 @@
                
                 <VBox class="customMargin1">
                 <HBox alignItems="Center">
-                    <Label id="LAlabel7" text="Enter the Applicant Age" required="true" class="customLabel1"/>
+                    <Label id="LAlabel7" text="Enter the Applicant Age" required="true" class="customLabel1" design="Bold" />
                     <Input id="entertheapplicantage" placeholder="Enter the Applicant Age"  class="customInput1"/>
                 </HBox>
                 </VBox>
  
                 <VBox class="customMargin1">
                 <HBox alignItems="Center">
-                    <Label id="LAlabel8" text="Application Id" required="true" class="customLabel1"/>
+                    <Label id="LAlabel8" text="Application Id" required="true" class="customLabel1" design="Bold" />
                     <Input id="applicationid" placeholder="Applicant ongoing id"   class="customInput1"/>
                 </HBox>
                 </VBox>

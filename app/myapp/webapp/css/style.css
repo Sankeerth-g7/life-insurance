@@ -1,4 +1,4 @@
-.darkBackground {
+darkBackground {
     background-color: #ffffe3;
 }
 
@@ -6,7 +6,7 @@
     font-size: 25px;
     font-weight: bold;
     color: #808034;
-    margin-top: 0.5px;
+    margin-top:0.5px;
     margin-bottom: 1px;
     font-family: 'Times New Roman', Times, serif, sans-serif;
 }
@@ -41,7 +41,6 @@
     from {
         opacity: 0;
     }
-
     to {
         opacity: 1;
     }
@@ -50,6 +49,7 @@
 .logo {
     display: block;
     margin: 0 auto 30px;
+    width: 80px;
     width: 80px;
 }
 
@@ -313,7 +313,7 @@
     text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.7);
 }
 
-/* view policy page css*/
+ /* view policy page css*/
 
 .policyCard {
     width: 90%;
@@ -429,13 +429,13 @@
 .customInput .sapMInputBaseContentWrapper::placeholder {
     color: blue !important;
     opacity: 1;
-}
-
-.customLabel {
-    width: 180px;
-}
-
-.subHeader {
+  }
+  .customLabel {
+    width:180px;
+    
+   }
+ 
+   .subHeader{
     text-align: center !important;
     font-size: large !important;
 }
@@ -773,6 +773,15 @@
     gap: 6px;
     width: 100%
 }
+.customFlexboxBackground {
+    border-radius: 8px; /* Optional: rounded corners */
+    background-size: cover;
+    background-color: lightblue; 
+    background-repeat: no-repeat;
+    background-position: center;
+    
+
+}
 
 .statusText {
     font-size: 1rem;
@@ -783,6 +792,7 @@
     border-radius: 6px;
     text-align: center;
 }
+
 
 /* Status-Based Background Colors for statusText */
 .statusText[data-status="Approved"] {

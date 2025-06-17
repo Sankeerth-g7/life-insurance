@@ -38,7 +38,6 @@ entity Applications {
     applicantEmail: String;
     applicantAadhar: String;
     applicantPan: String;
-    applicantOccupation: String;
     applicationDate: Date;
     status: String;
     documentType: String;

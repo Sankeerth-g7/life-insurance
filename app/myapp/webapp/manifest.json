@@ -141,8 +141,8 @@
   },
   {
     "name": "ApplicantDetails",
-    "pattern": "AddPolicy",
-    "target": ["TargetAddPolicy"]
+    "pattern": "ApplicantDetails",
+    "target": ["TargetApplicantDetails"]
 },
     {
       "name": "myPolicy",
@@ -181,8 +181,12 @@
       "id":"AddPolicy",
       "name":"AddPolicy"
     },
+    "TargetApplicantDetails":{
+      "id":"ApplicantDetails",
+      "name":"ApplicantDetails"
+    },
     
-        "TargetmyProfile": {
+     "TargetmyProfile": {
       "id": "myProfile",
       "name": "myProfile"
   },
@@ -208,3 +212,4 @@
     }
   }
 }
+

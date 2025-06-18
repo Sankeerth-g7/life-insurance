@@ -11,6 +11,9 @@ entity User {
         lastFailedAttempt : DateTime;
         isLocked          : String;
         lockUntil         : DateTime;
+        otp               : String;
+        otpGeneratedAt    : DateTime;
+
 }
 
 

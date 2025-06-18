@@ -5,7 +5,7 @@ sap.ui.define([
     "sap/ui/model/odata/v2/ODataModel"
 ], function (Controller, MessageBox, ODataModel) {
     "use strict";
- 
+
     return Controller.extend("myapp.controller.login", {
      onInit: function () {
         this._loginForm = this.byId("loginForm");
@@ -191,7 +191,9 @@ sap.ui.define([
             }
         });
     },
+
     onForgotPasswordPress: function () {
+        var that = this;
         var oDialog = new sap.m.Dialog({
             title: "Reset Password",
             content: [
@@ -210,22 +212,133 @@ sap.ui.define([
                 enabled: false,
                 press: function () {
                     var sEmail = sap.ui.getCore().byId("forgotEmailInput").getValue();
-                    if (!sEmail) {
-                        sap.m.MessageToast.show("Please enter a valid email.");
+                    that._sendOtpToUser(sEmail);
+                    oDialog.close();
+                }
+            }),
+            endButton: new sap.m.Button({
+                text: "Cancel",
+                press: function () {
+                    oDialog.close();
+                }
+            })
+        });
+    
+        oDialog.open();
+    },
+
+    // 
+    _sendOtpToUser: function (sEmail) {
+        var that = this;
+    
+        this.oModel.read("/users", {
+            
+            filters: [new sap.ui.model.Filter("email", sap.ui.model.FilterOperator.EQ, sEmail)],
+         
+            success: function (oData) {
+                
+                if (oData.results.length === 0) {
+                    sap.m.MessageBox.information("User not found.");
+                    return;
+                }
+    
+                var user = oData.results[0];
+                user.otp = Math.floor(100000 + Math.random() * 900000).toString(); // Generate 6-digit OTP
+                user.otpGeneratedAt = new Date().toISOString();
+                console.log(user.otp);
+    
+                that.oModel.update("/users(" + user.userId + ")", user, {
+                    success: function () {
+                        sap.m.MessageToast.show("OTP sent to your email.");
+                        that._openOtpVerificationDialog(user);
+                    },
+                    error: function () {
+                        sap.m.MessageBox.error("Failed to send OTP.");
+                    }
+                });
+            },
+            error: function () {
+                console.log(sEmail);
+                sap.m.MessageBox.error("Error while fetching user.");
+            }
+        });
+    },
+
+    //
+    _openOtpVerificationDialog: function (user) {
+        var that = this;
+        var oDialog = new sap.m.Dialog({
+            title: "Verify OTP",
+            content: [
+                new sap.m.Label({ text: "Enter the OTP sent to your email:" }),
+                new sap.m.Input("otpInput", {
+                    type: sap.m.InputType.Number,
+                    placeholder: "Enter OTP"
+                })
+            ],
+            beginButton: new sap.m.Button({
+                text: "Verify",
+                press: function () {
+                    var sEnteredOtp = sap.ui.getCore().byId("otpInput").getValue();
+                    if (sEnteredOtp === user.otp) {
+                        sap.m.MessageToast.show("OTP verified.");
+                        oDialog.close();
+                        that._openNewPasswordDialog(user);
+                    } else {
+                        sap.m.MessageBox.error("Invalid OTP.");
+                    }
+                }
+            }),
+            endButton: new sap.m.Button({
+                text: "Cancel",
+                press: function () {
+                    oDialog.close();
+                }
+            })
+        });
+    
+        oDialog.open();
+    },
+
+    //
+
+    _openNewPasswordDialog: function (user) {
+        var that = this;
+        var oDialog = new sap.m.Dialog({
+            title: "Reset Password",
+            content: [
+                new sap.m.Label({ text: "New Password:" }),
+                new sap.m.Input("newPasswordInput", {
+                    type: "Password",
+                    placeholder: "Enter new password"
+                }),
+                new sap.m.Label({ text: "Confirm Password:" }),
+                new sap.m.Input("confirmPasswordInput", {
+                    type: "Password",
+                    placeholder: "Confirm new password"
+                })
+            ],
+            beginButton: new sap.m.Button({
+                text: "Reset",
+                press: function () {
+                    var sNewPassword = sap.ui.getCore().byId("newPasswordInput").getValue();
+                    var sConfirmPassword = sap.ui.getCore().byId("confirmPasswordInput").getValue();
+    
+                    if (sNewPassword !== sConfirmPassword) {
+                        sap.m.MessageBox.warning("Passwords do not match.");
                         return;
                     }
     
-                    // Call OData service to send OTP
-                    var oModel = new sap.ui.model.odata.v2.ODataModel("/sap/opu/odata/sap/ZUSER_MGMT_SRV/");
-                    oModel.create("/SendOtpSet", { Email: sEmail }, {
+                    user.password = sNewPassword;
+                    user.otp = null;
+    
+                    that.oModel.update("/users(" + user.userId + ")", user, {
                         success: function () {
-                            sap.m.MessageToast.show("OTP sent to " + sEmail);
+                            sap.m.MessageToast.show("Password reset successfully.");
                             oDialog.close();
-                            // Open OTP verification dialog
-                            that._openOtpVerificationDialog(sEmail);
                         },
                         error: function () {
-                            sap.m.MessageToast.show("Failed to send OTP.");
+                            sap.m.MessageBox.error("Failed to reset password.");
                         }
                     });
                 }
@@ -240,99 +353,8 @@ sap.ui.define([
     
         oDialog.open();
     },
-
-//otp verification
-_openOtpVerificationDialog: function (sEmail) {
-    var oDialog = new sap.m.Dialog({
-        title: "Verify OTP",
-        content: [
-            new sap.m.Label({ text: "Enter OTP sent to your email:" }),
-            new sap.m.Input("otpInput", {
-                type: sap.m.InputType.Number,
-                placeholder: "Enter OTP"
-            })
-        ],
-        beginButton: new sap.m.Button({
-            text: "Verify",
-            press: function () {
-                var sOtp = sap.ui.getCore().byId("otpInput").getValue();
-                var oModel = new sap.ui.model.odata.v2.ODataModel("/sap/opu/odata/sap/ZUSER_MGMT_SRV/");
-                oModel.create("/VerifyOtpSet", { Email: sEmail, Otp: sOtp }, {
-                    success: function () {
-                        sap.m.MessageToast.show("OTP verified.");
-                        oDialog.close();
-                        // Open new password dialog
-                        that._openNewPasswordDialog(sEmail);
-                    },
-                    error: function () {
-                        sap.m.MessageToast.show("Invalid OTP.");
-                    }
-                });
-            }
-        }),
-        endButton: new sap.m.Button({
-            text: "Cancel",
-            press: function () {
-                oDialog.close();
-            }
-        })
-    });
-
-    oDialog.open();
-},
-// new passsword setup
-_openNewPasswordDialog: function (sEmail) {
-    var oDialog = new sap.m.Dialog({
-        title: "Create New Password",
-        content: [
-            new sap.m.Label({ text: "New Password:" }),
-            new sap.m.Input("newPasswordInput", {
-                type: sap.m.InputType.Password,
-                placeholder: "Enter new password"
-            }),
-            new sap.m.Label({ text: "Confirm Password:" }),
-            new sap.m.Input("confirmPasswordInput", {
-                type: sap.m.InputType.Password,
-                placeholder: "Confirm new password"
-            })
-        ],
-        beginButton: new sap.m.Button({
-            text: "Reset Password",
-            press: function () {
-                var sNewPassword = sap.ui.getCore().byId("newPasswordInput").getValue();
-                var sConfirmPassword = sap.ui.getCore().byId("confirmPasswordInput").getValue();
-
-                if (sNewPassword !== sConfirmPassword) {
-                    sap.m.MessageToast.show("Passwords do not match.");
-                    return;
-                }
-
-                var oModel = new sap.ui.model.odata.v2.ODataModel("/sap/opu/odata/sap/ZUSER_MGMT_SRV/");
-                oModel.create("/ResetPasswordSet", {
-                    Email: sEmail,
-                    NewPassword: sNewPassword
-                }, {
-                    success: function () {
-                        sap.m.MessageToast.show("Password reset successfully.");
-                        oDialog.close();
-                    },
-                    error: function () {
-                        sap.m.MessageToast.show("Failed to reset password.");
-                    }
-                });
-            }
-        }),
-        endButton: new sap.m.Button({
-            text: "Cancel",
-            press: function () {
-                oDialog.close();
-            }
-        })
-    });
-
-    oDialog.open();
-},
-
+    
+ 
 // password visibility
  
     onToggleForm: function () {

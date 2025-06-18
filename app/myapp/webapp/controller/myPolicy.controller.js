@@ -27,25 +27,7 @@ sap.ui.define([
             this.getView().setModel(this.oModel);
             // var oUserModel = this.getOwnerComponent().getModel("userModel");
 
-            // // console.log(userId)
-
-            // if (!oUserModel || !oUserModel.getProperty("/userId")) {
-            //     console.log("camee")
-            //     MessageBox.warning("⚠️ Please login first", {
-            //         title: "Authentication Required",
-            //         actions: [MessageBox.Action.OK],
-            //         emphasizedAction: MessageBox.Action.OK,
-            //         onClose: function () {
-            //             var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
-            //             oRouter.navTo("Routelogin");
-            //         }.bind(this)
-            //     });
-            //     return
-            // }
-            // var userId = oUserModel.getProperty("/userId");
-            // this.oModel.attachMetadataLoaded(() => {
-            //     this.getUserPolicyDetails(userId);
-            // });
+            
         },
 
         _onRouteMatched: function () {

@@ -9,5 +9,6 @@ service MyService {
     entity InsertUserDetails as projection on details.User;
     @cds.redirection.target : 'MyService.getPolicies'
     entity getPolicies as projection on details.Policies;
+    
 
 }

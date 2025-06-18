@@ -1,57 +1,63 @@
 <mvc:View
-    controllerName="myapp.controller.AppliacantDetails"
-	xmlns:mvc="sap.ui.core.mvc"
+    controllerName="myapp.controller.ApplicantDetails"
+    xmlns:mvc="sap.ui.core.mvc"
     displayBlock="true"
-	xmlns="sap.m"
-	xmlns:core="sap.ui.core"
-	xmlns:l="sap.ui.layout"
-	xmlns:f="sap.ui.layout.form"
->
-<Page id="adminPolicyPage" title="Applicant Details"
-      xmlns="sap.m"
-      xmlns:core="sap.ui.core">
-    
-    <VBox id="navbarAdminPolicyContainer"/>
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core">
 
-    <FlexBox
-        class="customCardList0"
-        direction="Row"
-        wrap="Wrap"
-        justifyContent="Start"
-        items="{applicantDetailsModel>/applicantDetails}"
-    >
-        <items>
-            <VBox class="applicationCard" backgroundDesign="Solid" width="400px">
-                <customData>
-                    <core:CustomData key="status" value="{applicantDetailsModel>status}" writeToDom="true"/>
-                </customData>
-                <HBox alignItems="Center" class="cardHeader0">
-                    <Image src="https://i.ibb.co/7Jct4sNX/file-00000000c88861fbb343ad3beae8ec50.png" width="2rem" class="applicantIcon"/>
-                    <Title text="{applicantDetailsModel>applicantName}" level="H3" class="cardTitle0" />
-                </HBox>
-                <HBox class="cardRow">
-                    <VBox class="cardColumn">
-                        <Text text="App ID: {applicantDetailsModel>applicationId}" class="highlightText0" />
-                        <Text text="Email: {applicantDetailsModel>applicantEmail}" class="highlightText0" />
-                        <Text text="Mobile: {applicantDetailsModel>applicantMobileNo}" class="highlightText0" />
+    <Page showHeader="false" id="applicationPage" title="Applicant Details">
+        <VBox height="100%" justifyContent="SpaceBetween">
+            <VBox id="navbarAplicationDetailsContainer"/>
+
+            <FlexBox
+                class="customCardList0"
+                direction="Row"
+                wrap="Wrap"
+                justifyContent="Start"
+                items="{applicantDetailsModel>/applicantDetails}">
+                <items>
+                    <VBox class="applicationCard" backgroundDesign="Solid" width="100%">
+                        <customData>
+                            <core:CustomData key="status" value="{applicantDetailsModel>status}" writeToDom="true"/>
+                        </customData>
+
+                        <HBox alignItems="Center" class="cardHeader0">
+                            <Image src="https://i.ibb.co/7Jct4sNX/file-00000000c88861fbb343ad3beae8ec50.png" width="2rem" class="applicantIcon"/>
+                            <Title text="{applicantDetailsModel>applicantName}" level="H3" class="cardTitle0"/>
+                        </HBox>
+
+                        <HBox class="cardRow">
+                            <VBox class="cardColumn">
+                                <Text text="App ID: {applicantDetailsModel>applicationId}" class="highlightText0"/>
+                                <Text text="Email: {applicantDetailsModel>applicantEmail}" class="highlightText0"/>
+                                <Text text="Mobile: {applicantDetailsModel>applicantMobileNo}" class="highlightText0"/>
+                            </VBox>
+                            <VBox class="cardColumn">
+                                <Text text="Policy: {applicantDetailsModel>policyName}" class="highlightText0"/>
+                                <Text text="Claim: ₹{applicantDetailsModel>claimAmount}" class="highlightText0"/>
+                                <Text text="Term Length: ₹{applicantDetailsModel>termLength}" class="highlightText0"/>
+                            
+                            </VBox>
+                        </HBox>
+
+                        <Text text="Status: {applicantDetailsModel>status}" class="statusText">
+                            <customData>
+                                <core:CustomData key="status" value="{applicantDetailsModel>status}" writeToDom="true"/>
+                            </customData>
+                        </Text>
+
+                        <HBox>
+                            <Button text="Approve" type="Accept" press="onApprove"/>
+                            <Button text="Reject" type="Reject" press="onReject"/>
+                        </HBox>
                     </VBox>
-                    <VBox class="cardColumn">
-                        <Text text="Policy: {applicantDetailsModel>policyDetails/policyName}" class="highlightText0" />
-                        <Text text="Claim: ₹{applicantDetailsModel>policyDetails/claimAmount}" class="highlightText0" />
-                        <Text text="Term Length: ₹{applicantDetailsModel>policyDetails/termLength}" class="highlightText0" />
-                    </VBox>
-                </HBox>
-                <Text text="Status: {applicantDetailsModel>status}" class="statusText">
-                    <customData>
-                        <core:CustomData key="status" value="{applicantDetailsModel>status}" writeToDom="true"/>
-                    </customData>
-                </Text>
-            </VBox>
-        </items>
-    </FlexBox>
+                </items>
+            </FlexBox>
 
-    //<VBox id="FooterAdminPoliciesContainer" class="footer"/>
-</Page>
-
+            <VBox id="ApplicationDetailsFooterContainer" class="footer"/>
+        </VBox>
+    </Page>
 </mvc:View>
+
+
 

@@ -415,7 +415,7 @@
 }
 
 .mybuttonspacing {
-    margin-right: 60px;
+    margin-right: 50px;
 }
 
 .customMargin {
@@ -571,6 +571,7 @@
 
 .sapUiSmallMargin1 .center {
     height: fit-content !important;
+    
 }
 
 .customLabel1 {
@@ -586,7 +587,7 @@
 
 
 .customPage1 {
-    background: linear-gradient(to right, #003366, #0055A5);
+    background: linear-gradient(to right,lightblue);
 
     min-height: 100vh;
     padding: 40px;

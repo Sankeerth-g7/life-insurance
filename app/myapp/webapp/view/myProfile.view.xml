@@ -54,14 +54,14 @@
                 <VBox class="customMargin1">
                 <HBox alignItems="Center">
                     <Label id="LAlabel3" text="Enter Applicant Mobile No"  required="true" class="customLabel1" design="Bold" />
-                    <Input id="enterApplicantMobileNo" placeholder="Enter Applicant Mobile No" liveChange="numValidation" class="customInput1" design="Bold" />
+                    <Input id="enterApplicantMobileNo" placeholder="Enter Applicant Mobile No" liveChange="numValidation" class="customInput1" />
                 </HBox>
                 </VBox>
  
                 <VBox class="customMargin1">
                 <HBox alignItems="Center">
                     <Label id="LAlabel4" text="Enter Applicant Email Id" required="true" class="customLabel1" design="Bold" />
-                    <Input id="enterEmailId" placeholder="Enter Applicant Email Id" liveChange="emailValidation" class="customInput1" design="Bold" />
+                    <Input id="enterEmailId" placeholder="Enter Applicant Email Id" liveChange="emailValidation" class="customInput1" />
                     </HBox>
                 </VBox>
  
@@ -97,7 +97,7 @@
                <VBox class="customMargin1">
                 <HBox alignItems="Center">
                     <Label id="LAlabel5" text="Enter Aadhaar No" required="true" class="customLabel1"  design="Bold" />
-                    <Input id="enterAadhaarNo" placeholder="Enter Aadhaar No" liveChange="aadhaarValidation"  class="customInput1" />
+                    <Input id="enterAadhaarNo" placeholder="Enter Aadhaar No" liveChange="aadharValidation"  class="customInput1" />
                 </HBox>
                 </VBox>
                 <VBox class="customMargin1">
@@ -112,16 +112,11 @@
                 <VBox class="customMargin1">
                 <HBox alignItems="Center">
                     <Label id="LAlabel7" text="Enter the Applicant Age" required="true" class="customLabel1" design="Bold" />
-                    <Input id="entertheapplicantage" placeholder="Enter the Applicant Age"  class="customInput1"/>
+                    <Input id="entertheapplicantage" placeholder="Enter the Applicant Age" liveChange="ageValidation"  class="customInput1"/>
                 </HBox>
                 </VBox>
  
-                <VBox class="customMargin1">
-                <HBox alignItems="Center">
-                    <Label id="LAlabel8" text="Application Id" required="true" class="customLabel1" design="Bold" />
-                    <Input id="applicationid" placeholder="Applicant ongoing id"   class="customInput1"/>
-                </HBox>
-                </VBox>
+    
  
                 </VBox>
  

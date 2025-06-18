@@ -28,7 +28,7 @@ entity Policies {
 }
 
 entity Applications {
-    key applicationId       : UUID;
+    key applicationId       : String;
         user                : Association to one User;
         policy              : Association to one Policies;
         applicantName       : String;
@@ -38,7 +38,6 @@ entity Applications {
         applicantEmail      : String;
         applicantAadhar     : String;
         applicantPan        : String;
-        applicantOccupation : String;
         applicationDate     : Date;
         status              : String;
         documentFileName    : String;

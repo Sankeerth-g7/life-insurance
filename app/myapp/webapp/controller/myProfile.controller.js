@@ -35,7 +35,7 @@ sap.ui.define([
       var ApplicantEmailId = this.getView().byId("enterEmailId").getValue();
       var ApplicantPanNo = this.getView().byId("enterPanNo").getValue();
       var ApplicantAge = this.getView().byId("entertheapplicantage").getValue();
-      var ApplicationId = this.getView().byId("applicationid").getValue();
+
       var ApplicantAadharNo = this.getView().byId("enterAadhaarNo").getValue();
 
       //get userId and policyId usin omodel also need to check if user is logged in or not
@@ -49,14 +49,14 @@ sap.ui.define([
       console.log(policyId)
 
       // Log the captured data for debugging
-       console.log("Applicant Name:", ApplicantName);
-       console.log("Applicant Address:", ApplicantAddress);
-       console.log("Applicant Mobile No:", ApplicantMobileNo);
-       console.log("Applicant Email Id:", ApplicantEmailId);
-       console.log("Aadhar No:", ApplicantAadharNo);
-       console.log("Pan No:", ApplicantAadharNo);
-       console.log("Age:", ApplicantAge);
-       console.log("Application id:", ApplicationId);
+      console.log("Applicant Name:", ApplicantName);
+      console.log("Applicant Address:", ApplicantAddress);
+      console.log("Applicant Mobile No:", ApplicantMobileNo);
+      console.log("Applicant Email Id:", ApplicantEmailId);
+      console.log("Aadhar No:", ApplicantAadharNo);
+      console.log("Pan No:", ApplicantPanNo);
+      console.log("Age:", ApplicantAge);
+
 
       // Validation formats
       var nameFormat = /^[a-zA-Z\s]+$/;
@@ -65,16 +65,20 @@ sap.ui.define([
       var aadhaarFormat = /^[0-9]{12}$/;
       var panFormat = /[A-Z]{5}[0-9]{4}[A-Z]{1}$/;
       var ageFormat = /^(1[89]|[2-5][0-9]|6[0-5])$/;
-      var IdFormat = /^[0-9]*$/; // Correctly define the format
 
-      function generateLoanId() {
-        const randomNumber = Math.floor(Math.random() * 10000); // Generates a random number between 0 and 9999
-        return `${appName}-${randomNumber}`;
+
+      function generateInsuranceId() {
+        const date = new Date();
+        const year = date.getFullYear();
+        const month = String(date.getMonth() + 1).padStart(2, '0'); // Ensures two digits
+        const randomTwoDigit = Math.floor(10 + Math.random() * 90); // Random number between 10 and 99
+        return `${year}${month}${randomTwoDigit}`;
       }
+
 
       // Example usage:
       const appName = "Insurance Loan";
-      const randomString = generateLoanId();
+      const randomString = generateInsuranceId();
       // Output: 2025-myApp-1234 (example)
 
       // Storing the generated string in a variable
@@ -94,11 +98,12 @@ sap.ui.define([
         applicantAadhar: ApplicantAadharNo,
         applicantPan: ApplicantPanNo,
         applicantAge: ApplicantAge,
-        applicationId: ApplicationId,
-        status:"Pending",
-        // documentFileName: this._file.name,
-        // documentMimeType: this._file.type,
-        // documentContent: this.filebase64String
+        applicationId: LoanId,
+
+        documentFileName: this._file?.name || "",
+        documentMimeType: this._file?.type || "",
+        documentContent: this.filebase64String || ""
+
 
       };
 
@@ -110,34 +115,36 @@ sap.ui.define([
       if (ApplicantAadharNo && !ApplicantAadharNo.match(aadhaarFormat)) formatErrors.push("Applicant Aadhaar No (Must be 12 digits)");
       if (ApplicantPanNo && !ApplicantPanNo.match(panFormat)) formatErrors.push("Applicant Pan No (Must be 12 digits)");
       if (ApplicantAge && !ApplicantAge.match(ageFormat)) formatErrors.push("Applicant Age (only numbers allowed)");
-      if (ApplicationId && !ApplicationId.match(IdFormat)) formatErrors.push("Application id (only Numbers are allowed)");
 
-      if (formatErrors.length > 0) {
-        sap.m.MessageBox.error("Please correct the following fields:\n" + formatErrors.join("\n"));
-        return;
-      }
+      if (!this._file || !this._file.name) formatErrors.push("Document file must be uploaded");
+      if (!this.filebase64String) formatErrors.push("Document content is missing");
 
-// Missing fields
 
-var DocumentType = this.getView().byId("selectDocumentType").getSelectedKey();
-var FilePath = this.getView().byId("filePath").getValue();
+      // if (formatErrors.length > 0) {
+      //   sap.m.MessageBox.error("Please correct the following fields:\n" + formatErrors.join("\n"));
+      //   return; 
+      // }
 
-let missingFields = [];
-if (!ApplicantName) missingFields.push("Applicant Name");
-if (!ApplicantAddress) missingFields.push("Applicant Address");
-if (!ApplicantMobileNo) missingFields.push("Applicant Mobile No");
-if (!ApplicantAadharNo) missingFields.push("Applicant Aadhar No");
-if (!ApplicantPanNo) missingFields.push("Applicant Pan No");
-if (!ApplicantEmailId) missingFields.push("Applicant Email Id");
-if (!FilePath) missingFields.push("Uploaded File");
-if (!ApplicantAge) missingFields.push("Applicant Age");
-if (!ApplicationId) missingFields.push("Application id");
+      // Missing fields
 
-const totalFields = 9;
+      var DocumentType = this.getView().byId("selectDocumentType").getSelectedKey();
+      var FilePath = this.getView().byId("filePath").getValue();
+
+      let missingFields = [];
+      if (!ApplicantName) missingFields.push("Applicant Name");
+      if (!ApplicantAddress) missingFields.push("Applicant Address");
+      if (!ApplicantMobileNo) missingFields.push("Applicant Mobile No");
+      if (!ApplicantAadharNo) missingFields.push("Applicant Aadhar No");
+      if (!ApplicantPanNo) missingFields.push("Applicant Pan No");
+      if (!ApplicantEmailId) missingFields.push("Applicant Email Id");
+      if (!FilePath) missingFields.push("Uploaded File");
+      if (!ApplicantAge) missingFields.push("Applicant Age");
+
+
+      const totalFields = 8;
 
 
 if (missingFields.length >= totalFields) {
-  console.log(missingFields)
     sap.m.MessageBox.error("Please fill the form.");
     return;
 } else if (missingFields.length > 0) {
@@ -147,9 +154,13 @@ if (missingFields.length >= totalFields) {
 
 
 
+
+
+
+
       this.oModel.create("/applications", NewUser, {
         success: function (data) {
-          MessageBox.success("You have applied for insurance successfully\nYour insurance id: " + data.Id, {
+          MessageBox.success("You have applied for insurance successfully\nYour insurance id: " + LoanId, {
             onClose: function () {
               var oView = this.getView();
               oView.byId("enterApplicantName").setValue("");
@@ -157,9 +168,11 @@ if (missingFields.length >= totalFields) {
               oView.byId("enterApplicantMobileNo").setValue("");
               oView.byId("enterEmailId").setValue("");
               oView.byId("enterAadhaarNo").setValue("");
+              oView.byId("selectDocumentType").setValue("");
+              oView.byId("filePath").setValue("");
               oView.byId("enterPanNo").setValue("");
               oView.byId("entertheapplicantage").setValue("");
-              oView.byId("applicationid").setValue("");
+
             }.bind(this)
           });
         }.bind(this),
@@ -236,7 +249,7 @@ if (missingFields.length >= totalFields) {
       this.byId("entertheapplicantage").setValue("");
       this.byId("enterAadhaarNo").setValue("");
       this.byId("enterPanNo").setValue("");
-      this.byId("applicationid").setValue("");
+
 
 
 
@@ -289,19 +302,15 @@ if (missingFields.length >= totalFields) {
     aadharValidation: function (oEvent) {
       var fieldValue = oEvent.getSource().getValue();
       var fieldName = oEvent.getSource();
-      var format = (/^[0-9]{12}$/);
-      var blen = fieldValue.length;
-
-      if (blen !== 12) {
+      var format = /^[0-9]{12}$/;
+    
+      if (!fieldValue.match(format)) {
         fieldName.setValueState(sap.ui.core.ValueState.Error);
-        fieldName.setValueStateText("Aadhar number must be 12 digits");
-      } else if (!fieldValue.match(format)) {
-        fieldName.setValueState(sap.ui.core.ValueState.Error);
-        fieldName.setValueStateText("Only Numbers can Accepted");
+        fieldName.setValueStateText("Aadhaar number must be exactly 12 digits");
+        
       } else {
         fieldName.setValueState(sap.ui.core.ValueState.None);
       }
-
     },
     panValidation: function (oEvent) {
       var fieldValue = oEvent.getSource().getValue();
@@ -322,20 +331,17 @@ if (missingFields.length >= totalFields) {
     ageValidation: function (oEvent) {
       var fieldValue = oEvent.getSource().getValue();
       var fieldName = oEvent.getSource();
-      var format = (/^[0-9]{9}$/);
-      var blen = fieldValue.length;
-
-      if (blen !== 12) {
+      var format = /^(0?[1-9]|[1-9][0-9])$/; // Matches 1–99
+    
+      if (!fieldValue.match(format)) {
         fieldName.setValueState(sap.ui.core.ValueState.Error);
-        fieldName.setValueStateText("Age number must be 9 digits");
-      } else if (!fieldValue.match(format)) {
-        fieldName.setValueState(sap.ui.core.ValueState.Error);
-        fieldName.setValueStateText("Only Numbers can Accepted");
+        fieldName.setValueStateText("Age must be a number between 1 and 99");
+       
       } else {
         fieldName.setValueState(sap.ui.core.ValueState.None);
       }
-
     },
+    
 
 
     onLogout: function () {
@@ -370,3 +376,5 @@ if (missingFields.length >= totalFields) {
     },
   });
 });
+
+

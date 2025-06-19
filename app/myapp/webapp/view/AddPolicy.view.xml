@@ -200,6 +200,8 @@
 				<ToolbarSpacer />
 			</Toolbar  >
 			<VBox height="10px" />
-			<VBox id="FooterContainer" class="footer" /></VBox>
+             <!-- <VBox id="FooterContainer" class="footer" /> -->
+			</VBox>
+           
 	</Page>
 </mvc:View>

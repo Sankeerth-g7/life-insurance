@@ -11,9 +11,9 @@ sap.ui.define([
         onInit: function () {
         var oHeader = sap.ui.xmlfragment("myapp.view.fragments.AdminHeader", this);
         this.getView().byId("navbarApplicantDetailsContainer").addItem(oHeader);
-
-      var oFooter = sap.ui.xmlfragment("myapp.view.fragments.CustomFooter", this);
-      this.getView().byId("ApplicantDetailsFooterContainer").addItem(oFooter);
+        
+      //var oFooter = sap.ui.xmlfragment("myapp.view.fragments.CustomFooter", this);
+      //this.getView().byId("ApplicantDetailsFooterContainer").addItem(oFooter);
 
             var url = "/odata/v2/my/";
             this.oModel = new ODataModel(url, true);
@@ -80,3 +80,5 @@ sap.ui.define([
         },
     });
 });
+
+

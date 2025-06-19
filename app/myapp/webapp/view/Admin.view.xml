@@ -7,6 +7,6 @@
 <VBox id="navbarAdminContainer"/>
 
 
-<VBox id="AdminFooterContainer" class="footer" />
+   <!-- //<VBox id="AdminFooterContainer" class="footer" /> -->
 </Page>
 </mvc:View>

@@ -26,7 +26,7 @@
     />
 </HBox>
 
-
+<VBox >
         <FlexBox
              id="policyFlexBox"
             class="sapUiMediumMargin"
@@ -94,6 +94,9 @@
                 </VBox>
             </items>
         </FlexBox>
-        <VBox id="PolicyDetailsFooterContainer" class="footer" />
+        <!-- <VBox id="PolicyDetailsFooterContainer" class="footer" /> -->
+        </VBox>
+        
+
     </Page>
 </mvc:View>

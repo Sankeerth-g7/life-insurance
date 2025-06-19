@@ -7,8 +7,8 @@ sap.ui.define([
     onInit: function () {
       var oHeader = sap.ui.xmlfragment("myapp.view.fragments.AdminHeader", this);
       this.getView().byId("navbarAdminContainer").addItem(oHeader);
-      var oFooter = sap.ui.xmlfragment("myapp.view.fragments.CustomFooter", this);
-      this.getView().byId("AdminFooterContainer").addItem(oFooter);
+
+     
     },
 
     onAddPolicyPress: function () {

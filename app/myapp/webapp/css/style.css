@@ -6,7 +6,7 @@
     font-size: 25px;
     font-weight: bold;
     color: #808034;
-    margin-top:0.5px;
+    margin-top: 0.5px;
     margin-bottom: 1px;
     font-family: 'Times New Roman', Times, serif, sans-serif;
 }
@@ -41,6 +41,7 @@
     from {
         opacity: 0;
     }
+
     to {
         opacity: 1;
     }
@@ -311,7 +312,7 @@
     text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.7);
 }
 
- /* view policy page css*/
+/* view policy page css*/
 
 .policyCard {
     width: 90%;
@@ -427,13 +428,14 @@
 .customInput .sapMInputBaseContentWrapper::placeholder {
     color: blue !important;
     opacity: 1;
-  }
-  .customLabel {
-    width:180px;
-    
-   }
- 
-   .subHeader{
+}
+
+.customLabel {
+    width: 180px;
+
+}
+
+.subHeader {
     text-align: center !important;
     font-size: large !important;
 }
@@ -772,13 +774,15 @@
     gap: 6px;
     width: 100%
 }
+
 .customFlexboxBackground {
-    border-radius: 8px; /* Optional: rounded corners */
+    border-radius: 8px;
+    /* Optional: rounded corners */
     background-size: cover;
-    background-color: lightblue; 
+    background-color: lightblue;
     background-repeat: no-repeat;
     background-position: center;
-    
+
 
 }
 
@@ -866,7 +870,14 @@
 
 .userProfileInfo {
     gap: 0.5rem;
+    width: 100%;
+    text-align: center;
 }
+
+.userProfileInfo HBox {
+    justify-content: center;
+}
+
 
 .userProfileUsername,
 .userProfileEmail,
@@ -908,4 +919,57 @@
     margin-top: 1rem;
     background-color: #3498db;
     color: white;
+}
+
+
+.userStatsSection {
+    margin-top: 2rem;
+    display: flex;
+    flex-direction: row;
+    gap: 2rem;
+}
+
+.userStatsLeft {
+    flex: 1;
+}
+
+
+.userStatsRight {
+    flex: 1;
+    padding: 0rem;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    max-width: 100%;
+    /* Ensures it doesn't overflow */
+    box-sizing: border-box;
+    /* Includes padding in width calculation */
+}
+
+
+.chartTitle {
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin-bottom: 1rem;
+    text-align: center;
+    flex-direction: row;
+}
+
+.vizFrame {
+    border-radius: 8px;
+}
+
+
+.userAvatar {
+    margin-bottom: 2rem;
+    width: 100px;
+    height: 100px;
+}
+
+
+.userDetailText {
+    font-size: 1rem;
+    color: #333;
+    font-weight: 500;
+    margin-left: 0.5rem;
 }

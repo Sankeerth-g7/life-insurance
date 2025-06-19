@@ -110,7 +110,7 @@ sap.ui.define([
                         const policyModel = new JSONModel({ userPolicies });
                         console.log(policyModel)
                         this.getView().setModel(policyModel, "policyModel");
-                        // console.log(this.getView().getModel("policyModel").getProperty("/userPolicies"));
+                        console.log(this.getView().getModel("policyModel").getProperty("/userPolicies"));
 
                     } else {
                         MessageToast.show("No policy details found for the given user.");

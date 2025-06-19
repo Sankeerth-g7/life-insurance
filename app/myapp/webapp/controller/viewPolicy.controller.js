@@ -86,7 +86,6 @@ sap.ui.define([
             // Set it on the component so it's accessible across views
             this.getOwnerComponent().setModel(oSelectedPolicyModel, "selectedPolicyModel");
         
-            MessageToast.show("Policy ID stored: " + policyId);
 
             var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
             oRouter.navTo("myProfile");

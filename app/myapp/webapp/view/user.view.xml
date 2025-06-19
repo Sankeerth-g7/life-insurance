@@ -1,52 +1,81 @@
 <mvc:View controllerName="myapp.controller.user"
     displayBlock="true"
-    xmlns:mvc="sap.ui.core.mvc"
-    xmlns="sap.m"
-    xmlns:core="sap.ui.core">
-
-    <Page showHeader="false" >
-    <VBox id="navbaruserContainer"/>
-        <content>
-            <VBox class="userProfilePage">
-                <!-- Profile Card -->
-                <VBox class="userProfileCard">
-                    <HBox class="userProfileHeader" alignItems="Center">
-                        <Avatar src="https://via.placeholder.com/150" displayShape="Circle" size="XL" />
-                        <VBox class="userProfileInfo">
-    <HBox>
-        <Label text="Username:" width="150px" />
-        <Text text="{= ${userModel2>userDetails/username} ? ${userModel2>userDetails/username} : 'john_doe'}" />
-    </HBox>
-    <HBox>
-        <Label text="Email:" width="150px" />
-        <Text text="{= ${userModel2>userDetails/email} ? ${userModel2>userDetails/email} : 'john.doe@email.com'}" />
-    </HBox>
-    <HBox>
-        <Label text="Phone:" width="150px" />
-        <Text text="{= ${userModel2>userDetails/phone} ? ${userModel2>userDetails/phone} : '9876543210'}" />
-    </HBox>
-    <HBox>
-        <Label text="Role:" width="150px" />
-        <Text text="{= ${userModel2>userDetails/role} ? ${userModel2>userDetails/role} : 'Admin'}" />
-    </HBox>
-    <HBox>
-        <Label text="Status:" width="150px" />
-        <Text text="{= ${userModel2>userDetails/status} === 'Active' ? 'Active' : 'Inactive'}" />
-    </HBox>
-</VBox>
-
-                    </HBox>
-                </VBox>
-
-                <!-- Change Password Card -->
-                <VBox class="userPasswordCard">
-                    <Text text="Change Password" class="userPasswordTitle" />
-                    <Input placeholder="Current Password" type="Password" class="userPasswordInput" id="currentPasswordInput" />
-                    <Input placeholder="New Password" type="Password" class="userPasswordInput" id="newPasswordInput"/>
-                    <Input placeholder="Confirm New Password" type="Password" class="userPasswordInput" id="confirmPasswordInput" />
-                    <Button text="Update Password" type="Emphasized" class="userPasswordButton" press="onChangePassword" />
-                </VBox>
-            </VBox>
-        </content>
-    </Page>
+	xmlns:mvc="sap.ui.core.mvc"
+	xmlns="sap.m"
+	xmlns:core="sap.ui.core"
+	xmlns:viz="sap.viz.ui5.controls"
+	xmlns:viz.data="sap.viz.ui5.data"
+	xmlns:viz.feeds="sap.viz.ui5.controls.common.feeds">
+	<Page showHeader="false">
+		<VBox id="navbaruserContainer"/>
+		<content>
+			<VBox class="userProfilePage">
+				<!-- Profile Card -->
+				<VBox class="userProfileCard">
+					<HBox class="userProfileHeader" alignItems="Start" justifyContent="SpaceBetween">
+						<!-- Left Side: Avatar on Top and User Info Below -->
+						<VBox alignItems="Center" class="userProfileLeft">
+							<Avatar src="https://via.placeholder.com/180" displayShape="Circle" class="userAvatar" />
+							<VBox class="userProfileInfo" alignItems="Center">
+								<HBox>
+									<Label text="Username:" width="150px" />
+									<Text text="{userModel2>/username}" class="userDetailText"/>
+								</HBox>
+								<HBox>
+									<Label text="Email:" width="150px" />
+									<Text text="{userModel2>/email}" class="userDetailText"/>
+								</HBox>
+								<HBox>
+									<Label text="Phone:" width="150px" />
+									<Text text="{userModel2>/phone}" class="userDetailText"/>
+								</HBox>
+								<HBox>
+									<Label text="Role:" width="150px" />
+									<Text text="{userModel2>/role}" class="userDetailText"/>
+								</HBox>
+							</VBox>
+						</VBox>
+						<!-- Right Side: Pie Chart -->
+						<VBox class="userStatsRight">
+							<viz:VizFrame
+                                id="policyChart"
+                                uiConfig="{applicationSet:'fiori'}"
+                                vizType="pie"
+                                width="100%"
+                                height="300px">
+								<viz:dataset>
+									<viz.data:FlattenedDataset data="{policyModel>/statusData}">
+										<viz.data:dimensions>
+											<viz.data:DimensionDefinition name="Status" value="{status}" />
+										</viz.data:dimensions>
+										<viz.data:measures>
+											<viz.data:MeasureDefinition name="Count" value="{count}" />
+										</viz.data:measures>
+									</viz.data:FlattenedDataset>
+								</viz:dataset>
+								<viz:feeds>
+									<viz.feeds:FeedItem uid="size" type="Measure" values="Count"/>
+									<viz.feeds:FeedItem uid="color" type="Dimension" values="Status"/>
+								</viz:feeds>
+							</viz:VizFrame>
+						</VBox>
+					</HBox>
+				</VBox>
+				<!-- Change Password Card -->
+				<VBox class="userPasswordCard">
+					<Text text="Change Password" class="userPasswordTitle" />
+					<Input placeholder="Current Password" type="Password" class="userPasswordInput" id="currentPasswordInput" />
+					<Input placeholder="New Password" type="Password" class="userPasswordInput" id="newPasswordInput"/>
+					<Input placeholder="Confirm New Password" type="Password" class="userPasswordInput" id="confirmPasswordInput" />
+					<Button text="Update Password" type="Emphasized" class="userPasswordButton" press="onChangePassword" />
+				</VBox>
+				<!-- Optional Stats Section -->
+				<HBox class="userStatsSection" justifyContent="SpaceBetween">
+					<VBox class="userStatsLeft">
+						<!-- Additional content can go here -->
+					</VBox>
+				</HBox>
+			</VBox>
+		</content>
+	</Page>
 </mvc:View>

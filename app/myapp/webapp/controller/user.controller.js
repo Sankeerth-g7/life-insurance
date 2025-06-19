@@ -56,28 +56,95 @@ sap.ui.define([
       oRouter.navTo("myPolicy");
 
 },
-    getUserDetails: function (userId) {
-      const filter = new sap.ui.model.Filter("userId", "EQ", userId);
+getUserDetails: function (userId) {
+  const filter = new sap.ui.model.Filter("userId", "EQ", userId);
 
-      this.oModel.read("/users", {
-        filters: [filter],
-        success: (oData) => {
-          if (oData.results.length > 0) {
-            const userDetails = oData.results[0];
-            console.log (userDetails);
-            const userModel2 = new JSONModel({userDetails});
-            console.log(userModel2)
-            this.getView().setModel(userModel2, "userModel2");
-          } else {
-            MessageToast.show("User details not found.");
-          }
-        },
-        error: (oError) => {
-          MessageToast.show("Error fetching user details.");
-          console.error("User fetch error:", oError);
-        }
-      });
+  this.oModel.read("/users", {
+    filters: [filter],
+    success: (oData) => {
+      if (oData.results.length > 0) {
+        const userDetails = oData.results[0];
+
+        // Set user details model
+        const userModel2 = new sap.ui.model.json.JSONModel(userDetails);
+        this.getView().setModel(userModel2, "userModel2");
+
+        // Now fetch policies separately
+        this.getUserPoliciesByFiltering(userId);
+
+      } else {
+        MessageToast.show("User details not found.");
+      }
     },
+    error: (oError) => {
+      MessageToast.show("Error fetching user details.");
+      console.error("User fetch error:", oError);
+    }
+  });
+},
+
+
+
+getUserPoliciesByFiltering: function (userId) {
+  this.oModel.read("/applications", {
+    success: (oData) => {
+      if (oData && oData.results.length > 0) {
+        const userPolicies = oData.results.filter(app => app.user_userId === userId);
+
+        const statusCounts = {
+          Approved: 0,
+          Rejected: 0,
+          Pending: 0
+        };
+
+        userPolicies.forEach(policy => {
+          const status = policy.status;
+          if (statusCounts.hasOwnProperty(status)) {
+            statusCounts[status]++;
+          }
+        });
+
+        const policyStats = [
+          { status: "Approved", count: statusCounts.Approved },
+          { status: "Rejected", count: statusCounts.Rejected },
+          { status: "Pending", count: statusCounts.Pending }
+        ];
+
+        const policyModel = new sap.ui.model.json.JSONModel({
+          userPolicies,
+          statusData: policyStats
+        });
+
+        this.getView().setModel(policyModel, "policyModel");
+
+        const oVizFrame = this.getView().byId("policyChart");
+        oVizFrame.setVizProperties({
+          plotArea: {
+            colorPalette: ["#2ecc71", "#e74c3c", "#f39c12"] // Green, Red, Orange
+          },
+          title: {
+            text: "Policy Status Overview",
+            visible: true
+          },
+          legend: {
+            visible: true
+          },
+          tooltip: {
+            visible: true
+          }
+});
+
+
+      } else {
+        MessageToast.show("No policies found for this user.");
+      }
+    },
+    error: (oError) => {
+      MessageToast.show("Error fetching policies.");
+      console.error("Policy fetch error:", oError);
+    }
+  });
+},  
     onChangePassword: function () {
       const oView = this.getView();
     

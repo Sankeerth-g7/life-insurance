@@ -89,8 +89,13 @@ sap.ui.define([
                     that.oModel.update("/users(" + user.userId + ")", user, {
                         success: function () {
                             MessageBox.success("Login successful!");
-                            var oRouter = sap.ui.core.UIComponent.getRouterFor(that);
-                            oRouter.navTo("home");
+                            if (user.role === "Admin") {
+                                var oRouter = sap.ui.core.UIComponent.getRouterFor(that);
+                                oRouter.navTo("Admin");
+                            } else {
+                                var oRouter = sap.ui.core.UIComponent.getRouterFor(that);
+                                oRouter.navTo("home");
+                            }
                             var oUserModel = new sap.ui.model.json.JSONModel({ userId: user.userId });
                             that.getOwnerComponent().setModel(oUserModel, "userModel");
                         },

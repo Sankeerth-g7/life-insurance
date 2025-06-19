@@ -212,7 +212,7 @@ sap.ui.define([
                 enabled: false,
                 press: function () {
                     var sEmail = sap.ui.getCore().byId("forgotEmailInput").getValue();
-                    that._sendOtpToUser(sEmail);
+                    that._sendOtpToUser(sEmail); //triggers the cap action
                     oDialog.close();
                 }
             }),
@@ -263,6 +263,28 @@ sap.ui.define([
             }
         });
     },
+    
+    //
+    _fetchUserByEmail: function (sEmail) {
+        var that = this;
+    
+        this.oModel.read("/users", {
+            filters: [new sap.ui.model.Filter("email", sap.ui.model.FilterOperator.EQ, sEmail)],
+            success: function (oData) {
+                if (oData.results.length === 0) {
+                    sap.m.MessageBox.information("User not found.");
+                    return;
+                }
+    
+                var user = oData.results[0];
+                that._openOtpVerificationDialog(user);
+            },
+            error: function () {
+                sap.m.MessageBox.error("Error while fetching user.");
+            }
+        });
+    },
+    
 
     //
     _openOtpVerificationDialog: function (user) {

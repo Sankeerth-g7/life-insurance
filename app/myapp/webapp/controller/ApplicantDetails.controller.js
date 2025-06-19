@@ -9,12 +9,11 @@ sap.ui.define([
 
     return Controller.extend("myapp.controller.ApplicantDetails", {
         onInit: function () {
-
         var oHeader = sap.ui.xmlfragment("myapp.view.fragments.AdminHeader", this);
-      this.getView().byId("navbarAplicationDetailsContainer").addItem(oHeader);
+        this.getView().byId("navbarApplicantDetailsContainer").addItem(oHeader);
 
       var oFooter = sap.ui.xmlfragment("myapp.view.fragments.CustomFooter", this);
-      this.getView().byId("ApplicationDetailsFooterContainer").addItem(oFooter);
+      this.getView().byId("ApplicantDetailsFooterContainer").addItem(oFooter);
 
             var url = "/odata/v2/my/";
             this.oModel = new ODataModel(url, true);
@@ -43,11 +42,11 @@ sap.ui.define([
                         const applicantDetailsModel = new JSONModel({ applicantDetails });
                         this.getView().setModel(applicantDetailsModel, "applicantDetailsModel");
                     } else {
-                        MessageToast.show("No applicant details found.");
+                        MessageBox.error("No applicant details found.");
                     }
                 },
                 error: () => {
-                    MessageToast.show("Failed to load applicant details.");
+                    MessageBox.error("Failed to load applicant details.");
                 }
             });
         },
@@ -65,13 +64,19 @@ sap.ui.define([
         updateApplicationStatus: function (applicationId, status) {
             this.oModel.update(`/applications('${applicationId}')`, { status }, {
                 success: () => {
-                    MessageToast.show(`Application ${status}`);
+                    MessageBox.success(`Application ${status}`);
                     this.loadAllApplicantDetails(); // Refresh list
                 },
                 error: () => {
-                    MessageToast.show("Failed to update status.");
+                    MessageBox.error("Failed to update status.");
                 }
             });
-        }
+        },
+        onLogout: function () {
+
+            var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
+            oRouter.navTo("Admin");
+            MessageBox.Information("Logged out!");
+        },
     });
 });

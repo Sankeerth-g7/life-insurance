@@ -4,7 +4,7 @@ sap.ui.define([
     "sap/m/MessageToast",
     "myapp/model/formatter",
     "sap/ui/model/odata/v2/ODataModel"
-], function (Controller, JSONModel, MessageToast, formatter, ODataModel) {
+], function (Controller, JSONModel, MessageToast,formatter, ODataModel) {
     "use strict";
 
     return Controller.extend("myapp.controller.viewPolicy", {

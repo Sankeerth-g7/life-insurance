@@ -30,6 +30,7 @@ entity Policies {
         termsAndConditions : String;
 }
 
+
 entity Applications {
     key applicationId       : String;
         user                : Association to one User;

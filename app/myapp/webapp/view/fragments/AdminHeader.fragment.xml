@@ -11,7 +11,7 @@
             <HBox justifyContent="Start" class="navButtonsBox">
                 <Button text="Add Policy" press=".onAddPolicyPress"/>
                 <Button text="Policy Details" press=".onPolicyDetailsPress"/>
-                <Button text="Applicant Details" press=".onNavMyProfile"/>
+                <Button text="Applicant Details" press=".onApplicantDetailsPress"/>
                 <Button text="Logout" press=".onLogout"/>
             </HBox>
         </contentLeft>

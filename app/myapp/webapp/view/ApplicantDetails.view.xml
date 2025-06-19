@@ -7,7 +7,7 @@
 
     <Page showHeader="false" id="applicationPage" title="Applicant Details">
         <VBox height="100%" justifyContent="SpaceBetween">
-            <VBox id="navbarAplicationDetailsContainer"/>
+            <VBox id="navbarApplicantDetailsContainer"/>
 
             <FlexBox
                 class="customCardList0"
@@ -54,7 +54,7 @@
                 </items>
             </FlexBox>
 
-            <VBox id="ApplicationDetailsFooterContainer" class="footer"/>
+            <VBox id="ApplicantDetailsFooterContainer" class="footer"/>
         </VBox>
     </Page>
 </mvc:View>

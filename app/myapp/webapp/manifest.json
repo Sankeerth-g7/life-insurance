@@ -185,8 +185,7 @@
       "id":"ApplicantDetails",
       "name":"ApplicantDetails"
     },
-    
-     "TargetmyProfile": {
+    "TargetmyProfile": {
       "id": "myProfile",
       "name": "myProfile"
   },

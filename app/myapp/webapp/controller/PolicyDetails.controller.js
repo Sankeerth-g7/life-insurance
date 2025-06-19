@@ -4,7 +4,7 @@ sap.ui.define([
      "myapp/model/formatter",
      "sap/m/MessageToast",
      "sap/m/MessageBox"
-  ], function (Controller,  ODataModel,formatter,MessageToast) {
+  ], function (Controller,  ODataModel,formatter,MessageToast, MessageBox) {
     "use strict";
   
     return Controller.extend("myapp.controller.PolicyDetails", {
@@ -18,6 +18,9 @@ sap.ui.define([
 
           var oHeader = sap.ui.xmlfragment("myapp.view.fragments.AdminHeader", this);
           this.getView().byId("navbarPolicyDetailsContainer").addItem(oHeader);
+
+          var oFooter = sap.ui.xmlfragment("myapp.view.fragments.CustomFooter", this);
+      this.getView().byId("PolicyDetailsFooterContainer").addItem(oFooter);
         },
         loadPoliciesData: function () {
           var that = this;
@@ -28,11 +31,11 @@ sap.ui.define([
                       var oPolicyModel = new sap.ui.model.json.JSONModel({ Policies: oData.results });
                       that.getView().setModel(oPolicyModel, "policyModel");
                   } else {
-                      MessageToast.show("No policies available.");
+                    MessageBox.error("No policies available.");
                   }
               },
               error: function () {
-                  MessageToast.show("Failed to load policies.");
+                MessageBox.error("Failed to load policies.");
               }
           });
       },
@@ -72,18 +75,18 @@ sap.ui.define([
         var that = this;
     
         // Show confirmation dialog
-        sap.m.MessageBox.confirm("Are you sure you want to delete this policy?", {
+        MessageBox.Information("Are you sure you want to delete this policy?", {
             title: "Confirm Deletion",
             actions: [sap.m.MessageBox.Action.YES, sap.m.MessageBox.Action.NO],
             onClose: function (oAction) {
                 if (oAction === sap.m.MessageBox.Action.YES) {
                     that.oModel.remove(sPath, {
                         success: function () {
-                            sap.m.MessageToast.show("Policy deleted successfully.");
+                            MessageBox.success("Policy deleted successfully.");
                             that.loadPoliciesData(); // Refresh the list
                         },
                         error: function () {
-                            sap.m.MessageToast.show("Failed to delete policy.");
+                            MessageBox.error("Failed to delete policy.");
                         }
                     });
                 }
@@ -102,7 +105,13 @@ sap.ui.define([
     
         // Navigate to AddPolicy view
         oRouter.navTo("AddPolicy");
-    }    
+    },
+    onLogout: function () {
+
+        var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
+        oRouter.navTo("Admin");
+        MessageToast.show("Logged out!");
+    }, 
     
     });
   });

@@ -150,11 +150,11 @@ sap.ui.define([
         var sPath = "/getPolicies('" + sPolicyId + "')";
         oODataModel.update(sPath, oData, {
           success: function () {
-            MessageToast.show("Policy updated successfully!");
+            MessageBox.success("Policy updated successfully!");
             sap.ui.core.UIComponent.getRouterFor(oView).navTo("PolicyDetails");
           },
           error: function () {
-            MessageToast.show("Error while updating policy.");
+            MessageBox.error("Error while updating policy.");
           }
         });
       } else {
@@ -162,11 +162,11 @@ sap.ui.define([
         oData.policyId = "POL" + Date.now();
         oODataModel.create("/policies", oData, {
           success: function () {
-            MessageToast.show("Policy added successfully!");
+            MessageBox.success("Policy added successfully!");
             sap.ui.core.UIComponent.getRouterFor(oView).navTo("PolicyDetails");
           },
           error: function () {
-            MessageToast.show("Error while adding policy.");
+            MessageBox.error("Error while adding policy.");
           }
         })
       }
@@ -186,6 +186,10 @@ sap.ui.define([
             field.setValueState("None");
             field.setValueStateText("");
           });
+      },
+      onLogout: function () {
+        var oRouter = sap.ui.core.UIComponent.getRouterFor(this.getView());
+        oRouter.navTo("Admin"); // Navigate to Admin Home page
       }
       }
     )}

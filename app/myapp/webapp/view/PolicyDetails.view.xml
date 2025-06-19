@@ -94,5 +94,6 @@
                 </VBox>
             </items>
         </FlexBox>
+        <VBox id="PolicyDetailsFooterContainer" class="footer" />
     </Page>
 </mvc:View>

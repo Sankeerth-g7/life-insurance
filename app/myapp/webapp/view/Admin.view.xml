@@ -8,6 +8,11 @@
 
 
 
+        <VBox id="middleImageContainer" class="middleImage">
+            <Image src="images/image999.png" width="100%"   alt="Admin Middle Image" />
+        </VBox>
+
+
 <VBox id="FooterAdminContainer" class="footer" />
 
    

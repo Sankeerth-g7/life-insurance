@@ -41,7 +41,7 @@ darkBackground {
     from {
         opacity: 0;
     }
-
+ 
     to {
         opacity: 1;
     }
@@ -324,9 +324,9 @@ footerCopyrightBox. {
     font-weight: bold;
     text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.7);
 }
-
+ 
 /* view policy page css*/
-
+ 
 .policyCard {
     width: 90%;
     max-width: 500px;
@@ -337,8 +337,8 @@ footerCopyrightBox. {
     background-color: #dbd4ff;
     transition: transform 0.3s ease;
 }
-
-
+ 
+ 
 .cardHeader {
     margin-bottom: 10px;
     gap: 10px;
@@ -439,12 +439,12 @@ footerCopyrightBox. {
     color: blue !important;
     opacity: 1;
 }
-
+ 
 .customLabel {
     width: 180px;
-
+ 
 }
-
+ 
 .subHeader {
     text-align: center !important;
     font-size: large !important;
@@ -812,7 +812,7 @@ footerCopyrightBox. {
     gap: 6px;
     width: 100%
 }
-
+ 
 .customFlexboxBackground {
     border-radius: 8px;
     /* Optional: rounded corners */
@@ -910,15 +910,13 @@ footerCopyrightBox. {
     gap: 0.5rem;
     width: 100%;
     text-align: center;
-    width: 100%;
-    text-align: center;
 }
-
+ 
 .userProfileInfo HBox {
     justify-content: center;
 }
-
-
+ 
+ 
 .userProfileUsername,
 .userProfileEmail,
 .userProfilePhone,
@@ -960,20 +958,20 @@ footerCopyrightBox. {
     background-color: #3498db;
     color: white;
 }
-
-
+ 
+ 
 .userStatsSection {
     margin-top: 2rem;
     display: flex;
     flex-direction: row;
     gap: 2rem;
 }
-
+ 
 .userStatsLeft {
     flex: 1;
 }
-
-
+ 
+ 
 .userStatsRight {
     flex: 1;
     padding: 0rem;
@@ -986,8 +984,8 @@ footerCopyrightBox. {
     /* Includes padding in width calculation */
     margin-top: 1.5rem;
 }
-
-
+ 
+ 
 .chartTitle {
     font-size: 1.2rem;
     font-weight: bold;
@@ -995,26 +993,26 @@ footerCopyrightBox. {
     text-align: center;
     flex-direction: row;
 }
-
+ 
 .vizFrame {
     border-radius: 8px;
 }
-
-
+ 
+ 
 .userAvatar {
     margin-bottom: 1rem;
     width: 100px;
     height: 100px;
     margin-left: 7rem;
 }
-
-
+ 
+ 
 .userDetailText {
     font-size: 0.8rem;
     color: #333;
     margin-left: 0.5rem;
 }
-
+ 
 /* Enhanced user profile info styling */
 .userProfileInfo {
     /* background: #f7f8fa; */
@@ -1025,12 +1023,12 @@ footerCopyrightBox. {
     min-width: 320px;
     align-items: flex-start;
 }
-
+ 
 .userProfileInfo HBox {
     margin-bottom: 0.7rem;
     align-items: center;
 }
-
+ 
 .userDetailText {
     font-size: 1.08rem;
     color: #2d2d2d;
@@ -1043,7 +1041,7 @@ footerCopyrightBox. {
     min-width: 120px;
     display: inline-block;
 }
-
+ 
 .userProfileLabel {
     font-weight: 600;
     color: #5c5470;
@@ -1054,8 +1052,29 @@ footerCopyrightBox. {
     letter-spacing: 0.01em;
     font-family: 'Segoe UI', 'Arial', sans-serif;
 }
-
+ 
 .userProfileLeft {
     align-items: flex-start !important;
     margin-left: 1rem;
+}
+
+/* .adminBackground {
+    background-color: #7c4166c2;
+    
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+   
+} */
+.adminBackground {
+    background-color: #7c4166c2;
+    background-image: url("https://www.insurancehero.org.uk/wp-content/uploads/2024/06/best-family-life-insurance-tp-im-1.webp");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+   
+   
+}
+.data-sap-ui-fastnavgroup{
+    background: transparent !important;
 }

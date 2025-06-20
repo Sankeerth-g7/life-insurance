@@ -73,7 +73,7 @@
         "type": "sap.ui.model.resource.ResourceModel",
         "settings": {
           "bundleName": "myapp.i18n.i18n"
-        }
+        }     
       },
       "mainModel": {
         "dataSource": "mainService",

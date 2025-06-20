@@ -6,6 +6,24 @@
 
     <Page showHeader="false"  class="viewpolicypg"  >
         <VBox id="navBarPolicyContainer"/>
+        <HBox
+    class="searchBarContainer"
+    justifyContent="Center"
+    alignItems="Center"
+>
+    <SearchField
+        id="policySearchField1"
+        width="300px"
+        placeholder="Type here to search policy"
+        liveChange="onSearchPolicy"
+    />
+    <Button
+        text="Search"
+        type="Default"
+        press="onSearchPolicyButton"
+        class="searchButton"
+    />
+</HBox>
         <FlexBox
             class="sapUiMediumMargin"
             direction="Row"

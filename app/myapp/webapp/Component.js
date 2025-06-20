@@ -21,6 +21,10 @@ sap.ui.define([
 
             // enable routing
             this.getRouter().initialize();
+
+            
+            //  this.setModel(new JSONModel(yourData), "policyModel");
+
         }
     });
 });

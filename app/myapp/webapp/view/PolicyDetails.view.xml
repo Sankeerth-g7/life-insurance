@@ -4,7 +4,7 @@
     xmlns:mvc="sap.ui.core.mvc"
     xmlns="sap.m"
 >
-    <Page showHeader="false">
+    <Page showHeader="false" class="viewpolicypg" >
         <VBox id="navbarPolicyDetailsContainer" />
         
 <HBox

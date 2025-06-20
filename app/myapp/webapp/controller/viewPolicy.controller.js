@@ -82,6 +82,10 @@ sap.ui.define([
                     if (oData && oData.results) {
                         var oPolicyModel = new sap.ui.model.json.JSONModel({ Policies: oData.results });
                         that.getView().setModel(oPolicyModel, "policyModel");
+
+                    const oModel = that.getView().getModel("policyModel");
+                    const aPolicies = oModel.getProperty("/Policies");
+                    oModel.setProperty("/AllPolicies", aPolicies);
                     } else {
                         MessageToast.show("No policies available.");
                     }
@@ -91,6 +95,31 @@ sap.ui.define([
                 }
             });
         },
+        onSearchPolicy: function(oEvent) {
+        const sQuery = oEvent.getParameter("newValue");
+        this._filterPolicies(sQuery);
+    },
+    
+      onSearchPolicyButton: function() {
+        const sQuery = this.getView().byId("policySearchField1").getValue();
+        this._filterPolicies(sQuery);
+      },
+    
+    _filterPolicies: function (sQuery) {
+        const oModel = this.getView().getModel("policyModel");
+        const aAllPolicies = oModel.getProperty("/AllPolicies"); // Always use full list
+    
+        let aFiltered = aAllPolicies;
+        if (sQuery) {
+                const sLowerQuery = sQuery.toLowerCase();
+                aFiltered = aAllPolicies.filter(policy =>
+                policy.policyName.toLowerCase().includes(sLowerQuery) ||
+                policy.policyType.toLowerCase().includes(sLowerQuery)
+            );
+        }
+    
+        oModel.setProperty("/Policies", aFiltered); // Update visible list
+    },
 
 
         onSelectPlan: function (oEvent) {

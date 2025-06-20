@@ -2,7 +2,7 @@ const cds = require('@sap/cds');
 const bcrypt = require('bcryptjs');
 const nodemailer = require('nodemailer');
 
-const { User, Policies } = cds.entities('insurance');
+const { User, Policies, Documents } = cds.entities('insurance');
 
 module.exports = (srv) => {
 
@@ -43,8 +43,60 @@ module.exports = (srv) => {
         }
     });
 
+    // file upload function
+        const fs = require('fs');
+
+    const path = require('path');
+
+    srv.on('uploadDocument', async (req) => {
+
+      const { fileName, fileContent, documentType, applicationId } = req.data;
+      const buffer = Buffer.from(fileContent, 'base64');
+
+      // Define the path to save the file
+
+      const dirPath = path.join(__dirname, 'files');
+      const filePath = path.join(dirPath, fileName);
+
+      // Ensure the directory exists
+
+      if (!fs.existsSync(dirPath)) {
+
+        fs.mkdirSync(dirPath, { recursive: true });
+
+      }
+
+      // Save the file to disk
+
+      fs.writeFileSync(filePath, buffer);
+
+      // Return the URL to access the file
+
+      const fileUrl = `/files/${fileName}`;
+
+      return fileUrl;
+
+//     // const fileUrl = `${req.protocol}://${req.headers.host}/files/${fileName}`;
+//     // return fileUrl;
+    
+// // Construct full URL
+//     const fileUrl = `${req.protocol}://${req.headers.host}/files/${fileName}`;
+//     // Save metadata to HANA
+//     await INSERT.into(Documents).entries({
+//         documentId: cds.utils.uuid(),
+//         documentType,
+//         fileUrl,
+//         uploadedAt: new Date(),
+//         application_applicationId: applicationId // foreign key
+//         });
+    
+//         return { fileUrl };
+
+//     });
+ 
+
 // Send OTP to user's email
-    srv.on('sendOtp', async (req) => {
+srv.on('sendOtp', async (req) => {
         const { email } = req.data;
 
         try {
@@ -90,8 +142,8 @@ module.exports = (srv) => {
             req.error(500, 'Failed to send OTP');
         }
     });
+});
 };
-
 
 
     

@@ -46,7 +46,7 @@ entity Applications {
         status              : String;
         documentFileName    : String;
         @Core.MediaType  : documentMimeType
-        documentContent     : LargeBinary;
+        documentContent     : LargeString;
         @Core.IsMediaType: true
         documentMimeType    : String;
 }
@@ -55,5 +55,6 @@ entity Documents {
     key documentId     : String;
         documentType   : String;
         documentUpload : LargeBinary;
+        //fileUrl         : String; 
         application    : Association to one Applications;
 }

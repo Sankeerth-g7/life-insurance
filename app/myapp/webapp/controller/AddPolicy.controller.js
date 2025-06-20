@@ -9,16 +9,16 @@ sap.ui.define([
   return Controller.extend("myapp.controller.AddPolicy", {
     onInit: function () {     
       var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
-      oRouter.getRoute("AddPolicy").attachPatternMatched(this._onRouteMatched, this);
+      oRouter.getRoute("AddPolicy").attachPatternMatched(this._onRouteMatched, this);
       // Load header and footer fragments
       var oHeader = sap.ui.xmlfragment("myapp.view.fragments.AdminHeader", this);
       this.getView().byId("navbarAddPolicyContainer").addItem(oHeader);
 
       // var oFooter = sap.ui.xmlfragment("myapp.view.fragments.CustomFooter", this);
       // this.getView().byId("FooterContainer").addItem(oFooter);
-
     },
 
+    
     _onRouteMatched: function () {
       console.log("Route matched: AddPolicy");
     

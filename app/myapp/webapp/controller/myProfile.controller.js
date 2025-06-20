@@ -1,13 +1,15 @@
 sap.ui.define([
   "sap/ui/core/mvc/Controller",
+  "sap/ui/core/Fragment", 
   "sap/m/MessageBox",
   "sap/m/MessageToast",
   "sap/ui/model/json/JSONModel",
-  "sap/ui/model/odata/v2/ODataModel"
-], (Controller, MessageBox, MessageToast, JSONModel, ODataModel) => {
+  "sap/ui/model/odata/v2/ODataModel",
+   "myapp/controller/footer"
+], (Controller,Fragment, MessageBox, MessageToast, JSONModel, ODataModel,footerFactory) => {
   "use strict";
 
-  return Controller.extend("myapp.controller.profile", {
+  return Controller.extend("myapp.controller.myprofile", {
     onInit() {
 
       // Initialize the model
@@ -17,15 +19,29 @@ sap.ui.define([
 
       var oHeader = sap.ui.xmlfragment("myapp.view.fragments.CustomHeader", this);
       this.getView().byId("navbarmyProfileContainer").addItem(oHeader);
+      // Load Footer Fragment
+      Fragment.load({
+        id: this.createId("CustomFooter"),
+        name: "myapp.view.fragments.CustomFooter",
+        controller: this
+    }).then(function (oFooterContent) {
+        this.getView().byId("FootermyProfileContainer").addItem(oFooterContent);
+    }.bind(this));
+
+    this.footerHandler = footerFactory;
+},
+      // this.footerHandler = footerFactory
+      // var oFooter = sap.ui.xmlfragment("myapp.view.fragments.CustomFooter", this);
+      //       this.getView().byId("FootermyProfileContainer").addItem(oFooter);
+            
       //   var oHeader = sap.ui.xmlfragment("myapp.view.fragments.CustomHeader", this);
       //     this.getView().byId("navbarProfileContainer").addItem(oHeader);
 
       //var oFooter = sap.ui.xmlfragment("myapp.view.fragments.CustomFooter", this);
       //this.getView().byId("FootermyProfileContainer").addItem(oFooter);
       //this.getview().byId("FootermyProfileContainer").addItem(oFooter);
-
-
-    },
+      
+    // },
 
     onSubmit: function () {
       // Capturing the data in variables
@@ -189,6 +205,55 @@ if (missingFields.length >= totalFields) {
 
     },
 
+    // onChooseFile: function () {
+    //   var oFileUploader = document.createElement('input');
+    //   oFileUploader.type = 'file';
+    //   oFileUploader.onchange = function (event) {
+    //     var file = event.target.files[0];
+    //     this._file = file;
+    //     var oFilePathInput = this.byId("filePath");
+    //     oFilePathInput.setValue(file.name);
+
+    //   }.bind(this);
+    //   oFileUploader.click();
+
+    // },
+    // onUpload: function () {
+    //   var file = this._file;
+    //   if (!file) {
+    //     sap.m.MessageToast.show("Please choose a file first.");
+    //     return;
+    //   }
+    //   var filename = file.name;
+    //   var filesize = file.size;
+    //   var extension = filename.substr(filename.lastIndexOf('.') + 1).toLowerCase();
+    //   console.log(extension);
+
+    //   if (!["pdf", "jpeg", "png", "jpg"].includes(extension)) {
+    //     sap.m.MessageToast.show("Kindly upload only JPG, JPEG, PDF, and PNG files");
+    //     return;
+
+    //   } else if (filesize > 2000000) {
+    //     sap.m.MessageToast.show("File size should not be more than 2MB.");
+    //     return;
+    //   }
+
+    //   var reader = new FileReader();
+    //   reader.onload = function (e) {
+    //     var fileupArray = new Uint8Array(e.target.result);
+    //     this.fileData = fileupArray;
+
+    //     //Convert Uint8Array to a string
+    //     var binaryString = Array.from(fileupArray, byte => String.fromCharCode(byte)).join('');
+
+    //     // Convert binary string to Base64
+    //     var base64Stringfile = btoa(binaryString);
+    //     this.filebase64String = base64Stringfile;
+    //     console.log(this.filebase64String);
+
+    //   }.bind(this);
+    //   reader.readAsArrayBuffer(file);
+    // }, 
     onChooseFile: function () {
       var oFileUploader = document.createElement('input');
       oFileUploader.type = 'file';
@@ -197,47 +262,54 @@ if (missingFields.length >= totalFields) {
         this._file = file;
         var oFilePathInput = this.byId("filePath");
         oFilePathInput.setValue(file.name);
-
       }.bind(this);
       oFileUploader.click();
 
-    },
-    onUpload: function () {
-      var file = this._file;
-      if (!file) {
-        sap.m.MessageToast.show("Please choose a file first.");
-        return;
-      }
-      var filename = file.name;
-      var filesize = file.size;
-      var extension = filename.substr(filename.lastIndexOf('.') + 1).toLowerCase();
-      console.log(extension);
-
-      if (!["pdf", "jpeg", "png", "jpg"].includes(extension)) {
-        sap.m.MessageToast.show("Kindly upload only JPG, JPEG, PDF, and PNG files");
-        return;
-
-      } else if (filesize > 2000000) {
-        sap.m.MessageToast.show("File size should not be more than 2MB.");
-        return;
-      }
-
-      var reader = new FileReader();
-      reader.onload = function (e) {
-        var fileupArray = new Uint8Array(e.target.result);
-        this.fileData = fileupArray;
-
-        //Convert Uint8Array to a string
-        var binaryString = Array.from(fileupArray, byte => String.fromCharCode(byte)).join('');
-
-        // Convert binary string to Base64
-        var base64Stringfile = btoa(binaryString);
-        this.filebase64String = base64Stringfile;
-        console.log(this.filebase64String);
-
-      }.bind(this);
-      reader.readAsArrayBuffer(file);
-    },
+          },
+          onUpload: function () {
+            var file = this._file;
+            if (!file) {
+              sap.m.MessageToast.show("Please choose a file first.");
+              return;
+            }
+            var filename = file.name;
+            var filesize = file.size;
+            var extension = filename.substr(filename.lastIndexOf('.') + 1).toLowerCase();
+            if (!["pdf", "jpg", "jpeg"].includes(extension)) {
+              sap.m.MessageToast.show("Kindly upload only PDF files");
+              return;
+            } else if (filesize > 2000000) {
+              sap.m.MessageToast.show("File size should not be more than 2MB.");
+              return;
+            }
+            var reader = new FileReader();
+            reader.onload = function (e) {
+              // Convert ArrayBuffer to base64 string
+              var binary = '';
+              var bytes = new Uint8Array(e.target.result);
+              var len = bytes.byteLength;
+              for (var i = 0; i < len; i++) {
+                binary += String.fromCharCode(bytes[i]);
+              }
+              var base64Stringfile = btoa(binary);
+              var oModel = this.getView().getModel("mainModel");
+              oModel.callFunction("/uploadDocument", {
+                method: "POST",
+                urlParameters: {
+                  fileName: file.name,
+                  fileContent: base64Stringfile
+                },
+                success: function (data) {
+                  this.documentUrl = data.uploadDocument;
+                  sap.m.MessageToast.show("File uploaded successfully.");
+                }.bind(this),
+                error: function (err) {
+                  sap.m.MessageBox.error("File upload failed. Please try again.");
+                }
+              });
+            }.bind(this);
+            reader.readAsArrayBuffer(file);
+          },
 
     onClear: function () {
       this.byId("enterApplicantName").setValue("");

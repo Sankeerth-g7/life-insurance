@@ -6,7 +6,9 @@
 <Page  showHeader="false"  class="fullPageBackground">
 <VBox id="navbarAdminContainer"/>
 
+   
+   
+   
 
-   <!-- //<VBox id="AdminFooterContainer" class="footer" /> -->
 </Page>
 </mvc:View>

@@ -1,10 +1,13 @@
 sap.ui.define([
     "sap/ui/core/mvc/Controller",
+    "sap/ui/core/Fragment", 
     "sap/ui/model/json/JSONModel",
     "sap/m/MessageToast",
     "myapp/model/formatter",
-    "sap/ui/model/odata/v2/ODataModel"
-], function (Controller, JSONModel, MessageToast,formatter, ODataModel) {
+    "sap/ui/model/odata/v2/ODataModel",
+     "myapp/controller/footer"
+
+], function (Controller,Fragment,  JSONModel, MessageToast,formatter,ODataModel,footerFactory ) {
     "use strict";
 
     return Controller.extend("myapp.controller.viewPolicy", {
@@ -16,14 +19,30 @@ sap.ui.define([
             this.getView().setModel(this.oModel);
 
             this.loadPoliciesData();
-
+         
             var oHeader = sap.ui.xmlfragment("myapp.view.fragments.CustomHeader", this);
             this.getView().byId("navBarPolicyContainer").addItem(oHeader);
 
-            //var oFooter = sap.ui.xmlfragment("myapp.view.fragments.CustomFooter", this);
-            //this.getView().byId("FooterviewPolicyContainer").addItem(oFooter);
+            
+    // Load Footer Fragment
+        Fragment.load({
+            id: this.createId("CustomFooter"),
+            name: "myapp.view.fragments.CustomFooter",
+            controller: this
+        }).then(function (oFooterContent) {
+            this.getView().byId("FooterviewPolicyContainer").addItem(oFooterContent);
+        }.bind(this));
 
-        },
+        this.footerHandler = footerFactory;
+    },
+    
+            //  this.footerHandler = footerFactory
+            // var oFooter = sap.ui.xmlfragment("myapp.view.fragments.CustomFooter", this);
+            //  this.getView().byId("FooterviewPolicyContainer").addItem(oFooter);
+
+            
+
+        // },
         // onNavHome: function () {
         //var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
         //oRouter.navTo("home");
@@ -101,3 +120,5 @@ sap.ui.define([
         }
     });
 });
+
+

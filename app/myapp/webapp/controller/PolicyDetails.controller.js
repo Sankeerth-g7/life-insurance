@@ -82,7 +82,7 @@ sap.ui.define([
         var that = this;
     
         // Show confirmation dialog
-        MessageBox.Information("Are you sure you want to delete this policy?", {
+        MessageBox.information("Are you sure you want to delete this policy?", {
             title: "Confirm Deletion",
             actions: [sap.m.MessageBox.Action.YES, sap.m.MessageBox.Action.NO],
             onClose: function (oAction) {

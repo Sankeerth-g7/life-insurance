@@ -419,7 +419,7 @@ if (missingFields.length >= totalFields) {
     onLogout: function () {
 
       var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
-      oRouter.navTo("home");
+      oRouter.navTo("Routelogin");
       MessageToast.show("Logged out!");
 
 

@@ -214,7 +214,7 @@ sap.ui.define([
   
       onLogout: function () {
         var oRouter = sap.ui.core.UIComponent.getRouterFor(this.getView());
-        oRouter.navTo("Admin"); // Navigate to Admin Home page
+        oRouter.navTo("Routelogin");
       }
       }
     )}

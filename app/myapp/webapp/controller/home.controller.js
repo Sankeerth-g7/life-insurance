@@ -55,7 +55,7 @@ sap.ui.define([
     },
     onLogout: function () {
         var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
-        oRouter.navTo("login")
+        oRouter.navTo("Routelogin")
         MessageBox.Information("You have been logged out.");
         // Optionally navigate to login or home page
         //this.getOwnerComponent().getRouter().navTo("Login");

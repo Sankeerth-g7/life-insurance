@@ -75,6 +75,13 @@ sap.ui.define([
       oRouter.navTo("myPolicy");
 
 },
+onLogout: function () {
+        var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
+        oRouter.navTo("Routelogin")
+        MessageBox.Information("You have been logged out.");
+        // Optionally navigate to login or home page
+        //this.getOwnerComponent().getRouter().navTo("Login");
+    },
 getUserDetails: function (userId) {
   const filter = new sap.ui.model.Filter("userId", "EQ", userId);
 

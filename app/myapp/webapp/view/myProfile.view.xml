@@ -58,12 +58,7 @@
                 </HBox>
                 </VBox>
  
-                <VBox class="customMargin1">
-                <HBox alignItems="Center">
-                    <Label id="LAlabel4" text="Enter Applicant Email Id" required="true" class="customLabel1" design="Bold" />
-                    <Input id="enterEmailId" placeholder="Enter Applicant Email Id" liveChange="emailValidation" class="customInput1" />
-                    </HBox>
-                </VBox>
+               
  
                <VBox class="customMargin1" id="LAbox3">
                 <VBox class="customMargin1">
@@ -91,6 +86,7 @@
                 </HBox>
                 </VBox>
                 
+                
 
                 </VBox>
                 <VBox id="LAbox2" class="formContainer1"  width="48%">
@@ -106,7 +102,12 @@
                     <Input id="enterPanNo" placeholder="Enter PAN No" liveChange="panValidation"  class="customInput1" />
                 </HBox>
                 </VBox>
-               
+                <VBox class="customMargin1">
+                <HBox alignItems="Center">
+                    <Label id="LAlabel4" text="Enter Applicant Email Id" required="true" class="customLabel1" design="Bold" />
+                    <Input id="enterEmailId" placeholder="Enter Applicant Email Id" liveChange="emailValidation" class="customInput1" />
+                    </HBox>
+                </VBox>
  
                
                 <VBox class="customMargin1">
@@ -126,12 +127,17 @@
             </f:SimpleForm>
            
         </content>
-            <Toolbar id="LAtoolbar" class="sapUiSmallMargin1">
-                <ToolbarSpacer id="LAtoolbarspacer" />
-                <Button id="LAbutton1" text="Submit" press="onSubmit" type="Emphasized" width="10%" class="customButton1" />
-                <Button id="LAbutton2" text="Clear" press="onClear" type="Reject" width="10%" class="customButton1" />
-                <ToolbarSpacer id="LAtoolbarspacer1" />
-            </Toolbar>
-        <VBox id="FootermyProfileContainer"/>
+            <!-- <Toolbar id="LAtoolbar" class="sapUiSmallMargin1"> -->
+                
+<Toolbar class="toolbar_trans">
+ <ToolbarSpacer />
+ 
+ <Button id="LAbutton1" text="Submit" press="onSubmit" type="Emphasized" width="10%" class="customButton" />
+ <Button id="LAbutton2" text="Clear" press="onClear" type="Reject" width="10%" class="customButton" />
+ 
+ <ToolbarSpacer />
+</Toolbar>
+
     </Page>
+    <VBox id="FootermyProfileContainer"/>
 </mvc:View>

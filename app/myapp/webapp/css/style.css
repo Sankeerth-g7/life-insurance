@@ -1,7 +1,7 @@
-.darkBackground {
+darkBackground {
     background-color: #ffffe3;
 }
-
+ 
 .pageTitle {
     font-size: 25px;
     font-weight: bold;
@@ -10,14 +10,14 @@
     margin-bottom: 1px;
     font-family: 'Times New Roman', Times, serif, sans-serif;
 }
-
+ 
 .loginContainer {
     align-items: center;
     justify-content: center;
     padding-top: 2 rem !important;
-
+ 
 }
-
+ 
 .formBox {
     width: 370px;
     height: 500px;
@@ -32,11 +32,11 @@
     flex-direction: column;
     justify-content: center;
 }
-
+ 
 .fadeIn {
     animation: fadeIn 0.4s ease-in-out;
 }
-
+ 
 @keyframes fadeIn {
     from {
         opacity: 0;
@@ -46,39 +46,39 @@
         opacity: 1;
     }
 }
-
+ 
 .logo {
     display: block;
     margin: 0 auto 30px;
     width: 80px;
     width: 80px;
 }
-
+ 
 .loginTitle {
     text-align: center;
     margin-bottom: 8px;
     font-size: 18px;
     font-weight: bold;
 }
-
+ 
 .inputField {
     margin-bottom: 8px;
     height: 2rem;
     font-size: 0.95rem;
 }
-
+ 
 .checkbox {
     margin: 10px 0;
     font-size: 0.95rem;
 }
-
+ 
 .loginButton {
     width: 100%;
     margin-top: 10px;
     height: 2.2rem;
     font-size: 1rem;
 }
-
+ 
 .link {
     display: block;
     text-align: center;
@@ -86,7 +86,7 @@
     font-size: 0.95rem;
     cursor: pointer;
 }
-
+ 
 ::placeholder {
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     color: #6c757d;
@@ -94,12 +94,12 @@
     opacity: 0.8;
     /* Slight transparency for a modern touch */
 }
-
+ 
 .sapUiSmallMargin left-img {
     padding-left: 0.2rem !important;
     padding-top: 2 rem !important;
 }
-
+ 
 .sapUiSmallMargin {
     height: 20px !important;
     font-size: 18px !important;
@@ -107,13 +107,13 @@
     padding-top: 0.5rem !important;
     padding-bottom: 0.5rem !important;
 }
-
+ 
 .customToolbarHeight {
     height: 3rem !important;
     padding-top: 1rem !important;
     padding-bottom: 0.2rem !important;
 }
-
+ 
 /*home page*/
 .logoTitleBox {
     justify-content: center;
@@ -121,7 +121,7 @@
     padding-left: 0.1rem;
     align-items: center;
 }
-
+ 
 .logoTitleText {
     font-size: 20px;
     font-weight: bold;
@@ -134,7 +134,7 @@
     padding-bottom: 1rem;
     line-height: 1.5;
 }
-
+ 
 .navButtonsBox {
     color: rgb(218, 134, 134);
     padding-left: 10rem;
@@ -142,27 +142,27 @@
     font-size: 1.3rem;
     gap: 4rem;
 }
-
+ 
 /*home page*/
-
+ 
 .fullPageBackground {
     background-color: #7c4166c2;
     /* Light background for the whole page */
 }
-
+ 
 .welcomeText {
     color: white;
     font-size: 1.2rem;
     font-weight: bold;
     text-align: center;
 }
-
+ 
 .welcomeBox {
     background-color: rgb(180, 40, 40);
     /* Light blue background */
     padding: 10px;
 }
-
+ 
 .carouselItem {
     display: flex;
     flex-direction: column;
@@ -170,15 +170,15 @@
     justify-content: center;
     height: 100%;
 }
-
+ 
 .imageCarousel {
     width: 100%;
     height: 100%;
     object-fit: cover;
     transition: opacity 1s ease-in-out;
-
+ 
 }
-
+ 
 .carouselCaption {
     position: absolute;
     top: 70%;
@@ -189,42 +189,42 @@
     font-weight: bold;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
 }
-
+ 
 .footerContainer {
     background-color: rgb(201, 226, 238);
     color: rgb(31, 3, 3);
     /* This will make the text white */
     padding: 10px;
 }
-
+ 
 .footerLink {
     color: rgb(214, 216, 243) !important;
     /* Ensures links and copyright text are white */
 }
-
+ 
 .footerCopyright {
     color: rgb(2, 4, 26) !important;
     /* Ensures links and copyright text are white */
 }
-
+ 
 .footerLinksBox,
 .footerCopyrightBox {
     background-color: rgb(207, 227, 240);
 }
-
-
+ 
+ 
 .quoteSection {
     position: relative;
     width: 100%;
     height: 400px;
 }
-
+ 
 .quoteImage {
     width: 100%;
     height: 100%;
 }
-
-
+ 
+ 
 .quoteOverlayText {
     position: absolute;
     bottom: 20%;
@@ -242,16 +242,16 @@
     padding-top: 1rem !important;
     padding-bottom: 0.2rem !important;
 }
-
-
+ 
+ 
 .carouselImage {
     width: 150%;
     height: 100%;
     object-fit: cover;
     transition: opacity 1s ease-in-out;
-
+ 
 }
-
+ 
 .carouselCaption {
     position: absolute;
     top: 70%;
@@ -262,45 +262,45 @@
     font-weight: bold;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
 }
-
-
-
-
+ 
+ 
+ 
+ 
 .footerContainer {
     background-color: rgb(201, 226, 238);
     color: rgb(31, 3, 3);
     /* This will make the text white */
     padding: 10px;
 }
-
+ 
 .footerLink {
     color: rgb(30, 44, 194) !important;
     /* Ensures links and copyright text are white */
 }
-
+ 
 .footerCopyright {
     color: rgb(2, 4, 26) !important;
     /* Ensures links and copyright text are white */
 }
-
+ 
 .footerLinksBox,
 .footerCopyrightBox {
     background-color: rgb(207, 227, 240);
 }
-
-
+ 
+ 
 .quoteSection {
     position: relative;
     width: 100%;
     height: 400px;
 }
-
+ 
 .quoteImage {
     width: 100%;
     height: 100%;
 }
-
-
+ 
+ 
 .quoteOverlayText {
     position: absolute;
     bottom: 20%;
@@ -330,7 +330,7 @@
     margin-bottom: 10px;
     gap: 10px;
 }
-
+ 
 .cardTitle {
     font-size: 1.5rem;
     font-weight: bold;
@@ -341,11 +341,11 @@
     text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.4);
     letter-spacing: 0.5px;
 }
-
+ 
 .viewpolicypg {
     background-color: #ffffe3;
 }
-
+ 
 .bgWholeLife {
     background-image: url("images/life-icon.png");
     background-size: cover;
@@ -354,9 +354,9 @@
     padding: 16px;
     color: white;
 }
-
-
-
+ 
+ 
+ 
 .bgEndowment {
     background-image: url("images/endowment-icon.png");
     background-size: cover;
@@ -365,13 +365,13 @@
     padding: 16px;
     color: white;
 }
-
+ 
 .bgDefault {
     background-color: #f5f5f5;
     border-radius: 10px;
     padding: 16px;
 }
-
+ 
 .highlightText {
     font-size: 1rem;
     font-weight: 500;
@@ -383,45 +383,45 @@
     font-family: "Segoe UI", "Roboto", sans-serif;
     line-height: 1.4;
 }
-
+ 
 .buttoncolor {
     color: #808034;
 }
-
-
+ 
+ 
 /* === Header Bar Styling === */
 .box {
     background-color: #00264d !important;
     color: white !important;
 }
-
+ 
 .box .sapMBarLeft,
 .box .sapMBarRight,
 .box .sapMBarMiddle {
     text-align: center !important;
 }
-
+ 
 .box .sapMBtnInner {
     color: white !important;
-
+ 
 }
-
+ 
 .box .sapMBtnInner {
     background-color: transparent !important;
 }
-
+ 
 .mybuttonspacing {
     margin-right: 50px;
 }
-
+ 
 .customMargin {
     margin-bottom: 25px;
 }
-
+ 
 .formContainer {
     margin-bottom: 25px;
 }
-
+ 
 .customInput .sapMInputBaseContentWrapper::placeholder {
     color: blue !important;
     opacity: 1;
@@ -436,29 +436,29 @@
     text-align: center !important;
     font-size: large !important;
 }
-
+ 
 .headerTitle {
     text-align: center !important;
     color: white !important;
 }
-
-
+ 
+ 
 /* mypolicies styles - revised version */
-
+ 
 /* Page Background */
 .customPage {
     background-color: #f4f6f8;
     font-family: "72", "72full", Arial, sans-serif;
 }
-
+ 
 /* Navbar Container */
 .customNavbar {
     margin: 1rem;
     padding: 1rem;
 }
-
+ 
 /* Card List Layout */
-
+ 
 /* Horizontal Card List Layout */
 .customCardList {
     display: flex;
@@ -473,7 +473,7 @@
     border: none;
     scroll-snap-type: x mandatory;
 }
-
+ 
 /* Card Styling */
 .customCard {
     background-color: #ffffff;
@@ -491,32 +491,32 @@
     overflow-wrap: break-word;
     word-break: break-word;
 }
-
+ 
 /* Hover Effect */
 .customCard:hover {
     transform: translateY(-6px);
     box-shadow: 0 10px 24px rgba(0, 0, 0, 0.15);
 }
-
-
-
+ 
+ 
+ 
 /* Responsive Design */
 @media (max-width: 1024px) {
     .customCard {
         flex: 1 1 100%;
     }
 }
-
+ 
 .left-img {
     margin: left;
 }
-
-
+ 
+ 
 .loginContainer {
     align-items: center;
     justify-content: center;
 }
-
+ 
 .bgTerm {
     background-image: url("images/term-icon.png");
     background-size: cover;
@@ -525,90 +525,115 @@
     padding: 16px;
     color: white;
 }
-
+ 
 /* === Header Bar Styling === */
 .box {
     background-color: #dbd4ff !important;
     color: white !important;
 }
-
+ 
 .box .sapMBarLeft,
 .box .sapMBarRight,
 .box .sapMBarMiddle {
     text-align: center !important;
 }
-
+ 
 .box .sapMBtnInner {
     color: white !important;
-
+ 
 }
-
+ 
 .box .sapMBtnInner {
     background-color: transparent !important;
 }
-
+ 
 .mybuttonspacing {
     margin-right: 60px;
 }
-
+ 
 .customMargin1 {
     margin-bottom: 20px;
 }
-
+ 
 .formContainer1 {
     margin-bottom: 5px;
 }
-
+ 
 .customInput1 .sapMInputBaseContentWrapper::placeholder {
     color: blue !important;
-
-
+ 
+ 
     opacity: 1;
 }
-
+ 
 .sapUiSmallMargin1 .center {
     height: fit-content !important;
-    
+   
 }
-
+ 
 .customLabel1 {
     width: 200px;
+    color: black !important;
 }
-
+.documentLabel1{
+    color: black !important;
+}
+ 
 .subHeader1 {
     text-align: center !important;
     font-size: x-large !important;
     font-weight: bold !important;
     color: rgb(1, 1, 19)important;
 }
-
-
+ 
+ 
 .customPage1 {
-    background: linear-gradient(to right,lightblue);
-
+ 
+    background: linear-gradient(90deg, rgba(42, 123, 155, 1) 0%, rgba(209, 224, 215, 1) 63%, rgba(237, 221, 83, 1) 100%);
     min-height: 100vh;
     padding: 40px;
     font-family: 'Segoe UI', sans-serif;
 }
-
-
-
+.sapMIBar
+ .sapMTBInactive
+ .sapMTB
+ .sapMTBNewFlex
+ .sapMTBStandard
+ .sapMTB-Auto-CTX
+ .sapUiSmallMargin1
+ {
+    background-color: transparent !important;
+}
+ 
+.customButton {
+     text-align: center !important;
+     background: transparent;
+ 
+     margin: 0 10px;
+   
+   
+}
+ 
+.toolbar_trans{
+    background-color: transparent;
+}
+ 
 .customInput1 {
     width: 280px !important;
     font-style: italic;
-
+ 
 }
-
+ 
 .sapMPageHeader {
     background-color: transparent !important;
     box-sizing: 100px;
     width: 100px;
     height: 100px;
-
+ 
 }
-
+ 
 /* Add Policy page*/
-
+ 
 .policy-page {
     /* background-image: url("https://tse3.mm.bing.net/th/id/OIP.htjtG49XTtUyHUJhRCPypwHaE6?w=626&h=416&rs=1&pid=ImgDetMain&cb=idpwebp2&o=7&rm=3"); */
     /* background-size: cover;          Cover the entire area */
@@ -623,70 +648,70 @@
     background: #2A7B9B;
     background: linear-gradient(90deg, rgba(42, 123, 155, 1) 0%, rgba(209, 224, 215, 1) 63%, rgba(237, 221, 83, 1) 100%);
 }
-
+ 
 .form-wrapper {
     padding: 2rem;
     background-color: transparent;
 }
-
+ 
 .form-flexbox {
     background-color: transparent !important;
 }
-
+ 
 .form-column {
     display: flex;
     flex-direction: column;
     gap: 1rem;
     background-color: transparent;
-
+ 
 }
-
+ 
 .form-group {
     margin-bottom: 1rem;
     background-color: transparent;
-
+ 
 }
-
+ 
 .form-label {
     width: 12rem;
     font-weight: bold;
     color: black;
     font-size: 15px;
-
+ 
 }
-
+ 
 .form-textarea {
     width: 150%;
     height: 100%;
     box-sizing: border-box;
     resize: vertical;
 }
-
-
-
+ 
+ 
+ 
 .form-toolbar {
     margin-top: 2rem;
     padding: 0 2rem;
     border-bottom: none !important;
     /* box-shadow: none !important; */
     background-color: transparent;
-
+ 
 }
-
+ 
 .form-button {
     min-width: 8rem;
-
-
+ 
+ 
 }
-
+ 
 .footer {
     margin-top: auto;
     color: rgb(201, 188, 188);
 }
-
-
+ 
+ 
 /* myploicy page starts here */
-
+ 
 .customCardList0 {
     display: flex;
     flex-direction: row;
@@ -700,8 +725,8 @@
     border: none;
     scroll-snap-type: x mandatory;
 }
-
-
+ 
+ 
 .applicationCard {
     width: 200%;
     padding: 10px;
@@ -714,18 +739,18 @@
     margin-bottom: 20px;
     flex: 1 1 calc(33.333% - 1rem);
     max-width: calc(33.333% - 1rem);
-
+ 
 }
-
+ 
 /* .applicationCard:hover {
     transform: translateY(-5px);
 } */
-
+ 
 .cardHeader0 {
     margin-bottom: 10px;
     gap: 10px;
 }
-
+ 
 .cardTitle0 {
     font-size: 1.5rem;
     font-weight: bold;
@@ -737,7 +762,7 @@
     letter-spacing: 0.5px;
     margin-top: 12px;
 }
-
+ 
 .highlightText0 {
     font-size: 1rem;
     font-weight: 500;
@@ -749,16 +774,16 @@
     font-family: "Segoe UI", "Roboto", sans-serif;
     line-height: 1.4;
 }
-
+ 
 /* Status-Based Background Colors */
-
-
+ 
+ 
 .applicantIcon {
     color: #5c6bc0;
     margin-right: 10px;
 }
-
-
+ 
+ 
 .cardRow {
     display: flex;
     justify-content: space-between;
@@ -766,7 +791,7 @@
     margin-top: 10px;
     width: 100%;
 }
-
+ 
 .cardColumn {
     flex: 1;
     display: flex;
@@ -779,13 +804,13 @@
     border-radius: 8px;
     /* Optional: rounded corners */
     background-size: cover;
-    background-color: lightblue;
+    background-color: transparent!;
     background-repeat: no-repeat;
     background-position: center;
-
-
+ 
+ 
 }
-
+ 
 .statusText {
     font-size: 1rem;
     font-weight: bold;
@@ -795,24 +820,24 @@
     border-radius: 6px;
     text-align: center;
 }
-
-
+ 
+ 
 /* Status-Based Background Colors for statusText */
 .statusText[data-status="Approved"] {
     color: #2e7d32;
     border-left: 5px solid #2e7d32;
 }
-
+ 
 .statusText[data-status="Pending"] {
     color: #f9a825;
     border-left: 5px solid #f9a825;
 }
-
+ 
 .statusText[data-status="Rejected"] {
     color: #c62828;
     border-left: 5px solid #c62828;
 }
-
+ 
 .highlightText0,
 .statusText,
 .cardTitle0 {
@@ -820,10 +845,10 @@
     overflow: hidden;
     text-overflow: ellipsis;
 }
-
-
+ 
+ 
 /* .mypolicypg {} */
-
+ 
 /* Make background transparent for the responsive grid */
 .sapUiRespGrid,
 .sapUiRespGridHSpace0,
@@ -835,41 +860,43 @@
 .sapUiFormBackgrTranslucent {
     background-color: transparent !important;
 }
-
-
+ 
+ 
 .searchBarContainer {
     margin: 1rem 0;
     gap: 0.5rem;
 }
-
+ 
 .searchButton {
     /* background-color: black; */
     color: white;
 }
-
-
+ 
+ 
 /* user detailsssss */
-
-
+ 
+ 
 .userProfilePage {
     padding: 2rem;
     gap: 2rem;
     background-color: #f4f6f9;
 }
-
+ 
 .userProfileCard {
     background-color: #ffffff;
     padding: 2rem;
     border-radius: 12px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
-
+ 
 .userProfileHeader {
     gap: 2rem;
 }
-
+ 
 .userProfileInfo {
     gap: 0.5rem;
+    width: 100%;
+    text-align: center;
     width: 100%;
     text-align: center;
 }
@@ -886,17 +913,17 @@
     font-size: 1.1rem;
     color: #333;
 }
-
+ 
 .userProfileStatusActive {
     color: #2ecc71;
     font-weight: bold;
 }
-
+ 
 .userProfileStatusLocked {
     color: #e74c3c;
     font-weight: bold;
 }
-
+ 
 .userPasswordCard {
     background-color: #ffffff;
     padding: 2rem;
@@ -904,17 +931,17 @@
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
     gap: 1rem;
 }
-
+ 
 .userPasswordTitle {
     font-size: 1.3rem;
     font-weight: bold;
     margin-bottom: 1rem;
 }
-
+ 
 .userPasswordInput {
     width: 100%;
 }
-
+ 
 .userPasswordButton {
     margin-top: 1rem;
     background-color: #3498db;

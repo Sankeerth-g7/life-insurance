@@ -3,7 +3,7 @@
     xmlns="sap.m"
     xmlns:layout="sap.ui.layout">
 
-<Page  showHeader="false"  class="fullPageBackground">
+<Page  showHeader="false"  class="adminBackground">
 <VBox id="navbarAdminContainer"/>
 
 

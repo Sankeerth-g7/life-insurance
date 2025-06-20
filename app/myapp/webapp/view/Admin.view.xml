@@ -6,7 +6,10 @@
 <Page  showHeader="false"  class="fullPageBackground">
 <VBox id="navbarAdminContainer"/>
 
-   
+
+
+<VBox id="FooterAdminContainer" class="footer" />
+
    
    
 

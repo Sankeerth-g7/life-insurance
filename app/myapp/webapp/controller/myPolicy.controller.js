@@ -1,23 +1,33 @@
 sap.ui.define([
     "sap/ui/core/mvc/Controller",
+    "sap/ui/core/Fragment", 
     "sap/ui/model/json/JSONModel",
     "sap/m/MessageToast",
     "sap/ui/model/odata/v2/ODataModel",
-    "sap/m/MessageBox"
-], (Controller, JSONModel, MessageToast, ODataModel, MessageBox) => {
+    "sap/m/MessageBox",
+     "myapp/controller/footer"
+], (Controller,Fragment, JSONModel, MessageToast, ODataModel, MessageBox,footerFactory ) => {
     "use strict";
 
     return Controller.extend("myapp.controller.myPolicy", {
         onInit() {
 
-
             var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
             oRouter.getRoute("myPolicy").attachPatternMatched(this._onRouteMatched, this);
 
-
-
             var oHeader = sap.ui.xmlfragment("myapp.view.fragments.CustomHeader", this);
             this.getView().byId("navbarMyPolicyContainer").addItem(oHeader);
+            // Load Footer Fragment
+        Fragment.load({
+            id: this.createId("CustomFooter"),
+            name: "myapp.view.fragments.CustomFooter",
+            controller: this
+        }).then(function (oFooterContent) {
+            this.getView().byId("FooterMyPoliciesContainer").addItem(oFooterContent);
+        }.bind(this));
+
+        this.footerHandler = footerFactory;
+    // },
 
             //var oFooter = sap.ui.xmlfragment("myapp.view.fragments.CustomFooter", this);
             //this.getView().byId("FooterMyPoliciesContainer").addItem(oFooter);

@@ -1,9 +1,11 @@
 sap.ui.define([
   "sap/ui/core/mvc/Controller",
+  "sap/ui/core/Fragment", 
   "sap/m/MessageToast",
   "sap/m/MessageBox",
-  "sap/ui/model/odata/v2/ODataModel"
-], function (Controller, MessageToast, MessageBox, ODataModel) {
+  "sap/ui/model/odata/v2/ODataModel",
+  "myapp/controller/footer"
+], function (Controller,Fragment, MessageToast, MessageBox, ODataModel,footerFactory) {
   "use strict";
 
   return Controller.extend("myapp.controller.AddPolicy", {
@@ -14,9 +16,21 @@ sap.ui.define([
       var oHeader = sap.ui.xmlfragment("myapp.view.fragments.AdminHeader", this);
       this.getView().byId("navbarAddPolicyContainer").addItem(oHeader);
 
+      // Load Footer Fragment
+      Fragment.load({
+        id: this.createId("CustomFooter"),
+        name: "myapp.view.fragments.CustomFooter",
+        controller: this
+    }).then(function (oFooterContent) {
+        this.getView().byId("FooterContainer").addItem(oFooterContent);
+    }.bind(this));
+
+    this.footerHandler = footerFactory;
+},
+
       // var oFooter = sap.ui.xmlfragment("myapp.view.fragments.CustomFooter", this);
       // this.getView().byId("FooterContainer").addItem(oFooter);
-    },
+    // },
 
     
     _onRouteMatched: function () {
@@ -187,6 +201,17 @@ sap.ui.define([
             field.setValueStateText("");
           });
       },
+      
+      onPolicyDetailsPress: function () {
+        var oRouter = sap.ui.core.UIComponent.getRouterFor(this.getView());
+        oRouter.navTo("PolicyDetails");
+      },
+  
+      onApplicantDetailsPress: function () {
+        var oRouter = sap.ui.core.UIComponent.getRouterFor(this.getView());
+        oRouter.navTo("ApplicantDetails");
+      },
+  
       onLogout: function () {
         var oRouter = sap.ui.core.UIComponent.getRouterFor(this.getView());
         oRouter.navTo("Admin"); // Navigate to Admin Home page

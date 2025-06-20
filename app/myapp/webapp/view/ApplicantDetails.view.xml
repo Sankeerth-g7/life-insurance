@@ -54,7 +54,7 @@
                 </items>
             </FlexBox>
 
-             <!-- <VBox id="ApplicantDetailsFooterContainer" class="footer"/> -->
+             <VBox id="ApplicantDetailsFooterContainer" class="footer"/>
         </VBox>
     </Page>
 </mvc:View>

@@ -1,10 +1,12 @@
 sap.ui.define([
     "sap/ui/core/mvc/Controller",
+    "sap/ui/core/Fragment", 
      "sap/ui/model/odata/v2/ODataModel",
      "myapp/model/formatter",
      "sap/m/MessageToast",
-     "sap/m/MessageBox"
-  ], function (Controller,  ODataModel,formatter,MessageToast, MessageBox) {
+     "sap/m/MessageBox",
+     "myapp/controller/footer"
+  ], function (Controller,Fragment,  ODataModel,formatter,MessageToast, MessageBox,footerFactory) {
     "use strict";
   
     return Controller.extend("myapp.controller.PolicyDetails", {
@@ -20,9 +22,21 @@ sap.ui.define([
           var oHeader = sap.ui.xmlfragment("myapp.view.fragments.AdminHeader", this);
           this.getView().byId("navbarPolicyDetailsContainer").addItem(oHeader);
 
+          // Load Footer Fragment
+      Fragment.load({
+        id: this.createId("CustomFooter"),
+        name: "myapp.view.fragments.CustomFooter",
+        controller: this
+    }).then(function (oFooterContent) {
+        this.getView().byId("PolicyDetailsFooterContainer").addItem(oFooterContent);
+    }.bind(this));
+
+    this.footerHandler = footerFactory;
+},
+
           //var oFooter = sap.ui.xmlfragment("myapp.view.fragments.CustomFooter", this);
       //this.getView().byId("PolicyDetailsFooterContainer").addItem(oFooter);
-        },
+        // },
         loadPoliciesData: function () {
           var that = this;
 
@@ -113,6 +127,19 @@ sap.ui.define([
         // Navigate to AddPolicy view
         oRouter.navTo("AddPolicy");
     },
+    onAddPolicyPress: function () {
+        var oRouter = sap.ui.core.UIComponent.getRouterFor(this.getView());
+        oRouter.navTo("AddPolicy");
+      },
+  
+      onPolicyDetailsPress: function () {
+        var oRouter = sap.ui.core.UIComponent.getRouterFor(this.getView());
+        oRouter.navTo("PolicyDetails");
+      },
+      onApplicantDetailsPress: function () {
+        var oRouter = sap.ui.core.UIComponent.getRouterFor(this.getView());
+        oRouter.navTo("ApplicantDetails");
+      },
     onLogout: function () {
 
         var oRouter = sap.ui.core.UIComponent.getRouterFor(this);

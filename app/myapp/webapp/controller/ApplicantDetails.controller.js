@@ -1,16 +1,30 @@
 sap.ui.define([
     "sap/ui/core/mvc/Controller",
+    "sap/ui/core/Fragment", 
     "sap/ui/model/odata/v2/ODataModel",
     "sap/ui/model/json/JSONModel",
     "sap/m/MessageToast",
-    "sap/m/MessageBox"
-], function (Controller, ODataModel, JSONModel, MessageToast, MessageBox) {
+    "sap/m/MessageBox",
+     "myapp/controller/footer"
+], function (Controller,Fragment, ODataModel, JSONModel, MessageToast, MessageBox,footerFactory) {
     "use strict";
 
     return Controller.extend("myapp.controller.ApplicantDetails", {
         onInit: function () {
         var oHeader = sap.ui.xmlfragment("myapp.view.fragments.AdminHeader", this);
         this.getView().byId("navbarApplicantDetailsContainer").addItem(oHeader);
+
+            // Load Footer Fragment
+      Fragment.load({
+        id: this.createId("CustomFooter"),
+        name: "myapp.view.fragments.CustomFooter",
+        controller: this
+    }).then(function (oFooterContent) {
+        this.getView().byId("ApplicantDetailsFooterContainer").addItem(oFooterContent);
+    }.bind(this));
+
+    this.footerHandler = footerFactory;
+// },
         
       //var oFooter = sap.ui.xmlfragment("myapp.view.fragments.CustomFooter", this);
       //this.getView().byId("ApplicantDetailsFooterContainer").addItem(oFooter);
@@ -72,6 +86,15 @@ sap.ui.define([
                 }
             });
         },
+        onAddPolicyPress: function () {
+            var oRouter = sap.ui.core.UIComponent.getRouterFor(this.getView());
+            oRouter.navTo("AddPolicy");
+          },
+      
+          onPolicyDetailsPress: function () {
+            var oRouter = sap.ui.core.UIComponent.getRouterFor(this.getView());
+            oRouter.navTo("PolicyDetails");
+          },
         onLogout: function () {
 
             var oRouter = sap.ui.core.UIComponent.getRouterFor(this);

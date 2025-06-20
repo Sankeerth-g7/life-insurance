@@ -200,7 +200,7 @@
 				<ToolbarSpacer />
 			</Toolbar  >
 			<VBox height="10px" />
-             <!-- <VBox id="FooterContainer" class="footer" /> -->
+             <VBox id="FooterContainer" class="footer" />
 			</VBox>
            
 	</Page>

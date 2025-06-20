@@ -192,7 +192,7 @@ darkBackground {
  
 .footerContainer {
     background-color: rgb(201, 226, 238);
-    color: rgb(31, 3, 3);
+    /* color: rgb(31, 3, 3); */
     /* This will make the text white */
     padding: 10px;
 }
@@ -203,13 +203,14 @@ darkBackground {
 }
  
 .footerCopyright {
-    color: rgb(2, 4, 26) !important;
+    color:  rgb(207, 227, 240) !important;
+
     /* Ensures links and copyright text are white */
 }
  
 .footerLinksBox,
 .footerCopyrightBox {
-    background-color: rgb(207, 227, 240);
+    background-color: rgb(207, 227, 240) !important;
 }
  
  
@@ -274,12 +275,13 @@ darkBackground {
 }
  
 .footerLink {
-    color: rgb(30, 44, 194) !important;
+    color: rgb(67, 78, 226) !important;
     /* Ensures links and copyright text are white */
 }
  
 .footerCopyright {
-    color: rgb(2, 4, 26) !important;
+    color: rgb(67, 78, 226) !important;
+    
     /* Ensures links and copyright text are white */
 }
  

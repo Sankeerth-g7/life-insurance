@@ -14,7 +14,8 @@
     </HBox>
     
     <HBox justifyContent="Center" class="footerCopyrightBox">
-        <Text id="footerText" class="footerCopyright"/>
+        <Text id="footerText" class="footerCopyright" text="© 2025 LTI Life Insurance Company Limited. All rights reserved."/>
+        
         </HBox>
 
     </VBox>

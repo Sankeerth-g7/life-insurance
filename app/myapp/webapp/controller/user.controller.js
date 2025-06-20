@@ -3,7 +3,8 @@ sap.ui.define([
   "sap/ui/model/json/JSONModel",
   "sap/m/MessageToast",
   "sap/ui/core/Fragment",
-  "sap/ui/model/odata/v2/ODataModel"
+  "sap/ui/model/odata/v2/ODataModel",
+  "sap/m/MessageBox"
 ], function (Controller, JSONModel, MessageToast, Fragment, ODataModel) {
   "use strict";
 
@@ -24,10 +25,28 @@ sap.ui.define([
         oView.byId("navbaruserContainer").addItem(oHeader);
       });
 
-      // Get userId from userModel
-      const oUserModel = this.getOwnerComponent().getModel("userModel");
-      const userId = oUserModel.getProperty("/userId");
+      // Attach route matched handler for authentication check
+      var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
+      oRouter.getRoute("user").attachPatternMatched(this._onRouteMatched, this);
+    },
 
+    _onRouteMatched: function () {
+      const oUserModel = this.getOwnerComponent().getModel("userModel");
+
+      if (!oUserModel || !oUserModel.getProperty("/userId")) {
+        sap.m.MessageBox.warning("⚠️ Please login first", {
+          title: "Authentication Required",
+          actions: [sap.m.MessageBox.Action.OK],
+          emphasizedAction: sap.m.MessageBox.Action.OK,
+          onClose: function () {
+            var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
+            oRouter.navTo("Routelogin");
+          }.bind(this)
+        });
+        return;
+      }
+
+      const userId = oUserModel.getProperty("/userId");
       if (userId) {
         this.getUserDetails(userId);
       }
@@ -64,14 +83,9 @@ getUserDetails: function (userId) {
     success: (oData) => {
       if (oData.results.length > 0) {
         const userDetails = oData.results[0];
-
-        // Set user details model
         const userModel2 = new sap.ui.model.json.JSONModel(userDetails);
         this.getView().setModel(userModel2, "userModel2");
-
-        // Now fetch policies separately
         this.getUserPoliciesByFiltering(userId);
-
       } else {
         MessageToast.show("User details not found.");
       }
@@ -119,22 +133,16 @@ getUserPoliciesByFiltering: function (userId) {
 
         const oVizFrame = this.getView().byId("policyChart");
         oVizFrame.setVizProperties({
-          plotArea: {
-            colorPalette: ["#2ecc71", "#e74c3c", "#f39c12"] // Green, Red, Orange
-          },
           title: {
-            text: "Policy Status Overview",
-            visible: true
+            text: "User Policy Status Overview"
           },
-          legend: {
-            visible: true
-          },
-          tooltip: {
-            visible: true
+          plotArea: {
+            colorPalette: ["#2ecc71", "#e74c3c", "#f39c12"],
+            dataLabel: {
+              visible: true
+            }
           }
-});
-
-
+        });
       } else {
         MessageToast.show("No policies found for this user.");
       }

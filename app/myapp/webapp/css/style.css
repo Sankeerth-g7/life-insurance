@@ -944,6 +944,7 @@
     /* Ensures it doesn't overflow */
     box-sizing: border-box;
     /* Includes padding in width calculation */
+    margin-top: 1.5rem;
 }
 
 
@@ -961,15 +962,60 @@
 
 
 .userAvatar {
-    margin-bottom: 2rem;
+    margin-bottom: 1rem;
     width: 100px;
     height: 100px;
+    margin-left: 7rem;
 }
 
 
 .userDetailText {
-    font-size: 1rem;
+    font-size: 0.8rem;
     color: #333;
-    font-weight: 500;
     margin-left: 0.5rem;
+}
+
+/* Enhanced user profile info styling */
+.userProfileInfo {
+    /* background: #f7f8fa; */
+    border-radius: 10px;
+    padding: 1.2rem 2rem;
+    box-shadow: 0 2px 8px rgba(44, 62, 80, 0.07);
+    margin-top: 1.2rem;
+    min-width: 320px;
+    align-items: flex-start;
+}
+
+.userProfileInfo HBox {
+    margin-bottom: 0.7rem;
+    align-items: center;
+}
+
+.userDetailText {
+    font-size: 1.08rem;
+    color: #2d2d2d;
+    font-weight: 700;
+    margin-left: 0.5rem;
+    letter-spacing: 0.01em;
+    /* background: #eae6f7; */
+    border-radius: 6px;
+    padding: 0.2rem 0.7rem;
+    min-width: 120px;
+    display: inline-block;
+}
+
+.userProfileLabel {
+    font-weight: 600;
+    color: #5c5470;
+    font-size: 1.08rem;
+    min-width: 110px;
+    text-align: right;
+    margin-right: 0.5rem;
+    letter-spacing: 0.01em;
+    font-family: 'Segoe UI', 'Arial', sans-serif;
+}
+
+.userProfileLeft {
+    align-items: flex-start !important;
+    margin-left: 1rem;
 }

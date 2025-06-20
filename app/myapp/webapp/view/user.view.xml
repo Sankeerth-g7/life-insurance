@@ -15,27 +15,32 @@
 					<HBox class="userProfileHeader" alignItems="Start" justifyContent="SpaceBetween">
 						<!-- Left Side: Avatar on Top and User Info Below -->
 						<VBox alignItems="Center" class="userProfileLeft">
-							<Avatar src="https://via.placeholder.com/180" displayShape="Circle" class="userAvatar" />
+							<Avatar src="https://isobarscience.com/wp-content/uploads/2020/09/default-profile-picture1.jpg" displayShape="Circle" class="userAvatar" />
 							<VBox class="userProfileInfo" alignItems="Center">
 								<HBox>
-									<Label text="Username:" width="150px" />
+									<Label text="Username:" width="150px" class="userProfileLabel" />
 									<Text text="{userModel2>/username}" class="userDetailText"/>
 								</HBox>
+								<HBox >
+									<Label text="User Id:" width="150px" class="userProfileLabel" />
+									<Text text="{userModel2>/userId}" class="userDetailText"/>
+								</HBox>
 								<HBox>
-									<Label text="Email:" width="150px" />
+									<Label text="Email:" width="150px" class="userProfileLabel" />
 									<Text text="{userModel2>/email}" class="userDetailText"/>
 								</HBox>
 								<HBox>
-									<Label text="Phone:" width="150px" />
+									<Label text="Phone:" width="150px" class="userProfileLabel" />
 									<Text text="{userModel2>/phone}" class="userDetailText"/>
 								</HBox>
 								<HBox>
-									<Label text="Role:" width="150px" />
+									<Label text="Role:" width="150px" class="userProfileLabel" />
 									<Text text="{userModel2>/role}" class="userDetailText"/>
 								</HBox>
 							</VBox>
 						</VBox>
-						<!-- Right Side: Pie Chart -->
+						<!-- Right Side: Pie Chart onhover need to show the count -->
+
 						<VBox class="userStatsRight">
 							<viz:VizFrame
                                 id="policyChart"
@@ -56,6 +61,7 @@
 								<viz:feeds>
 									<viz.feeds:FeedItem uid="size" type="Measure" values="Count"/>
 									<viz.feeds:FeedItem uid="color" type="Dimension" values="Status"/>
+									<viz.feeds:FeedItem uid="tooltip" type="Measure" values="Count"/>
 								</viz:feeds>
 							</viz:VizFrame>
 						</VBox>

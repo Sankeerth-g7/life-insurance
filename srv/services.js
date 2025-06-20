@@ -1,5 +1,5 @@
 const cds = require('@sap/cds');
-const bcrypt = require('bcryptjs');
+
 const nodemailer = require('nodemailer');
 
 const { User, Policies, Documents } = cds.entities('insurance');
@@ -98,7 +98,7 @@ module.exports = (srv) => {
 // Send OTP to user's email
 srv.on('sendOtp', async (req) => {
         const { email } = req.data;
-
+        
         try {
             const user = await cds.run(SELECT.one.from(User).where({ email }));
             if (!user) {
@@ -114,16 +114,55 @@ srv.on('sendOtp', async (req) => {
             const transporter = nodemailer.createTransport({
                 service: 'gmail',
                 auth: {
-                    user: 'ltilifeinsurance@gmail.com',
-                    pass: 'eyoi pobq rbpt gerg' // Gmail App Password
+                    user: 'sankeertherra01@gmail.com',
+                    pass: 'doqp gmpl ujyh ubme'
                 }
             });
-
+            // need to improve the email content alot
             const mailOptions = {
                 from: '"LTI Life Insurance" <ltilifeinsurance@gmail.com>',
                 to: email,
-                subject: 'Your OTP Code',
-                text: `Dear ${user.username || "User"},\n\nYour OTP is: ${otp}\n\nThis OTP is valid for 10 minutes.\n\nRegards,\nLTI Life Insurance`
+                subject: 'Your One-Time Password (OTP) for LTI Life Insurance',
+                text: `Dear ${user.username || "Valued Customer"},
+
+Thank you for choosing LTI Life Insurance.
+
+Your One-Time Password (OTP) is: ${otp}
+
+This OTP is valid for 10 minutes. Please do not share this code with anyone for security reasons.
+
+If you did not request this OTP, please contact our support team immediately.
+
+Best regards,
+LTI Life Insurance Team
+
+----------------------------------------
+LTI Life Insurance
+Customer Support: support@ltilifeinsurance.com
+Website: https://www.ltilifeinsurance.com
+`,
+                html: `
+                    <div style="font-family: Arial, sans-serif; max-width: 500px; margin: auto; border: 1px solid #e0e0e0; border-radius: 8px; padding: 24px;">
+                        <div style="text-align: center; margin-bottom: 16px;">
+                            <img src="https://companieslogo.com/img/orig/LTIM.NS-dea59dc6.png" alt="LTI Life Insurance" style="height: 60px;" />
+                        </div>
+                        <h2 style="color: #2c3e50;">Your One-Time Password (OTP)</h2>
+                        <p>Dear <strong>${user.username || "Valued Customer"}</strong>,</p>
+                        <p>Thank you for choosing <b>LTI Life Insurance</b>.</p>
+                        <p style="font-size: 18px; color: #1565c0; margin: 24px 0;">
+                            <b>Your OTP is: <span style="letter-spacing: 2px;">${otp}</span></b>
+                        </p>
+                        <p>This OTP is valid for <b>10 minutes</b>. Please do not share this code with anyone for security reasons.</p>
+                        <p>If you did not request this OTP, please contact our support team immediately.</p>
+                        <hr style="margin: 24px 0;">
+                        <p style="font-size: 13px; color: #888;">
+                            Best regards,<br>
+                            <b>LTI Life Insurance Team</b><br>
+                            <a href="mailto:support@ltilifeinsurance.com">support@ltilifeinsurance.com</a><br>
+                            <a href="https://www.ltilifeinsurance.com">www.ltilifeinsurance.com</a>
+                        </p>
+                    </div>
+                `
             };
 
             transporter.sendMail(mailOptions, (error, info) => {

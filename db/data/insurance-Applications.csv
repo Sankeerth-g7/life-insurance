@@ -1,7 +1,7 @@
 applicationId,user_userId,policy_policyId,applicantName,applicantAge,applicantAddress,applicantMobileNo,applicantEmail,applicantAadhar,applicationDate,status,applicantPan,documentFileName,documentMimeType,documentContent
-1001,1,101,John Doe,30,"123 Main St, Mumbai",9876543210,john@email.com,456789908754 ,2025-04-01,Pending,PLACEHOLDER_PAN,PLACEHOLDER_FILENAME,application/octet-stream,PLACEHOLDER_BINARY
+1001,1,101,John Doe,30,"123 Main St, Mumbai",9876543210,john@email.com,456789908754 ,2025-04-01,Approved,PLACEHOLDER_PAN,PLACEHOLDER_FILENAME,application/octet-stream,PLACEHOLDER_BINARY
 1002,1,101,Dummy,30,"123 Main St, Mumbai",9876543210,dummy@email.com,456789908754,2025-04-01,Approved,PLACEHOLDER_PAN,PLACEHOLDER_FILENAME,application/octet-stream,PLACEHOLDER_BINARY
-1003,1,101,Test,30,"123 Main St, Mumbai",9876543210,test@email.com,456789908754,2025-04-01,Rejected,PLACEHOLDER_PAN,PLACEHOLDER_FILENAME,application/octet-stream,PLACEHOLDER_BINARY
+1003,1,101,Test,30,"123 Main St, Mumbai",9876543210,test@email.com,456789908754,2025-04-01,Approved,PLACEHOLDER_PAN,PLACEHOLDER_FILENAME,application/octet-stream,PLACEHOLDER_BINARY
 1004,1,104,Nothing,28,"101 Pine Rd, Chennai",6543210987,nothing@email.com,1234567890,2025-04-04,Pending,PLACEHOLDER_PAN,PLACEHOLDER_FILENAME,application/octet-stream,PLACEHOLDER_BINARY
 1005,1,104,Emily Davis,28,"101 Pine Rd, Chennai",6543210987,emily@email.com,1234567890,2025-04-04,Rejected,PLACEHOLDER_PAN,PLACEHOLDER_FILENAME,application/octet-stream,PLACEHOLDER_BINARY
 1006,1,104,user,28,"101 Pine Rd, Chennai",6543210987,user@email.com,1234567890,2025-04-04,Approved,PLACEHOLDER_PAN,PLACEHOLDER_FILENAME,application/octet-stream,PLACEHOLDER_BINARY

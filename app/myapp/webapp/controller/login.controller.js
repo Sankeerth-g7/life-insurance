@@ -234,41 +234,22 @@ sap.ui.define([
 
     // 
     _sendOtpToUser: function (sEmail) {
-        var that = this;
-    
-        this.oModel.read("/users", {
-            
-            filters: [new sap.ui.model.Filter("email", sap.ui.model.FilterOperator.EQ, sEmail)],
-         
-            success: function (oData) {
-                
-                if (oData.results.length === 0) {
-                    sap.m.MessageBox.information("User not found.");
-                    return;
-                }
-    
-                var user = oData.results[0];
-                user.otp = Math.floor(100000 + Math.random() * 900000).toString(); // Generate 6-digit OTP
-                user.otpGeneratedAt = new Date().toISOString();
-                console.log(user.otp);
-    
-                that.oModel.update("/users(" + user.userId + ")", user, {
-                    success: function () {
-                        sap.m.MessageToast.show("OTP sent to your email.");
-                        that._openOtpVerificationDialog(user);
-                    },
-                    error: function () {
-                        sap.m.MessageBox.error("Failed to send OTP.");
-                    }
-                });
-            },
-            error: function () {
-                console.log(sEmail);
-                sap.m.MessageBox.error("Error while fetching user.");
-            }
-        });
-    },
-    
+    var that = this;
+    $.ajax({
+        url: "/odata/v4/my/sendOtp",
+        method: "POST",
+        contentType: "application/json",
+        data: JSON.stringify({ email: sEmail }),
+        success: function (oData) {
+            sap.m.MessageToast.show("OTP sent to your email.");
+            that._fetchUserByEmail(sEmail);
+        },
+        error: function (oError) {
+            sap.m.MessageBox.error("Failed to send OTP.");
+        }
+    });
+},
+
     //
     _fetchUserByEmail: function (sEmail) {
         var that = this;

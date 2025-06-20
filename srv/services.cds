@@ -1,8 +1,6 @@
 using { insurance as details } from '../db/datamodel';
 
 service MyService {
-    
-    
     entity users as projection on details.User;
     entity policies as projection on details.Policies;
     entity applications as projection on details.Applications;
@@ -15,6 +13,7 @@ service MyService {
         fileName: String,
         fileContent: String) 
         returns String;
-    
-}
+
+}    action sendOtp(email: String) returns String;
+
 

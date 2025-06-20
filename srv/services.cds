@@ -14,6 +14,6 @@ service MyService {
         fileContent: String) 
         returns String;
 
-}    action sendOtp(email: String) returns String;
+}
 
 

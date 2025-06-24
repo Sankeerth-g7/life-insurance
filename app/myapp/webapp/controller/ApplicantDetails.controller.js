@@ -67,6 +67,8 @@ sap.ui.define([
 
         onApprove: function (oEvent) {
             const oButton = oEvent.getSource();
+            const oHBox = oEvent.getSource().getParent(); // Get the parent container
+            oHBox.getItems().forEach(btn => btn.setEnabled(false)); // This uses oHBox
             oButton.setEnabled(false); // Disable the Approve button
         
             const applicationId = oButton.getBindingContext("applicantDetailsModel").getProperty("applicationId");
@@ -75,6 +77,8 @@ sap.ui.define([
         
         onReject: function (oEvent) {
             const oButton = oEvent.getSource();
+            const oHBox = oEvent.getSource().getParent(); // Get the parent container
+            oHBox.getItems().forEach(btn => btn.setEnabled(false)); // This uses oHBox
             oButton.setEnabled(false); // Disable the Reject button
         
             const applicationId = oButton.getBindingContext("applicantDetailsModel").getProperty("applicationId");

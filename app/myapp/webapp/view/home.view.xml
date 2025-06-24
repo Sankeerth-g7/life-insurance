@@ -7,23 +7,23 @@
 
 <VBox id="navbarhomeContainer"/>
 
-    <VBox class="sapUiSmallMargin">
+    <!-- <VBox class="sapUiSmallMargin">
     <Text text="Welcome to the LTI Life Insurance Portal!" class="welcomeText"/>
-    </VBox>
+    </VBox> -->
 <!-- Carousel and Text Side-by-Side -->
     <HBox class="carouselTextContainer" >
-        <Carousel id="imageCarousel" height="424px" width="1360px" loop="true"  class="imageCarousel">
+        <Carousel id="imageCarousel" height="475px" width="1360px" loop="true"  class="imageCarousel">
         <pages>
         <!-- <Panel  class="carouselItem"> -->
-        <Image src="images/I012.png"  class="carouselImage"/>
+        <Image src="images/jpgimage.jpg"  class="carouselImage"/>
         <!-- <Text text="Secure your family's future today." class="carouselCaption"/>
         </Panel > -->
         <!-- <Panel class="carouselItem"> -->
-        <Image src="images/I013.png" class="carouselImage" />
+        <Image src="images/tharuu.jpg" class="carouselImage" />
         <!-- <Text text="Invest in peace of mind with LTI Life." class="carouselCaption"/> -->
         <!-- </Panel> -->
         <!-- <Panel class="carouselItem"> -->
-        <Image src="images/I04.png" class="carouselImage"/>
+        <Image src="images/I013.png" class="carouselImage"/>
         <!-- <Text text="Your life, our promise." class="carouselCaption"/>
             </Panel> -->
         </pages>

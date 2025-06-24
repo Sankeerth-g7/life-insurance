@@ -10,29 +10,29 @@
             <VBox id="navbarApplicantDetailsContainer"/>
 
             <FlexBox
-                class="customCardList0"
+                class="customCardList10"
                 direction="Row"
                 wrap="Wrap"
                 justifyContent="Start"
                 items="{applicantDetailsModel>/applicantDetails}">
                 <items>
-                    <VBox class="applicationCard" backgroundDesign="Solid" width="100%">
+                    <VBox class="applicationCard10" backgroundDesign="Solid" width="100%">
                         <customData>
                             <core:CustomData key="status" value="{applicantDetailsModel>status}" writeToDom="true"/>
                         </customData>
 
-                        <HBox alignItems="Center" class="cardHeader0">
-                            <Image src="https://i.ibb.co/7Jct4sNX/file-00000000c88861fbb343ad3beae8ec50.png" width="2rem" class="applicantIcon"/>
+                        <HBox alignItems="Center" class="cardHeader10">
+                            <Image src="https://i.ibb.co/7Jct4sNX/file-00000000c88861fbb343ad3beae8ec50.png" width="2rem" class="applicantIcon1"/>
                             <Title text="{applicantDetailsModel>applicantName}" level="H3" class="cardTitle0"/>
                         </HBox>
 
-                        <HBox class="cardRow">
-                            <VBox class="cardColumn">
+                        <HBox class="cardRow10">
+                            <VBox class="cardColumn10">
                                 <Text text="App ID: {applicantDetailsModel>applicationId}" class="highlightText0"/>
                                 <Text text="Email: {applicantDetailsModel>applicantEmail}" class="highlightText0"/>
                                 <Text text="Mobile: {applicantDetailsModel>applicantMobileNo}" class="highlightText0"/>
                             </VBox>
-                            <VBox class="cardColumn">
+                            <VBox class="cardColumn10">
                                 <Text text="Policy: {applicantDetailsModel>policyName}" class="highlightText0"/>
                                 <Text text="Claim: ₹{applicantDetailsModel>claimAmount}" class="highlightText0"/>
                                 <Text text="Term Length: ₹{applicantDetailsModel>termLength}" class="highlightText0"/>
@@ -40,14 +40,14 @@
                             </VBox>
                         </HBox>
 
-                        <Text text="Status: {applicantDetailsModel>status}" class="statusText">
+                        <Text text="Status: {applicantDetailsModel>status}" class="statusText10">
                             <customData>
                                 <core:CustomData key="status" value="{applicantDetailsModel>status}" writeToDom="true"/>
                             </customData>
                         </Text>
 
                         <HBox>
-                            <Button text="Approve" type="Accept" press="onApprove"/>
+                            <Button text="Approve" type="Accept" press="onApprove" class="buttonSpacing10" />
                             <Button text="Reject" type="Reject" press="onReject"/>
                         </HBox>
                     </VBox>

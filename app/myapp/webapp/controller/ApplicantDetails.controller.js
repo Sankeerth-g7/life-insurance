@@ -66,19 +66,26 @@ sap.ui.define([
         },
 
         onApprove: function (oEvent) {
-            const applicationId = oEvent.getSource().getBindingContext("applicantDetailsModel").getProperty("applicationId");
+            const oButton = oEvent.getSource();
+            oButton.setEnabled(false); // Disable the Approve button
+        
+            const applicationId = oButton.getBindingContext("applicantDetailsModel").getProperty("applicationId");
             this.updateApplicationStatus(applicationId, "Approved");
         },
-
+        
         onReject: function (oEvent) {
-            const applicationId = oEvent.getSource().getBindingContext("applicantDetailsModel").getProperty("applicationId");
+            const oButton = oEvent.getSource();
+            oButton.setEnabled(false); // Disable the Reject button
+        
+            const applicationId = oButton.getBindingContext("applicantDetailsModel").getProperty("applicationId");
             this.updateApplicationStatus(applicationId, "Rejected");
         },
+        
 
         updateApplicationStatus: function (applicationId, status) {
             this.oModel.update(`/applications('${applicationId}')`, { status }, {
                 success: () => {
-                    MessageBox.success(`Application ${status}`);
+                    MessageBox.success(` Application has been ${status} with the Application ID: ${applicationId}`);
                     this.loadAllApplicantDetails(); // Refresh list
                 },
                 error: () => {

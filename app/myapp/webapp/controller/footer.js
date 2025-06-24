@@ -13,10 +13,9 @@ sap.ui.define([
             switch (sLinkText) {
                 case "About Us":
                     sDialogContent = 
-                    "SBI Life Insurance, incorporated in October 2000, is one of India's most trusted life insurance companies. " + 
-                            "It serves millions of families across India with a wide range of products including Protection, Pension, Savings, and Health solutions. " +
-                            "With over 1,110 offices and 240,000+ agents, SBI Life is committed to making insurance accessible to all and enhancing digital experiences for customers and employees alike." 
-
+                    "LTI Life Insurance, incorporated in October 2000, is one of India's most trusted life insurance companies. " + 
+                        "It serves millions of families across India with a wide range of products including Protection, Pension, Savings, and Health solutions. " +
+                        "With over 1,110 offices and 240,000+ agents, SBI Life is committed to making insurance accessible to all and enhancing digital experiences for customers and employees alike." 
 
                     ;
                     break;

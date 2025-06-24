@@ -89,6 +89,10 @@ sap.ui.define([
                     that.oModel.update("/users(" + user.userId + ")", user, {
                         success: function () {
                             MessageBox.success("Login successful!");
+                            // Clear input fields
+                            oView.byId("emailInput").setValue("");
+                            oView.byId("passwordInput").setValue("");
+
                             if (user.role === "Admin") {
                                 var oRouter = sap.ui.core.UIComponent.getRouterFor(that);
                                 oRouter.navTo("Admin");
@@ -185,6 +189,16 @@ sap.ui.define([
         this.oModel.create("/users", oData, {
             success: function () {
                 MessageBox.success("Registration successful!");
+
+                // Clear all input fields
+                    oView.byId("fullName").setValue("");
+                    oView.byId("registerEmail").setValue("");
+                     oView.byId("mobileNumber").setValue("");
+                     oView.byId("username").setValue("");
+                     oView.byId("registerPassword").setValue("");
+                     oView.byId("confirmPassword").setValue("");
+                     oView.byId("terms").setSelected(false);
+
                 var oRouter = sap.ui.core.UIComponent.getRouterFor(oView);
                 oRouter.navTo("home");
                 var oUserModel = new sap.ui.model.json.JSONModel({ userId: oData.userId });

@@ -3,20 +3,19 @@
     xmlns="sap.m"
     xmlns:layout="sap.ui.layout">
 
-<Page  showHeader="false"  class="adminBackground">
-<VBox id="navbarAdminContainer"/>
+    <Page showHeader="false" class="adminBackground" enableScrolling="false">
+        <VBox class="adminLayout" width="100%" height="100%">
+            
+            <!-- Navbar -->
+            <VBox id="navbarAdminContainer" height="10%" />
 
+            <!-- Image Section -->
+            <VBox id="middleImageContainer" height="80%" width="100%">
+                <Image src="images/I028.png" width="100%" height="100%" alt="Admin Middle Image" />
+            </VBox>
 
-
-        <VBox id="middleImageContainer" class="middleImage">
-            <Image src="images/image999.png" width="100%"   alt="Admin Middle Image" />
-        </VBox>
-
-
-<VBox id="FooterAdminContainer" class="footer" />
-
-   
-   
-
-</Page>
+            <!-- Footer -->
+            <VBox id="FooterAdminContainer" class="footer" height="10%" />
+        </VBox>
+    </Page>
 </mvc:View>

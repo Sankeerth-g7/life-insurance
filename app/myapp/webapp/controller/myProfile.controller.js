@@ -78,8 +78,9 @@ sap.ui.define([
         const year = date.getFullYear();
         const month = String(date.getMonth() + 1).padStart(2, '0'); // Ensures two digits
         const randomTwoDigit = Math.floor(10 + Math.random() * 90); // Random number between 10 and 99
-        return `${year}${month}${randomTwoDigit}`;
+        return `${year}-${month}-${randomTwoDigit}`;
       }
+      
  
  
       // Example usage:
@@ -173,10 +174,15 @@ sap.ui.define([
               oView.byId("filePath").setValue("");
               oView.byId("enterPanNo").setValue("");
               oView.byId("entertheapplicantage").setValue("");
+              var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
+              oRouter.navTo("viewPolicy");
  
             }.bind(this)
           });
+          var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
+          oRouter.navTo("viewPolicy");
         }.bind(this),
+        
         error: function (oError) {
           var errorMessage = oError.responseText ? JSON.parse(oError.responseText).error.message : "Unexpected error occurred.";
           MessageToast.show("Error submitting: " + errorMessage);
@@ -184,6 +190,7 @@ sap.ui.define([
       });
  
     },
+    
  
     onCancel() {
       sap.m.MessageToast.show("Loan application cancelled");

@@ -1058,23 +1058,16 @@ footerCopyrightBox. {
     margin-left: 1rem;
 }
 
-/* .adminBackground {
-    background-color: #7c4166c2;
-    
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center;
-   
-} */
-.adminBackground {
-    background-color: #7c4166c2;
-    background-image: url("https://www.insurancehero.org.uk/wp-content/uploads/2024/06/best-family-life-insurance-tp-im-1.webp");
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center;
-   
-   
-}
+
+
+
 .data-sap-ui-fastnavgroup{
     background: transparent !important;
 }
+.adminPage.adminBackground {
+    background-color: lightblue;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+ 

@@ -1,0 +1,27 @@
+<mvc:View controllerName="myapp.controller.App"
+    displayBlock="true"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m">
+    <VBox class="aboutUsPageVBox" alignItems="Center" width="100%">
+        <Title id="TermsConditionsPage1" text="FAQs" level="H1" class="aboutUsTitle"/>
+        <VBox width="80%" class="aboutUsPanel">
+            <Text text="What types of life insurance policies do you offer?" class="faqQuestion" />
+            <Text text="We offer a range of policies including term life, whole life, and endowment plans to suit different needs and budgets." class="faqAnswer" />
+
+            <Text text="How do I choose the right policy for me?" class="faqQuestion" />
+            <Text text="Our advisors can help you assess your needs and recommend a policy that fits your financial goals and family requirements." class="faqAnswer" />
+
+            <Text text="How can I pay my premiums?" class="faqQuestion" />
+            <Text text="Premiums can be paid online, through auto-debit, or at our branch offices. Multiple payment options are available for your convenience." class="faqAnswer" />
+
+            <Text text="What is the claim process?" class="faqQuestion" />
+            <Text text="To file a claim, submit the required documents as listed in your policy. Our claims team will guide you through the process and ensure timely settlement." class="faqAnswer" />
+
+            <Text text="Can I change my nominee?" class="faqQuestion" />
+            <Text text="Yes, you can update your nominee details at any time by submitting a nominee change request form." class="faqAnswer" />
+
+            <Text text="How do I contact customer support?" class="faqQuestion" />
+            <Text text="You can reach our customer support team via phone, email, or by visiting your nearest branch. Contact details are available on our website." class="faqAnswer" />
+        </VBox>
+    </VBox>
+</mvc:View>

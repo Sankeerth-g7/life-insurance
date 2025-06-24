@@ -27,6 +27,7 @@ sap.ui.define([
         }.bind(this));
 
         this.footerHandler = footerFactory;
+        
     // },
 
             //var oFooter = sap.ui.xmlfragment("myapp.view.fragments.CustomFooter", this);
@@ -38,6 +39,9 @@ sap.ui.define([
             // var oUserModel = this.getOwnerComponent().getModel("userModel");
 
             
+        },
+        onLinkPress: function (oEvent) {
+            this.footerHandler.onLinkPress(oEvent);
         },
 
         _onRouteMatched: function () {

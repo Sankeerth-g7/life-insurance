@@ -1,0 +1,35 @@
+<mvc:View controllerName="myapp.controller.App"
+    displayBlock="true"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m">
+     <VBox class="aboutUsPageVBox" alignItems="Center" width="100%">
+        <Title id="PrivacyPolicyPage" text="Privacy Policy" level="H1" class="aboutUsTitle"/>
+         <Text id="abc" class="aboutUsText"
+text="Your privacy is important to us and we want you to feel secure visiting our site (“LTI Life Website”). This privacy notice explains how and what type of personal data will be collected, processed and used during and following your visits to the LTI Life Website, why it is collected, with whom it may be shared and your rights in this regard. Please read this notice carefully.
+
+We are committed to protecting your privacy and have taken reasonable steps to protect the confidentiality of the Personal Information you have provided us and its transmission through the Internet.
+
+In the process of you using our Website or availing the existing or future services or facilities provided by the Website, you may be required to furnish information, including Personal information and/or Sensitive Personal Information. You are urged to keep the information current to ensure that the services and facilities remain relevant and reach you.
+
+This privacy notice applies to any information obtained by LTI Life through your use of our website. It does not apply to any websites controlled by third parties not affiliated with LTI Life that the website may link to (&quot;Third Party Sites&quot;). Please review the privacy statements of third-Party Sites as LTI Life is not responsible for and has no influence on the content or the privacy practices of third-Party Sites.
+This statement and the policy outlined herein are not intended to and do not create any contractual or financial or any other legal rights in favour of any User or viewer or any other party.
+Please note, not providing the requested data may hinder our ability to deliver services effectively and limit the functionality available to you."/>
+<Title text="Information Protection And Privacy" level="H6" class="aboutUsTitle"/>
+<Text class="aboutUsText"
+text="We undertake reasonable precautions to protect our Website and our User’s personally identifiable information like identity, address, demographic information, Aadhaar number, PAN and any other collected information, from unauthorised access to or unauthorised alteration, disclosure or destruction. In particular:
+
+We review our information collection, storage and processing practices, to guard against unauthorized access to systems.
+We store only relevant demographic data and/or photo of the policy holder to execute operational processes
+Aadhaar number and any connected Aadhaar data is stored on separate and highly secure ‘data vault’ infrastructure by means of strong encryption and in a highly restricted network zone, as per UIDAI regulations. Aadhaar number and Aadhaar related information is not stored in any other operational systems/databases outside the secure data vault.
+We provide role-based access to Users who need to login to our Websites information systems, data processing systems, secure data vaults, etc. strictly on need to have basis.
+We encrypt many of our Services using SSL certificates
+We permit access to personally identifiable information to our employees, contractors and agents who are subject to strict contractual confidentiality obligations for data processing purposes.
+SBI Life also takes appropriate technical, physical, legal and organizational measures, which are consistent with applicable information security standards. If you feel that the security of any Personal Information you might have with us has been compromised or if you have other data security questions or concerns related to SBI Life, please notify us at the aforementioned address details or through email communication.
+
+When SBI Life provides Personal Information to a service provider, the service provider will be selected carefully and required to use appropriate measures reasonably designed to protect the confidentiality and security of the Personal Information.
+
+If we believe the security of your Personal Information in our possession or control may have been compromised, we may seek to notify you of that development. If a notification is appropriate, we would endeavour to do so as promptly as possible under the circumstances, and, to the extent we have your e-mail address, we may notify you by e-mail.
+
+This page was last updated on 22 October 2024."/>
+        </VBox>
+</mvc:View>

@@ -46,6 +46,9 @@ sap.ui.define([
       //this.getview().byId("FootermyProfileContainer").addItem(oFooter);
       
     // },
+    onLinkPress: function (oEvent) {
+            this.footerHandler.onLinkPress(oEvent);
+        },
 
     onSubmit: function () {
 

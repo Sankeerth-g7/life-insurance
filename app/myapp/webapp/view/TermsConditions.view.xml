@@ -1,0 +1,27 @@
+<mvc:View controllerName="myapp.controller.App"
+    displayBlock="true"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m">
+    <VBox class="aboutUsPageVBox" alignItems="Center" width="100%">
+        <Title id="TermsConditionsPage" text="Terms and Conditions" level="H1" class="aboutUsTitle"/>
+        <!-- <Panel width="80%" class="aboutUsPanel"> -->
+            <FormattedText id="termsText" class="aboutUsText"
+                htmlText="
+&lt;p&gt;Welcome to LTI Life Insurance. By accessing and using our services, you agree to comply with the following terms and conditions:&lt;/p&gt;
+&lt;ol&gt;
+  &lt;li&gt;&lt;b&gt;Policy Coverage:&lt;/b&gt; Insurance coverage is subject to the terms, conditions, and exclusions outlined in your policy document. Please review your policy carefully.&lt;/li&gt;
+  &lt;li&gt;&lt;b&gt;Premium Payments:&lt;/b&gt; Timely payment of premiums is required to keep your policy active. Failure to pay premiums may result in policy lapse or termination.&lt;/li&gt;
+  &lt;li&gt;&lt;b&gt;Claims:&lt;/b&gt; All claims must be submitted with the necessary documentation as specified in your policy. LTI Life Insurance reserves the right to request additional information to process your claim.&lt;/li&gt;
+  &lt;li&gt;&lt;b&gt;Privacy:&lt;/b&gt; We are committed to protecting your personal information. Please refer to our Privacy Policy for details on how your data is collected, used, and protected.&lt;/li&gt;
+  &lt;li&gt;&lt;b&gt;Changes to Terms:&lt;/b&gt; LTI Life Insurance reserves the right to update these terms and conditions at any time. Continued use of our services constitutes acceptance of the revised terms.&lt;/li&gt;
+  &lt;li&gt;&lt;b&gt;Legal Compliance:&lt;/b&gt; All users must comply with applicable laws and regulations when using our services.&lt;/li&gt;
+  &lt;li&gt;&lt;b&gt;Limitation of Liability:&lt;/b&gt; LTI Life Insurance shall not be liable for any indirect, incidental, or consequential damages arising from the use of our services.&lt;/li&gt;
+  &lt;li&gt;&lt;b&gt;Governing Law:&lt;/b&gt; These terms and conditions shall be governed by and construed in accordance with the laws of the jurisdiction in which LTI Life Insurance operates.&lt;/li&gt;
+  &lt;li&gt;&lt;b&gt;Contact Us:&lt;/b&gt; For any questions or concerns regarding these terms, please contact our customer service team at [insert contact information].&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;For detailed information, please refer to your policy document or contact our customer service team.&lt;/p&gt;
+&lt;p&gt;Thank you for choosing LTI Life Insurance.&lt;/p&gt;
+"/>
+        <!-- </Panel> -->
+    </VBox>
+</mvc:View>

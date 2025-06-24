@@ -1,0 +1,25 @@
+<mvc:View controllerName="myapp.controller.App"
+    displayBlock="true"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m">
+    <VBox class="aboutUsPageVBox" alignItems="Center" width="100%">
+        <Title id="contactUsPage" text="Contact Us" level="H1" class="aboutUsTitle"/>
+        <VBox width="80%" class="aboutUsPanel">
+            <Text text="We are here to help you. Please reach out to us through any of the following ways:" class="faqAnswer"/>
+            <Text text="Phone: 1800-123-4567" class="faqAnswer"/>
+            <Text text="Email: support@ltilifeinsurance.com" class="faqAnswer"/>
+            <Text text="Address: LTI Life Insurance, 123 Main Street, City, State, ZIP Code" class="faqAnswer"/>
+            <Text text="Customer Service Hours: Monday to Friday, 9:00 AM – 6:00 PM" class="faqAnswer"/>
+            <Text text="For policy-related queries, claims, or feedback, you can also use the contact form on our website." class="faqAnswer"/>
+            <Text text="We value your feedback and are committed to providing you with the best service possible." class="faqAnswer"/>
+            <Text text="Thank you for choosing LTI Life Insurance!" class="faqAnswer"/>
+            <Text text="Follow us on social media for updates and news:" class="faqAnswer"/>
+            <Text text="Facebook: LTI Life Insurance" class="faqAnswer"/>
+            <Text text="Twitter: @LTILifeInsurance" class="faqAnswer"/>
+            <Text text="LinkedIn: LTI Life Insurance" class="faqAnswer"/>
+            <Text text="Instagram: @LTILifeInsurance" class="faqAnswer"/>
+            <Text text="We look forward to assisting you!" class="faqAnswer"/>
+                
+        </VBox>
+    </VBox>
+</mvc:View>

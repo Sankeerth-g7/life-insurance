@@ -73,7 +73,7 @@
         "type": "sap.ui.model.resource.ResourceModel",
         "settings": {
           "bundleName": "myapp.i18n.i18n"
-        }     
+        }
       },
       "mainModel": {
         "dataSource": "mainService",
@@ -115,50 +115,101 @@
         {
           "name": "home",
           "pattern": "home",
-          "target": ["Targethome"]
-      },
-
-      {
-        "name": "Admin",
+          "target": [
+            "Targethome"
+          ]
+        },
+        {
+          "name": "AboutUs",
+          "pattern": "AboutUs",
+          "target": [
+            "TargetAboutUs"
+          ]
+        },
+        {
+          "name": "ContactUs",
+          "pattern": "ContactUs",
+          "target": [
+            "TargetContactUs"
+          ]
+        },
+        {
+          "name": "TermsConditions",
+          "pattern": "TermsConditions",
+          "target": [
+            "TargetTermsConditions"
+          ]
+        },
+        {
+          "name": "PrivacyPolicy",
+          "pattern": "PrivacyPolicy",
+          "target": [
+            "TargetPrivacyPolicy"
+          ]
+        },
+        {
+          "name": "FAQ",
+          "pattern": "FAQ",
+          "target": [
+            "TargetFAQ"
+          ]
+        },
+        {
+          "name": "Admin",
           "pattern": "Admin",
-          "target": ["TargetAdmin"]
-      },
-
-      {
-        "name": "viewPolicy",
-        "pattern": "viewPolicy",
-        "target": ["TargetviewPolicy"]
-      },
-      {
-        "name": "myProfile",
-        "pattern": "myProfile",
-        "target": ["TargetmyProfile"]
-    },
-    {
-      "name": "AddPolicy",
-      "pattern": "AddPolicy",
-      "target": ["TargetAddPolicy"]
-  },
-  {
-    "name": "ApplicantDetails",
-    "pattern": "ApplicantDetails",
-    "target": ["TargetApplicantDetails"]
-},
-    {
-      "name": "myPolicy",
-        "pattern": "myPolicy",
-        "target": ["TargetmyPolicy"]
-    },
-    {
-      "name" :"PolicyDetails",
-      "pattern":"PolicyDetails",
-      "target":["TargetPolicyDetails"]
-    },
-    {
-      "name" : "user",
-      "pattern" : "user",
-      "target" : ["Targetuser"]
-    }
+          "target": [
+            "TargetAdmin"
+          ]
+        },
+        {
+          "name": "viewPolicy",
+          "pattern": "viewPolicy",
+          "target": [
+            "TargetviewPolicy"
+          ]
+        },
+        {
+          "name": "myProfile",
+          "pattern": "myProfile",
+          "target": [
+            "TargetmyProfile"
+          ]
+        },
+        {
+          "name": "AddPolicy",
+          "pattern": "AddPolicy",
+          "target": [
+            "TargetAddPolicy"
+          ]
+        },
+        {
+          "name": "ApplicantDetails",
+          "pattern": "ApplicantDetails",
+          "target": [
+            "TargetApplicantDetails"
+          ]
+        },
+        {
+          "name": "myPolicy",
+          "pattern": "myPolicy",
+          "target": [
+            "TargetmyPolicy"
+          ]
+        },
+        {
+          "name": "PolicyDetails",
+          "pattern": "PolicyDetails",
+          "target": [
+            "TargetPolicyDetails"
+          ]
+        },
+        {
+          "name": "user",
+          "pattern": "user",
+          "target": [
+            "Targetuser"
+          ]
+        }
       ],
       "targets": {
         "Targetlogin": {
@@ -166,41 +217,61 @@
           "name": "login"
         },
         "Targethome": {
-        "id": "home",
-        "name": "home"
-    },
-    "TargetAdmin":{
-       "id":"Admin",
-       "name":"Admin"
-      },
-    "TargetviewPolicy": {
-        "id": "viewPolicy",
-        "name": "viewPolicy"
-    },
-    "TargetAddPolicy":{
-      "id":"AddPolicy",
-      "name":"AddPolicy"
-    },
-    "TargetApplicantDetails":{
-      "id":"ApplicantDetails",
-      "name":"ApplicantDetails"
-    },
-    "TargetmyProfile": {
-      "id": "myProfile",
-      "name": "myProfile"
-  },
-  "TargetmyPolicy": {
-    "id":"myPolicy",
-    "name": "myPolicy"
-  },
-  "TargetPolicyDetails":{
-    "id": "PolicyDetails",
-    "name": "PolicyDetails"
-  },
-  "Targetuser":{
-    "id": "user",
-    "name": "user"
-  }
+          "id": "home",
+          "name": "home"
+        },
+        "TargetAboutUs": {
+          "id": "AboutUs",
+          "name": "AboutUs"
+        },
+        "TargetContactUs": {
+          "id": "ContactUs",
+          "name": "ContactUs"
+        },
+        "TargetTermsConditions": {
+          "id": "TermsConditions",
+          "name": "TermsConditions"
+        },
+        "TargetPrivacyPolicy": {
+          "id": "PrivacyPolicy",
+          "name": "PrivacyPolicy"
+        },
+        "TargetFAQ": {
+          "id": "FAQ",
+          "name": "FAQ"
+        },
+        "TargetAdmin": {
+          "id": "Admin",
+          "name": "Admin"
+        },
+        "TargetviewPolicy": {
+          "id": "viewPolicy",
+          "name": "viewPolicy"
+        },
+        "TargetAddPolicy": {
+          "id": "AddPolicy",
+          "name": "AddPolicy"
+        },
+        "TargetApplicantDetails": {
+          "id": "ApplicantDetails",
+          "name": "ApplicantDetails"
+        },
+        "TargetmyProfile": {
+          "id": "myProfile",
+          "name": "myProfile"
+        },
+        "TargetmyPolicy": {
+          "id": "myPolicy",
+          "name": "myPolicy"
+        },
+        "TargetPolicyDetails": {
+          "id": "PolicyDetails",
+          "name": "PolicyDetails"
+        },
+        "Targetuser": {
+          "id": "user",
+          "name": "user"
+        }
       }
     },
     "rootView": {
@@ -211,4 +282,3 @@
     }
   }
 }
-

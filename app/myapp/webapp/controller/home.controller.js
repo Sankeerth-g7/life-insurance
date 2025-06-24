@@ -26,7 +26,7 @@ sap.ui.define([
 
 
         onLinkPress: function (oEvent) {
-            this.footerHandler.onLinkPress(oEvent); // delegate to shared logic
+            this.footerHandler.onLinkPress(oEvent);
         },
 
 

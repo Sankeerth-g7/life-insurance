@@ -1,0 +1,38 @@
+<mvc:View controllerName="myapp.controller.App"
+    displayBlock="true"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m">
+
+    <VBox class="aboutUsPageVBox" alignItems="Center" width="100%">
+        <Title id="aboutUsPage" text="About Us" level="H1" class="aboutUsTitle"/>
+        <VBox width="80%" class="aboutUsPanel">
+            <Text id="aboutUsText" class="aboutUsText"
+                text="LTI Life Insurance is committed to providing innovative and reliable insurance solutions to protect you and your loved ones.
+
+With a strong legacy of trust and customer focus, we offer a wide range of life insurance products tailored to meet your unique needs.
+
+Our mission is to ensure financial security and peace of mind for our customers through transparent processes and dedicated service.
+
+We believe in building lasting relationships and empowering individuals and families to plan confidently for the future.
+
+Our experienced team is always ready to assist you in making informed decisions about your insurance needs."/>
+            <Text id="aboutUsText3" class="aboutUsText" 
+                text="Our products are designed to offer flexibility, affordability, and peace of mind.
+
+At LTI Life Insurance, we are more than just an insurance provider; we are your trusted partner in securing your future.
+
+We continuously strive to enhance our services and products to meet the evolving needs of our customers.
+
+Experience the difference with LTI Life Insurance, where your protection is our priority.
+We are committed to providing you with the best insurance solutions and exceptional customer service.
+Our team of experts is dedicated to guiding you through every step of your insurance journey, ensuring that you have the right coverage for your needs.
+We understand that life is full of uncertainties, and we are here to help you navigate them with confidence.
+Whether you are looking for life insurance, health insurance, or investment options, we have a solution for you.
+Our policies are designed to provide you with financial security and peace of mind, so you can focus on what matters most to you.
+Join us at LTI Life Insurance and experience the difference.
+We are committed to building a better future for you and your family, one policy at a time.
+Thank you for choosing LTI Life Insurance as your trusted insurance partner.
+"/>
+        </VBox>
+    </VBox>
+</mvc:View>

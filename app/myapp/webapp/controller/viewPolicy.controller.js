@@ -48,6 +48,10 @@ sap.ui.define([
         //oRouter.navTo("home");
         //},
 
+        onLinkPress: function (oEvent) {
+            this.footerHandler.onLinkPress(oEvent);
+        },
+
         onLogout: function () {
 
             var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
@@ -86,6 +90,15 @@ sap.ui.define([
                     const oModel = that.getView().getModel("policyModel");
                     const aPolicies = oModel.getProperty("/Policies");
                     oModel.setProperty("/AllPolicies", aPolicies);
+
+                    const aTypes = Array.from(
+                    new Set(aPolicies.map(p => p.policyType))
+                ).map(type => ({ key: type, text: type }));
+                aTypes.unshift({ key: "", text: "All Types" }); // Add "All Types" option
+
+                oModel.setProperty("/PolicyTypes", aTypes);
+                oModel.setProperty("/SelectedPolicyType", "");
+
                     } else {
                         MessageToast.show("No policies available.");
                     }
@@ -98,28 +111,54 @@ sap.ui.define([
         onSearchPolicy: function(oEvent) {
         const sQuery = oEvent.getParameter("newValue");
         this._filterPolicies(sQuery);
+        const sType = this.getView().byId("policyTypeSelect").getSelectedKey();
+        this._filterPolicies(sQuery, sType);
     },
+
+    onPolicyTypeChange: function(oEvent) {
+    const sType = oEvent.getSource().getSelectedKey();
+    console.log("Selected Policy Type:", sType);
+    const sQuery = this.getView().byId("policySearchField").getValue();
+    this.getView().getModel("policyModel").setProperty("/SelectedPolicyType", sType);
+    this._filterPolicies(sQuery, sType);
+},
     
-      onSearchPolicyButton: function() {
-        const sQuery = this.getView().byId("policySearchField1").getValue();
-        this._filterPolicies(sQuery);
-      },
-    
-    _filterPolicies: function (sQuery) {
+    _filterPolicies: function (sQuery, sType) {
         const oModel = this.getView().getModel("policyModel");
-        const aAllPolicies = oModel.getProperty("/AllPolicies"); // Always use full list
+        const aAllPolicies = oModel.getProperty("/AllPolicies")|| []; // Always use full list
     
         let aFiltered = aAllPolicies;
         if (sQuery) {
-                const sLowerQuery = sQuery.toLowerCase();
-                aFiltered = aAllPolicies.filter(policy =>
+            const sLowerQuery = sQuery.toLowerCase();
+            aFiltered = aAllPolicies.filter(policy =>
                 policy.policyName.toLowerCase().includes(sLowerQuery) ||
                 policy.policyType.toLowerCase().includes(sLowerQuery)
             );
         }
+        
+        
+       if (sType && sType !== "") {
+        aFiltered = aFiltered.filter(policy =>
+            policy.policyType === sType
+        );
+    }
     
         oModel.setProperty("/Policies", aFiltered); // Update visible list
     },
+onOpenFilterPopover: function (oEvent) {
+    this.byId("policyTypePopover1").openBy(this.byId("filterButton1"));
+},
+
+onPopoverPolicyTypeChange: function (oEvent) {
+    var sType = oEvent.getSource().getSelectedKey();
+    var oSearchField = this.byId("policySearchField1");
+    oSearchField.setValue(sType); // Set the selected type in the search field
+    // Optionally, close the popover after selection
+    this.byId("policyTypePopover1").close();
+
+    // Trigger filtering
+    this._filterPolicies(sType, sType);
+},
 
 
         onSelectPlan: function (oEvent) {

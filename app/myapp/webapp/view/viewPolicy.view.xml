@@ -17,12 +17,31 @@
         placeholder="Type here to search policy"
         liveChange="onSearchPolicy"
     />
-    <Button
-        text="Search"
-        type="Default"
-        press="onSearchPolicyButton"
-        class="searchButton"
-    />
+     <Button
+    id="filterButton1"
+    icon="sap-icon://filter"
+    tooltip="Filter by Policy Type"
+    press="onOpenFilterPopover"
+    class="filterButton"
+/>
+<Popover
+    id="policyTypePopover1"
+    placement="Bottom"
+    showHeader="false"
+>
+    <VBox>
+        <Select
+            id="popoverPolicyTypeSelect1"
+            width="200px"
+            items="{
+                path: 'policyModel>/PolicyTypes'
+            }"
+            change="onPopoverPolicyTypeChange"
+        >
+            <core:Item key="{policyModel>key}" text="{policyModel>text}" />
+        </Select>
+    </VBox>
+</Popover>
 </HBox>
         <FlexBox
             class="sapUiMediumMargin"

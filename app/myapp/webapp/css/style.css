@@ -1163,3 +1163,48 @@ footerCopyrightBox. {
     line-height: 1.4;
     
 }
+
+
+
+.aboutUsPageVBox {
+    background: #2A7B9B;
+    background: linear-gradient(90deg, rgba(42, 123, 155, 1) 0%, rgba(209, 224, 215, 1) 63%, rgba(237, 221, 83, 1) 100%);
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+}
+
+.aboutUsTitle {
+    font-size: 2.5rem;
+    font-weight: bold;
+    margin-bottom: 1.5rem;
+    color: #2c3e50;
+}
+
+.aboutUsPanel {
+    background: #f9f9f9;
+    border-radius: 10px;
+    padding: 2rem;
+    margin-top: 1.5rem;
+    box-shadow: 0 2px 8px rgba(44, 62, 80, 0.08);
+}
+
+.aboutUsText {
+    font-size: 1.15rem;
+    line-height: 1.7;
+    color: #333;
+    white-space: pre-line;
+}
+
+.faqQuestion {
+    font-weight: bold;
+    color: #2c3e50;
+    margin-top: 1.2rem;
+    margin-bottom: 0.2rem;
+    font-size: 1.1rem;
+}
+
+.faqAnswer {
+    color: #333;
+    margin-bottom: 0.8rem;
+    font-size: 1rem;
+}

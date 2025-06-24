@@ -109,8 +109,17 @@ getUserDetails: function (userId) {
 getUserPoliciesByFiltering: function (userId) {
   this.oModel.read("/applications", {
     success: (oData) => {
+      let hasPolicies = false;
+      let userPolicies = [];
+      let policyStats = [
+        { status: "Approved", count: 0 },
+        { status: "Rejected", count: 0 },
+        { status: "Pending", count: 0 }
+      ];
+
       if (oData && oData.results.length > 0) {
-        const userPolicies = oData.results.filter(app => app.user_userId === userId);
+        userPolicies = oData.results.filter(app => app.user_userId === userId);
+        hasPolicies = userPolicies.length > 0;
 
         const statusCounts = {
           Approved: 0,
@@ -125,20 +134,23 @@ getUserPoliciesByFiltering: function (userId) {
           }
         });
 
-        const policyStats = [
+        policyStats = [
           { status: "Approved", count: statusCounts.Approved },
           { status: "Rejected", count: statusCounts.Rejected },
           { status: "Pending", count: statusCounts.Pending }
         ];
+      }
 
-        const policyModel = new sap.ui.model.json.JSONModel({
-          userPolicies,
-          statusData: policyStats
-        });
+      const policyModel = new sap.ui.model.json.JSONModel({
+        userPolicies,
+        statusData: policyStats,
+        hasPolicies
+      });
 
-        this.getView().setModel(policyModel, "policyModel");
+      this.getView().setModel(policyModel, "policyModel");
 
-        const oVizFrame = this.getView().byId("policyChart");
+      const oVizFrame = this.getView().byId("policyChart");
+      if (hasPolicies) {
         oVizFrame.setVizProperties({
           title: {
             text: "User Policy Status Overview"
@@ -150,56 +162,101 @@ getUserPoliciesByFiltering: function (userId) {
             }
           }
         });
-      } else {
-        MessageToast.show("No policies found for this user.");
       }
     },
     error: (oError) => {
-      MessageToast.show("Error fetching policies.");
+      sap.m.MessageBox.error("Error fetching policies.", {
+        title: "Error"
+      });
       console.error("Policy fetch error:", oError);
     }
   });
 },  
     onChangePassword: function () {
       const oView = this.getView();
-    
+
       const currentPassword = oView.byId("currentPasswordInput").getValue();
       const newPassword = oView.byId("newPasswordInput").getValue();
       const confirmPassword = oView.byId("confirmPasswordInput").getValue();
-    
+
       const oUserModel = oView.getModel("userModel2");
-      const userDetails = oUserModel.getProperty("/userDetails");
-    
+      if (!oUserModel) {
+        sap.m.MessageBox.error("User details not loaded. Please try again.", {
+          title: "Error"
+        });
+        return;
+      }
+      const currentPasswordDb = oUserModel.getProperty("/password");
+
       if (!currentPassword || !newPassword || !confirmPassword) {
-        MessageToast.show("Please fill in all fields.");
+        sap.m.MessageBox.warning("Please fill in all fields.", {
+          title: "Missing Information"
+        });
         return;
       }
-    
+
       if (newPassword !== confirmPassword) {
-        MessageToast.show("New passwords do not match.");
+        sap.m.MessageBox.warning("New passwords do not match.", {
+          title: "Password Mismatch"
+        });
         return;
       }
-    
-      if (currentPassword !== userDetails.password) {
-        MessageToast.show("Current password is incorrect.");
+
+      if (currentPassword !== currentPasswordDb) {
+        sap.m.MessageBox.error("Current password is incorrect.", {
+          title: "Authentication Failed"
+        });
         return;
       }
-    
+
+      // Password strength validation
+      const passwordCheck = this._validatePasswordStrength(newPassword);
+      if (!passwordCheck.valid) {
+        sap.m.MessageBox.warning(passwordCheck.message, {
+          title: "Weak Password"
+        });
+        return;
+      }
+
       // Update password in backend
-      this.oModel.update("/users('" + userDetails.userId + "')", {
+      const currUser = oView.getModel("userModel").getProperty("/userId");
+      this.oModel.update("/users('" + currUser + "')", {
         password: newPassword
       }, {
         success: () => {
-          MessageToast.show("Password updated successfully.");
+          sap.m.MessageBox.success("Password updated successfully.", {
+            title: "Success"
+          });
           oView.byId("currentPasswordInput").setValue("");
           oView.byId("newPasswordInput").setValue("");
           oView.byId("confirmPasswordInput").setValue("");
         },
         error: (oError) => {
-          MessageToast.show("Failed to update password.");
+          sap.m.MessageBox.error("Failed to update password.", {
+            title: "Update Failed"
+          });
           console.error("Password update error:", oError);
         }
       });
+    },
+
+    _validatePasswordStrength: function(password) {
+      if (password.length < 8) {
+        return { valid: false, message: "Password must be at least 8 characters long." };
+      }
+      if (!/[A-Z]/.test(password)) {
+        return { valid: false, message: "Password must contain at least one uppercase letter." };
+      }
+      if (!/[a-z]/.test(password)) {
+        return { valid: false, message: "Password must contain at least one lowercase letter." };
+      }
+      if (!/\d/.test(password)) {
+        return { valid: false, message: "Password must contain at least one digit." };
+      }
+      if (!/[\W_]/.test(password)) {
+        return { valid: false, message: "Password must contain at least one special character." };
+      }
+      return { valid: true };
     }
     
   });

@@ -29,6 +29,10 @@ sap.ui.define([
     }.bind(this));
 
     this.footerHandler = footerFactory;
+
+     //get userId and policyId usin omodel also need to check if user is logged in or notAdd commentMore actions
+
+      
 },
       // this.footerHandler = footerFactory
       // var oFooter = sap.ui.xmlfragment("myapp.view.fragments.CustomFooter", this);
@@ -44,6 +48,14 @@ sap.ui.define([
     // },
 
     onSubmit: function () {
+
+      var oUserModel = this.getOwnerComponent().getModel("userModel");
+      var userId = oUserModel.getProperty("/userId");
+      console.log(userId);
+
+      var oSelectedPolicyModel = this.getOwnerComponent().getModel("selectedPolicyModel");
+      var policyId = oSelectedPolicyModel.getProperty("/policyId");
+      console.log(policyId)
       // Capturing the data in variables
       var ApplicantName = this.getView().byId("enterApplicantName").getValue();
       var ApplicantAddress = this.getView().byId("enterApplicantAddress").getValue();
@@ -96,6 +108,8 @@ sap.ui.define([
  
       // Creating new object
       var NewUser = {
+        user_userId: userId,
+        policy_policyId: policyId,
         applicantName: ApplicantName,
         applicantAddress: ApplicantAddress,
         applicantMobileNo: ApplicantMobileNo,
@@ -179,8 +193,22 @@ sap.ui.define([
  
             }.bind(this)
           });
-          var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
-          
+
+          // Trigger confirmation email via CAP endpoint
+          this.oModel.callFunction("/sendApplicationConfirmation", {
+            method: "POST",
+            urlParameters: {
+              userId: NewUser.user_userId,
+              applicationId: NewUser.applicationId
+            },
+            success: function (oData) {
+              sap.m.MessageToast.show("Confirmation email sent to your registered email.");
+            },
+            error: function (oError) {
+              sap.m.MessageToast.show("Failed to send confirmation email.");
+            }
+          });
+
         }.bind(this),
         
         error: function (oError) {
@@ -392,5 +420,4 @@ sap.ui.define([
     },
   });
 });
- 
- 
+

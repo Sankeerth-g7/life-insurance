@@ -91,6 +91,21 @@ sap.ui.define([
                 success: () => {
                     MessageBox.success(` Application has been ${status} with the Application ID: ${applicationId}`);
                     this.loadAllApplicantDetails(); // Refresh list
+
+                    // Trigger status update email via CAP endpoint
+                    this.oModel.callFunction("/sendApplicationStatusUpdate", {
+                        method: "POST",
+                        urlParameters: {
+                            applicationId: applicationId
+                        },
+                        success: function (oData) {
+                            sap.m.MessageToast.show("Status update email sent to user.");
+                        },
+                        error: function (oError) {
+                            sap.m.MessageToast.show("Failed to send status update email.");
+                        }
+                    });
+
                 },
                 error: () => {
                     MessageBox.error("Failed to update status.");

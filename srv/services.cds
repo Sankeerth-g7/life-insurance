@@ -13,6 +13,16 @@ service MyService {
         fileName: String,
         fileContent: String) 
         returns String;
+    action sendApplicationConfirmation(
+        userId: String,
+        applicationId: String) 
+        returns String;
+
+    action sendApplicationStatusUpdate(
+        applicationId: String,
+        email: String,
+        status: String) 
+        returns String;
 
 }
 

@@ -28,7 +28,7 @@ sap.ui.define([
         var oView = this.getView();
         var input = oView.byId("emailInput").getValue(); // Can be email or username
         var password = oView.byId("passwordInput").getValue();
-   
+
         if (!input) {
             MessageBox.information("Please enter your email or username.");
             oView.byId("emailInput").setValueState("Error");
@@ -36,7 +36,7 @@ sap.ui.define([
         } else {
             oView.byId("emailInput").setValueState("None");
         }
-   
+
         if (!password) {
             MessageBox.error("Please enter your password.");
             oView.byId("passwordInput").setValueState("Error");
@@ -44,16 +44,23 @@ sap.ui.define([
         } else {
             oView.byId("passwordInput").setValueState("None");
         }
-   
+
+        // Password strength validation before proceeding
+        var passwordCheck = this._validatePasswordStrength(password);
+        if (!passwordCheck.valid) {
+            MessageBox.warning(passwordCheck.message);
+            return;
+        }
+
         var oFilterEmail = new sap.ui.model.Filter("email", sap.ui.model.FilterOperator.EQ, input);
         var oFilterUsername = new sap.ui.model.Filter("username", sap.ui.model.FilterOperator.EQ, input);
         var oCombinedFilter = new sap.ui.model.Filter({
             filters: [oFilterEmail, oFilterUsername],
             and: false
         });
-   
+
         var that = this;
-   
+
         this.oModel.read("/users", {
             filters: [oCombinedFilter],
             success: function (oData) {
@@ -68,14 +75,22 @@ sap.ui.define([
                 var lockUntilDate = null;
  
                 if (user.lockUntil) {
-                    var lockUntilTimestamp = parseInt(user.lockUntil.match(/\d+/)[0], 10);
+                    var lockUntilTimestamp;
+                    if (typeof user.lockUntil === "number") {
+                        lockUntilTimestamp = user.lockUntil;
+                    } else if (typeof user.lockUntil === "string") {
+                        lockUntilTimestamp = parseInt(user.lockUntil, 10);
+                    } else if (user.lockUntil instanceof Date) {
+                        lockUntilTimestamp = user.lockUntil.getTime();
+                    }
                     lockUntilDate = new Date(lockUntilTimestamp);
                 }
  
                 // console.log(user.isLocked, lockUntilDate, now, lockUntilDate && lockUntilDate > now);
  
                 if (user.isLocked === "true" && lockUntilDate && lockUntilDate > now) {
-                    MessageBox.warning("Account is locked. Try again later.");
+                    var unlockTime = lockUntilDate.toLocaleString(); // Formats date & time for user
+                    MessageBox.warning("Account is locked. Try again after: " + unlockTime);
                     return;
                 }
  
@@ -174,6 +189,11 @@ sap.ui.define([
             MessageBox.warning("Please accept the Terms & Conditions.");
             return;
         }
+        var passwordCheck = this._validatePasswordStrength(password);
+if (!passwordCheck.valid) {
+    MessageBox.warning(passwordCheck.message);
+    return;
+}
         var oData = {
             userId: new Date().getTime().toString(),
             email: email,
@@ -249,11 +269,11 @@ sap.ui.define([
     // 
     _sendOtpToUser: function (sEmail) {
     var that = this;
-    $.ajax({
-        url: "/odata/v4/my/sendOtp",
+    this.oModel.callFunction("/sendOtp", {
         method: "POST",
-        contentType: "application/json",
-        data: JSON.stringify({ email: sEmail }),
+        urlParameters: {
+            email: sEmail
+        },
         success: function (oData) {
             sap.m.MessageToast.show("OTP sent to your email.");
             that._fetchUserByEmail(sEmail);
@@ -354,6 +374,12 @@ sap.ui.define([
                     user.password = sNewPassword;
                     user.otp = null;
     
+                    var passwordCheck = that._validatePasswordStrength(sNewPassword);
+if (!passwordCheck.valid) {
+    sap.m.MessageBox.warning(passwordCheck.message);
+    return;
+}
+    
                     that.oModel.update("/users(" + user.userId + ")", user, {
                         success: function () {
                             sap.m.MessageToast.show("Password reset successfully.");
@@ -421,6 +447,24 @@ _togglePasswordVisibility: function (sInputId) {
     var bIsPassword = oInput.getType() === "Password";
     oInput.setType(bIsPassword ? "Text" : "Password");
     oInput.setValueHelpIconSrc(bIsPassword ? "sap-icon://hide" : "sap-icon://show");
+},
+_validatePasswordStrength: function(password) {
+    if (password.length < 8) {
+        return { valid: false, message: "Password must be at least 8 characters long." };
+    }
+    if (!/[A-Z]/.test(password)) {
+        return { valid: false, message: "Password must contain at least one uppercase letter." };
+    }
+    if (!/[a-z]/.test(password)) {
+        return { valid: false, message: "Password must contain at least one lowercase letter." };
+    }
+    if (!/\d/.test(password)) {
+        return { valid: false, message: "Password must contain at least one digit." };
+    }
+    if (!/[\W_]/.test(password)) {
+        return { valid: false, message: "Password must contain at least one special character." };
+    }
+    return { valid: true };
 }
     });
 });

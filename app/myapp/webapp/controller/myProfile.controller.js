@@ -180,7 +180,7 @@ sap.ui.define([
             }.bind(this)
           });
           var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
-          oRouter.navTo("viewPolicy");
+          
         }.bind(this),
         
         error: function (oError) {
